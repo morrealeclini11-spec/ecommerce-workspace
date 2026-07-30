@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -34,7 +34,8 @@ interface Subtask {
   completed: boolean
 }
 
-const initialTasks: Task[] = [
+// 默认的初始任务（只有在localStorage没有数据时才会使用）
+const defaultTasks: Task[] = [
   {
     id: 1,
     title: '完成产品调研报告',
@@ -77,12 +78,40 @@ const initialTasks: Task[] = [
   }
 ]
 
+// 从localStorage读取任务数据
+const loadTasks = (): Task[] => {
+  try {
+    const saved = localStorage.getItem('ecommerce-tasks')
+    if (saved) {
+      return JSON.parse(saved)
+    }
+  } catch (e) {
+    console.error('读取任务数据失败:', e)
+  }
+  return defaultTasks
+}
+
+// 保存任务数据到localStorage
+const saveTasks = (tasks: Task[]) => {
+  try {
+    localStorage.setItem('ecommerce-tasks', JSON.stringify(tasks))
+  } catch (e) {
+    console.error('保存任务数据失败:', e)
+  }
+}
+
 export function Tasks() {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks)
+  // 初始化时从localStorage读取数据
+  const [tasks, setTasks] = useState<Task[]>(loadTasks)
   const [isRecording, setIsRecording] = useState(false)
   const [recordingText, setRecordingText] = useState('')
   const [newTask, setNewTask] = useState({ title: '', description: '' })
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
+
+  // 当tasks变化时，自动保存到localStorage
+  useEffect(() => {
+    saveTasks(tasks)
+  }, [tasks])
 
   const handleVoiceInput = () => {
     setIsRecording(!isRecording)
@@ -154,7 +183,7 @@ export function Tasks() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">事项安排</h1>
-          <p className="text-gray-600">管理您的任务和待办事项</p>
+          <p className="text-gray-600">管理您的任务和待办事项（数据已自动保存）</p>
         </div>
         <Button onClick={() => setShowNewTaskForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -346,6 +375,20 @@ export function Tasks() {
           </Card>
         ))}
       </div>
+
+      {tasks.length === 0 && (
+        <Card>
+          <CardContent className="py-12 text-center">
+            <CheckCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-gray-900 mb-2">没有任务</h3>
+            <p className="text-gray-600 mb-4">点击"新建任务"按钮添加您的第一个任务</p>
+            <Button onClick={() => setShowNewTaskForm(true)}>
+              <Plus className="h-4 w-4 mr-2" />
+              新建任务
+            </Button>
+          </CardContent>
+        </Card>
+      )}
     </div>
   )
 }
