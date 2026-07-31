@@ -7,7 +7,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyCZYeT-qqAdDil22tYqfx3Pa0WVqD1AjdQ",
   authDomain: "ecommerce-workspace.firebaseapp.com",
   projectId: "ecommerce-workspace",
-  storageBucket: "ecommerce-workspace.firebasestorage.app",
+  storageBucket: "ecommerce-workspace.appspot.com",
   messagingSenderId: "871733401972",
   appId: "1:871733401972:web:7beb873dfdea530da4b421"
 };
