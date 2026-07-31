@@ -13,11 +13,23 @@ import {
   Circle, 
   Trash2,
   Edit,
-  Calendar
+  Calendar,
+  Loader2
 } from 'lucide-react'
+import { 
+  collection, 
+  addDoc, 
+  updateDoc, 
+  deleteDoc, 
+  doc, 
+  onSnapshot,
+  query,
+  orderBy
+} from 'firebase/firestore'
+import { db } from '@/config/firebase'
 
 interface Task {
-  id: number
+  id: string
   title: string
   description: string
   status: 'pending' | 'in_progress' | 'completed'
@@ -34,84 +46,31 @@ interface Subtask {
   completed: boolean
 }
 
-// 默认的初始任务（只有在localStorage没有数据时才会使用）
-const defaultTasks: Task[] = [
-  {
-    id: 1,
-    title: '完成产品调研报告',
-    description: '调研欧洲市场冬季取暖器需求，分析竞品数据，撰写详细报告。',
-    status: 'in_progress',
-    priority: 'high',
-    createdAt: '2026-07-29',
-    updatedAt: '2026-07-30',
-    subtasks: [
-      { id: 1, title: '收集市场数据', completed: true },
-      { id: 2, title: '分析竞品信息', completed: false },
-      { id: 3, title: '撰写报告', completed: false }
-    ],
-    progress: 33
-  },
-  {
-    id: 2,
-    title: '准备下周会议材料',
-    description: '整理本周销售数据，准备PPT演示文稿。',
-    status: 'pending',
-    priority: 'medium',
-    createdAt: '2026-07-30',
-    updatedAt: '2026-07-30',
-    subtasks: [],
-    progress: 0
-  },
-  {
-    id: 3,
-    title: '联系供应商确认库存',
-    description: '确认取暖器库存情况，安排补货计划。',
-    status: 'completed',
-    priority: 'high',
-    createdAt: '2026-07-28',
-    updatedAt: '2026-07-30',
-    subtasks: [
-      { id: 1, title: '发送询价邮件', completed: true },
-      { id: 2, title: '确认价格', completed: true }
-    ],
-    progress: 100
-  }
-]
-
-// 从localStorage读取任务数据
-const loadTasks = (): Task[] => {
-  try {
-    const saved = localStorage.getItem('ecommerce-tasks')
-    if (saved) {
-      return JSON.parse(saved)
-    }
-  } catch (e) {
-    console.error('读取任务数据失败:', e)
-  }
-  return defaultTasks
-}
-
-// 保存任务数据到localStorage
-const saveTasks = (tasks: Task[]) => {
-  try {
-    localStorage.setItem('ecommerce-tasks', JSON.stringify(tasks))
-  } catch (e) {
-    console.error('保存任务数据失败:', e)
-  }
-}
-
 export function Tasks() {
-  // 初始化时从localStorage读取数据
-  const [tasks, setTasks] = useState<Task[]>(loadTasks)
+  const [tasks, setTasks] = useState<Task[]>([])
   const [isRecording, setIsRecording] = useState(false)
   const [recordingText, setRecordingText] = useState('')
   const [newTask, setNewTask] = useState({ title: '', description: '' })
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
+  const [loading, setLoading] = useState(true)
 
-  // 当tasks变化时，自动保存到localStorage
+  // 实时监听Firestore数据变化
   useEffect(() => {
-    saveTasks(tasks)
-  }, [tasks])
+    const q = query(collection(db, 'tasks'), orderBy('createdAt', 'desc'))
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const tasksData: Task[] = []
+      querySnapshot.forEach((doc) => {
+        tasksData.push({ id: doc.id, ...doc.data() } as Task)
+      })
+      setTasks(tasksData)
+      setLoading(false)
+    }, (error) => {
+      console.error('监听数据失败:', error)
+      setLoading(false)
+    })
+
+    return () => unsubscribe()
+  }, [])
 
   const handleVoiceInput = () => {
     setIsRecording(!isRecording)
@@ -121,39 +80,49 @@ export function Tasks() {
     }
   }
 
-  const addTask = () => {
+  const addTask = async () => {
     if (!newTask.title) return
-    
-    const task: Task = {
-      id: Date.now(),
-      title: newTask.title,
-      description: newTask.description,
-      status: 'pending',
-      priority: 'medium',
-      createdAt: new Date().toISOString().split('T')[0],
-      updatedAt: new Date().toISOString().split('T')[0],
-      subtasks: [],
-      progress: 0
+
+    try {
+      await addDoc(collection(db, 'tasks'), {
+        title: newTask.title,
+        description: newTask.description,
+        status: 'pending',
+        priority: 'medium',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        subtasks: [],
+        progress: 0
+      })
+      setNewTask({ title: '', description: '' })
+      setShowNewTaskForm(false)
+    } catch (e) {
+      console.error('添加任务失败:', e)
+      alert('添加失败，请检查网络连接')
     }
-    
-    setTasks([...tasks, task])
-    setNewTask({ title: '', description: '' })
-    setShowNewTaskForm(false)
   }
 
-  const toggleTaskStatus = (taskId: number) => {
-    setTasks(tasks.map(task => {
-      if (task.id === taskId) {
-        const newStatus = task.status === 'completed' ? 'pending' : 
-                         task.status === 'pending' ? 'in_progress' : 'completed'
-        return { ...task, status: newStatus }
+  const toggleTaskStatus = async (task: Task) => {
+    try {
+      const newStatus = task.status === 'completed' ? 'pending' : 
+                       task.status === 'pending' ? 'in_progress' : 'completed'
+      await updateDoc(doc(db, 'tasks', task.id), {
+        status: newStatus,
+        updatedAt: new Date().toISOString()
+      })
+    } catch (e) {
+      console.error('更新任务失败:', e)
+    }
+  }
+
+  const deleteTask = async (taskId: string) => {
+    if (confirm('确定要删除这个任务吗？')) {
+      try {
+        await deleteDoc(doc(db, 'tasks', taskId))
+      } catch (e) {
+        console.error('删除任务失败:', e)
       }
-      return task
-    }))
-  }
-
-  const deleteTask = (taskId: number) => {
-    setTasks(tasks.filter(task => task.id !== taskId))
+    }
   }
 
   const getStatusIcon = (status: string) => {
@@ -178,12 +147,21 @@ export function Tasks() {
     }
   }
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+        <span className="ml-2 text-gray-600">加载中...</span>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">事项安排</h1>
-          <p className="text-gray-600">管理您的任务和待办事项（数据已自动保存）</p>
+          <p className="text-gray-600">数据已同步到云端，可在任何设备查看</p>
         </div>
         <Button onClick={() => setShowNewTaskForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -290,7 +268,7 @@ export function Tasks() {
               <div className="flex items-start justify-between">
                 <div className="flex items-start space-x-4">
                   <button
-                    onClick={() => toggleTaskStatus(task.id)}
+                    onClick={() => toggleTaskStatus(task)}
                     className="mt-1"
                   >
                     {getStatusIcon(task.status)}
@@ -321,7 +299,7 @@ export function Tasks() {
                     </div>
 
                     {/* 子任务 */}
-                    {task.subtasks.length > 0 && (
+                    {task.subtasks && task.subtasks.length > 0 && (
                       <div className="mt-3 space-y-2">
                         <p className="text-sm font-medium text-gray-700">子任务：</p>
                         {task.subtasks.map(subtask => (
@@ -347,11 +325,7 @@ export function Tasks() {
                     <div className="mt-3 flex items-center space-x-4 text-sm text-gray-500">
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1" />
-                        创建于 {task.createdAt}
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="h-4 w-4 mr-1" />
-                        更新于 {task.updatedAt}
+                        {new Date(task.createdAt).toLocaleDateString('zh-CN')}
                       </div>
                     </div>
                   </div>
