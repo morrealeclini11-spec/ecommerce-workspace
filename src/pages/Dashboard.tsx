@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -8,9 +7,13 @@ import {
   Calendar,
   ArrowRight,
   Newspaper,
-  TrendingUp,
-  Globe
+  ShoppingCart,
+  Wrench
 } from 'lucide-react'
+
+interface DashboardProps {
+  onNavigate: (tab: string) => void
+}
 
 interface Task {
   id: number
@@ -102,7 +105,7 @@ const latestNews: NewsItem[] = [
   }
 ]
 
-export function Dashboard() {
+export function Dashboard({ onNavigate }: DashboardProps) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'completed':
@@ -153,7 +156,7 @@ export function Dashboard() {
       {/* 欢迎信息 */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">欢迎回来！</h1>
-        <p className="text-gray-600">今天是2026年7月30日，星期四</p>
+        <p className="text-gray-600">今天是2026年7月31日，星期五</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -164,14 +167,14 @@ export function Dashboard() {
               <CheckCircle className="h-5 w-5 mr-2" />
               事项安排
             </CardTitle>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" onClick={() => onNavigate('tasks')}>
               查看全部 <ArrowRight className="h-4 w-4 ml-1" />
             </Button>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {recentTasks.map((task) => (
-                <div key={task.id} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                <div key={task.id} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => onNavigate('tasks')}>
                   <div className="flex items-start justify-between">
                     <div className="flex items-start space-x-3">
                       {getStatusIcon(task.status)}
@@ -216,14 +219,14 @@ export function Dashboard() {
               <Newspaper className="h-5 w-5 mr-2" />
               今日新闻
             </CardTitle>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" onClick={() => onNavigate('news')}>
               查看全部 <ArrowRight className="h-4 w-4 ml-1" />
             </Button>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {latestNews.map((news) => (
-                <div key={news.id} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                <div key={news.id} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => onNavigate('news')}>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-1">
@@ -249,20 +252,20 @@ export function Dashboard() {
       <Card>
         <CardContent className="p-6">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            <Button variant="outline" className="h-20 flex flex-col items-center justify-center">
+            <Button variant="outline" className="h-20 flex flex-col items-center justify-center" onClick={() => onNavigate('tasks')}>
               <CheckCircle className="h-6 w-6 mb-2" />
               <span>新建任务</span>
             </Button>
-            <Button variant="outline" className="h-20 flex flex-col items-center justify-center">
+            <Button variant="outline" className="h-20 flex flex-col items-center justify-center" onClick={() => onNavigate('news')}>
               <Newspaper className="h-6 w-6 mb-2" />
               <span>查看新闻</span>
             </Button>
-            <Button variant="outline" className="h-20 flex flex-col items-center justify-center">
-              <TrendingUp className="h-6 w-6 mb-2" />
+            <Button variant="outline" className="h-20 flex flex-col items-center justify-center" onClick={() => onNavigate('products')}>
+              <ShoppingCart className="h-6 w-6 mb-2" />
               <span>产品分析</span>
             </Button>
-            <Button variant="outline" className="h-20 flex flex-col items-center justify-center">
-              <Globe className="h-6 w-6 mb-2" />
+            <Button variant="outline" className="h-20 flex flex-col items-center justify-center" onClick={() => onNavigate('tools')}>
+              <Wrench className="h-6 w-6 mb-2" />
               <span>工具网站</span>
             </Button>
           </div>

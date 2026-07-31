@@ -14,8 +14,7 @@ import {
   Trash2,
   Edit,
   Calendar,
-  Loader2,
-  AlertCircle
+  Loader2
 } from 'lucide-react'
 import { 
   collection, 
@@ -23,7 +22,7 @@ import {
   updateDoc, 
   deleteDoc, 
   doc, 
-  onSnapshot,
+  getDocs,
   query,
   orderBy
 } from 'firebase/firestore'
@@ -56,32 +55,30 @@ export function Tasks() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  // 实时监听Firestore数据变化
-  useEffect(() => {
-    console.log('开始连接Firebase...')
+  // 从Firestore加载任务
+  const loadTasks = async () => {
     try {
+      console.log('正在加载任务...')
       const q = query(collection(db, 'tasks'), orderBy('createdAt', 'desc'))
-      const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        console.log('收到数据更新，数量:', querySnapshot.size)
-        const tasksData: Task[] = []
-        querySnapshot.forEach((doc) => {
-          tasksData.push({ id: doc.id, ...doc.data() } as Task)
-        })
-        setTasks(tasksData)
-        setLoading(false)
-        setError(null)
-      }, (error) => {
-        console.error('监听数据失败:', error)
-        setError('数据同步失败: ' + error.message)
-        setLoading(false)
+      const querySnapshot = await getDocs(q)
+      const tasksData: Task[] = []
+      querySnapshot.forEach((doc) => {
+        tasksData.push({ id: doc.id, ...doc.data() } as Task)
       })
-
-      return () => unsubscribe()
+      console.log('加载了', tasksData.length, '个任务')
+      setTasks(tasksData)
+      setLoading(false)
+      setError(null)
     } catch (e) {
-      console.error('初始化Firebase失败:', e)
-      setError('初始化失败: ' + (e as Error).message)
+      console.error('加载任务失败:', e)
+      setError('加载失败: ' + (e as Error).message)
       setLoading(false)
     }
+  }
+
+  // 初始加载
+  useEffect(() => {
+    loadTasks()
   }, [])
 
   const handleVoiceInput = () => {
@@ -109,6 +106,8 @@ export function Tasks() {
       console.log('任务添加成功，ID:', docRef.id)
       setNewTask({ title: '', description: '' })
       setShowNewTaskForm(false)
+      // 重新加载任务列表
+      await loadTasks()
       alert('添加成功！')
     } catch (e) {
       console.error('添加任务失败:', e)
@@ -124,6 +123,7 @@ export function Tasks() {
         status: newStatus,
         updatedAt: new Date().toISOString()
       })
+      await loadTasks()
     } catch (e) {
       console.error('更新任务失败:', e)
     }
@@ -133,6 +133,7 @@ export function Tasks() {
     if (confirm('确定要删除这个任务吗？')) {
       try {
         await deleteDoc(doc(db, 'tasks', taskId))
+        await loadTasks()
         alert('删除成功！')
       } catch (e) {
         console.error('删除任务失败:', e)
@@ -170,23 +171,9 @@ export function Tasks() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">事项安排</h1>
-            <p className="text-gray-600">数据同步配置中...</p>
+            <p className="text-red-600">⚠️ {error}</p>
           </div>
         </div>
-        <Card className="border-red-200 bg-red-50">
-          <CardContent className="p-6">
-            <div className="flex items-start space-x-3">
-              <AlertCircle className="h-6 w-6 text-red-500 mt-0.5" />
-              <div>
-                <h3 className="font-medium text-red-800">连接失败</h3>
-                <p className="text-sm text-red-700 mt-1">{error}</p>
-                <p className="text-sm text-red-700 mt-2">
-                  请检查：1. Firebase数据库是否已创建 2. 数据库规则是否正确
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     )
   }
@@ -195,7 +182,7 @@ export function Tasks() {
     return (
       <div className="flex items-center justify-center h-64">
         <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
-        <span className="ml-2 text-gray-600">正在连接云数据库...</span>
+        <span className="ml-2 text-gray-600">正在加载数据...</span>
       </div>
     )
   }
@@ -205,7 +192,7 @@ export function Tasks() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">事项安排</h1>
-          <p className="text-green-600">✓ 已连接云端，数据自动同步</p>
+          <p className="text-green-600">✓ 数据已同步到云端</p>
         </div>
         <Button onClick={() => setShowNewTaskForm(true)}>
           <Plus className="h-4 w-4 mr-2" />

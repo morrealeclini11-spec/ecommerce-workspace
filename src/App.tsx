@@ -13,7 +13,7 @@ function App() {
   const renderPage = () => {
     switch (activeTab) {
       case 'dashboard':
-        return <Dashboard />
+        return <Dashboard onNavigate={setActiveTab} />
       case 'tasks':
         return <Tasks />
       case 'feishu':
@@ -25,7 +25,7 @@ function App() {
       case 'tools':
         return <Tools />
       default:
-        return <Dashboard />
+        return <Dashboard onNavigate={setActiveTab} />
     }
   }
 
