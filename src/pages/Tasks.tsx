@@ -14,7 +14,8 @@ import {
   Trash2,
   Edit,
   Calendar,
-  Loader2
+  Loader2,
+  AlertCircle
 } from 'lucide-react'
 import { 
   collection, 
@@ -53,29 +54,39 @@ export function Tasks() {
   const [newTask, setNewTask] = useState({ title: '', description: '' })
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   // 实时监听Firestore数据变化
   useEffect(() => {
-    const q = query(collection(db, 'tasks'), orderBy('createdAt', 'desc'))
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const tasksData: Task[] = []
-      querySnapshot.forEach((doc) => {
-        tasksData.push({ id: doc.id, ...doc.data() } as Task)
+    console.log('开始连接Firebase...')
+    try {
+      const q = query(collection(db, 'tasks'), orderBy('createdAt', 'desc'))
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        console.log('收到数据更新，数量:', querySnapshot.size)
+        const tasksData: Task[] = []
+        querySnapshot.forEach((doc) => {
+          tasksData.push({ id: doc.id, ...doc.data() } as Task)
+        })
+        setTasks(tasksData)
+        setLoading(false)
+        setError(null)
+      }, (error) => {
+        console.error('监听数据失败:', error)
+        setError('数据同步失败: ' + error.message)
+        setLoading(false)
       })
-      setTasks(tasksData)
-      setLoading(false)
-    }, (error) => {
-      console.error('监听数据失败:', error)
-      setLoading(false)
-    })
 
-    return () => unsubscribe()
+      return () => unsubscribe()
+    } catch (e) {
+      console.error('初始化Firebase失败:', e)
+      setError('初始化失败: ' + (e as Error).message)
+      setLoading(false)
+    }
   }, [])
 
   const handleVoiceInput = () => {
     setIsRecording(!isRecording)
     if (isRecording) {
-      // 模拟语音转文字结果
       setRecordingText('完成产品调研报告，包括市场数据收集和竞品分析')
     }
   }
@@ -84,7 +95,8 @@ export function Tasks() {
     if (!newTask.title) return
 
     try {
-      await addDoc(collection(db, 'tasks'), {
+      console.log('正在添加任务...')
+      const docRef = await addDoc(collection(db, 'tasks'), {
         title: newTask.title,
         description: newTask.description,
         status: 'pending',
@@ -94,11 +106,13 @@ export function Tasks() {
         subtasks: [],
         progress: 0
       })
+      console.log('任务添加成功，ID:', docRef.id)
       setNewTask({ title: '', description: '' })
       setShowNewTaskForm(false)
+      alert('添加成功！')
     } catch (e) {
       console.error('添加任务失败:', e)
-      alert('添加失败，请检查网络连接')
+      alert('添加失败: ' + (e as Error).message)
     }
   }
 
@@ -119,8 +133,10 @@ export function Tasks() {
     if (confirm('确定要删除这个任务吗？')) {
       try {
         await deleteDoc(doc(db, 'tasks', taskId))
+        alert('删除成功！')
       } catch (e) {
         console.error('删除任务失败:', e)
+        alert('删除失败: ' + (e as Error).message)
       }
     }
   }
@@ -147,11 +163,39 @@ export function Tasks() {
     }
   }
 
+  // 显示错误信息
+  if (error) {
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">事项安排</h1>
+            <p className="text-gray-600">数据同步配置中...</p>
+          </div>
+        </div>
+        <Card className="border-red-200 bg-red-50">
+          <CardContent className="p-6">
+            <div className="flex items-start space-x-3">
+              <AlertCircle className="h-6 w-6 text-red-500 mt-0.5" />
+              <div>
+                <h3 className="font-medium text-red-800">连接失败</h3>
+                <p className="text-sm text-red-700 mt-1">{error}</p>
+                <p className="text-sm text-red-700 mt-2">
+                  请检查：1. Firebase数据库是否已创建 2. 数据库规则是否正确
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
         <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
-        <span className="ml-2 text-gray-600">加载中...</span>
+        <span className="ml-2 text-gray-600">正在连接云数据库...</span>
       </div>
     )
   }
@@ -161,7 +205,7 @@ export function Tasks() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">事项安排</h1>
-          <p className="text-gray-600">数据已同步到云端，可在任何设备查看</p>
+          <p className="text-green-600">✓ 已连接云端，数据自动同步</p>
         </div>
         <Button onClick={() => setShowNewTaskForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -350,11 +394,11 @@ export function Tasks() {
         ))}
       </div>
 
-      {tasks.length === 0 && (
+      {tasks.length === 0 && !loading && (
         <Card>
           <CardContent className="py-12 text-center">
             <CheckCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">没有任务</h3>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">还没有任务</h3>
             <p className="text-gray-600 mb-4">点击"新建任务"按钮添加您的第一个任务</p>
             <Button onClick={() => setShowNewTaskForm(true)}>
               <Plus className="h-4 w-4 mr-2" />
