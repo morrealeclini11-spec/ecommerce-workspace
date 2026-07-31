@@ -4,47 +4,31 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { 
-  Plus, 
-  Mic, 
-  MicOff, 
-  Clock, 
-  CheckCircle, 
-  Circle, 
+import {
+  Plus,
+  Mic,
+  MicOff,
+  Clock,
+  CheckCircle,
+  Circle,
   Trash2,
   Edit,
   Calendar,
-  Loader2
+  Loader2,
+  Cloud,
+  CloudOff,
 } from 'lucide-react'
-import { 
-  collection, 
-  addDoc, 
-  updateDoc, 
-  deleteDoc, 
-  doc, 
-  getDocs,
-  query,
-  orderBy
-} from 'firebase/firestore'
-import { db } from '@/config/firebase'
-
-interface Task {
-  id: string
-  title: string
-  description: string
-  status: 'pending' | 'in_progress' | 'completed'
-  priority: 'low' | 'medium' | 'high'
-  createdAt: string
-  updatedAt: string
-  subtasks: Subtask[]
-  progress: number
-}
-
-interface Subtask {
-  id: number
-  title: string
-  completed: boolean
-}
+import {
+  getLocalTasks,
+  setLocalTasks,
+  pushToFirebase,
+  removeFromFirebase,
+  updateFirebase,
+  fetchFromFirebase,
+  mergeTasks,
+  makeId,
+} from '@/lib/tasks'
+import type { Task, Subtask } from '@/lib/tasks'
 
 export function Tasks() {
   const [tasks, setTasks] = useState<Task[]>([])
@@ -53,32 +37,30 @@ export function Tasks() {
   const [newTask, setNewTask] = useState({ title: '', description: '' })
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [cloudOk, setCloudOk] = useState<boolean | null>(null)
 
-  // 从Firestore加载任务
-  const loadTasks = async () => {
-    try {
-      console.log('正在加载任务...')
-      const q = query(collection(db, 'tasks'), orderBy('createdAt', 'desc'))
-      const querySnapshot = await getDocs(q)
-      const tasksData: Task[] = []
-      querySnapshot.forEach((doc) => {
-        tasksData.push({ id: doc.id, ...doc.data() } as Task)
-      })
-      console.log('加载了', tasksData.length, '个任务')
-      setTasks(tasksData)
-      setLoading(false)
-      setError(null)
-    } catch (e) {
-      console.error('加载任务失败:', e)
-      setError('加载失败: ' + (e as Error).message)
-      setLoading(false)
-    }
+  const refresh = (list: Task[]) => {
+    setTasks(list)
+    setLocalTasks(list)
   }
 
-  // 初始加载
   useEffect(() => {
-    loadTasks()
+    // 1) 先立即显示本地数据（保证刷新后一定还在）
+    const local = getLocalTasks()
+    setTasks(local)
+    setLoading(false)
+
+    // 2) 再尝试从云端同步
+    fetchFromFirebase()
+      .then((cloud) => {
+        const merged = mergeTasks(local, cloud)
+        refresh(merged)
+        setCloudOk(true)
+      })
+      .catch(() => {
+        setCloudOk(false)
+      })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleVoiceInput = () => {
@@ -89,57 +71,44 @@ export function Tasks() {
   }
 
   const addTask = async () => {
-    if (!newTask.title) return
-
-    try {
-      console.log('正在添加任务...')
-      const docRef = await addDoc(collection(db, 'tasks'), {
-        title: newTask.title,
-        description: newTask.description,
-        status: 'pending',
-        priority: 'medium',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        subtasks: [],
-        progress: 0
-      })
-      console.log('任务添加成功，ID:', docRef.id)
-      setNewTask({ title: '', description: '' })
-      setShowNewTaskForm(false)
-      // 重新加载任务列表
-      await loadTasks()
-      alert('添加成功！')
-    } catch (e) {
-      console.error('添加任务失败:', e)
-      alert('添加失败: ' + (e as Error).message)
+    if (!newTask.title.trim()) return
+    const task: Task = {
+      id: makeId(),
+      title: newTask.title.trim(),
+      description: newTask.description.trim(),
+      status: 'pending',
+      priority: 'medium',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      subtasks: [],
+      progress: 0,
     }
+    const next = [task, ...tasks]
+    refresh(next)
+    setNewTask({ title: '', description: '' })
+    setShowNewTaskForm(false)
+    // 云端同步（失败不影响本地）
+    pushToFirebase(task).then(() => setCloudOk(true)).catch(() => setCloudOk(false))
   }
 
   const toggleTaskStatus = async (task: Task) => {
-    try {
-      const newStatus = task.status === 'completed' ? 'pending' : 
-                       task.status === 'pending' ? 'in_progress' : 'completed'
-      await updateDoc(doc(db, 'tasks', task.id), {
-        status: newStatus,
-        updatedAt: new Date().toISOString()
-      })
-      await loadTasks()
-    } catch (e) {
-      console.error('更新任务失败:', e)
-    }
+    const newStatus: Task['status'] =
+      task.status === 'completed'
+        ? 'pending'
+        : task.status === 'pending'
+        ? 'in_progress'
+        : 'completed'
+    const updated = { ...task, status: newStatus, updatedAt: new Date().toISOString() }
+    refresh(tasks.map((t) => (t.id === task.id ? updated : t)))
+    updateFirebase(task.id, { status: newStatus, updatedAt: updated.updatedAt }).catch(
+      () => setCloudOk(false)
+    )
   }
 
   const deleteTask = async (taskId: string) => {
-    if (confirm('确定要删除这个任务吗？')) {
-      try {
-        await deleteDoc(doc(db, 'tasks', taskId))
-        await loadTasks()
-        alert('删除成功！')
-      } catch (e) {
-        console.error('删除任务失败:', e)
-        alert('删除失败: ' + (e as Error).message)
-      }
-    }
+    if (!confirm('确定要删除这个任务吗？')) return
+    refresh(tasks.filter((t) => t.id !== taskId))
+    removeFromFirebase(taskId).catch(() => setCloudOk(false))
   }
 
   const getStatusIcon = (status: string) => {
@@ -164,20 +133,6 @@ export function Tasks() {
     }
   }
 
-  // 显示错误信息
-  if (error) {
-    return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">事项安排</h1>
-            <p className="text-red-600">⚠️ {error}</p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -189,10 +144,26 @@ export function Tasks() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-2">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">事项安排</h1>
-          <p className="text-green-600">✓ 数据已同步到云端</p>
+          <div className="flex items-center gap-1 text-sm mt-1">
+            {cloudOk === true && (
+              <span className="flex items-center text-green-600">
+                <Cloud className="h-4 w-4 mr-1" /> 已同步云端
+              </span>
+            )}
+            {cloudOk === false && (
+              <span className="flex items-center text-amber-600">
+                <CloudOff className="h-4 w-4 mr-1" /> 本地已保存（云端同步暂不可用，不影响使用）
+              </span>
+            )}
+            {cloudOk === null && (
+              <span className="flex items-center text-gray-500">
+                <Loader2 className="h-4 w-4 mr-1 animate-spin" /> 正在连接云端...
+              </span>
+            )}
+          </div>
         </div>
         <Button onClick={() => setShowNewTaskForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -211,16 +182,12 @@ export function Tasks() {
         <CardContent>
           <div className="flex items-center space-x-4">
             <Button
-              variant={isRecording ? "destructive" : "outline"}
+              variant={isRecording ? 'destructive' : 'outline'}
               size="icon"
               onClick={handleVoiceInput}
               className="h-12 w-12"
             >
-              {isRecording ? (
-                <MicOff className="h-6 w-6" />
-              ) : (
-                <Mic className="h-6 w-6" />
-              )}
+              {isRecording ? <MicOff className="h-6 w-6" /> : <Mic className="h-6 w-6" />}
             </Button>
             <div className="flex-1">
               {isRecording ? (
@@ -231,11 +198,11 @@ export function Tasks() {
               {recordingText && (
                 <div className="mt-2 p-3 bg-gray-100 rounded-lg">
                   <p className="text-sm">{recordingText}</p>
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     className="mt-2"
                     onClick={() => {
-                      setNewTask(prev => ({ ...prev, title: recordingText }))
+                      setNewTask((prev) => ({ ...prev, title: recordingText }))
                       setShowNewTaskForm(true)
                       setRecordingText('')
                     }}
@@ -258,22 +225,20 @@ export function Tasks() {
           <CardContent>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  任务标题
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">任务标题</label>
                 <Input
                   value={newTask.title}
-                  onChange={(e) => setNewTask(prev => ({ ...prev, title: e.target.value }))}
+                  onChange={(e) => setNewTask((prev) => ({ ...prev, title: e.target.value }))}
                   placeholder="输入任务标题"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  任务描述
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">任务描述</label>
                 <Textarea
                   value={newTask.description}
-                  onChange={(e) => setNewTask(prev => ({ ...prev, description: e.target.value }))}
+                  onChange={(e) =>
+                    setNewTask((prev) => ({ ...prev, description: e.target.value }))
+                  }
                   placeholder="输入任务描述（可选）"
                   rows={3}
                 />
@@ -282,9 +247,7 @@ export function Tasks() {
                 <Button variant="outline" onClick={() => setShowNewTaskForm(false)}>
                   取消
                 </Button>
-                <Button onClick={addTask}>
-                  添加任务
-                </Button>
+                <Button onClick={addTask}>添加任务</Button>
               </div>
             </div>
           </CardContent>
@@ -298,61 +261,62 @@ export function Tasks() {
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div className="flex items-start space-x-4">
-                  <button
-                    onClick={() => toggleTaskStatus(task)}
-                    className="mt-1"
-                  >
+                  <button onClick={() => toggleTaskStatus(task)} className="mt-1">
                     {getStatusIcon(task.status)}
                   </button>
                   <div className="flex-1">
                     <div className="flex items-center space-x-2">
-                      <h3 className={`text-lg font-medium ${
-                        task.status === 'completed' ? 'text-gray-500 line-through' : 'text-gray-900'
-                      }`}>
+                      <h3
+                        className={`text-lg font-medium ${
+                          task.status === 'completed'
+                            ? 'text-gray-500 line-through'
+                            : 'text-gray-900'
+                        }`}
+                      >
                         {task.title}
                       </h3>
                       {getPriorityBadge(task.priority)}
                     </div>
                     <p className="text-gray-600 mt-1">{task.description}</p>
-                    
-                    {/* 进度条 */}
                     <div className="mt-3">
                       <div className="flex items-center justify-between text-sm text-gray-500 mb-1">
                         <span>进度</span>
                         <span>{task.progress}%</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                        <div
+                          className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                           style={{ width: `${task.progress}%` }}
                         />
                       </div>
                     </div>
-
-                    {/* 子任务 */}
                     {task.subtasks && task.subtasks.length > 0 && (
                       <div className="mt-3 space-y-2">
                         <p className="text-sm font-medium text-gray-700">子任务：</p>
-                        {task.subtasks.map(subtask => (
+                        {task.subtasks.map((subtask: Subtask) => (
                           <div key={subtask.id} className="flex items-center space-x-2">
-                            <div className={`w-4 h-4 rounded border ${
-                              subtask.completed ? 'bg-green-500 border-green-500' : 'border-gray-300'
-                            }`}>
+                            <div
+                              className={`w-4 h-4 rounded border ${
+                                subtask.completed
+                                  ? 'bg-green-500 border-green-500'
+                                  : 'border-gray-300'
+                              }`}
+                            >
                               {subtask.completed && (
                                 <CheckCircle className="h-4 w-4 text-white" />
                               )}
                             </div>
-                            <span className={`text-sm ${
-                              subtask.completed ? 'text-gray-500 line-through' : 'text-gray-700'
-                            }`}>
+                            <span
+                              className={`text-sm ${
+                                subtask.completed ? 'text-gray-500 line-through' : 'text-gray-700'
+                              }`}
+                            >
                               {subtask.title}
                             </span>
                           </div>
                         ))}
                       </div>
                     )}
-
-                    {/* 时间信息 */}
                     <div className="mt-3 flex items-center space-x-4 text-sm text-gray-500">
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1" />
@@ -361,17 +325,11 @@ export function Tasks() {
                     </div>
                   </div>
                 </div>
-                
-                {/* 操作按钮 */}
                 <div className="flex space-x-2">
                   <Button variant="ghost" size="icon">
                     <Edit className="h-4 w-4" />
                   </Button>
-                  <Button 
-                    variant="ghost" 
-                    size="icon"
-                    onClick={() => deleteTask(task.id)}
-                  >
+                  <Button variant="ghost" size="icon" onClick={() => deleteTask(task.id)}>
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
