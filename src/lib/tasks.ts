@@ -1,6 +1,6 @@
 import {
   collection,
-  addDoc,
+  setDoc,
   getDocs,
   query,
   orderBy,
@@ -46,7 +46,8 @@ export function setLocalTasks(tasks: Task[]) {
 
 // ---------- 云端同步（尽力而为，失败不影响本地） ----------
 export async function pushToFirebase(task: Task): Promise<void> {
-  await addDoc(collection(db, 'tasks'), task)
+  // 用任务自身 id 作为文档 id，保证云端与本机 id 一致，避免重复/幻影任务
+  await setDoc(doc(db, 'tasks', task.id), task)
 }
 
 export async function removeFromFirebase(id: string): Promise<void> {
@@ -63,16 +64,6 @@ export async function fetchFromFirebase(): Promise<Task[]> {
   const out: Task[] = []
   snap.forEach((d) => out.push({ id: d.id, ...(d.data() as Omit<Task, 'id'>) }))
   return out
-}
-
-// 合并本地与云端：云端为准，本地独有的也保留
-export function mergeTasks(local: Task[], cloud: Task[]): Task[] {
-  const map = new Map<string, Task>()
-  local.forEach((t) => map.set(t.id, t))
-  cloud.forEach((t) => map.set(t.id, t))
-  return Array.from(map.values()).sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  )
 }
 
 export function makeId(): string {

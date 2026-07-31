@@ -25,7 +25,6 @@ import {
   removeFromFirebase,
   updateFirebase,
   fetchFromFirebase,
-  mergeTasks,
   makeId,
 } from '@/lib/tasks'
 import type { Task, Subtask } from '@/lib/tasks'
@@ -45,23 +44,38 @@ export function Tasks() {
   }
 
   useEffect(() => {
-    // 1) 先立即显示本地数据（保证刷新后一定还在）
+    // 1) 先立即显示本机数据（保证刷新后一定还在，不依赖网络）
     const local = getLocalTasks()
     setTasks(local)
     setLoading(false)
 
-    // 2) 再尝试从云端同步
-    fetchFromFirebase()
-      .then((cloud) => {
-        const merged = mergeTasks(local, cloud)
-        refresh(merged)
-        setCloudOk(true)
-      })
-      .catch(() => {
-        setCloudOk(false)
-      })
+    // 2) 云端同步：仅在本机尚无任务时从云端拉取一次，
+    //    避免旧数据 / 幻影任务在每次刷新后反复出现
+    if (local.length === 0) {
+      fetchFromFirebase()
+        .then((cloud) => {
+          if (cloud.length > 0) refresh(cloud)
+          setCloudOk(true)
+        })
+        .catch(() => setCloudOk(false))
+    } else {
+      // 本机已有数据：静默把最新数据同步到云端，方便手机/同事查看
+      local.forEach((t) => pushToFirebase(t).catch(() => {}))
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const clearAll = async () => {
+    if (!confirm('确定清空所有任务吗？此操作不可恢复')) return
+    try {
+      const cloud = await fetchFromFirebase()
+      await Promise.all(cloud.map((t) => removeFromFirebase(t.id).catch(() => {})))
+    } catch {
+      /* 忽略云端错误，以本机清空为准 */
+    }
+    setTasks([])
+    setLocalTasks([])
+  }
 
   const handleVoiceInput = () => {
     setIsRecording(!isRecording)
@@ -165,10 +179,15 @@ export function Tasks() {
             )}
           </div>
         </div>
-        <Button onClick={() => setShowNewTaskForm(true)}>
-          <Plus className="h-4 w-4 mr-2" />
-          新建任务
-        </Button>
+        <div className="flex gap-2">
+          <Button onClick={() => setShowNewTaskForm(true)}>
+            <Plus className="h-4 w-4 mr-2" />
+            新建任务
+          </Button>
+          <Button variant="outline" onClick={clearAll}>
+            清空全部
+          </Button>
+        </div>
       </div>
 
       {/* 语音输入区域 */}
