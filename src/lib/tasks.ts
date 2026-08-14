@@ -1,15 +1,3 @@
-import {
-  collection,
-  setDoc,
-  getDocs,
-  query,
-  orderBy,
-  deleteDoc,
-  doc,
-  updateDoc,
-} from 'firebase/firestore'
-import { db } from '@/config/firebase'
-
 export interface Subtask {
   id: number
   title: string
@@ -30,7 +18,7 @@ export interface Task {
 
 const KEY = 'ec_tasks_v1'
 
-// ---------- 本地存储（永远可用，不依赖网络） ----------
+// 纯本地存储：不依赖任何网络，国内/手机/离线都能用
 export function getLocalTasks(): Task[] {
   try {
     const raw = localStorage.getItem(KEY)
@@ -41,29 +29,11 @@ export function getLocalTasks(): Task[] {
 }
 
 export function setLocalTasks(tasks: Task[]) {
-  localStorage.setItem(KEY, JSON.stringify(tasks))
-}
-
-// ---------- 云端同步（尽力而为，失败不影响本地） ----------
-export async function pushToFirebase(task: Task): Promise<void> {
-  // 用任务自身 id 作为文档 id，保证云端与本机 id 一致，避免重复/幻影任务
-  await setDoc(doc(db, 'tasks', task.id), task)
-}
-
-export async function removeFromFirebase(id: string): Promise<void> {
-  await deleteDoc(doc(db, 'tasks', id))
-}
-
-export async function updateFirebase(id: string, data: Partial<Task>): Promise<void> {
-  await updateDoc(doc(db, 'tasks', id), data as Record<string, unknown>)
-}
-
-export async function fetchFromFirebase(): Promise<Task[]> {
-  const q = query(collection(db, 'tasks'), orderBy('createdAt', 'desc'))
-  const snap = await getDocs(q)
-  const out: Task[] = []
-  snap.forEach((d) => out.push({ id: d.id, ...(d.data() as Omit<Task, 'id'>) }))
-  return out
+  try {
+    localStorage.setItem(KEY, JSON.stringify(tasks))
+  } catch {
+    // 忽略存储异常
+  }
 }
 
 export function makeId(): string {

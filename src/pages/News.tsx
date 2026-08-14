@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { useCloudData } from '@/lib/useCloudData'
+import { cloudLoad } from '@/lib/cloud'
 import { 
   RefreshCw, 
   ExternalLink, 
@@ -14,15 +16,21 @@ import {
 interface NewsItem {
   id: number
   title: string
+  titleZh?: string
   summary: string
+  summaryZh?: string
   source: string
   country: string
   category: string
   impact: 'high' | 'medium' | 'low'
   ecommerceImpact: boolean
   publishedAt: string
+  updated?: string
   url: string
   trendingTopics: string[]
+  dimension?: 'ecommerce' | 'local'
+  aspects?: ('ecommerce' | 'local')[]
+  relatedTrends?: { keyword: string; change: number; country: string; category: string }[]
 }
 
 interface TrendItem {
@@ -384,25 +392,59 @@ const mockTrends: TrendItem[] = [
 ]
 
 export function News() {
-  const [news] = useState<NewsItem[]>(mockNews)
-  const [trends] = useState<TrendItem[]>(mockTrends)
+  // 新闻/趋势改从 Gitee 云端读取（与事项、飞书同步同一套机制），每天由后台任务更新，无需重新部署
+  const [news, setNews] = useCloudData<NewsItem[]>('news', mockNews)
+  const [trends, setTrends] = useCloudData<TrendItem[]>('trends', mockTrends)
   const [selectedCountry, setSelectedCountry] = useState('all')
+  const [selectedDimension, setSelectedDimension] = useState<'all' | 'ecommerce' | 'local'>('all')
+  const [expandedId, setExpandedId] = useState<number | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [lastUpdated, setLastUpdated] = useState('2026-07-30 16:00')
+  const [lastUpdated, setLastUpdated] = useState('')
+
+  useEffect(() => {
+    if (news.length) {
+      const updated = news[0]?.updated || ''
+      setLastUpdated(updated || new Date().toLocaleString('zh-CN'))
+    }
+  }, [news])
+
+  // 关键发现 / 电商机会 / 当地人关注 / 风险提示 由当前新闻实时派生，不再写死
+  const getAspects = (item: NewsItem): ('ecommerce' | 'local')[] =>
+    item.aspects && item.aspects.length
+      ? item.aspects
+      : [item.dimension ?? (item.ecommerceImpact ? 'ecommerce' : 'local')]
+  const relTrends = (item: NewsItem) => {
+    if (item.relatedTrends && item.relatedTrends.length) return item.relatedTrends
+    return trends.slice().sort((a, b) => b.change - a.change).slice(0, 3)
+  }
+  const hasAspect = (item: NewsItem, a: 'ecommerce' | 'local') => getAspects(item).includes(a)
+  const highImpactNews = news.filter(n => n.impact === 'high')
+  const ecomNews = news.filter(n => hasAspect(n, 'ecommerce'))
+  const localNews = news.filter(n => hasAspect(n, 'local'))
+  const riskNews = news.filter(n => n.category === '政策' || n.category === '税务' || n.impact === 'high')
 
   const countries = ['all', '美国', '英国', '西班牙', '意大利', '法国', '德国']
   
-  const filteredNews = selectedCountry === 'all' 
-    ? news 
-    : news.filter(item => item.country === selectedCountry)
+  const filteredNews = news.filter(item => {
+    const okCountry = selectedCountry === 'all' || item.country === selectedCountry
+    const okDim = selectedDimension === 'all' || hasAspect(item, selectedDimension)
+    return okCountry && okDim
+  })
 
-  const refreshNews = () => {
+  const filteredTrends = selectedCountry === 'all'
+    ? trends
+    : trends.filter(t => t.country === selectedCountry)
+
+  const refreshNews = async () => {
     setIsLoading(true)
-    // 模拟刷新数据
-    setTimeout(() => {
+    try {
+      const r1 = await cloudLoad('news')
+      if (r1.status === 'ok') setNews(r1.data as NewsItem[])
+      const r2 = await cloudLoad('trends')
+      if (r2.status === 'ok') setTrends(r2.data as TrendItem[])
+    } finally {
       setIsLoading(false)
-      setLastUpdated(new Date().toLocaleString('zh-CN'))
-    }, 2000)
+    }
   }
 
   const getImpactBadge = (impact: string) => {
@@ -428,12 +470,46 @@ export function News() {
     return flags[country] || '🌍'
   }
 
+  const getImpactAnalysis = (item: NewsItem): string => {
+    const map: Record<string, string> = {
+      '政策': '直接影响选品合规与进口成本。建议提前核查目标国认证（如 CE/UKCA/能效/环保标准），避免因不合规被下架或罚款，必要时调整供应链与申报方式。',
+      '经济': '宏观消费力与汇率波动会影响客单价和利润。建议动态调整定价与促销节奏，关注汇率对冲，避免成本上升侵蚀毛利。',
+      '电商': '平台流量与促销变化是选品风向标。建议快速跟进热销品类、优化 Listing 关键词与广告投放，抢占流量红利。',
+      '消费': '消费偏好变化指明需求方向。建议围绕该趋势补充相关 SKU，并在详情页强化对应卖点（如环保、智能、可持续）。',
+      '物流': '物流成本/时效波动影响履约体验与利润。建议多渠道分散仓配、设置合理运费模板，并提前告知时效避免差评。',
+      '支付': '本地化支付覆盖能显著提升转化。建议开通该市场主流支付方式（如分期、本地钱包），降低弃单率。',
+      '税务': '税费变动直接吞噬利润。建议重新核算到手价、优化定价与供应链，必要时调整选品结构。',
+      '科技': '新技术品类需求上升。建议评估供应链稳定性与上架节奏，抢占早期流量与口碑。',
+      '旅游': '旅游旺季带动周边消费。建议提前备货旅游/户外/纪念品类，配合节点营销。',
+      '商业': '中小企业数字化带来 B 端机会。可考虑面向卖家工具/服务类商品，拓展新客群。',
+      '运动': '运动健康需求上升。建议补充相关装备，并强调功能卖点（如便携、耐用、轻量）。',
+    }
+    return map[item.category] || '该新闻与你的选品/运营相关，建议结合所在品类评估潜在影响，并持续关注后续进展。'
+  }
+
+  const getLocalImpactAnalysis = (item: NewsItem): string => {
+    const map: Record<string, string> = {
+      '政策': '该政策会直接改变当地居民的日常生活与开支（税费、价格、合规要求等）。对应到需求侧，居民会更偏向合规、实用、省钱的品类，建议据此补充相关 SKU。',
+      '经济': '物价/汇率波动直接影响当地居民购买力，居民更倾向高性价比、节能省钱的实用品，建议主打平价好物、节能省电类。',
+      '电商': '当地电商与平台变化影响居民购物渠道与价格，建议关注居民偏好的价格带与品类，提供更有性价比的选择。',
+      '消费': '居民消费偏好变化指明生活需求方向，建议围绕该趋势补充贴合当地生活的实用 SKU，并在卖点中强调便利/健康/省钱。',
+      '物流': '物流时效/成本影响居民收货体验，建议选择稳定的履约方式，降低因延迟带来的差评。',
+      '支付': '本地化支付覆盖提升居民下单便利性，建议开通该市场主流支付方式，降低弃单。',
+      '税务': '税费变动会抬高居民到手价，建议重新核算定价，避免因涨价流失价格敏感型用户。',
+      '科技': '新技术提升生活便利预期，居民对智能家居、无线充电等接受度提高，可提前布局。',
+      '旅游': '旅游/出行旺季带动居民户外与便携需求，建议补充便携、出行类实用品。',
+      '商业': '中小企业活跃带来就业与消费力，居民端需求随之上升，可关注实用型消费品。',
+      '运动': '健康生活需求上升，居民倾向居家健身、户外运动类用品，建议补充相关品类。',
+    }
+    return map[item.category] || '该新闻反映当地居民生活/消费环境的变化，建议据此评估哪些实用型产品需求会上升，提前布局相关 SKU。'
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">新闻聚合</h1>
-          <p className="text-gray-600">汇总各国新闻及对电商的影响分析</p>
+          <p className="text-gray-600">汇总各国新闻：对电商的影响 + 对当地人的影响，并关联产品趋势</p>
         </div>
         <div className="flex items-center space-x-2">
           <span className="text-sm text-gray-500">
@@ -464,6 +540,24 @@ export function News() {
         ))}
       </div>
 
+      {/* 维度筛选：对电商的影响 / 对当地人的影响 */}
+      <div className="flex flex-wrap gap-2">
+        {([
+          { key: 'all', label: '全部维度' },
+          { key: 'ecommerce', label: '📦 对电商的影响' },
+          { key: 'local', label: '👥 对当地人的影响' },
+        ] as const).map(d => (
+          <Button
+            key={d.key}
+            variant={selectedDimension === d.key ? 'default' : 'outline'}
+            size="sm"
+            onClick={() => setSelectedDimension(d.key)}
+          >
+            {d.label}
+          </Button>
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* 新闻列表 */}
         <div className="lg:col-span-2 space-y-4">
@@ -478,40 +572,102 @@ export function News() {
               <div className="space-y-4">
                 {filteredNews.map(item => (
                   <div key={item.id} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                    <div className="flex items-start justify-between">
+                    <div
+                      className="flex items-start justify-between cursor-pointer"
+                      onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
+                    >
                       <div className="flex-1">
-                        <div className="flex items-center space-x-2 mb-2">
+                        <div className="flex items-center space-x-2 mb-2 flex-wrap gap-y-1">
                           <span className="text-lg">{getCountryFlag(item.country)}</span>
                           <Badge variant="outline">{item.country}</Badge>
                           <Badge variant="secondary">{item.category}</Badge>
                           {getImpactBadge(item.impact)}
-                          {item.ecommerceImpact && (
-                            <Badge className="bg-green-100 text-green-800">电商影响</Badge>
-                          )}
+                          {getAspects(item).map(a => (
+                            a === 'ecommerce'
+                              ? <Badge key="e" className="bg-blue-100 text-blue-800">对电商影响</Badge>
+                              : <Badge key="l" className="bg-orange-100 text-orange-800">对当地人影响</Badge>
+                          ))}
                         </div>
-                        <h3 className="font-medium text-gray-900 mb-1">{item.title}</h3>
-                        <p className="text-sm text-gray-600 mb-2">{item.summary}</p>
+                        <h3 className="font-medium text-gray-900 mb-1">{item.titleZh || item.title}</h3>
+                        <p className="text-sm text-gray-600 mb-2">{item.summaryZh || item.summary}</p>
                         <div className="flex items-center space-x-4 text-xs text-gray-500">
                           <span>来源: {item.source}</span>
                           <span className="flex items-center">
                             <Clock className="h-3 w-3 mr-1" />
                             {item.publishedAt}
                           </span>
-                        </div>
-                        <div className="flex flex-wrap gap-1 mt-2">
-                          {item.trendingTopics.map(topic => (
-                            <Badge key={topic} variant="outline" className="text-xs">
-                              {topic}
-                            </Badge>
-                          ))}
+                          <span className="text-blue-500 font-medium">点击展开详情 ↓</span>
                         </div>
                       </div>
-                      <Button variant="ghost" size="icon" asChild>
-                        <a href={item.url} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4" />
-                        </a>
-                      </Button>
+                      <div className="flex flex-col items-end gap-2 ml-2">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          asChild
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <a
+                            href={`https://www.google.com/search?q=${encodeURIComponent(item.title)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="查看原文"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
+                        </Button>
+                      </div>
                     </div>
+
+                    {expandedId === item.id && (
+                      <div className="mt-4 pt-4 border-t border-gray-100 space-y-3">
+                        {/* 两个角度：对电商的影响 + 对当地人的影响 */}
+                        <div className="p-3 bg-blue-50 rounded-lg">
+                          <h4 className="text-sm font-semibold text-blue-900 mb-1">📌 对电商的影响</h4>
+                          <p className="text-sm text-blue-800 leading-relaxed">{getImpactAnalysis(item)}</p>
+                        </div>
+                        <div className="p-3 bg-orange-50 rounded-lg">
+                          <h4 className="text-sm font-semibold text-orange-900 mb-1">📌 对当地人的影响</h4>
+                          <p className="text-sm text-orange-800 leading-relaxed">{getLocalImpactAnalysis(item)}</p>
+                        </div>
+                        <div className="p-3 bg-purple-50 rounded-lg">
+                          <h4 className="text-sm font-semibold text-purple-900 mb-1">🔍 相关产品趋势（用户需求侧 Google 趋势）</h4>
+                          <div className="flex flex-wrap gap-1">
+                            {relTrends(item).map((t, i) => (
+                              <Badge key={i} variant="outline" className="text-xs bg-white flex items-center gap-1">
+                                {t.keyword}
+                                <span className={t.change >= 0 ? 'text-green-600' : 'text-red-600'}>
+                                  {t.change >= 0 ? '+' : ''}{t.change}%
+                                </span>
+                                {t.category === '用户需求' && <span className="text-pink-600">·需求</span>}
+                              </Badge>
+                            ))}
+                          </div>
+                          <p className="text-xs text-purple-700 mt-2">
+                            这些是受该新闻影响的品类/需求方向，可对照「产品分析」页查看对应商品。
+                          </p>
+                        </div>
+                        <div className="p-3 bg-green-50 rounded-lg">
+                          <h4 className="text-sm font-semibold text-green-900 mb-1">🔍 相关关键词</h4>
+                          <div className="flex flex-wrap gap-1">
+                            {item.trendingTopics.map(topic => (
+                              <Badge key={topic} variant="outline" className="text-xs bg-white">
+                                {topic}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                        <a
+                          href={`https://www.google.com/search?q=${encodeURIComponent(item.title)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-sm text-blue-600 hover:underline"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                          查看原文 / 搜索更多报道
+                        </a>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -523,14 +679,21 @@ export function News() {
         <div className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <TrendingUp className="h-5 w-5 mr-2" />
-                Google趋势变动
+              <CardTitle className="flex items-center justify-between">
+                <span className="flex items-center">
+                  <TrendingUp className="h-5 w-5 mr-2" />
+                  Google趋势变动
+                </span>
+                <Badge variant="outline" className="text-xs">
+                  {selectedCountry === 'all' ? '全部国家' : `${getCountryFlag(selectedCountry)} ${selectedCountry}`}
+                </Badge>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                {trends.map((trend, index) => (
+                {filteredTrends.length === 0 ? (
+                  <p className="text-sm text-gray-500 text-center py-4">该国暂无趋势数据</p>
+                ) : filteredTrends.map((trend, index) => (
                   <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
@@ -570,31 +733,37 @@ export function News() {
                 <div className="p-4 bg-blue-50 rounded-lg">
                   <h4 className="font-medium text-blue-900 mb-2">关键发现</h4>
                   <ul className="text-sm text-blue-800 space-y-1">
-                    <li>• 冬季取暖器在英国搜索量增长45%</li>
-                    <li>• 节能电器在德国市场关注度上升</li>
-                    <li>• 户外烧烤产品在西班牙进入旺季</li>
-                    <li>• 智能家居产品在法国持续热门</li>
-                    <li>• 奢侈品电商在意大利销售额增长30%</li>
-                    <li>• Prime Day在美国创下销售新纪录</li>
+                    {highImpactNews.slice(0, 6).map(n => (
+                      <li key={n.id}>• {(n.titleZh || n.title)}</li>
+                    ))}
+                    {highImpactNews.length === 0 && <li>• 暂无高影响新闻</li>}
                   </ul>
                 </div>
-                <div className="p-4 bg-green-50 rounded-lg">
-                  <h4 className="font-medium text-green-900 mb-2">电商机会</h4>
-                  <ul className="text-sm text-green-800 space-y-1">
-                    <li>• 英国冬季取暖器需求即将爆发</li>
-                    <li>• 德国环保法规带来合规产品机会</li>
-                    <li>• 西班牙旅游季推动相关商品销售</li>
-                    <li>• 意大利奢侈品电商国际销售增长</li>
-                    <li>• 美国户外运动装备市场增长迅猛</li>
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h4 className="font-medium text-blue-900 mb-2">电商机会（{ecomNews.length}）</h4>
+                  <ul className="text-sm text-blue-800 space-y-1">
+                    {ecomNews.slice(0, 6).map(n => (
+                      <li key={n.id}>• {getCountryFlag(n.country)} {(n.titleZh || n.title)}</li>
+                    ))}
+                    {ecomNews.length === 0 && <li>• 暂无相关机会</li>}
+                  </ul>
+                </div>
+                <div className="p-4 bg-orange-50 rounded-lg">
+                  <h4 className="font-medium text-orange-900 mb-2">当地人关注（{localNews.length}）</h4>
+                  <ul className="text-sm text-orange-800 space-y-1">
+                    {localNews.slice(0, 6).map(n => (
+                      <li key={n.id}>• {getCountryFlag(n.country)} {(n.titleZh || n.title)}</li>
+                    ))}
+                    {localNews.length === 0 && <li>• 暂无相关内容</li>}
                   </ul>
                 </div>
                 <div className="p-4 bg-yellow-50 rounded-lg">
                   <h4 className="font-medium text-yellow-900 mb-2">风险提示</h4>
                   <ul className="text-sm text-yellow-800 space-y-1">
-                    <li>• 法国电商法修订需关注合规要求</li>
-                    <li>• 德国环保法规可能增加进口成本</li>
-                    <li>• 美国新关税政策影响中国商品定价</li>
-                    <li>• 法国数字服务税增加跨境电商成本</li>
+                    {riskNews.slice(0, 6).map(n => (
+                      <li key={n.id}>• {getCountryFlag(n.country)} {(n.titleZh || n.title)}</li>
+                    ))}
+                    {riskNews.length === 0 && <li>• 暂无相关风险</li>}
                   </ul>
                 </div>
               </div>

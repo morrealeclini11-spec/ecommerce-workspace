@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useCloudData } from '@/lib/useCloudData'
+import { SyncStatus } from '@/components/SyncStatus'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -55,7 +57,7 @@ const initialDocs: FeishuDoc[] = [
 ]
 
 export function Feishu() {
-  const [docs, setDocs] = useState<FeishuDoc[]>(initialDocs)
+  const [docs, setDocs, syncing, cloudActive] = useCloudData<FeishuDoc[]>('ec_feishu_v1', initialDocs)
   const [searchTerm, setSearchTerm] = useState('')
   const [showAddForm, setShowAddForm] = useState(false)
   const [newDoc, setNewDoc] = useState({
@@ -85,13 +87,13 @@ export function Feishu() {
       tags: newDoc.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
     }
     
-    setDocs([...docs, doc])
+    setDocs(prev => [...prev, doc])
     setNewDoc({ title: '', url: '', description: '', type: 'sheet', tags: '' })
     setShowAddForm(false)
   }
 
   const deleteDoc = (docId: number) => {
-    setDocs(docs.filter(doc => doc.id !== docId))
+    setDocs(prev => prev.filter(doc => doc.id !== docId))
   }
 
   const getTypeIcon = (type: string) => {
@@ -126,6 +128,7 @@ export function Feishu() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">飞书表格</h1>
           <p className="text-gray-600">管理您的飞书文档链接</p>
+          <SyncStatus syncing={syncing} cloudActive={cloudActive} />
         </div>
         <Button onClick={() => setShowAddForm(true)}>
           <Plus className="h-4 w-4 mr-2" />

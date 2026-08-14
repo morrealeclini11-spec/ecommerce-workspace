@@ -10,15 +10,35 @@ import {
   Newspaper,
   ShoppingCart,
   Wrench,
+  TrendingUp,
 } from 'lucide-react'
 import { getLocalTasks } from '@/lib/tasks'
 import type { Task } from '@/lib/tasks'
+import { useCloudData } from '@/lib/useCloudData'
 
 interface DashboardProps {
   onNavigate: (tab: string) => void
 }
 
-const latestNews = [
+interface NewsItem {
+  id: number
+  title: string
+  titleZh?: string
+  country: string
+  publishedAt: string
+  impact: string
+  dimension?: 'ecommerce' | 'local'
+}
+
+interface TrendItem {
+  keyword: string
+  change: number
+  country: string
+  category: string
+  updated?: string
+}
+
+const fallbackNews: NewsItem[] = [
   { id: 1, title: '英国通胀率降至2.5%，消费者信心回升', country: '英国', publishedAt: '10分钟前', impact: 'high' },
   { id: 2, title: '德国推出新的环保法规，影响电子产品进口', country: '德国', publishedAt: '25分钟前', impact: 'high' },
   { id: 3, title: '西班牙夏季旅游旺季推动零售增长', country: '西班牙', publishedAt: '45分钟前', impact: 'medium' },
@@ -28,6 +48,9 @@ const latestNews = [
 
 export function Dashboard({ onNavigate }: DashboardProps) {
   const [tasks, setTasks] = useState<Task[]>([])
+  // 新闻 / 趋势 改从 Gitee 云端读取（与产品页同一套机制），每天由后台任务更新，无需重新部署
+  const [news] = useCloudData<NewsItem[]>('news', fallbackNews)
+  const [trends] = useCloudData<TrendItem[]>('trends', [])
 
   useEffect(() => {
     setTasks(getLocalTasks())
@@ -79,10 +102,10 @@ export function Dashboard({ onNavigate }: DashboardProps) {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-gray-900">欢迎回来！</h1>
-        <p className="text-gray-600">今天是2026年7月31日，星期五</p>
+        <p className="text-gray-600">{new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' })}</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* 事项安排 */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
@@ -159,7 +182,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {latestNews.map((news) => (
+              {news.slice(0, 5).map((news) => (
                 <div
                   key={news.id}
                   className="p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
@@ -171,8 +194,14 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                         <span className="text-lg">{getCountryFlag(news.country)}</span>
                         <Badge variant="outline" className="text-xs">{news.country}</Badge>
                         {getImpactBadge(news.impact)}
+                        {news.dimension === 'local' && (
+                          <Badge variant="outline" className="text-xs bg-orange-50 text-orange-700">当地人</Badge>
+                        )}
+                        {news.dimension === 'ecommerce' && (
+                          <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700">电商</Badge>
+                        )}
                       </div>
-                      <h3 className="font-medium text-gray-900">{news.title}</h3>
+                      <h3 className="font-medium text-gray-900">{news.titleZh || news.title}</h3>
                       <div className="flex items-center text-sm text-gray-500 mt-1">
                         <Clock className="h-3 w-3 mr-1" />
                         {news.publishedAt}
@@ -182,6 +211,65 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                 </div>
               ))}
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Google 趋势 */}
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle className="flex items-center">
+              <TrendingUp className="h-5 w-5 mr-2" />
+              Google趋势
+            </CardTitle>
+            <Button variant="ghost" size="sm" onClick={() => onNavigate('news')}>
+              查看全部 <ArrowRight className="h-4 w-4 ml-1" />
+            </Button>
+          </CardHeader>
+          <CardContent>
+            {trends.length === 0 ? (
+              <p className="text-gray-500 text-sm py-4">暂无趋势数据</p>
+            ) : (() => {
+              const products = trends.filter(t => t.category === '产品趋势')
+              const demands = trends.filter(t => t.category === '用户需求')
+              const trendDate = trends.map(t => t.updated || '').filter(Boolean).sort().slice(-1)[0]
+              const renderRow = (t: TrendItem, i: number) => (
+                <div key={i} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                  <div className="flex items-center space-x-2 min-w-0">
+                    <span className="text-base shrink-0">{getCountryFlag(t.country)}</span>
+                    <span className="font-medium text-gray-900 text-sm truncate">{t.keyword}</span>
+                    {t.category === '用户需求'
+                      ? <span className="text-[10px] px-1.5 py-0.5 rounded bg-pink-100 text-pink-700 shrink-0">需求</span>
+                      : <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 shrink-0">产品</span>}
+                  </div>
+                  <span className={`text-sm font-semibold shrink-0 ml-2 ${t.change >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                    {t.change >= 0 ? '+' : ''}{t.change}%
+                  </span>
+                </div>
+              )
+              return (
+                <div className="space-y-3">
+                  {trendDate && (
+                    <p className="text-[11px] text-gray-400">数据更新于 {trendDate}</p>
+                  )}
+                  <div>
+                    <div className="flex items-center gap-1 text-xs font-medium text-blue-600 mb-1">
+                      <TrendingUp className="h-3 w-3" /> 产品趋势（当前热卖 / 上升产品）
+                    </div>
+                    <div className="space-y-2">
+                      {products.slice(0, 5).map((t, i) => renderRow(t, i))}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-1 text-xs font-medium text-pink-600 mb-1">
+                      <TrendingUp className="h-3 w-3" /> 用户需求（消费者想要 / 需要的方向）
+                    </div>
+                    <div className="space-y-2">
+                      {demands.slice(0, 5).map((t, i) => renderRow(t, i))}
+                    </div>
+                  </div>
+                </div>
+              )
+            })()}
           </CardContent>
         </Card>
       </div>

@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Layout } from '@/components/Layout'
+import { AuthGate } from '@/components/AuthGate'
 import { Dashboard } from '@/pages/Dashboard'
 import { Tasks } from '@/pages/Tasks'
 import { Feishu } from '@/pages/Feishu'
 import { News } from '@/pages/News'
 import { Products } from '@/pages/Products'
+import { PetProducts } from '@/pages/PetProducts'
 import { Tools } from '@/pages/Tools'
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
         return <News />
       case 'products':
         return <Products />
+      case 'pet':
+        return <PetProducts />
       case 'tools':
         return <Tools />
       default:
@@ -30,9 +34,11 @@ function App() {
   }
 
   return (
-    <Layout activeTab={activeTab} onTabChange={setActiveTab}>
-      {renderPage()}
-    </Layout>
+    <AuthGate>
+      <Layout activeTab={activeTab} onTabChange={setActiveTab}>
+        {renderPage()}
+      </Layout>
+    </AuthGate>
   )
 }
 

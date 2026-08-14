@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useCloudData } from '@/lib/useCloudData'
+import { SyncStatus } from '@/components/SyncStatus'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -44,14 +46,13 @@ const initialTools: Tool[] = [
   },
   {
     id: 2,
-    name: 'FastMoss API',
-    description: 'TikTok数据分析平台API接口',
-    url: 'https://api.fastmoss.com',
-    type: 'api',
-    category: '数据分析',
-    apiKey: 'fm_api_key_xxxxx',
-    lastUsed: '2026-07-29',
-    tags: ['TikTok', '数据分析'],
+    name: 'TikTok Shop 卖家中心',
+    description: 'TikTok Shop 跨境入驻与店铺后台，管理商品/订单/直播带货',
+    url: 'https://seller-us.tiktok.com',
+    type: 'link',
+    category: '平台入驻',
+    lastUsed: '2026-08-14',
+    tags: ['TikTok', '跨境入驻', '店铺管理'],
     isFavorite: true
   },
   {
@@ -91,7 +92,7 @@ const initialTools: Tool[] = [
 ]
 
 export function Tools() {
-  const [tools, setTools] = useState<Tool[]>(initialTools)
+  const [tools, setTools, syncing, cloudActive] = useCloudData<Tool[]>('ec_tools_v1', initialTools)
   const [searchTerm, setSearchTerm] = useState('')
   const [showAddForm, setShowAddForm] = useState(false)
   const [newTool, setNewTool] = useState({
@@ -126,17 +127,17 @@ export function Tools() {
       isFavorite: false
     }
     
-    setTools([...tools, tool])
+    setTools(prev => [...prev, tool])
     setNewTool({ name: '', description: '', url: '', type: 'link', category: '', apiKey: '', tags: '' })
     setShowAddForm(false)
   }
 
   const deleteTool = (toolId: number) => {
-    setTools(tools.filter(tool => tool.id !== toolId))
+    setTools(prev => prev.filter(tool => tool.id !== toolId))
   }
 
   const toggleFavorite = (toolId: number) => {
-    setTools(tools.map(tool => {
+    setTools(prev => prev.map(tool => {
       if (tool.id === toolId) {
         return { ...tool, isFavorite: !tool.isFavorite }
       }
@@ -179,6 +180,7 @@ export function Tools() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">工具网站</h1>
           <p className="text-gray-600">管理您的工具链接和API接口</p>
+          <SyncStatus syncing={syncing} cloudActive={cloudActive} />
         </div>
         <Button onClick={() => setShowAddForm(true)}>
           <Plus className="h-4 w-4 mr-2" />

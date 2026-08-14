@@ -6,6 +6,7 @@ import {
   Newspaper, 
   ShoppingCart, 
   Wrench,
+  PawPrint,
   Menu,
   X,
   Bell,
@@ -15,6 +16,7 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
+import { SettingsModal } from '@/components/SettingsModal'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -28,11 +30,13 @@ const navigation = [
   { id: 'feishu', name: '飞书表格', icon: FileText },
   { id: 'news', name: '新闻聚合', icon: Newspaper },
   { id: 'products', name: '产品分析', icon: ShoppingCart },
+  { id: 'pet', name: '宠物产品分析', icon: PawPrint },
   { id: 'tools', name: '工具网站', icon: Wrench },
 ]
 
 export function Layout({ children, activeTab, onTabChange }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [settingsOpen, setSettingsOpen] = useState(false)
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -124,7 +128,7 @@ export function Layout({ children, activeTab, onTabChange }: LayoutProps) {
                   3
                 </Badge>
               </Button>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" onClick={() => setSettingsOpen(true)}>
                 <Settings className="h-5 w-5" />
                 <span className="sr-only">设置</span>
               </Button>
@@ -145,6 +149,8 @@ export function Layout({ children, activeTab, onTabChange }: LayoutProps) {
           </div>
         </main>
       </div>
+
+      <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />
     </div>
   )
 }
