@@ -4,12 +4,12 @@
 // 注意：正式部署为 https，走 SHA-256 校验；本地若用 http/file 打开（crypto.subtle 不可用），
 // 才会降级到 PLAINTEXT_PASSWORD 明文比对，仅供调试。
 
-// 默认密码 ecom2026 的 SHA-256
+// 默认密码 258 的 SHA-256
 export const ACCESS_PASSWORD_HASH =
-  'f87b6fc0b1173a2dc511b381c67a284995e2fa17040a017bd38e6fe01a453318'
+  'a30f4ef42176d28f0e2293533c5f532e9c9c5696c68813b35315d17edc44f6b1'
 
 // 仅本地 http 调试时使用，正式 https 部署不会用到此值。
-export const PLAINTEXT_PASSWORD = 'ecom2026'
+export const PLAINTEXT_PASSWORD = '258'
 
 function toHex(buffer: ArrayBuffer): string {
   return Array.from(new Uint8Array(buffer))
