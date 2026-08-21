@@ -264,6 +264,8 @@ export function Inventory() {
   const [ownerRows, setOwnerRows] = useState<any[]>([])
   const [ownerMap, setOwnerMap] = useState<Record<string, string>>({})
   const [ownerAll, setOwnerAll] = useState('')
+  const [pendingImgRow, setPendingImgRow] = useState<number | null>(null)
+  const rowImgRef = useRef<HTMLInputElement>(null)
 
   /* ========== 智能识别 Excel 表头 ========== */
 // 把常见的列名（中英）+同义词映射到系统字段。匹配规则包含原词、关键词、英文别名。
@@ -302,17 +304,32 @@ function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'lo
 
 /* ========== 从 .xlsx 抽取嵌入单元格图片 ==========
  * SheetJS 免费版读不到嵌入图片，这里直接解析 xlsx(zip) 内部的
- * drawings + media，把图片按「锚定的行」绑定到 1-based 表行号返回。
+ * drawings + media，把图片绑定到 1-based 表行号返回。
+ * 策略：
+ *  1) 优先用 twoCellAnchor/oneCellAnchor 的 from-row 锚定到行；
+ *  2) 兜底：若嵌入图片总数 == 数据行数，则按 zip 内图片顺序（image1,image2…）
+ *     依次绑到数据第 1..N 行（覆盖 WPS/Excel 的浮图 absoluteAnchor 场景）。
  * 返回 Map<number(1-based sheet row), dataURL>
  */
-async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<Map<number, string>> {
+async function extractXlsxImages(buf: ArrayBuffer, sheetName: string, dataStartRow: number, dataRowCount: number): Promise<Map<number, string>> {
   const out = new Map<number, string>()
   try {
     const zip = await JSZip.loadAsync(buf)
     const read = async (p: string) => { const f = zip.file(p); return f ? await f.async('string') : '' }
     const readBytes = async (p: string) => { const f = zip.file(p); return f ? await f.async('uint8array') : null }
+    const normPath = (base: string, rel: string) => {
+      // 处理 ./ 与 ../ 的相对路径拼接
+      const parts = (base.replace(/\/[^/]*$/, '') + '/' + rel).split('/')
+      const st: string[] = []
+      for (const p of parts) {
+        if (p === '' || p === '.') continue
+        if (p === '..') st.pop()
+        else st.push(p)
+      }
+      return st.join('/')
+    }
 
-    // 1) sheet 名 -> r:id（与属性顺序无关）
+    // 1) sheet 名 -> r:id
     const wb = await read('xl/workbook.xml')
     let sheetRid = ''
     const sheetEls = wb.match(/<sheet\b[^>]*>/g) || []
@@ -326,40 +343,63 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
     const wbRels = await read('xl/_rels/workbook.xml.rels')
     const sheetFile = (wbRels.match(new RegExp(`<Relationship[^>]*Id="${sheetRid}"[^>]*Target="([^"]+)"`)) || [])[1]
     if (!sheetFile) return out
-    const sheetPath = 'xl/' + sheetFile.replace(/^\.\//, '')
+    const sheetPath = normPath('xl/workbook.xml', sheetFile)
     // 3) sheet xml 里找 drawing r:id
     const sheetXml = await read(sheetPath)
     const drawRid = (sheetXml.match(/<(?:[^:]+:)?drawing[^>]*r:id="([^"]+)"/) || [])[1]
     if (!drawRid) return out
     // 4) sheet rels: drawing r:id -> drawings/drawingN.xml
-    const sheetRelsPath = sheetPath.replace(/worksheets\//, 'worksheets/_rels/').replace(/\.xml$/, '.xml.rels')
+    const sheetRelsPath = normPath(sheetPath, '_rels/' + sheetPath.replace(/^.*\//, '') + '.rels')
     const sheetRels = await read(sheetRelsPath)
     const drawFile = (sheetRels.match(new RegExp(`<Relationship[^>]*Id="${drawRid}"[^>]*Target="([^"]+)"`)) || [])[1]
     if (!drawFile) return out
-    const drawPath = sheetPath.replace(/worksheets\/[^/]+$/, '').replace(/\/$/, '') + '/' + drawFile.replace(/^\.\//, '')
+    const drawPath = normPath(sheetPath, drawFile)
     // 5) drawing xml: 锚点 -> from row + blip r:embed
     const drawXml = await read(drawPath)
-    const drawRelsPath = drawPath.replace(/drawings\//, 'drawings/_rels/').replace(/\.xml$/, '.xml.rels')
+    const drawRelsPath = normPath(drawPath, '_rels/' + drawPath.replace(/^.*\//, '') + '.rels')
     const drawRels = await read(drawRelsPath)
     const anchorRe = /<(?:[^:]+:)?(twoCellAnchor|oneCellAnchor)>([\s\S]*?)<\/(?:[^:]+:)?\1>/g
     let m: RegExpExecArray | null
+    const decodeMedia = async (blipId: string, row0: number) => {
+      const media = (drawRels.match(new RegExp(`<Relationship[^>]*Id="${blipId}"[^>]*Target="([^"]+)"`)) || [])[1]
+      if (!media) return
+      const mediaPath = normPath(drawPath, media)
+      const bytes = await readBytes(mediaPath)
+      if (!bytes) return
+      const ext = (media.match(/\.([a-z0-9]+)$/i) || ['png'])[1].toLowerCase()
+      let bin = ''
+      const CH = 0x8000
+      for (let s = 0; s < bytes.length; s += CH) bin += String.fromCharCode.apply(null, Array.from(bytes.subarray(s, s + CH)))
+      out.set(row0, `data:image/${ext === 'jpg' ? 'jpeg' : ext};base64,${btoa(bin)}`)
+    }
     while ((m = anchorRe.exec(drawXml))) {
       const body = m[2]
       const rowM = body.match(/<(?:[^:]+:)?from>[\s\S]*?<(?:[^:]+:)?row>(\d+)<\//)
       const blipM = body.match(/r:embed="([^"]+)"/)
       if (!rowM || !blipM) continue
-      const row0 = parseInt(rowM[1], 10) // 0-based
-      const media = (drawRels.match(new RegExp(`<Relationship[^>]*Id="${blipM[1]}"[^>]*Target="([^"]+)"`)) || [])[1]
-      if (!media) continue
-      const mediaPath = drawPath.replace(/drawings\/[^/]+$/, '').replace(/\/$/, '') + '/media/' + media.replace(/^\.\.\/media\//, '')
-      const bytes = await readBytes(mediaPath)
-      if (!bytes) continue
-      const ext = (media.match(/\.([a-z0-9]+)$/i) || ['png'])[1].toLowerCase()
-      let bin = ''
-      const CH = 0x8000
-      for (let s = 0; s < bytes.length; s += CH) bin += String.fromCharCode.apply(null, Array.from(bytes.subarray(s, s + CH)))
-      const b64 = btoa(bin)
-      out.set(row0 + 1, `data:image/${ext === 'jpg' ? 'jpeg' : ext};base64,${b64}`)
+      await decodeMedia(blipM[1], parseInt(rowM[1], 10) + 1) // 0-based -> 1-based
+    }
+    // 6) 兜底：当完全没锚定到任何行（纯浮动图/absoluteAnchor）时，
+    //    若 zip 内图片数 == 数据行数，则按文件名数字序 1:1 绑定到数据行。
+    if (out.size === 0) {
+      const mediaFiles = Object.keys(zip.files)
+        .filter(p => /xl\/media\/.+\.(png|jpe?g|gif|webp|bmp)$/i.test(p))
+        .sort((a, b) => {
+          const na = parseInt((a.match(/(\d+)/) || [0])[1], 10)
+          const nb = parseInt((b.match(/(\d+)/) || [0])[1], 10)
+          return na - nb
+        })
+      if (mediaFiles.length === dataRowCount) {
+        for (let i = 0; i < mediaFiles.length; i++) {
+          const p = mediaFiles[i]
+          const b = await zip.file(p)!.async('uint8array')
+          const ext = (p.match(/\.([a-z0-9]+)$/i) || ['png'])[1].toLowerCase()
+          let bin = ''
+          const CH = 0x8000
+          for (let s = 0; s < b.length; s += CH) bin += String.fromCharCode.apply(null, Array.from(b.subarray(s, s + CH)))
+          out.set(dataStartRow + i, `data:image/${ext === 'jpg' ? 'jpeg' : ext};base64,${btoa(bin)}`)
+        }
+      }
     }
   } catch (e) { /* 解析失败不影响文本导入 */ }
   return out
@@ -403,10 +443,11 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
         headers.forEach((h, idx) => { obj[h || '_col' + idx] = row[idx] != null ? cleanCell(row[idx]) : '' })
         rows.push(obj); srcRows.push(headerIdx + 1 + off + 1)
       })
-      // 抽取 Excel 中嵌入的单元格图片（按锚定行绑定到 1-based 表行）
+      // 抽取 Excel 中嵌入的单元格图片（按锚定行 / 顺序兜底绑定到 1-based 表行）
       const images: Record<number, string> = {}
       try {
-        const emb = await extractXlsxImages(buf, wb.SheetNames[0])
+        const dataStartRow = headerIdx + 2 // 1-based 数据第一行
+        const emb = await extractXlsxImages(buf, wb.SheetNames[0], dataStartRow, rows.length)
         emb.forEach((v, k) => { images[k] = v })
       } catch (e) { /* 抽图失败不影响文本导入 */ }
       // 自动映射（image 列需要二次校验：列里大多数是合法 URL 才认成图）
@@ -775,12 +816,21 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
           <CardContent className="p-4">
             <h3 className="text-base font-semibold mb-1">Excel 智能导入</h3>
             <p className="text-sm text-gray-500 mb-3">上传 .xlsx，自动识别表头和图片，映射列后导入。重复商品会逐个确认。</p>
-            <input ref={fileRef} type="file" accept=".xlsx,.xls,.csv" onChange={handleFile} className="hidden" />
+                <input ref={fileRef} type="file" accept=".xlsx,.xls,.csv" onChange={handleFile} className="hidden" />
+                <input ref={rowImgRef} type="file" accept="image/*" className="hidden" onChange={async (e) => {
+                  const f = e.target.files?.[0]; e.target.value = ''
+                  if (!f || pendingImgRow == null) return
+                  try {
+                    const url = await compressImage(f)
+                    setImportState(prev => prev ? { ...prev, images: { ...prev.images, [pendingImgRow]: url } } : prev)
+                    setPendingImgRow(null)
+                  } catch (err: any) { alert('图片处理失败：' + (err?.message || '')) }
+                }} />
             <Button onClick={() => fileRef.current?.click()}><Upload className="mr-1.5 h-4 w-4" />选择 Excel 文件</Button>
             {importState && (
               <div className="mt-4 space-y-3">
                 <div className="text-sm bg-blue-50 text-blue-700 rounded-lg p-3">
-                  表头在第 <b>{importState.headerIdx + 1}</b> 行 · 列名：<b>{importState.headers.filter(Boolean).join(' | ')}</b> · 数据 {importState.rows.length} 条{Object.keys(importState.images).length ? ` · 图片 ${Object.keys(importState.images).length} 张` : ''}
+                  表头在第 <b>{importState.headerIdx + 1}</b> 行 · 列名：<b>{importState.headers.filter(Boolean).join(' | ')}</b> · 数据 {importState.rows.length} 条{Object.keys(importState.images).length ? ` · 自动带上图片 ${Object.keys(importState.images).length} 张` : ' · 未自动识别到图片（可逐行补图）'}
                 </div>
                 <div className="grid md:grid-cols-3 gap-3">
                   {([
@@ -798,26 +848,29 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
                 <div className="overflow-x-auto border rounded-lg max-h-56 overflow-y-auto">
                   <table className="w-full text-xs">
                     <thead><tr>
-                      {Object.keys(importState.images).length > 0 && <th className="text-left p-2 border-b bg-gray-50">图片</th>}
+                      <th className="text-left p-2 border-b bg-gray-50">图片</th>
                       {Object.entries(mapping).filter(([, v]) => v).map(([k]) => <th key={k} className="text-left p-2 border-b bg-gray-50">{k}</th>)}
                     </tr></thead>
                     <tbody>
                       {importState.rows.slice(0, 20).map((r, i) => {
-                        const emb = importState.images[importState.srcRows[i]]
+                        const srcRow = importState.srcRows[i]
+                        const emb = importState.images[srcRow]
                         const imgVal = emb || (mapping.image ? (r[mapping.image] || '') : '')
+                        const showImg = emb || (imgVal && (imgVal.startsWith('http') || imgVal.startsWith('data:')))
                         return (
                           <tr key={i}>
-                            {Object.keys(importState.images).length > 0 && (
-                              <td className="p-2 border-b">
-                                {emb
-                                  ? <img src={emb} alt="" className="w-10 h-10 object-cover rounded border" />
+                            <td className="p-2 border-b">
+                              <div className="flex items-center gap-2">
+                                {showImg
+                                  ? <img src={showImg} alt="" className="w-10 h-10 object-cover rounded border" />
                                   : <span className="text-gray-300">—</span>}
-                              </td>
-                            )}
+                                <button className="text-[11px] text-blue-600 underline" onClick={() => { setPendingImgRow(srcRow); rowImgRef.current?.click() }}>{emb ? '重传' : '补图'}</button>
+                              </div>
+                            </td>
                             {Object.entries(mapping).filter(([, v]) => v).map(([k, v]) => (
                               <td key={k} className="p-2 border-b">
-                                {k === 'image' && imgVal && (imgVal.startsWith('http') || imgVal.startsWith('data:'))
-                                  ? <img src={imgVal} alt="" className="w-10 h-10 object-cover rounded border" />
+                                {k === 'image' && showImg
+                                  ? <img src={showImg} alt="" className="w-10 h-10 object-cover rounded border" />
                                   : String(r[v] || '').slice(0, 40)}
                               </td>
                             ))}
