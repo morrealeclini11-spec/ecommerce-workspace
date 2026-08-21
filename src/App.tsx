@@ -8,6 +8,8 @@ import { News } from '@/pages/News'
 import { Products } from '@/pages/Products'
 import { PetProducts } from '@/pages/PetProducts'
 import { Tools } from '@/pages/Tools'
+import { Inventory } from '@/pages/Inventory'
+import { VideoPlan } from '@/pages/VideoPlan'
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard')
@@ -28,6 +30,10 @@ function App() {
         return <PetProducts />
       case 'tools':
         return <Tools />
+      case 'inventory':
+        return <Inventory />
+      case 'video':
+        return <VideoPlan />
       default:
         return <Dashboard onNavigate={setActiveTab} />
     }

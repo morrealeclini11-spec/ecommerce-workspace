@@ -1,12 +1,14 @@
 import { useState } from 'react'
-import { 
-  LayoutDashboard, 
-  CheckSquare, 
-  FileText, 
-  Newspaper, 
-  ShoppingCart, 
+import {
+  LayoutDashboard,
+  CheckSquare,
+  FileText,
+  Newspaper,
+  ShoppingCart,
   Wrench,
   PawPrint,
+  Boxes,
+  Video,
   Menu,
   X,
   Bell,
@@ -31,6 +33,8 @@ const navigation = [
   { id: 'news', name: '新闻聚合', icon: Newspaper },
   { id: 'products', name: '产品分析', icon: ShoppingCart },
   { id: 'pet', name: '宠物产品分析', icon: PawPrint },
+  { id: 'inventory', name: '电商实时库存', icon: Boxes },
+  { id: 'video', name: '视频规划', icon: Video },
   { id: 'tools', name: '工具网站', icon: Wrench },
 ]
 
