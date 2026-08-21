@@ -8,6 +8,7 @@ import {
   ImagePlus, X, RefreshCw, ArrowUpCircle, ArrowDownCircle, Pencil, Settings2, ListTree,
 } from 'lucide-react'
 import { useCloudData } from '@/lib/useCloudData'
+import { cloudLoad } from '@/lib/cloud'
 import { SyncStatus } from '@/components/SyncStatus'
 import * as XLSX from 'xlsx'
 import JSZip from 'jszip'
@@ -78,11 +79,35 @@ function NameCell({ value, onSave }: { value: string; onSave: (v: string) => voi
 }
 
 export function Inventory() {
-  /* ========== 数据（工作台同款：本地 + Gitee 云同步） ========== */
-  const [products, setProducts] = useCloudData<Product[]>('ec_inv_products_v1', [])
-  const [txns, setTxns] = useCloudData<Txn[]>('ec_inv_txns_v1', [])
-  const [locDict, setLocDict] = useCloudData<string[]>('ec_inv_locations_v1', [])
-  const [syncing, cloudActive] = [false, false] as const
+  /* ========== 数据（工作台同款：本地 + Gitee 云同步，mergeOnLoad 保留并上传本地数据） ========== */
+  const [products, setProducts, pSync, pActive] = useCloudData<Product[]>('ec_inv_products_v1', [], { mergeOnLoad: true })
+  const [txns, setTxns, tSync, tActive] = useCloudData<Txn[]>('ec_inv_txns_v1', [], { mergeOnLoad: true })
+  const [locDict, setLocDict, lSync, lActive] = useCloudData<string[]>('ec_inv_locations_v1', [], { mergeOnLoad: true })
+  const syncing = pSync || tSync || lSync
+  const cloudActive = pActive || tActive || lActive
+
+  // 手动从云端拉取最新（合并本地独有项，避免丢失）
+  const syncFromCloud = async () => {
+    toast('正在从云端拉取最新数据…')
+    const r1 = await cloudLoad('ec_inv_products_v1')
+    if (r1.status === 'ok') {
+      const cloud = r1.data as Product[]
+      const localIds = new Set(products.map(p => p.id))
+      setProducts([...cloud, ...products.filter(p => !localIds.has(p.id))])
+    }
+    const r2 = await cloudLoad('ec_inv_txns_v1')
+    if (r2.status === 'ok') {
+      const cloud = r2.data as Txn[]
+      const localIds = new Set(txns.map(t => t.id))
+      setTxns([...cloud, ...txns.filter(t => !localIds.has(t.id))])
+    }
+    const r3 = await cloudLoad('ec_inv_locations_v1')
+    if (r3.status === 'ok') {
+      const cloud = r3.data as string[]
+      setLocDict(Array.from(new Set([...cloud, ...locDict])).sort((a, b) => a.localeCompare(b, 'zh')))
+    }
+    toast('已与云端同步（含同事最新数据）')
+  }
 
   const stockMap = useMemo(() => {
     const m: Record<string, number> = {}
@@ -509,6 +534,7 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
           </p>
         </div>
         <div className="flex gap-2">
+          <Button variant="outline" size="sm" onClick={syncFromCloud} disabled={syncing}><RefreshCw className={`mr-1.5 h-4 w-4 ${syncing ? 'animate-spin' : ''}`} />从云端刷新</Button>
           <Button variant="outline" size="sm" onClick={() => setLocMgr(true)}><ListTree className="mr-1.5 h-4 w-4" />位置字典（{locationList.length}）</Button>
           <Button variant="outline" size="sm" onClick={backup}><Download className="mr-1.5 h-4 w-4" />备份</Button>
           <Button size="sm" onClick={() => setForm({ mode: 'add' })}><Plus className="mr-1.5 h-4 w-4" />新增商品</Button>

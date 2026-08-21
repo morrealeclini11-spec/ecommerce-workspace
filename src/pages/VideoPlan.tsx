@@ -5,9 +5,10 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import {
-  Plus, Trash2, Calendar, Sun, Moon, CheckCircle2, Circle, Pencil, X, Video,
+  Plus, Trash2, Calendar, Sun, Moon, CheckCircle2, Circle, Pencil, X, Video, RefreshCw,
 } from 'lucide-react'
 import { useCloudData } from '@/lib/useCloudData'
+import { cloudLoad } from '@/lib/cloud'
 import { SyncStatus } from '@/components/SyncStatus'
 
 interface VideoPlan {
@@ -35,8 +36,21 @@ const COMMON_COUNTRIES = ['美国', '英国', '德国', '法国', '西班牙', '
 const COMMON_OWNERS = ['主体A', '主体B', '主体C']
 
 export function VideoPlan() {
-  const [plans, setPlans] = useCloudData<VideoPlan[]>('ec_video_plan_v1', [])
-  const [syncing, cloudActive] = [false, false] as const
+  const [plans, setPlans, pSync, pActive] = useCloudData<VideoPlan[]>('ec_video_plan_v1', [], { mergeOnLoad: true })
+  const syncing = pSync
+  const cloudActive = pActive
+
+  // 手动从云端拉取最新（合并本地独有项，避免丢失）
+  const syncFromCloud = async () => {
+    toast('正在从云端拉取最新数据…')
+    const r = await cloudLoad('ec_video_plan_v1')
+    if (r.status === 'ok') {
+      const cloud = r.data as VideoPlan[]
+      const localIds = new Set(plans.map(p => p.id))
+      setPlans([...cloud, ...plans.filter(p => !localIds.has(p.id))])
+    }
+    toast('已与云端同步（含同事最新数据）')
+  }
 
   const [tab, setTab] = useState<'list' | 'board'>('list')
   const [date, setDate] = useState(todayStr())
@@ -107,6 +121,7 @@ export function VideoPlan() {
           </p>
         </div>
         <div className="flex gap-2">
+          <Button variant="outline" size="sm" onClick={syncFromCloud} disabled={syncing}><RefreshCw className={`mr-1.5 h-4 w-4 ${syncing ? 'animate-spin' : ''}`} />从云端刷新</Button>
           <Button size="sm" onClick={() => setEditing({ mode: 'add' })}><Plus className="mr-1.5 h-4 w-4" />新增规划</Button>
         </div>
       </div>

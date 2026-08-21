@@ -70,11 +70,11 @@ export function Dashboard({ onNavigate }: DashboardProps) {
   // 新闻 / 趋势 改从 Gitee 云端读取（与产品页同一套机制），每天由后台任务更新，无需重新部署
   const [news] = useCloudData<NewsItem[]>('news', fallbackNews)
   const [trends] = useCloudData<TrendItem[]>('trends', [])
-  // 库存数据来自 ec_inv_*（与 Inventory.tsx 同 key），首页只读
-  const [invProducts] = useCloudData<InventoryProduct[]>('ec_inv_products_v1', [])
-  const [invTxns] = useCloudData<InventoryTxn[]>('ec_inv_txns_v1', [])
+  // 库存数据来自 ec_inv_*（与 Inventory.tsx 同 key），首页只读；mergeOnLoad 避免云端空值覆盖本地
+  const [invProducts] = useCloudData<InventoryProduct[]>('ec_inv_products_v1', [], { mergeOnLoad: true })
+  const [invTxns] = useCloudData<InventoryTxn[]>('ec_inv_txns_v1', [], { mergeOnLoad: true })
   // 视频规划数据
-  const [videoPlans] = useCloudData<VideoPlanItem[]>('ec_video_plan_v1', [])
+  const [videoPlans] = useCloudData<VideoPlanItem[]>('ec_video_plan_v1', [], { mergeOnLoad: true })
 
   useEffect(() => {
     setTasks(getLocalTasks())
