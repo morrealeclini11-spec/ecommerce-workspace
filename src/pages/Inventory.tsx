@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useEffect } from 'react'
+import { useState, useMemo, useRef, useEffect, Fragment } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -122,6 +122,9 @@ export function Inventory() {
   const [tab, setTab] = useState<'board' | 'io' | 'import' | 'log'>('board')
   const [search, setSearch] = useState('')
   const [ownerFilter, setOwnerFilter] = useState('')
+  const [catFilter, setCatFilter] = useState('')
+  const [locFilter, setLocFilter] = useState('')
+  const [collapsed, setCollapsed] = useState<Set<string>>(new Set())
   const [selIds, setSelIds] = useState<Set<string>>(new Set())
   const [form, setForm] = useState<{ mode: 'add' | 'edit'; p?: Product } | null>(null)
   const [batchEdit, setBatchEdit] = useState<null | { ids: string[]; fields: ('owner' | 'category' | 'location' | 'unit' | 'image_url')[] }>(null)
@@ -133,10 +136,26 @@ export function Inventory() {
   const filtered = useMemo(() => {
     let list = views
     if (ownerFilter) list = list.filter(p => (cleanStr(p.owner) || '未分组') === ownerFilter)
+    if (catFilter) list = list.filter(p => cleanStr(p.category) === catFilter)
+    if (locFilter) list = list.filter(p => cleanStr(p.location) === locFilter)
     const q = search.trim().toLowerCase()
     if (q) list = list.filter(p => (p.sku || '').toLowerCase().includes(q) || (p.name || '').toLowerCase().includes(q) || (p.category || '').toLowerCase().includes(q) || (p.owner || '').toLowerCase().includes(q) || (p.location || '').toLowerCase().includes(q))
     return list
-  }, [views, search, ownerFilter])
+  }, [views, search, ownerFilter, catFilter, locFilter])
+
+  const categoryList = useMemo(() => Array.from(new Set(views.map(p => cleanStr(p.category)).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'zh')), [views])
+  const locationListBoard = useMemo(() => Array.from(new Set(views.map(p => cleanStr(p.location)).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'zh')), [views])
+
+  // 看板按主体分组
+  const grouped = useMemo(() => {
+    const map = new Map<string, typeof views>()
+    filtered.forEach(p => {
+      const o = cleanStr(p.owner) || '未分组'
+      if (!map.has(o)) map.set(o, [])
+      map.get(o)!.push(p)
+    })
+    return Array.from(map.entries()).sort((a, b) => a[0].localeCompare(b[0], 'zh'))
+  }, [filtered])
 
   const toggleSel = (id: string) => {
     const s = new Set(selIds)
@@ -144,6 +163,13 @@ export function Inventory() {
     setSelIds(s)
   }
   const toggleAll = () => { setSelIds(filtered.length === selIds.size ? new Set() : new Set(filtered.map(p => p.id))) }
+  const toggleGroup = (owner: string) => {
+    const ids = (grouped.find(g => g[0] === owner)?.[1] || []).map(p => p.id)
+    const allSel = ids.length > 0 && ids.every(id => selIds.has(id))
+    const s = new Set(selIds)
+    ids.forEach(id => { if (allSel) s.delete(id); else s.add(id) })
+    setSelIds(s)
+  }
 
   /* ========== 商品 CRUD ========== */
   const saveProduct = (data: Omit<Product, 'id' | 'created_at'>, id?: string) => {
@@ -171,7 +197,26 @@ export function Inventory() {
   }
 
   /* ========== 出入库 ========== */
-  const [ioForm, setIoForm] = useState({ product_id: '', type: 'IN' as 'IN' | 'OUT', quantity: '', occur_at: '', operator: '', note: '' })
+  const [ioForm, setIoForm] = useState({ owner: '', product_id: '', type: 'IN' as 'IN' | 'OUT', quantity: '', occur_at: '', operator: '', note: '' })
+  const [ioNew, setIoNew] = useState<null | { name: string; sku: string; category: string; location: string; unit: string }>(null)
+  const [ioNewOwner, setIoNewOwner] = useState('')
+  // 出入库中"当前主体"解析：新建主体用输入值，否则用下拉值
+  const ioOwnerResolved = ioForm.owner === '__new__' ? cleanStr(ioNewOwner) : ioForm.owner
+  // 当前主体下的商品（供出入库选择）
+  const ioProducts = useMemo(() => views.filter(p => !ioForm.owner || p.owner === ioForm.owner), [views, ioForm.owner])
+  const createProductFromIo = () => {
+    if (!ioNew || !cleanStr(ioNew.name)) { toast('请填写商品名称'); return }
+    const np: Product = {
+      id: uid('p'), sku: cleanStr(ioNew.sku), name: cleanStr(ioNew.name), category: cleanStr(ioNew.category),
+      owner: ioOwnerResolved, location: cleanStr(ioNew.location), unit: cleanStr(ioNew.unit) || '件',
+      initial_stock: 0, low_threshold: null, image_url: '', created_at: new Date().toISOString(),
+    }
+    setProducts([np, ...products])
+    if (cleanStr(ioNew.location) && !(locDict || []).includes(cleanStr(ioNew.location))) setLocDict([...(locDict || []), cleanStr(ioNew.location)].sort((a, b) => a.localeCompare(b, 'zh')))
+    setIoForm({ ...ioForm, owner: ioOwnerResolved || '', product_id: np.id })
+    setIoNew(null)
+    toast('已创建并选中商品')
+  }
   const submitIo = () => {
     const p = products.find(x => x.id === ioForm.product_id)
     if (!p) { toast('请选择商品'); return }
@@ -517,11 +562,26 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
-              <div className="relative flex-1 min-w-[220px]">
+              <div className="relative flex-1 min-w-[200px]">
                 <Search className="h-4 w-4 absolute left-3 top-2.5 text-gray-400" />
                 <Input value={search} onChange={e => setSearch(e.target.value)} placeholder="搜索 SKU / 名称 / 分类 / 位置 / 主体" className="pl-9" />
               </div>
-              <span className="text-sm text-gray-500">{selIds.size ? `已选 ${selIds.size} 个` : '未选中'}</span>
+              <select value={ownerFilter} onChange={e => setOwnerFilter(e.target.value)} className="text-sm border rounded-md px-2 py-1.5">
+                <option value="">全部主体</option>
+                {owners.map(o => <option key={o.name} value={o.name}>{o.name}</option>)}
+              </select>
+              <select value={catFilter} onChange={e => setCatFilter(e.target.value)} className="text-sm border rounded-md px-2 py-1.5">
+                <option value="">全部分类</option>
+                {categoryList.map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
+              <select value={locFilter} onChange={e => setLocFilter(e.target.value)} className="text-sm border rounded-md px-2 py-1.5">
+                <option value="">全部位置</option>
+                {locationListBoard.map(l => <option key={l} value={l}>{l}</option>)}
+              </select>
+              {(ownerFilter || catFilter || locFilter || search) && (
+                <Button variant="ghost" size="sm" onClick={() => { setOwnerFilter(''); setCatFilter(''); setLocFilter(''); setSearch('') }}>清除筛选</Button>
+              )}
+              <span className="text-sm text-gray-500 ml-auto">{selIds.size ? `已选 ${selIds.size} 个` : '未选中'}</span>
               <Button variant="outline" size="sm" disabled={!selIds.size} onClick={() => setBatchEdit({ ids: Array.from(selIds), fields: ['owner', 'category', 'location', 'unit', 'image_url'] })}><Settings2 className="mr-1 h-4 w-4" />批量编辑</Button>
               <Button variant="outline" size="sm" disabled={!selIds.size} className="text-red-600" onClick={batchDelete}>批量删除</Button>
             </div>
@@ -534,7 +594,6 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
                     <th className="py-2 pr-3">SKU</th>
                     <th className="py-2 pr-3">商品名称</th>
                     <th className="py-2 pr-3">分类</th>
-                    <th className="py-2 pr-3">主体</th>
                     <th className="py-2 pr-3">位置</th>
                     <th className="py-2 pr-3">单位</th>
                     <th className="py-2 pr-3">当前库存</th>
@@ -542,26 +601,45 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
                   </tr>
                 </thead>
                 <tbody>
-                  {filtered.length === 0 && <tr><td colSpan={10} className="py-8 text-center text-gray-400">还没有商品，去「Excel 导入」或点「+ 新增商品」</td></tr>}
-                  {filtered.map(p => (
-                    <tr key={p.id} className="border-b hover:bg-gray-50">
-                      <td className="py-2 pr-1"><input type="checkbox" checked={selIds.has(p.id)} onChange={() => toggleSel(p.id)} /></td>
-                      <td className="py-2 pr-2">
-                        {p.image_url ? <img src={p.image_url} alt="" className="w-12 h-12 object-cover rounded-lg border" loading="lazy" /> : <span className="text-gray-300">—</span>}
-                      </td>
-                      <td className="py-2 pr-3">{p.sku || <span className="text-gray-300">—</span>}</td>
-                      <td className="py-2 pr-3"><NameCell value={p.name} onSave={(v) => inlineEdit(p.id, { name: v })} /></td>
-                      <td className="py-2 pr-3">{p.category || <span className="text-gray-300">—</span>}</td>
-                      <td className="py-2 pr-3">{p.owner ? <Badge variant="secondary">{p.owner}</Badge> : <span className="text-gray-300">—</span>}</td>
-                      <td className="py-2 pr-3">{p.location ? <span className="inline-flex items-center text-gray-600"><MapPin className="h-3.5 w-3.5 mr-1" />{p.location}</span> : <span className="text-gray-300">—</span>}</td>
-                      <td className="py-2 pr-3">{p.unit}</td>
-                      <td className={`py-2 pr-3 font-bold ${p.low_stock ? 'text-red-600' : ''}`}>{fmt(p.current_stock)}</td>
-                      <td className="py-2 whitespace-nowrap">
-                        <Button variant="ghost" size="sm" onClick={() => setForm({ mode: 'edit', p })}>编辑</Button>
-                        <Button variant="ghost" size="sm" className="text-red-600" onClick={() => { if (confirm('删除该商品及其所有流水？')) deleteProduct(p.id) }}>删除</Button>
-                      </td>
-                    </tr>
-                  ))}
+                  {grouped.length === 0 && <tr><td colSpan={9} className="py-8 text-center text-gray-400">还没有商品，去「Excel 导入」或点「+ 新增商品」</td></tr>}
+                  {grouped.map(([owner, items]) => {
+                    const isCollapsed = collapsed.has(owner)
+                    const groupSel = items.length > 0 && items.every(p => selIds.has(p.id))
+                    const groupStock = items.reduce((s, p) => s + p.current_stock, 0)
+                    return (
+                      <Fragment key={owner}>
+                        <tr className="bg-gray-50 border-b">
+                          <td className="py-2 pr-1"><input type="checkbox" checked={groupSel} onChange={() => toggleGroup(owner)} /></td>
+                          <td colSpan={8} className="py-2 pr-3">
+                            <button onClick={() => { const s = new Set(collapsed); if (isCollapsed) s.delete(owner); else s.add(owner); setCollapsed(s) }}
+                              className="flex items-center gap-2 font-semibold text-gray-800">
+                              <span className={`transition-transform ${isCollapsed ? '-rotate-90' : ''}`}>▾</span>
+                              <Badge variant="secondary">{owner}</Badge>
+                              <span className="text-xs text-gray-500 font-normal">{items.length} 种 · 库存 {fmt(groupStock)}</span>
+                            </button>
+                          </td>
+                        </tr>
+                        {!isCollapsed && items.map(p => (
+                          <tr key={p.id} className="border-b hover:bg-gray-50">
+                            <td className="py-2 pr-1"><input type="checkbox" checked={selIds.has(p.id)} onChange={() => toggleSel(p.id)} /></td>
+                            <td className="py-2 pr-2">
+                              {p.image_url ? <img src={p.image_url} alt="" className="w-12 h-12 object-cover rounded-lg border" loading="lazy" /> : <span className="text-gray-300">—</span>}
+                            </td>
+                            <td className="py-2 pr-3">{p.sku || <span className="text-gray-300">—</span>}</td>
+                            <td className="py-2 pr-3"><NameCell value={p.name} onSave={(v) => inlineEdit(p.id, { name: v })} /></td>
+                            <td className="py-2 pr-3">{p.category || <span className="text-gray-300">—</span>}</td>
+                            <td className="py-2 pr-3">{p.location ? <span className="inline-flex items-center text-gray-600"><MapPin className="h-3.5 w-3.5 mr-1" />{p.location}</span> : <span className="text-gray-300">—</span>}</td>
+                            <td className="py-2 pr-3">{p.unit}</td>
+                            <td className={`py-2 pr-3 font-bold ${p.low_stock ? 'text-red-600' : ''}`}>{fmt(p.current_stock)}</td>
+                            <td className="py-2 whitespace-nowrap">
+                              <Button variant="ghost" size="sm" onClick={() => setForm({ mode: 'edit', p })}>编辑</Button>
+                              <Button variant="ghost" size="sm" className="text-red-600" onClick={() => { if (confirm('删除该商品及其所有流水？')) deleteProduct(p.id) }}>删除</Button>
+                            </td>
+                          </tr>
+                        ))}
+                      </Fragment>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>
@@ -577,11 +655,34 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
           <CardContent className="p-4">
             <h3 className="text-base font-semibold mb-3">登记出入库</h3>
             <div className="grid md:grid-cols-3 gap-3">
-              <div className="md:col-span-2"><label className="text-xs text-gray-500 font-medium">商品 *</label>
-                <select value={ioForm.product_id} onChange={e => setIoForm({ ...ioForm, product_id: e.target.value })} className="w-full mt-1 text-sm border rounded-md px-3 py-2">
-                  <option value="">请选择商品</option>
-                  {views.map(p => <option key={p.id} value={p.id}>{p.name}{p.sku ? ` (${p.sku})` : ''} · 余{fmt(p.current_stock)}</option>)}
+              <div><label className="text-xs text-gray-500 font-medium">主体 *</label>
+                <select value={ioForm.owner} onChange={e => { const v = e.target.value; setIoForm({ ...ioForm, owner: v, product_id: '' }); if (v !== '__new__') setIoNewOwner('') }} className="w-full mt-1 text-sm border rounded-md px-3 py-2">
+                  <option value="">请选择主体</option>
+                  {owners.map(o => <option key={o.name} value={o.name}>{o.name}</option>)}
+                  <option value="__new__">＋ 新建主体…</option>
                 </select>
+                {ioForm.owner === '__new__' && <Input value={ioNewOwner} onChange={e => setIoNewOwner(e.target.value)} placeholder="输入新主体名称" className="mt-2" />}
+              </div>
+              <div className="md:col-span-2"><label className="text-xs text-gray-500 font-medium">商品 *{ioOwnerResolved ? `（${ioOwnerResolved} 的商品）` : ''}</label>
+                <select value={ioForm.product_id} onChange={e => { const v = e.target.value; if (v === '__new__') { setIoNew({ name: '', sku: '', category: '', location: '', unit: '件' }); return } setIoForm({ ...ioForm, product_id: v }) }} className="w-full mt-1 text-sm border rounded-md px-3 py-2" disabled={!ioOwnerResolved}>
+                  <option value="">{ioOwnerResolved ? '请选择商品' : '请先选主体'}</option>
+                  {ioProducts.map(p => <option key={p.id} value={p.id}>{p.name}{p.sku ? ` (${p.sku})` : ''} · 余{fmt(p.current_stock)}</option>)}
+                  <option value="__new__">＋ 新建商品…</option>
+                </select>
+                {ioNew && (
+                  <div className="mt-2 grid md:grid-cols-5 gap-2 items-end p-3 bg-gray-50 rounded-lg border">
+                    <div className="md:col-span-2"><label className="text-xs text-gray-500">商品名称 *</label><Input value={ioNew.name} onChange={e => setIoNew({ ...ioNew, name: e.target.value })} placeholder="必填" className="mt-1" /></div>
+                    <div><label className="text-xs text-gray-500">SKU</label><Input value={ioNew.sku} onChange={e => setIoNew({ ...ioNew, sku: e.target.value })} className="mt-1" /></div>
+                    <div><label className="text-xs text-gray-500">分类</label><Input value={ioNew.category} onChange={e => setIoNew({ ...ioNew, category: e.target.value })} className="mt-1" /></div>
+                    <div><label className="text-xs text-gray-500">位置</label><Input value={ioNew.location} onChange={e => setIoNew({ ...ioNew, location: e.target.value })} placeholder="选填" className="mt-1" /></div>
+                    <div><label className="text-xs text-gray-500">单位</label><Input value={ioNew.unit} onChange={e => setIoNew({ ...ioNew, unit: e.target.value })} placeholder="件" className="mt-1" /></div>
+                    <div className="md:col-span-5 flex gap-2 items-center">
+                      <span className="text-sm text-gray-400">填好名称即可创建，位置/分类可后续补</span>
+                      <Button size="sm" onClick={createProductFromIo}>创建并选中</Button>
+                      <Button size="sm" variant="ghost" onClick={() => setIoNew(null)}>取消</Button>
+                    </div>
+                  </div>
+                )}
               </div>
               <div><label className="text-xs text-gray-500 font-medium">当前商品图片</label>
                 <div className="mt-1 h-16 w-16 rounded-lg border overflow-hidden bg-gray-50 flex items-center justify-center">
