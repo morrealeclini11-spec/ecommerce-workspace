@@ -10,6 +10,7 @@ import {
 import { useCloudData } from '@/lib/useCloudData'
 import { SyncStatus } from '@/components/SyncStatus'
 import * as XLSX from 'xlsx'
+import JSZip from 'jszip'
 
 /* ========== 类型 ========== */
 interface Product {
@@ -196,7 +197,7 @@ export function Inventory() {
 
   /* ========== 智能识别 Excel 表头 ========== */
 // 把常见的列名（中英）+同义词映射到系统字段。匹配规则包含原词、关键词、英文别名。
-const HEADER_RULES: { field: 'sku' | 'name' | 'category' | 'owner' | 'location' | 'unit' | 'initial_stock'; keys: RegExp[] }[] = [
+const HEADER_RULES: { field: 'sku' | 'name' | 'category' | 'owner' | 'location' | 'unit' | 'initial_stock' | 'image'; keys: RegExp[] }[] = [
   { field: 'sku', keys: [/^sku$/i, /编码/, /条码/, /编号/, /货号/, /item[ _-]?no/i, /code/i] },
   { field: 'name', keys: [/商品/, /名称/, /产品名?/, /品名?/, /^name$/i, /^product$/i, /item[ _-]?name/i, /title/i] },
   { field: 'category', keys: [/类别/, /分类/, /品类/, /^type$/i, /^category$/i, /class/i] },
@@ -204,6 +205,7 @@ const HEADER_RULES: { field: 'sku' | 'name' | 'category' | 'owner' | 'location' 
   { field: 'location', keys: [/位置/, /货架/, /库位/, /仓位/, /location/i, /shelf/i, /storage/i, /warehouse/i] },
   { field: 'unit', keys: [/单位/, /^unit$/i, /^uom$/i] },
   { field: 'initial_stock', keys: [/数量/, /库存/, /初始库存/, /qty/i, /quantity/i, /stock/i, /^count$/i, /pcs/i] },
+  { field: 'image', keys: [/图片/, /图$/, /照片/, /相/, /^image$/i, /^img$/i, /picture/i, /photo/i, /pic$/i, /链接/, /url/i] },
 ]
 // 过滤掉 _EMPTY / 空白
 const cleanCell = (c: any) => {
@@ -222,11 +224,77 @@ function scoreHeaderRow(cells: string[]) {
   penalty += cells.filter(c => groupKw.test(c)).length * 1.2
   return hit * 2 - penalty
 }
-function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'location' | 'unit' | 'initial_stock' | null {
+function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'location' | 'unit' | 'initial_stock' | 'image' | null {
   if (!header) return null
   for (const r of HEADER_RULES) { if (r.keys.some(k => k.test(header))) return r.field }
   return null
 }
+
+/* ========== 从 .xlsx 抽取嵌入单元格图片 ==========
+ * SheetJS 免费版读不到嵌入图片，这里直接解析 xlsx(zip) 内部的
+ * drawings + media，把图片按「锚定的行」绑定到 1-based 表行号返回。
+ * 返回 Map<number(1-based sheet row), dataURL>
+ */
+async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<Map<number, string>> {
+  const out = new Map<number, string>()
+  try {
+    const zip = await JSZip.loadAsync(buf)
+    const read = async (p: string) => { const f = zip.file(p); return f ? await f.async('string') : '' }
+    const readBytes = async (p: string) => { const f = zip.file(p); return f ? await f.async('uint8array') : null }
+
+    // 1) sheet 名 -> r:id（与属性顺序无关）
+    const wb = await read('xl/workbook.xml')
+    let sheetRid = ''
+    const sheetEls = wb.match(/<sheet\b[^>]*>/g) || []
+    for (const el of sheetEls) {
+      const nm = (el.match(/name="([^"]+)"/) || [])[1]
+      const rid = (el.match(/r:id="([^"]+)"/) || [])[1]
+      if (nm === sheetName && rid) { sheetRid = rid; break }
+    }
+    if (!sheetRid) return out
+    // 2) workbook rels: r:id -> worksheets/sheetN.xml
+    const wbRels = await read('xl/_rels/workbook.xml.rels')
+    const sheetFile = (wbRels.match(new RegExp(`<Relationship[^>]*Id="${sheetRid}"[^>]*Target="([^"]+)"`)) || [])[1]
+    if (!sheetFile) return out
+    const sheetPath = 'xl/' + sheetFile.replace(/^\.\//, '')
+    // 3) sheet xml 里找 drawing r:id
+    const sheetXml = await read(sheetPath)
+    const drawRid = (sheetXml.match(/<(?:[^:]+:)?drawing[^>]*r:id="([^"]+)"/) || [])[1]
+    if (!drawRid) return out
+    // 4) sheet rels: drawing r:id -> drawings/drawingN.xml
+    const sheetRelsPath = sheetPath.replace(/worksheets\//, 'worksheets/_rels/').replace(/\.xml$/, '.xml.rels')
+    const sheetRels = await read(sheetRelsPath)
+    const drawFile = (sheetRels.match(new RegExp(`<Relationship[^>]*Id="${drawRid}"[^>]*Target="([^"]+)"`)) || [])[1]
+    if (!drawFile) return out
+    const drawPath = sheetPath.replace(/worksheets\/[^/]+$/, '').replace(/\/$/, '') + '/' + drawFile.replace(/^\.\//, '')
+    // 5) drawing xml: 锚点 -> from row + blip r:embed
+    const drawXml = await read(drawPath)
+    const drawRelsPath = drawPath.replace(/drawings\//, 'drawings/_rels/').replace(/\.xml$/, '.xml.rels')
+    const drawRels = await read(drawRelsPath)
+    const anchorRe = /<(?:[^:]+:)?(twoCellAnchor|oneCellAnchor)>([\s\S]*?)<\/(?:[^:]+:)?\1>/g
+    let m: RegExpExecArray | null
+    while ((m = anchorRe.exec(drawXml))) {
+      const body = m[2]
+      const rowM = body.match(/<(?:[^:]+:)?from>[\s\S]*?<(?:[^:]+:)?row>(\d+)<\//)
+      const blipM = body.match(/r:embed="([^"]+)"/)
+      if (!rowM || !blipM) continue
+      const row0 = parseInt(rowM[1], 10) // 0-based
+      const media = (drawRels.match(new RegExp(`<Relationship[^>]*Id="${blipM[1]}"[^>]*Target="([^"]+)"`)) || [])[1]
+      if (!media) continue
+      const mediaPath = drawPath.replace(/drawings\/[^/]+$/, '').replace(/\/$/, '') + '/media/' + media.replace(/^\.\.\/media\//, '')
+      const bytes = await readBytes(mediaPath)
+      if (!bytes) continue
+      const ext = (media.match(/\.([a-z0-9]+)$/i) || ['png'])[1].toLowerCase()
+      let bin = ''
+      const CH = 0x8000
+      for (let s = 0; s < bytes.length; s += CH) bin += String.fromCharCode.apply(null, Array.from(bytes.subarray(s, s + CH)))
+      const b64 = btoa(bin)
+      out.set(row0 + 1, `data:image/${ext === 'jpg' ? 'jpeg' : ext};base64,${b64}`)
+    }
+  } catch (e) { /* 解析失败不影响文本导入 */ }
+  return out
+}
+
 
   const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0]
@@ -265,18 +333,12 @@ function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'lo
         headers.forEach((h, idx) => { obj[h || '_col' + idx] = row[idx] != null ? cleanCell(row[idx]) : '' })
         rows.push(obj); srcRows.push(headerIdx + 1 + off + 1)
       })
+      // 抽取 Excel 中嵌入的单元格图片（按锚定行绑定到 1-based 表行）
       const images: Record<number, string> = {}
-      if (ws['!images'] && Array.isArray(ws['!images'])) {
-        ws['!images'].forEach((item: any) => {
-          if (!item || !item.address) return
-          const m = String(item.address).match(/^([A-Z]+)(\d+)$/)
-          if (!m) return
-          const row = parseInt(m[2], 10)
-          const img = item.image || {}
-          const data = img.data || img.Data || (img.image && img.image.data) || ''
-          if (typeof data === 'string' && data.length > 50 && (data.startsWith('data:image') || data.startsWith('/9j/') || data.startsWith('iVBOR'))) images[row] = data
-        })
-      }
+      try {
+        const emb = await extractXlsxImages(buf, wb.SheetNames[0])
+        emb.forEach((v, k) => { images[k] = v })
+      } catch (e) { /* 抽图失败不影响文本导入 */ }
       // 自动映射
       const auto: Record<string, string> = {}
       headers.forEach(h => { const f = matchField(h); if (f && !auto[f]) auto[f] = h })
@@ -302,7 +364,7 @@ function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'lo
     const rows = importState.rows.map((r, i) => ({
       sku: r[m.sku] || '', name: r[m.name] || '', category: r[m.category] || '', owner: r[m.owner] || '',
       location: r[m.location] || '', unit: r[m.unit] || '', initial_stock: r[m.initial_stock] || 0,
-      image_url: importState.images[importState.srcRows[i]] || '', _src: i,
+      image_url: importState.images[importState.srcRows[i]] || (mapping.image ? (r[mapping.image] || '') : ''), _src: i,
     })).filter(r => r.name)
     // 重复检测
     const bySku = new Map(products.filter(p => p.sku).map(p => [cleanStr(p.sku).toLowerCase(), p]))
@@ -351,7 +413,7 @@ function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'lo
 
   const finishDup = () => {
     const keepRows = dupRows.filter(r => dupKeep.has(r))
-    const allRows = importState ? importState.rows.map((r, i) => ({ sku: r[mapping.sku] || '', name: r[mapping.name] || '', category: r[mapping.category] || '', owner: r[mapping.owner] || '', location: r[mapping.location] || '', unit: r[mapping.unit] || '', initial_stock: r[mapping.initial_stock] || 0, image_url: importState.images[importState.srcRows[i]] || '' })).filter(r => r.name) : []
+    const allRows = importState ? importState.rows.map((r, i) => ({ sku: r[mapping.sku] || '', name: r[mapping.name] || '', category: r[mapping.category] || '', owner: r[mapping.owner] || '', location: r[mapping.location] || '', unit: r[mapping.unit] || '', initial_stock: r[mapping.initial_stock] || 0, image_url: importState.images[importState.srcRows[i]] || (mapping.image ? (r[mapping.image] || '') : '') })).filter(r => r.name) : []
     const nonDup = allRows.filter(r => !dupRows.includes(r))
     const next = [...nonDup, ...keepRows]
     if (next.some(r => !cleanStr(r.owner))) { setOwnerRows(next); setOwnerMap({}); setOwnerAll(''); setConfirmStep('owner'); return }
@@ -508,16 +570,25 @@ function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'lo
       )}
 
       {/* ===== 出入库 ===== */}
-      {tab === 'io' && (
+      {tab === 'io' && (() => {
+        const sel = views.find(p => p.id === ioForm.product_id)
+        return (
         <Card>
           <CardContent className="p-4">
             <h3 className="text-base font-semibold mb-3">登记出入库</h3>
             <div className="grid md:grid-cols-3 gap-3">
-              <div><label className="text-xs text-gray-500 font-medium">商品 *</label>
+              <div className="md:col-span-2"><label className="text-xs text-gray-500 font-medium">商品 *</label>
                 <select value={ioForm.product_id} onChange={e => setIoForm({ ...ioForm, product_id: e.target.value })} className="w-full mt-1 text-sm border rounded-md px-3 py-2">
                   <option value="">请选择商品</option>
                   {views.map(p => <option key={p.id} value={p.id}>{p.name}{p.sku ? ` (${p.sku})` : ''} · 余{fmt(p.current_stock)}</option>)}
                 </select>
+              </div>
+              <div><label className="text-xs text-gray-500 font-medium">当前商品图片</label>
+                <div className="mt-1 h-16 w-16 rounded-lg border overflow-hidden bg-gray-50 flex items-center justify-center">
+                  {sel?.image_url
+                    ? <img src={sel.image_url} alt={sel.name} className="h-full w-full object-cover" />
+                    : <Package className="h-6 w-6 text-gray-300" />}
+                </div>
               </div>
               <div><label className="text-xs text-gray-500 font-medium">类型</label>
                 <div className="flex gap-2 mt-1">
@@ -534,14 +605,15 @@ function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'lo
               <div><label className="text-xs text-gray-500 font-medium">操作人</label>
                 <Input value={ioForm.operator} onChange={e => setIoForm({ ...ioForm, operator: e.target.value })} placeholder="选填" className="mt-1" />
               </div>
-              <div><label className="text-xs text-gray-500 font-medium">备注</label>
+              <div className="md:col-span-2"><label className="text-xs text-gray-500 font-medium">备注</label>
                 <Input value={ioForm.note} onChange={e => setIoForm({ ...ioForm, note: e.target.value })} placeholder="选填，如订单号/批次" className="mt-1" />
               </div>
             </div>
             <div className="mt-4"><Button onClick={submitIo}>提交</Button></div>
           </CardContent>
         </Card>
-      )}
+        )
+      })()}
 
       {/* ===== Excel 导入 ===== */}
       {tab === 'import' && (
@@ -558,7 +630,7 @@ function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'lo
                 </div>
                 <div className="grid md:grid-cols-3 gap-3">
                   {([
-                    ['sku', 'SKU/编码'], ['name', '商品名称(必填)'], ['category', '分类'], ['owner', '主体'], ['location', '位置'], ['unit', '单位'], ['initial_stock', '初始库存'],
+                    ['sku', 'SKU/编码'], ['name', '商品名称(必填)'], ['category', '分类'], ['owner', '主体'], ['location', '位置'], ['unit', '单位'], ['initial_stock', '初始库存'], ['image', '图片(链接/URL)'],
                   ] as const).map(([k, label]) => (
                     <div key={k}>
                       <label className="text-xs text-gray-500 font-medium">{label}</label>
@@ -571,11 +643,33 @@ function matchField(header: string): 'sku' | 'name' | 'category' | 'owner' | 'lo
                 </div>
                 <div className="overflow-x-auto border rounded-lg max-h-56 overflow-y-auto">
                   <table className="w-full text-xs">
-                    <thead><tr>{Object.entries(mapping).filter(([, v]) => v).map(([k]) => <th key={k} className="text-left p-2 border-b bg-gray-50">{k}</th>)}</tr></thead>
+                    <thead><tr>
+                      {Object.keys(importState.images).length > 0 && <th className="text-left p-2 border-b bg-gray-50">图片</th>}
+                      {Object.entries(mapping).filter(([, v]) => v).map(([k]) => <th key={k} className="text-left p-2 border-b bg-gray-50">{k}</th>)}
+                    </tr></thead>
                     <tbody>
-                      {importState.rows.slice(0, 20).map((r, i) => (
-                        <tr key={i}>{Object.entries(mapping).filter(([, v]) => v).map(([k, v]) => <td key={k} className="p-2 border-b">{String(r[v] || '').slice(0, 40)}</td>)}</tr>
-                      ))}
+                      {importState.rows.slice(0, 20).map((r, i) => {
+                        const emb = importState.images[importState.srcRows[i]]
+                        const imgVal = emb || (mapping.image ? (r[mapping.image] || '') : '')
+                        return (
+                          <tr key={i}>
+                            {Object.keys(importState.images).length > 0 && (
+                              <td className="p-2 border-b">
+                                {emb
+                                  ? <img src={emb} alt="" className="w-10 h-10 object-cover rounded border" />
+                                  : <span className="text-gray-300">—</span>}
+                              </td>
+                            )}
+                            {Object.entries(mapping).filter(([, v]) => v).map(([k, v]) => (
+                              <td key={k} className="p-2 border-b">
+                                {k === 'image' && imgVal && (imgVal.startsWith('http') || imgVal.startsWith('data:'))
+                                  ? <img src={imgVal} alt="" className="w-10 h-10 object-cover rounded border" />
+                                  : String(r[v] || '').slice(0, 40)}
+                              </td>
+                            ))}
+                          </tr>
+                        )
+                      })}
                     </tbody>
                   </table>
                 </div>
