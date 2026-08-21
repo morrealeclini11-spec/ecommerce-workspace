@@ -409,27 +409,54 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string, dataStartR
 /* ========== WPS/Office365 cellimages (DISPIMG) 解析 ==========
  * WPS 的"单元格图片"用 =DISPIMG("ID_xxx",1) 公式 + xl/cellimages.xml 存储，
  * 不走传统 drawing 锚定。这里通过 ID 匹配把图抽出来。
+ * 每张图读取后立即压缩到 150x150 + JPEG 0.4 质量，避免内存溢出。
  * 返回 Map<1-based sheet row, dataURL>
  */
 async function extractDispimgImages(
   buf: ArrayBuffer,
-  sheetData: (string | number)[][], // XLSX.utils.sheet_to_json({header:1}) 的结果
+  ws: XLSX.WorkSheet,
   headerIdx: number
 ): Promise<Map<number, string>> {
   const out = new Map<number, string>()
   try {
     const zip = await JSZip.loadAsync(buf)
-    // 1) 收集 sheet 中每行的 DISPIMG ID
-    const rowImgIds = new Map<number, string>() // 1-based row -> dispimg id
-    for (let i = headerIdx + 1; i < sheetData.length; i++) {
-      const row = sheetData[i] || []
-      for (const cell of row) {
-        const m = String(cell).match(/DISPIMG\(\s*"([^"]+)"/i)
-        if (m) { rowImgIds.set(i + 1, m[1]); break } // 1-based row
+    // 0) 辅助：压缩图片 bytes → 小 dataURL
+    const compressToThumb = (bytes: Uint8Array, ext: string): Promise<string> => new Promise((resolve, reject) => {
+      const blob = new Blob([bytes], { type: `image/${ext}` })
+      const url = URL.createObjectURL(blob)
+      const img = new Image()
+      img.onload = () => {
+        const max = 150
+        let w = img.width, h = img.height
+        if (w > max || h > max) { const s = max / Math.max(w, h); w = Math.round(w * s); h = Math.round(h * s) }
+        const cv = document.createElement('canvas'); cv.width = w; cv.height = h
+        cv.getContext('2d')!.drawImage(img, 0, 0, w, h)
+        URL.revokeObjectURL(url)
+        resolve(cv.toDataURL('image/jpeg', 0.4))
+      }
+      img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('img load fail')) }
+      img.src = url
+    })
+    // 1) 遍历 worksheet 原始单元格，找 =DISPIMG("ID_xxx"...)
+    const rowImgIds = new Map<number, string>()
+    if (ws['!ref']) {
+      const range = XLSX.utils.decode_range(ws['!ref'])
+      for (let r = range.s.r + 1; r <= range.e.r; r++) {
+        for (let c = range.s.c; c <= range.e.c; c++) {
+          const cell = ws[XLSX.utils.encode_cell({ r, c })]
+          if (!cell) continue
+          const sources = [cell.f, cell.w, cell.v].filter(Boolean).map(String)
+          for (const src of sources) {
+            const m = src.match(/DISPIMG\(\s*"([^"]+)"/i)
+            if (m) { rowImgIds.set(r + 1, m[1]); break }
+          }
+          if (rowImgIds.has(r + 1)) break
+        }
       }
     }
+    console.log('[cellimages] DISPIMG 数量:', rowImgIds.size)
     if (rowImgIds.size === 0) return out
-    // 2) 读 cellimages.xml → name(=dispimg id) -> rId
+    // 2) 读 cellimages.xml → name -> rId
     const ciXml = await (async () => { const f = zip.file('xl/cellimages.xml'); return f ? await f.async('string') : '' })()
     if (!ciXml) return out
     const idToRId = new Map<string, string>()
@@ -448,22 +475,25 @@ async function extractDispimgImages(
     for (const rm of ciRelsXml.matchAll(/Id="(rId\d+)"[^>]*Target="([^"]+)"/g)) {
       ridToMedia.set(rm[1], rm[2])
     }
-    // 4) 按行绑定：遍历 rowImgIds，通过 ID 链找到 media 文件，读取并转 dataURL
+    // 4) 逐个读取 + 压缩 + 绑定（避免一次性加载全部图片导致内存溢出）
+    let ok = 0, fail = 0
     for (const [row, dispId] of rowImgIds) {
-      const rId = idToRId.get(dispId)
-      if (!rId) continue
-      const mediaRel = ridToMedia.get(rId)
-      if (!mediaRel) continue
-      const mediaPath = 'xl/' + mediaRel.replace(/^\.\//, '')
-      const bytes = await zip.file(mediaPath)?.async('uint8array')
-      if (!bytes) continue
-      const ext = (mediaPath.match(/\.([a-z0-9]+)$/i) || ['jpeg'])[1].toLowerCase()
-      let bin = ''
-      const CH = 0x8000
-      for (let s = 0; s < bytes.length; s += CH) bin += String.fromCharCode.apply(null, Array.from(bytes.subarray(s, s + CH)))
-      out.set(row, `data:image/${ext === 'jpg' ? 'jpeg' : ext};base64,${btoa(bin)}`)
+      try {
+        const rId = idToRId.get(dispId)
+        if (!rId) { fail++; continue }
+        const mediaRel = ridToMedia.get(rId)
+        if (!mediaRel) { fail++; continue }
+        const mediaPath = 'xl/' + mediaRel.replace(/^\.\//, '')
+        const bytes = await zip.file(mediaPath)?.async('uint8array')
+        if (!bytes) { fail++; continue }
+        const ext = (mediaPath.match(/\.([a-z0-9]+)$/i) || ['jpeg'])[1].toLowerCase()
+        const dataUrl = await compressToThumb(bytes, ext === 'jpg' ? 'jpeg' : ext)
+        out.set(row, dataUrl)
+        ok++
+      } catch { fail++ }
     }
-  } catch (e) { /* 解析失败不影响文本导入 */ }
+    console.log('[cellimages] 成功:', ok, '失败:', fail)
+  } catch (e) { console.log('[cellimages] 异常:', e) }
   return out
 }
 
@@ -516,9 +546,11 @@ async function extractDispimgImages(
       // 如果传统方式没抽到图，尝试 WPS cellimages (DISPIMG) 解析
       if (Object.keys(images).length === 0) {
         try {
-          const dispimg = await extractDispimgImages(buf, arr, headerIdx)
+          toast('检测到 WPS 图片格式，正在处理图片…（可能需要几秒）')
+          const dispimg = await extractDispimgImages(buf, ws, headerIdx)
           dispimg.forEach((v, k) => { images[k] = v })
-        } catch (e) { /* cellimages 解析失败 */ }
+          if (Object.keys(images).length > 0) toast(`✓ 自动带上了 ${Object.keys(images).length} 张图片`)
+        } catch (e) { console.log('[cellimages] 调用异常:', e) }
       }
       if (Object.keys(images).length === 0) {
         imgWarn = '⚠️ 未从 Excel 检测到图片。可能原因：① 图片是「链接到文件」或旧版 .xls；② 图片列含 =DISPIMG 公式但 WPS 格式不匹配。可点每行「补图」手动上传。'
