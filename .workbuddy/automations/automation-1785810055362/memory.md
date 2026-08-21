@@ -12,6 +12,11 @@
   `C:/Users/HFD/.workbuddy/binaries/python/versions/3.13.12/python.exe` 运行，`/tmp/x.json` 会落到 `C:\tmp\x.json`，前后一致。
 
 ## 历史执行
+### 2026-08-15
+- 24 条新闻（每国 4 条，high 10 / medium 14）+ 27 条趋势（美5/英4/西5/意4/法5/德4），来自当日 6 次 WebSearch（query_keyword_groups 多角度聚合，覆盖美/英/西/意/法/德）。
+- Gitee 推送：news.json PUT 200 OK；trends.json PUT 200 OK（两文件已存在，走更新分支）。本地副本同步至工作区 data/news.json、data/trends.json。
+- 当期主线（相对 8-12，PPWR 已生效 3 天）：美国联邦贸易法院 8/14 裁定特朗普暂停 de minimis 免税合法（IEEPA 司法背书，2027/7/1 法定废止前持续关闭）；亚马逊 8/24 改 BSA 禁未来回款融资抵押、8/10 AI 标题强制对齐移动端；TikTok Shop 8/15 起强制 AI 内容标注；美东罢工第 6 天、美西堆场 92%、亚—美西空柜运价周涨 25%；英国 £135 平台代缴 VAT 稳定 + 2028/10 改革讨论 + 财政代表连带责任、MTD 强制数字申报；西 AliExpress 828 大促 + 泳池清洁机器人西班牙环比近 7 倍、TikTok Shop 西 GMV +120%、暑期 4300 万游客/640 亿欧；意 10/1 加 2 欧规费（叠欧盟 3 欧 = 5 欧）、非欧盟 VAT 5 万欧担保 + 税代 200 万欧保证金、Ferragosto 1740 万游客/消费 >90 亿欧；法《反超快时尚法》9/1 生态罚款 0.25—6 欧、2027/1/1 广告与网红禁令、DGCCRF 罚 SHEIN 2250 万 + DSA 罚 Temu 2 亿/AliExpress 5.5 亿、商务部指贸易壁垒；德 PPWR 8/12 已强制 + 德法海关查空隙率、bevh 喊停未果、亚马逊德 9/1 起 16 类目退货 30→14 天、纺织品 EPR 立法 + 海外仓租金 +30%。
+
 ### 2026-08-12
 - 24 条新闻（每国 4 条，high 11 / medium 13）+ 30 条趋势（每国 5 条），来自当日 6 次 WebSearch（query_keyword_groups 多角度聚合，覆盖美/英/西/意/法/德 + 平台/返校季）。
 - Gitee 推送：news.json PUT 200 OK；trends.json PUT 200 OK（两文件已存在，走更新分支）。本地副本同步至工作区 data/news.json、data/trends.json。

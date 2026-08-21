@@ -409,9 +409,21 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
         const emb = await extractXlsxImages(buf, wb.SheetNames[0])
         emb.forEach((v, k) => { images[k] = v })
       } catch (e) { /* 抽图失败不影响文本导入 */ }
-      // 自动映射
+      // 自动映射（image 列需要二次校验：列里大多数是合法 URL 才认成图）
       const auto: Record<string, string> = {}
       headers.forEach(h => { const f = matchField(h); if (f && !auto[f]) auto[f] = h })
+      // 如果被识别为 image 的列里，合法 URL 行数 < 60%，降级（很可能是文字被误识别）
+      if (auto.image) {
+        const col = auto.image
+        const nonEmpty = rows.filter(r => cleanStr(r[col])).length
+        const valid = rows.filter(r => { const v = cleanStr(r[col]); return /^https?:\/\//i.test(v) || /^data:image\//i.test(v) }).length
+        if (nonEmpty > 0 && valid / nonEmpty < 0.6) {
+          // 尝试把 image 字段让给其他未分配的"图"字相关列；都没有就直接放弃
+          const alt = headers.find(h => h !== col && (/图片|图|照片|链接|URL/i.test(h) || /^image$|^img$|^picture$|^photo$/i.test(h)) && !Object.values(auto).includes(h))
+          if (alt) auto.image = alt
+          else delete auto.image
+        }
+      }
       setImportState({ headers, rows, srcRows, images, headerIdx })
       setMapping(auto)
       setConfirmStep(null)
@@ -431,11 +443,15 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
     if (!importState) return
     const m = mapping
     if (!m.name) { toast('请至少映射「商品名称」'); return }
-    const rows = importState.rows.map((r, i) => ({
-      sku: r[m.sku] || '', name: r[m.name] || '', category: r[m.category] || '', owner: r[m.owner] || '',
-      location: r[m.location] || '', unit: r[m.unit] || '', initial_stock: r[m.initial_stock] || 0,
-      image_url: importState.images[importState.srcRows[i]] || (mapping.image ? (r[mapping.image] || '') : ''), _src: i,
-    })).filter(r => r.name)
+    const rows = importState.rows.map((r, i) => {
+      const cellImg = mapping.image ? cleanStr(r[mapping.image]) : ''
+      const validCellImg = /^https?:\/\//i.test(cellImg) || /^data:image\//i.test(cellImg) ? cellImg : ''
+      return {
+        sku: r[m.sku] || '', name: r[m.name] || '', category: r[m.category] || '', owner: r[m.owner] || '',
+        location: r[m.location] || '', unit: r[m.unit] || '', initial_stock: r[m.initial_stock] || 0,
+        image_url: importState.images[importState.srcRows[i]] || validCellImg, _src: i,
+      }
+    }).filter(r => r.name)
     // 重复检测
     const bySku = new Map(products.filter(p => p.sku).map(p => [cleanStr(p.sku).toLowerCase(), p]))
     const byName = new Map(products.map(p => [cleanStr(p.name).toLowerCase(), p]))
@@ -458,7 +474,9 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
         let changed = false
         if (r.owner && !cleanStr(dup.owner)) { dup.owner = r.owner; changed = true }
         if (r.location && !cleanStr(dup.location)) { dup.location = r.location; changed = true }
-        if (r.image_url && !cleanStr(dup.image_url)) { dup.image_url = r.image_url; changed = true }
+        // 只在「旧图无效 + 新图合法」时回填，避免覆盖
+        const newImg = r.image_url
+        if (newImg && !cleanStr(dup.image_url)) { dup.image_url = newImg; changed = true }
         if (changed) updated++
         return
       }
@@ -466,7 +484,7 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
       const own = cleanStr(r.owner)
       if (loc) newLocSet.add(loc)
       if (own) newOwnerSet.add(own)
-      newProducts.push({ id: uid('p'), sku: cleanStr(r.sku), name: cleanStr(r.name), category: cleanStr(r.category), owner: own, location: loc, unit: cleanStr(r.unit) || '件', initial_stock: num(r.initial_stock), low_threshold: null, image_url: cleanStr(r.image_url), created_at: new Date().toISOString() })
+      newProducts.push({ id: uid('p'), sku: cleanStr(r.sku), name: cleanStr(r.name), category: cleanStr(r.category), owner: own, location: loc, unit: cleanStr(r.unit) || '件', initial_stock: num(r.initial_stock), low_threshold: null, image_url: r.image_url || '', created_at: new Date().toISOString() })
       added++
     })
     // 把首次出现的位置加进字典
@@ -649,7 +667,16 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
                           <tr key={p.id} className="border-b hover:bg-gray-50">
                             <td className="py-2 pr-1"><input type="checkbox" checked={selIds.has(p.id)} onChange={() => toggleSel(p.id)} /></td>
                             <td className="py-2 pr-2">
-                              {p.image_url ? <img src={p.image_url} alt="" className="w-12 h-12 object-cover rounded-lg border" loading="lazy" /> : <span className="text-gray-300">—</span>}
+                              {p.image_url
+                                ? <img
+                                  src={p.image_url}
+                                  alt=""
+                                  className="w-12 h-12 object-cover rounded-lg border"
+                                  loading="lazy"
+                                  onError={(e) => { const el = e.currentTarget; if (el) { el.style.display = 'none'; const sib = el.nextElementSibling as HTMLElement | null; if (sib) sib.style.display = 'inline' } }}
+                                />
+                                : <span className="text-gray-300">—</span>}
+                              {p.image_url && <span className="text-gray-300" style={{ display: 'none' }}>—</span>}
                             </td>
                             <td className="py-2 pr-3">{p.sku || <span className="text-gray-300">—</span>}</td>
                             <td className="py-2 pr-3"><NameCell value={p.name} onSave={(v) => inlineEdit(p.id, { name: v })} /></td>
@@ -713,7 +740,7 @@ async function extractXlsxImages(buf: ArrayBuffer, sheetName: string): Promise<M
               <div><label className="text-xs text-gray-500 font-medium">当前商品图片</label>
                 <div className="mt-1 h-16 w-16 rounded-lg border overflow-hidden bg-gray-50 flex items-center justify-center">
                   {sel?.image_url
-                    ? <img src={sel.image_url} alt={sel.name} className="h-full w-full object-cover" />
+                    ? <img src={sel.image_url} alt={sel.name} className="h-full w-full object-cover" onError={(e) => { const el = e.currentTarget; if (el) el.style.display = 'none' }} />
                     : <Package className="h-6 w-6 text-gray-300" />}
                 </div>
               </div>
@@ -939,6 +966,7 @@ function ProductForm({ product, ownerList, locationList, onCancel, onSave, onLoc
   const [newOwner, setNewOwner] = useState('')
   const [newLoc, setNewLoc] = useState('')
   const imgRef = useRef<HTMLInputElement>(null)
+  const [imgBroken, setImgBroken] = useState(false)
 
   const pickImg = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || [])
@@ -947,8 +975,18 @@ function ProductForm({ product, ownerList, locationList, onCancel, onSave, onLoc
     try {
       // 第一张作为主图，其余继续追加到本商品（这里先只保留主图，未来可扩展为多图）
       const main = await compressImage(files[0])
+      setImgBroken(false)
       setF({ ...f, image_url: main })
     } catch (err: any) { alert('图片处理失败：' + (err?.message || '')) }
+  }
+
+  // 兜底：如果 image_url 不是 http(s):// 也不是 data:image/... 当成无效
+  const cleanImageUrl = (s: string) => {
+    const v = cleanStr(s)
+    if (!v) return ''
+    if (/^https?:\/\//i.test(v)) return v
+    if (/^data:image\//i.test(v)) return v
+    return ''
   }
 
   const save = () => {
@@ -962,7 +1000,7 @@ function ProductForm({ product, ownerList, locationList, onCancel, onSave, onLoc
     onSave({
       name: cleanStr(f.name), sku: cleanStr(f.sku), owner, location,
       category: cleanStr(f.category), unit: cleanStr(f.unit) || '件',
-      initial_stock: num(f.initial_stock), low_threshold: null, image_url: cleanStr(f.image_url),
+      initial_stock: num(f.initial_stock), low_threshold: null, image_url: cleanImageUrl(f.image_url),
     })
   }
 
@@ -997,10 +1035,10 @@ function ProductForm({ product, ownerList, locationList, onCancel, onSave, onLoc
           <Input type="number" value={f.initial_stock} onChange={e => setF({ ...f, initial_stock: e.target.value })} className="mt-1" /></div>}
         <div className="md:col-span-2"><label className="text-xs text-gray-500 font-medium">商品图片</label>
           <div className="flex items-center gap-3 mt-1">
-            {f.image_url ? <img src={f.image_url} alt="" className="w-16 h-16 object-cover rounded-lg border" /> : <div className="w-16 h-16 rounded-lg border border-dashed flex items-center justify-center text-gray-300"><Package className="h-6 w-6" /></div>}
+            {f.image_url && !imgBroken ? <img src={f.image_url} alt="" className="w-16 h-16 object-cover rounded-lg border" onError={() => setImgBroken(true)} /> : <div className="w-16 h-16 rounded-lg border border-dashed flex items-center justify-center text-gray-300" title={imgBroken ? '图片加载失败，请重新上传' : ''}><Package className="h-6 w-6" /></div>}
             <input ref={imgRef} type="file" accept="image/*" onChange={pickImg} className="hidden" />
             <Button variant="outline" size="sm" onClick={() => imgRef.current?.click()}><ImagePlus className="mr-1 h-4 w-4" />上传图片</Button>
-            {f.image_url && <Button variant="ghost" size="sm" className="text-red-600" onClick={() => setF({ ...f, image_url: '' })}>删除</Button>}
+            {f.image_url && <Button variant="ghost" size="sm" className="text-red-600" onClick={() => { setF({ ...f, image_url: '' }); setImgBroken(false) }}>删除</Button>}
           </div></div>
       </div>
       <div className="flex justify-end gap-2 mt-4">
@@ -1093,7 +1131,8 @@ function BatchEditModal({ ids, ownerList, locationList, onCancel, onOk }: { ids:
           <Input value={fields.unit ?? ''} onChange={e => setF('unit', e.target.value)} placeholder="（不修改）" className="mt-1" /></div>
         <div className="md:col-span-2"><label className="text-xs text-gray-500 font-medium">统一图片</label>
           <div className="flex items-center gap-3 mt-1">
-            {fields.image_url ? <img src={fields.image_url} alt="" className="w-14 h-14 object-cover rounded-lg border" /> : <div className="w-14 h-14 rounded-lg border border-dashed flex items-center justify-center text-gray-300"><Package className="h-5 w-5" /></div>}
+            {fields.image_url ? <img src={fields.image_url} alt="" className="w-14 h-14 object-cover rounded-lg border" onError={(e) => { const el = e.currentTarget; if (el) { el.style.display = 'none'; const sib = el.nextElementSibling as HTMLElement | null; if (sib) sib.style.display = 'flex' } }} /> : <div className="w-14 h-14 rounded-lg border border-dashed flex items-center justify-center text-gray-300"><Package className="h-5 w-5" /></div>}
+            <div className="w-14 h-14 rounded-lg border border-dashed hidden items-center justify-center text-gray-300"><Package className="h-5 w-5" /></div>
             <input ref={imgRef} type="file" accept="image/*" onChange={pickImg} className="hidden" />
             <Button variant="outline" size="sm" onClick={() => imgRef.current?.click()}><ImagePlus className="mr-1 h-4 w-4" />上传</Button>
             {fields.image_url && <Button variant="ghost" size="sm" className="text-red-600" onClick={() => setF('image_url', '')}>清除</Button>}

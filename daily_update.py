@@ -717,6 +717,21 @@ def _safe(fn, *a):
 
 
 def main():
+    # 自动更新开关（2026-08-17 用户要求关闭每日自动更新，改为按需手动更新）：
+    # 1) CI 环境（GitHub Actions）默认跳过，避免每日自动覆盖云端数据；
+    # 2) 设 ECOM_DAILY_OFF=1 可强制任何环境都不跑（兜底总开关）；
+    # 3) 本地/沙箱手动运行（非 CI、未设 OFF）照常执行，供我手动更新用。
+    if os.environ.get("ECOM_DAILY_OFF") == "1":
+        print("=== 自动更新已关闭（ECOM_DAILY_OFF=1），跳过 ===")
+        return
+    # CI 环境（GitHub Actions）：仅允许「手动 workflow_dispatch」触发（用户在 Actions 页面
+    # 点 Run workflow，或让我用 API 派发）才执行；定时 schedule 仍跳过，保持「无每日自动更新」。
+    # 本地/沙箱手动运行（非 CI）照常执行，供我手动更新用。
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        event = os.environ.get("GITHUB_EVENT_NAME", "")
+        if event != "workflow_dispatch" and os.environ.get("ECOM_ALLOW_AUTO") != "1":
+            print("=== 自动更新已关闭（CI 非手动触发，跳过）；要手动跑请在 Actions 点 Run workflow 或设 ECOM_ALLOW_AUTO=1 ===")
+            return
     src = "Google News" if google_available() else "全球综合RSS兜底"
     print(f"=== 每日实时更新 {TODAY} | 数据源: {src} ===")
     # 三个核心模块各自容错，互不影响

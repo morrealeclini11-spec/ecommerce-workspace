@@ -1,0 +1,18 @@
+name: Daily Ecom Update (实时联网抓取)
+# 完全无人值守 + 实时联网：GitHub 美区服务器每天北京 07:30 抓取真实新闻/趋势/产品写入 Gitee
+on:
+  schedule:
+    - cron: "30 23 * * *"   # UTC 23:30 = 北京 07:30
+  workflow_dispatch:        # 也可手动在 Actions 页面点 Run workflow 立即跑
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run daily live update
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: python daily_update.py

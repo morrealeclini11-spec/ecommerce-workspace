@@ -78,3 +78,11 @@
 - **下次执行铁律**：① 不要再调用 `push_gitee.py`（会被覆盖、误推 news/trends）；② 直接 `python C:/tmp/push_daily_products.py`；③ 推完看末尾「远端回读校验」行，必须出现 products.json 30 条+日期当天、trend_products.json 25 条 才算成功；④ 运行前勿去改写 `push_gitee.py`（那是新闻任务的文件，动了反而让它出错）。
 - 复用链路不变：`C:/tmp/products.json` → 校验 `C:/tmp/validate.py` → 派生 `C:/tmp/build_trend_products.py` → 推送 `C:/tmp/push_daily_products.py`；每次同步复制 `products.json`/`trend_products.json` 到工作区 `data/` 留档。
 - 校验项：id 连续唯一、15 字段齐全、cons 恰好 2、pros 3-4、price>alibabaPrice、rating 4.0-4.8、salesGrowth 30-200 整数、lastUpdated 当天；名称须含 `src/lib/productVisual.ts` 的 SLUG_RULES 关键词（本日 0 条通用图标）。
+
+## 2026-08-15
+- 结果：`products.json: PUT -> 200 OK`（30 条）、`trend_products.json: PUT -> 200 OK`（25 条）。两端均通过 contents API 回读远端校验（products 30 条 / 日期集合 {'2026-08-15'} / 15 字段齐全 / id 连续；trend_products 25 条）。均价 $42.30、均采购 $11.16、平均毛利率 73.6%、trending 26 条。本地 data/ 已同步留档。
+- 平台分布：amazon 5、tiktok/temu/fastmoss/jimudata 各 4、thunt/sellersprite/shein 各 3。品类 14 个（家居电器 5、智能家居/厨房电器/电子配件/家居照明 各 3 为主）。
+- 校验：30 条全部命中 SLUG_RULES 关键词（0 条通用图标）。仅有 99 条"文案偏短"警告（非阻断），均为合理短卖点。
+- 本期最强时效信号（相较 08-12）：**插座式微型电暖器成 TikTok 美区新爆款**——上线不足 2 月售出 3.32 万件、GMV 63.29 万美元、售价≈$20、1688 出厂价≈¥20（约 7 倍溢价），印证"微场景局部取暖"从整屋制热向单点即插即热的消费迁移；Amazon 取暖器真实榜单（Amazon Basics 陶瓷 $13.79/月销 4.97 万、PELONIS 油汀 $73.55/月销 1.89 万、JIBUFI PTC $28.45/月销 1.16 万、Lasko $33.05），"heaters for indoor use" 134 个追踪品 Top10 均价 $29.71/评分 4.4/月销 1K-4K，最快单品 MoM +100%；美区加热服饰线（ORORO 发热马甲 $129.99、EN'DA 发热围巾 $14.99、Sun Will 发热毛线帽 $49.99、SAMEAT 电热毛巾架 $79.99、加热手套/马甲）；FastMoss 防雾保暖面罩 $9.99/一周 1.22 万件登顶运动户外榜；Shein 2026 冬季配饰（仿兔毛水晶围巾/statement 手套/水晶毛线帽，围巾单品 6.9K+ sold）；智能家电 7 大黄金品类（宠物除味净化器增速 >75% $100-220、智能温控器增速 >120% $80-180、环境家电 2026 全球超 320 亿美元）；欧洲冬季五大场景（局部取暖/圣诞智能灯饰/保暖服饰 OEKO-TEX/除雪装备 REACH/室内娱乐）；eMAG 东南欧需罗保匈三语说明书+CE+灯具能效。
+- 选品主线保持一致：欧洲冬季局部取暖（插座式取暖器/电热毯/暖手宝/石墨烯对流板/法兰绒电热毯/发热手套）、加湿防潮、圣诞智能灯饰（灯带/夜灯/落日投影灯/太阳能感应灯）、节能智能（温控器/计量插座/宠物喂食/净化器）、收纳换季、便携充电/搅拌、宠物与美妆合规。
+- 流程铁律照旧：只用 `C:/tmp/push_daily_products.py`（不被新闻任务改写），推完看末尾回读校验行；未触碰 `push_gitee.py`；validate/build/push 三段式跑通。
