@@ -1,0 +1,625 @@
+[
+  {
+    "id": 1,
+    "title": "US consumers' tariff support rises to 46%, but 56% say they foot the bill",
+    "titleZh": "美国消费者关税支持率升至46%，但56%承认涨价由自己买单",
+    "summary": "",
+    "summaryZh": "最新调查显示，美国消费者对关税支持率从2025年的34%升至46%，但56%认为涨价最终由消费者承担；受关税影响，线上购物月预算平均增加约190美元，更多人倾向'买美国制造'并回避国际卖家。",
+    "source": "Omnisend",
+    "country": "美国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.omnisend.com/latest-news/one-year-later-americans-support-for-tariffs-up-35-despite-spending-nearly-190-more-per-month",
+    "trendingTopics": [
+      "关税",
+      "消费信心",
+      "买美国制造",
+      "跨境直邮"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 2,
+    "title": "US de minimis not repealed; Shein/Temu orders taxed seamlessly",
+    "titleZh": "美国小额包裹关税并未取消，Shein/Temu订单征税'无缝衔接'",
+    "summary": "",
+    "summaryZh": "2026年2月美国最高法院裁定部分关税程序违宪后，白宫随即援引《1974年贸易法》第122条确认对全球进口征收10%临时附加税，800美元以下直邮小包不再免税，终端零售价预计上涨10%-15%。",
+    "source": "正观新闻",
+    "country": "美国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://wap.zhengguannews.cn/html/zgh/388954.html",
+    "trendingTopics": [
+      "小额包裹",
+      "de minimis",
+      "关税",
+      "直邮"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 3,
+    "title": "TikTok Shop US H1 GMV nearly doubled; new sellers drive 40% of growth",
+    "titleZh": "TikTok Shop美区上半年GMV近乎翻倍，新锐商家贡献40%增量",
+    "summary": "",
+    "summaryZh": "2026年上半年TikTok Shop美区跨境POP大盘GMV同比近乎翻倍，新锐商家贡献近40%增量；直播拍卖占商家直播增量的90%，内容+货架复合渠道已常态化运营。",
+    "source": "跨境周报",
+    "country": "美国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.aicangping.com/article/65.html",
+    "trendingTopics": [
+      "TikTok Shop",
+      "内容电商",
+      "直播带货",
+      "新锐商家"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 4,
+    "title": "Amazon US launches FBA 'refund-only' for items under $75",
+    "titleZh": "亚马逊美国站上线FBA'仅退款'：75美元以下商品可免退货解决",
+    "summary": "",
+    "summaryZh": "8月31日起亚马逊美国站更新Listing规则，售价低于75美元的商品可开通免退货'仅退款'方案（非强制）；部分商品属性字段从选填变必填，API与第三方ERP需同步。",
+    "source": "紫鸟浏览器",
+    "country": "美国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.superbrowser.com/blog/6122.html",
+    "trendingTopics": [
+      "亚马逊",
+      "FBA",
+      "仅退款",
+      "运营规则"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 5,
+    "title": "US Customs to enforce IOR importer registration from Sept 18",
+    "titleZh": "美国海关9月18日起强制执行IOR进口商备案核查",
+    "summary": "",
+    "summaryZh": "9月18日起美国海关强制执行IOR（进口商）备案信息核查，地址、邮箱、电话必须真实自有，违规编号将即时作废，进一步堵住不合规清关操作。",
+    "source": "紫鸟浏览器",
+    "country": "美国",
+    "category": "政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.superbrowser.com/blog/6122.html",
+    "trendingTopics": [
+      "IOR",
+      "进口商备案",
+      "清关合规"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 6,
+    "title": "Temu accelerates globalization with semi-managed + local shipping",
+    "titleZh": "Temu推半托管+本地发货绕开关税，加速全球化布局",
+    "summary": "",
+    "summaryZh": "面对欧盟与美国关税壁垒，Temu转向'海外仓+本地商+半托管'组合，以'欧盟境内发货'标签绕开跨境小包税，并筹备中东站点，标志粗放直邮时代落幕。",
+    "source": "蜂窝跨境",
+    "country": "美国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "http://fw-kj.com/news/list_3_38.html",
+    "trendingTopics": [
+      "Temu",
+      "半托管",
+      "海外仓",
+      "关税规避"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 7,
+    "title": "UK energy bills set to hit three-year high from October as inflation returns to 2.9%",
+    "titleZh": "英国能源账单10月将涨至三年高位，通胀回升至2.9%",
+    "summary": "",
+    "summaryZh": "Ofgem价格上限10月起上调4%，典型家庭年账单升至约£1,723（部分口径£1,862），为三年来最高；7月英国CPI已因能源推高至2.9%，电费5%增值税将从10月取消以缓解压力。",
+    "source": "Al Mayadeen",
+    "country": "英国",
+    "category": "能源",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "high",
+    "ecommerceImpact": false,
+    "publishedAt": "2026-09-09",
+    "url": "http://english.almayadeen.net/news/Economy/uk-energy-bills-set-to-hit-three-year-high-from-october",
+    "trendingTopics": [
+      "能源账单",
+      "通胀",
+      "冬季取暖",
+      "生活成本"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 8,
+    "title": "Over a third of UK households cut heating, some skip hot meals to save on energy",
+    "titleZh": "英国超三分之一家庭削减取暖，有人为省能源不吃热饭",
+    "summary": "",
+    "summaryZh": "能源价格联盟调查显示，超三分之一英国家庭已降低洗衣机温度或停供暖气房；约五分之一在寒潮期提早睡觉取暖或只暖一个房间，十分之一甚至为省电不吃热饭。",
+    "source": "Al Mayadeen / End Fuel Poverty Coalition",
+    "country": "英国",
+    "category": "能源",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "high",
+    "ecommerceImpact": false,
+    "publishedAt": "2026-09-09",
+    "url": "http://english.almayadeen.net/news/Economy/uk-energy-bills-set-to-hit-three-year-high-from-october",
+    "trendingTopics": [
+      "能源贫困",
+      "取暖",
+      "生活成本",
+      "削减开支"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 9,
+    "title": "Amazon UK tightens FBM handling time from Sept 1; B2B on-time rate must hit 90%",
+    "titleZh": "亚马逊英国站9月1日收紧FBM处理时效，企业订单准时率须达90%",
+    "summary": "",
+    "summaryZh": "9月1日起，若某SKU处理时间持续30天以上慢于实际表现至少1天，系统自动启用'自动处理时间'；9月30日起企业订单营业时间妥投率(BHDR)须≥90%，未达标相关Listing将限制向企业买家展示。",
+    "source": "讯通标准",
+    "country": "英国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.nbxt-cert.com/9yueqianzuihouchongcisidakuajingdianshangpingtaiheguizhamenjielianluoxiazhefendaojishiqingdanqingli.html",
+    "trendingTopics": [
+      "亚马逊",
+      "FBM",
+      "履约时效",
+      "B2B"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 10,
+    "title": "German gas storage at lowest since 2009; winter prices could spike to €80-100/MWh",
+    "titleZh": "德国天然气储备降至2009年来最低，冬季气价或飙至€80-100/MWh",
+    "summary": "",
+    "summaryZh": "德国储气库填充率仅51%，为2009年有记录以来同期最低；欧洲气价受霍尔木兹海峡封锁影响已逼近€70/MWh，分析称若严冬可能升至€80-100。德国家庭电价本就比欧盟均值高1/3。",
+    "source": "AOL / Telegraph",
+    "country": "德国",
+    "category": "能源",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "high",
+    "ecommerceImpact": false,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.aol.com/articles/gas-crisis-threatens-blow-germany-050000000.html",
+    "trendingTopics": [
+      "天然气",
+      "储气库",
+      "冬季气价",
+      "能源危机"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 11,
+    "title": "Germany 2026 power prices stable to lower as government subsidizes grid fees",
+    "titleZh": "德国2026电价稳中有降，政府补贴压低电网费",
+    "summary": "",
+    "summaryZh": "RWE预计2026年电价下行：联邦政府65亿欧元补贴电网费，家庭电价约32.8欧分/度，新签特殊合约可低至25-30欧分；但2027年ETS-2生效后供暖与交通碳价将转嫁至家庭账单。",
+    "source": "Clean Energy Wire",
+    "country": "德国",
+    "category": "能源",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": false,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.cleanenergywire.org/news/rwe-expects-downward-trend-germanys-electricity-and-gas-prices-2026",
+    "trendingTopics": [
+      "电价",
+      "电网费补贴",
+      "ETS-2",
+      "可再生能源"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 12,
+    "title": "Amazon Europe enforces MRN+EORI from Sept 1; Pan-EU inbound window cut to 7 days",
+    "titleZh": "亚马逊欧洲9月新规：MRN+EORI成强制门槛，泛欧入仓时效压缩至7天",
+    "summary": "",
+    "summaryZh": "9月1日起亚马逊欧洲站对非欧盟注册卖家强制执行MRN与EORI收集，货件签收后60天未补全将锁定新建FBA权限；欧洲五国FBA入仓缓冲窗口由14天压缩至7天，德国16个类目退货期30→14天。",
+    "source": "跨境周报",
+    "country": "德国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.aicangping.com/article/65.html",
+    "trendingTopics": [
+      "亚马逊欧洲",
+      "MRN",
+      "EORI",
+      "合规门槛"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 13,
+    "title": "EU PPWR packaging law fully in force Aug 12; platforms tighten EPR registration",
+    "titleZh": "欧盟PPWR包装法8月12日全面生效，各大平台收紧EPR注册",
+    "summary": "",
+    "summaryZh": "欧盟《包装与包装废弃物法规》(PPWR)已于2026年8月12日全面生效，亚马逊、速卖通、Temu、SHEIN、eBay等已收紧监管：须在各销售国完成EPR注册、满足重金属限值、食品接触包装过PFAS检测，否则限制销售。",
+    "source": "讯通标准",
+    "country": "德国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.nbxt-cert.com/9yueqianzuihouchongcisidakuajingdianshangpingtaiheguizhamenjielianluoxiazhefendaojishiqingdanqingli.html",
+    "trendingTopics": [
+      "PPWR",
+      "EPR",
+      "包装合规",
+      "欧盟"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 14,
+    "title": "German retail sales plunged 3.4% in July, steepest drop in eurozone",
+    "titleZh": "德国7月零售销售重挫3.4%，为欧元区最大拖累",
+    "summary": "",
+    "summaryZh": "欧元区7月零售环比下降0.6%（逾一年最大降幅），德国骤降3.4%居首，西班牙-0.9%、意大利-0.3%连续两月收缩；高利率、高能源价格与地缘不确定性持续压制家庭购买力。",
+    "source": "EcoPulse24",
+    "country": "德国",
+    "category": "经济",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": false,
+    "publishedAt": "2026-09-09",
+    "url": "https://ecopulse24.com/news/eurozone-retail-sales-drop-0-6-in-july-year-high-decline",
+    "trendingTopics": [
+      "零售销售",
+      "消费疲软",
+      "经济放缓",
+      "欧元"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 15,
+    "title": "EU ends 150€ de minimis; AliExpress fined €550M, Temu €200M",
+    "titleZh": "欧盟取消150欧元以下小包免税，AliExpress罚5.5亿欧、Temu罚2亿欧",
+    "summary": "",
+    "summaryZh": "2026年7月1日起欧盟取消150欧元以下跨境小包关税豁免，每件按品类加收3欧元固定关税，11月起再加2欧元清关处理费；欧盟还以违反《数字服务法》对AliExpress开罚5.5亿欧、Temu罚2亿欧。",
+    "source": "新浪财经",
+    "country": "德国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://news.sina.cn/bignews/insight/2026-07-26/detail-inikassk8785825.d.html",
+    "trendingTopics": [
+      "欧盟小包税",
+      "de minimis",
+      "平台罚款",
+      "DSA"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 16,
+    "title": "France 2026 e-commerce VAT: EU €3 duty + €2 France levy on parcels under 150€",
+    "titleZh": "法国电商增值税新规：150欧元以下包裹加征欧盟€3关税+法国€2费",
+    "summary": "",
+    "summaryZh": "2026年7月1日起欧盟取消低值包裹免税并征收3欧元/件关税；法国自3月1日起对欧盟外150欧元以下包裹按HS编码每件加征2欧元levy。无IOSS的包裹将在投递时由承运商向收件人代收，体验变差。",
+    "source": "Zonos",
+    "country": "法国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://docs.zonos.com/country-guides/europe/france",
+    "trendingTopics": [
+      "法国VAT",
+      "低值包裹费",
+      "IOSS",
+      "电商合规"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 17,
+    "title": "Amazon France requires SIREN/SIRET for B2B sales from Sept 1",
+    "titleZh": "亚马逊法国站9月1日起B2B销售须提交SIREN/SIRET企业资质",
+    "summary": "",
+    "summaryZh": "凡在亚马逊法国站向法国企业买家(B2B企业购)销售商品的卖家，均须向平台提供有效SIREN或SIRET；未按时提交将无法生成合规电子发票，法国B2B销售权限可能受限并面临税务处罚。",
+    "source": "讯通标准",
+    "country": "法国",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.nbxt-cert.com/9yueqianzuihouchongcisidakuajingdianshangpingtaiheguizhamenjielianluoxiazhefendaojishiqingdanqingli.html",
+    "trendingTopics": [
+      "亚马逊法国",
+      "SIREN",
+      "B2B",
+      "税务合规"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 18,
+    "title": "Eurozone retail rose 1.6% in May; France +1.1% on public-sector wage hikes",
+    "titleZh": "欧元区5月零售增1.6%超预期，法国受公职加薪提振+1.1%",
+    "summary": "",
+    "summaryZh": "欧盟统计局数据显示，欧元区5月零售同比+1.6%（远超预期0.3%），为非食品销售拉动；德国+2.4%、西班牙+3.0%领跑，法国+1.1%、意大利仅+0.2%，复苏分化明显。",
+    "source": "FAZEN Markets",
+    "country": "法国",
+    "category": "经济",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": false,
+    "publishedAt": "2026-09-09",
+    "url": "https://fazen.markets/en/eurozone-retail-sales-rise-1-6-percent-may-2026-above-expectations",
+    "trendingTopics": [
+      "零售销售",
+      "欧元区",
+      "消费复苏",
+      "公职加薪"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 19,
+    "title": "Spain leads European retail growth, forecast +3.4% in 2026",
+    "titleZh": "西班牙零售销售领跑欧洲，2026年预计增长3.4%",
+    "summary": "",
+    "summaryZh": "多家机构预测西班牙2026年零售销售增速居欧洲前列（Savills +3.4%、MarketMaze +4.1%），受益于旅游复苏与强劲内需；电商区域动能持续，西班牙兼具规模与增长势头。",
+    "source": "MarketMaze / Savills",
+    "country": "西班牙",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "https://www.marketmaze.me/p/western-europe-retail-growth",
+    "trendingTopics": [
+      "西班牙零售",
+      "旅游复苏",
+      "电商增长",
+      "内需"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 20,
+    "title": "Eurozone retail fell 0.6% in July; Spain -0.9%, Italy -0.3%",
+    "titleZh": "欧元区7月零售意外下滑0.6%，西班牙-0.9%、意大利-0.3%",
+    "summary": "",
+    "summaryZh": "欧元区7月零售环比下降0.6%（逾一年最大降幅），西班牙降0.9%、意大利连续两月收缩降0.3%，德国重挫3.4%；食品等必需品抗跌，非食品 discretionary 品类明显走弱。",
+    "source": "EcoPulse24",
+    "country": "西班牙",
+    "category": "经济",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": false,
+    "publishedAt": "2026-09-09",
+    "url": "https://ecopulse24.com/news/eurozone-retail-sales-drop-0-6-in-july-year-high-decline",
+    "trendingTopics": [
+      "零售下滑",
+      "消费承压",
+      "非食品",
+      "欧元"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 21,
+    "title": "Amazon Spain FBA inbound window compressed under new Europe rules",
+    "titleZh": "亚马逊西班牙站FBA入仓时效随欧洲新规同步压缩",
+    "summary": "",
+    "summaryZh": "随9月1日亚马逊欧洲物流新规，西班牙等五国FBA对非合作承运商国际入仓货件的送达缓冲窗口由14天压缩至7天，卖家旺季备货时效被严控，需提前规划头程。",
+    "source": "蜂窝跨境",
+    "country": "西班牙",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "http://fw-kj.com/news/list_3_38.html",
+    "trendingTopics": [
+      "亚马逊西班牙",
+      "FBA",
+      "入仓时效",
+      "旺季备货"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 22,
+    "title": "Italy's retail growth sluggish, forecast only +0.6% in 2026",
+    "titleZh": "意大利零售增长乏力，2026年预计仅增0.6%",
+    "summary": "",
+    "summaryZh": "Savills数据显示意大利零售销售2025年微降0.2%，2026年预计仅回升0.6%-0.7%；MarketMaze指出意大利仍存在数字买家采纳差距，需要教育、信任与更低摩擦的入门路径。",
+    "source": "Savills / MarketMaze",
+    "country": "意大利",
+    "category": "经济",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": false,
+    "publishedAt": "2026-09-09",
+    "url": "https://pdf.euro.savills.co.uk/italy/2025-spotlight-european-factory-outlet-report.pdf",
+    "trendingTopics": [
+      "意大利零售",
+      "消费乏力",
+      "数字采纳",
+      "复苏缓慢"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 23,
+    "title": "Italy retail contracts two months running; July -0.3%",
+    "titleZh": "意大利零售连续两月收缩，7月再降0.3%",
+    "summary": "",
+    "summaryZh": "继6月后，意大利7月零售环比再降0.3%，为欧元区内需偏弱的代表；高利率与能源价格持续压制家庭购买力， discretionary 品类承压。",
+    "source": "EcoPulse24",
+    "country": "意大利",
+    "category": "经济",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": false,
+    "publishedAt": "2026-09-09",
+    "url": "https://ecopulse24.com/news/eurozone-retail-sales-drop-0-6-in-july-year-high-decline",
+    "trendingTopics": [
+      "零售收缩",
+      "内需偏弱",
+      "消费信心",
+      "欧元"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  },
+  {
+    "id": 24,
+    "title": "Amazon Italy FBA inbound tightened under Sept Europe logistics rules",
+    "titleZh": "亚马逊意大利站FBA入仓随欧洲物流新规收紧",
+    "summary": "",
+    "summaryZh": "9月1日欧洲物流新规同步落地意大利：FBA对非合作承运商国际入仓货件缓冲窗口压缩至7天，卖家需确保头程时效与GPSR等信息合规，避免旺季入仓延误。",
+    "source": "蜂窝跨境",
+    "country": "意大利",
+    "category": "电商",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-09",
+    "url": "http://fw-kj.com/news/list_3_38.html",
+    "trendingTopics": [
+      "亚马逊意大利",
+      "FBA",
+      "物流新规",
+      "GPSR"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-09"
+  }
+]
