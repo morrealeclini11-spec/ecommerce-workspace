@@ -1,1514 +1,6 @@
 [
   {
     "id": 1,
-    "name": "COSLUS Sonic Electric Toothbrush for Adults: 3 Intensities & 5 Modes G",
-    "nameZh": "COSLUS Sonic  Toothbrush",
-    "platform": "amazon",
-    "category": "智能家居",
-    "price": 7.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 1379,
-    "monthlySales": 40000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61bhnwi7P6L._AC_UY512_.jpg",
-    "alibabaPrice": 25,
-    "pros": [
-      "复购配件多",
-      "客单价高"
-    ],
-    "cons": [
-      "需联网设置",
-      "兼容性顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%9B%91%E6%8E%A7%E6%91%84%E5%83%8F%E5%A4%B4%20%E6%97%A0%E7%BA%BF",
-    "sellUrl": "https://www.amazon.com/dp/B0FKB289VY",
-    "growth": "爆发"
-  },
-  {
-    "id": 2,
-    "name": "Pocket Hose Ballistic 50 FT Expandable Garden Hose, No-Kink, As Seen o",
-    "nameZh": "Pocket Hose Ballistic 50 FT Expandable 伸缩水管",
-    "platform": "amazon",
-    "category": "户外用品",
-    "price": 47.49,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 1135,
-    "monthlySales": 30000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71xkge21xzL._AC_UY512_.jpg",
-    "alibabaPrice": 150,
-    "pros": [
-      "露营刚需",
-      "季节性强",
-      "客单价中"
-    ],
-    "cons": [
-      "续航顾虑",
-      "体积偏大"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%BC%B8%E7%BC%A9%E6%B0%B4%E7%AE%A1%20%E8%8A%B1%E5%9B%AD%20%E6%B5%87%E8%8A%B1",
-    "sellUrl": "https://www.amazon.com/dp/B0GWFN7Y8T",
-    "growth": "爆发"
-  },
-  {
-    "id": 3,
-    "name": "Ninja Kitchen System | All-in-One for Smoothies, Frozen Drinks, Veggie",
-    "nameZh": "Ninja Kitchen System",
-    "platform": "amazon",
-    "category": "厨房电器",
-    "price": 219.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.8,
-    "reviewCount": 1016,
-    "monthlySales": 20000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71oVNalXFML._AC_UY512_.jpg",
-    "alibabaPrice": 693,
-    "pros": [
-      "高频使用",
-      "家庭必需品",
-      "好评率高"
-    ],
-    "cons": [
-      "需认证",
-      "售后成本高"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A0%B4%E5%A3%81%E6%9C%BA%20%E6%90%85%E6%8B%8C%20%E5%A4%9A%E5%8A%9F%E8%83%BD",
-    "sellUrl": "https://www.amazon.com/dp/B0CKTY2QT4",
-    "growth": "爆发"
-  },
-  {
-    "id": 4,
-    "name": "Ninja Flip Toaster Oven & Air Fryer, 8-in-1, Stainless Steel, SP151 | ",
-    "nameZh": "Ninja Flip Toaster Oven & 空气炸锅",
-    "platform": "amazon",
-    "category": "厨房电器",
-    "price": 248.29,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.3,
-    "reviewCount": 1890,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81wOCABev4L._AC_UY512_.jpg",
-    "alibabaPrice": 782,
-    "pros": [
-      "高频使用",
-      "家庭必需品",
-      "好评率高"
-    ],
-    "cons": [
-      "需认证",
-      "售后成本高"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85%20%E5%A4%A7%E5%AE%B9%E9%87%8F",
-    "sellUrl": "https://www.amazon.com/dp/B0D1CXL52G",
-    "growth": "爆发"
-  },
-  {
-    "id": 5,
-    "name": "Ninja Professional Blender 2.0 | Smoothie Maker, Drink Mixer, Grinder,",
-    "nameZh": "Ninja Professional Blender 2.0",
-    "platform": "amazon",
-    "category": "厨房电器",
-    "price": 109.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.7,
-    "reviewCount": 2042,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61rZJywpS-L._AC_UY512_.jpg",
-    "alibabaPrice": 346,
-    "pros": [
-      "高频使用",
-      "家庭必需品",
-      "好评率高"
-    ],
-    "cons": [
-      "需认证",
-      "售后成本高"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A0%B4%E5%A3%81%E6%9C%BA%20%E6%90%85%E6%8B%8C%20%E5%A4%9A%E5%8A%9F%E8%83%BD",
-    "sellUrl": "https://www.amazon.com/dp/B0CKTYP1JT",
-    "growth": "爆发"
-  },
-  {
-    "id": 6,
-    "name": "Aurzen Roku TV Smart Projector with Wifi and Bluetooth, Roku TV Built-",
-    "nameZh": "Aurzen Roku TV  Projector",
-    "platform": "amazon",
-    "category": "智能家居",
-    "price": 139.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 831,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71M3XVYabdL._AC_UY512_.jpg",
-    "alibabaPrice": 441,
-    "pros": [
-      "复购配件多",
-      "客单价高"
-    ],
-    "cons": [
-      "需联网设置",
-      "兼容性顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%8A%95%E5%BD%B1%E4%BB%AA%20%E5%AE%B6%E7%94%A8%201080p",
-    "sellUrl": "https://www.amazon.com/dp/B0FKMHPCCB",
-    "growth": "爆发"
-  },
-  {
-    "id": 7,
-    "name": "Ring Wired Doorbell 4K Pro (Newest Model), Retinal 4K with wide-angle ",
-    "nameZh": "Ring Wired Doorbell 4K",
-    "platform": "amazon",
-    "category": "智能家居",
-    "price": 179.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.3,
-    "reviewCount": 1487,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/51cJpjaOeEL._AC_UY512_.jpg",
-    "alibabaPrice": 567,
-    "pros": [
-      "复购配件多",
-      "客单价高"
-    ],
-    "cons": [
-      "需联网设置",
-      "兼容性顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%AF%E8%A7%86%E9%97%A8%E9%93%83%20%E6%99%BA%E8%83%BD",
-    "sellUrl": "https://www.amazon.com/dp/B0F151GFYR",
-    "growth": "爆发"
-  },
-  {
-    "id": 8,
-    "name": "Ring Wired Doorbell 2K (newest model), Retinal 2K with wide-angle vide",
-    "nameZh": "Ring Wired Doorbell 2K",
-    "platform": "amazon",
-    "category": "智能家居",
-    "price": 79.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.2,
-    "reviewCount": 1788,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61n7iGuzf9L._AC_UY512_.jpg",
-    "alibabaPrice": 252,
-    "pros": [
-      "复购配件多",
-      "客单价高"
-    ],
-    "cons": [
-      "需联网设置",
-      "兼容性顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%AF%E8%A7%86%E9%97%A8%E9%93%83%20%E6%99%BA%E8%83%BD",
-    "sellUrl": "https://www.amazon.com/dp/B0FJJ66YZ1",
-    "growth": "爆发"
-  },
-  {
-    "id": 9,
-    "name": "Orbitell 1080p Wireless Wi-Fi Video Doorbell Camera with Two Way Audio",
-    "nameZh": "Orbitell 1080p  Wi-Fi Video Doorbell Camera",
-    "platform": "amazon",
-    "category": "智能家居",
-    "price": 9.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 3.8,
-    "reviewCount": 2354,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71R2w3k1c8L._AC_UY512_.jpg",
-    "alibabaPrice": 31,
-    "pros": [
-      "复购配件多",
-      "客单价高"
-    ],
-    "cons": [
-      "需联网设置",
-      "兼容性顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%AF%E8%A7%86%E9%97%A8%E9%93%83%20%E6%99%BA%E8%83%BD",
-    "sellUrl": "https://www.amazon.com/dp/B0FX35FCC7",
-    "growth": "爆发"
-  },
-  {
-    "id": 10,
-    "name": "Camco EvoFlex2 50-ft Drinking Water Hose - RV Drinking Water Hose Rein",
-    "nameZh": "Camco EvoFlex2 50-ft Drinking Water 伸缩水管",
-    "platform": "amazon",
-    "category": "户外用品",
-    "price": 23.97,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 1618,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/91O2uN9vbpL._AC_UY512_.jpg",
-    "alibabaPrice": 76,
-    "pros": [
-      "露营刚需",
-      "季节性强",
-      "客单价中"
-    ],
-    "cons": [
-      "续航顾虑",
-      "体积偏大"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%BC%B8%E7%BC%A9%E6%B0%B4%E7%AE%A1%20%E8%8A%B1%E5%9B%AD%20%E6%B5%87%E8%8A%B1",
-    "sellUrl": "https://www.amazon.com/dp/B09Z6VPFWD",
-    "growth": "爆发"
-  },
-  {
-    "id": 11,
-    "name": "Relxitl Garden Hose, Flexible Water Hose, Ultra Lightweight Non-Expand",
-    "nameZh": "Relxitl 伸缩水管",
-    "platform": "amazon",
-    "category": "户外用品",
-    "price": 28.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.2,
-    "reviewCount": 1969,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81Xj7EplQJL._AC_UY512_.jpg",
-    "alibabaPrice": 91,
-    "pros": [
-      "露营刚需",
-      "季节性强",
-      "客单价中"
-    ],
-    "cons": [
-      "续航顾虑",
-      "体积偏大"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%BC%B8%E7%BC%A9%E6%B0%B4%E7%AE%A1%20%E8%8A%B1%E5%9B%AD%20%E6%B5%87%E8%8A%B1",
-    "sellUrl": "https://www.amazon.com/dp/B0DQD9M1WV",
-    "growth": "爆发"
-  },
-  {
-    "id": 12,
-    "name": "Miniature Frog Garden Statue Gifts Valentines Day Decorations Fairy Ga",
-    "nameZh": "Miniature Frog Garden Statue Gifts Valentines Day Decorations Fairy Garden Accessories Outdoor Lights Solar Garden Frog Decor Art Housewarming Gift",
-    "platform": "amazon",
-    "category": "户外用品",
-    "price": 19.77,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 1714,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71ZLNdfUbwL._AC_UY512_.jpg",
-    "alibabaPrice": 62,
-    "pros": [
-      "露营刚需",
-      "季节性强",
-      "客单价中"
-    ],
-    "cons": [
-      "续航顾虑",
-      "体积偏大"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E8%8A%B1%E5%9B%AD%E6%91%86%E4%BB%B6%20%E9%9B%95%E5%A1%91%20%E8%A3%85%E9%A5%B0",
-    "sellUrl": "https://www.amazon.com/dp/B0B6B8TDRW",
-    "growth": "爆发"
-  },
-  {
-    "id": 13,
-    "name": "Solar Lanterns Outdoor Waterproof Hummingbird Garden Decor Gifts for W",
-    "nameZh": "Solar Lanterns Outdoor Waterproof Hummingbird Garden Decor Gifts",
-    "platform": "amazon",
-    "category": "户外用品",
-    "price": 22.93,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 2134,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81cB6Ux-HXL._AC_UY512_.jpg",
-    "alibabaPrice": 72,
-    "pros": [
-      "露营刚需",
-      "季节性强",
-      "客单价中"
-    ],
-    "cons": [
-      "续航顾虑",
-      "体积偏大"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E8%8A%B1%E5%9B%AD%E6%91%86%E4%BB%B6%20%E9%9B%95%E5%A1%91%20%E8%A3%85%E9%A5%B0",
-    "sellUrl": "https://www.amazon.com/dp/B0CQCCB95G",
-    "growth": "爆发"
-  },
-  {
-    "id": 14,
-    "name": "DIY Bonsai Tree Kit for Beginners – 5X Unique Japanese Bonzai Trees | ",
-    "nameZh": "DIY Bonsai Tree Kit",
-    "platform": "amazon",
-    "category": "户外用品",
-    "price": 39.89,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.4,
-    "reviewCount": 1444,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/91umwNTYXzL._AC_UY512_.jpg",
-    "alibabaPrice": 126,
-    "pros": [
-      "露营刚需",
-      "季节性强",
-      "客单价中"
-    ],
-    "cons": [
-      "续航顾虑",
-      "体积偏大"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E8%8A%B1%E5%9B%AD%E6%91%86%E4%BB%B6%20%E9%9B%95%E5%A1%91%20%E8%A3%85%E9%A5%B0",
-    "sellUrl": "https://www.amazon.com/dp/B0CW6LQ4QR",
-    "growth": "爆发"
-  },
-  {
-    "id": 15,
-    "name": "Brightown 52FT Solar String Lights Outdoor Waterproof, Patio Lights wi",
-    "nameZh": "Brightown 52FT Solar LED串灯",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 19.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.4,
-    "reviewCount": 2350,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71tWLhWFbwL._AC_UY512_.jpg",
-    "alibabaPrice": 63,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B8%B2%E7%81%AF%20%E8%8A%82%E6%97%A5%20%E8%A3%85%E9%A5%B0%E7%81%AF",
-    "sellUrl": "https://www.amazon.com/dp/B0FYPGR48K",
-    "growth": "爆发"
-  },
-  {
-    "id": 16,
-    "name": "Fake Vines for Room Decor(12 Pack 84 Feet) Aesthetic Artificial Plant ",
-    "nameZh": "Fake Vines",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 5.64,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.4,
-    "reviewCount": 2135,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/91wNpaCOdcL._AC_UY512_.jpg",
-    "alibabaPrice": 18,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%A9%9A%E7%A4%BC%E8%A3%85%E9%A5%B0%20%E8%83%8C%E6%99%AF%20%E6%8B%89%E6%97%97",
-    "sellUrl": "https://www.amazon.com/dp/B0D6KDW17P",
-    "growth": "爆发"
-  },
-  {
-    "id": 17,
-    "name": "ANDOLL HOME Automatic Cat Feeder, 4L Cat Food Dispenser with 10s Voice",
-    "nameZh": "ANDOLL  Automatic Cat 宠物喂食器",
-    "platform": "amazon",
-    "category": "宠物用品",
-    "price": 30.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 2754,
-    "monthlySales": 10000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61jan--2yZL._AC_UY512_.jpg",
-    "alibabaPrice": 98,
-    "pros": [
-      "宠物经济热",
-      "粘性强"
-    ],
-    "cons": [
-      "需适配粮型",
-      "卡粮顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%AE%A0%E7%89%A9%E5%96%82%E9%A3%9F%E5%99%A8%20%E8%87%AA%E5%8A%A8%20%E5%AE%9A%E6%97%B6",
-    "sellUrl": "https://www.amazon.com/dp/B0DF7H6SGZ",
-    "growth": "爆发"
-  },
-  {
-    "id": 18,
-    "name": "Kakanuo Cordless Table Lamp Rechargeable Black - KK 2 Pack 5000mAH Bat",
-    "nameZh": "Kakanuo Cordless Table Lamp  Black - KK 2 Pack 5000mAH Battery Operated Lamp",
-    "platform": "amazon",
-    "category": "家居照明",
-    "price": 19.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 1524,
-    "monthlySales": 9000,
-    "imageUrl": "https://m.media-amazon.com/images/I/51hGSTESgyL._AC_UY512_.jpg",
-    "alibabaPrice": 63,
-    "pros": [
-      "装饰属性强",
-      "安装简单"
-    ],
-    "cons": [
-      "胶力参差",
-      "需插电"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%B0%E7%81%AF%20%E6%8A%A4%E7%9C%BC%20%E5%85%85%E7%94%B5",
-    "sellUrl": "https://www.amazon.com/dp/B0DJYBF17N",
-    "growth": "爆发"
-  },
-  {
-    "id": 19,
-    "name": "50ft-Solar-Powered-Lights-Outdoor-Waterproof-String Lights-Outside-Pat",
-    "nameZh": "50ft-Solar-Powered-Lights-Outdoor-Waterproof LED串灯",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 13.29,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 1159,
-    "monthlySales": 9000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81DdJJbPVhL._AC_UY512_.jpg",
-    "alibabaPrice": 42,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B8%B2%E7%81%AF%20%E8%8A%82%E6%97%A5%20%E8%A3%85%E9%A5%B0%E7%81%AF",
-    "sellUrl": "https://www.amazon.com/dp/B0G6YJZ3VK",
-    "growth": "爆发"
-  },
-  {
-    "id": 20,
-    "name": "24 Pack Fairy Lights Battery Operated [3 Modes] 7ft 20 LED Mini Twinkl",
-    "nameZh": "24 Pack Fairy Lights Battery Operated [3 Modes] 7ft 20 LED  Twinkle String Lights Waterproof Silver Wire Firefly Starry Lights 圣诞装饰",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 9.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.4,
-    "reviewCount": 2188,
-    "monthlySales": 9000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81YK+BKeKLL._AC_UY512_.jpg",
-    "alibabaPrice": 31,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9C%A3%E8%AF%9E%E8%A3%85%E9%A5%B0%20%E6%8C%82%E4%BB%B6%20%E6%91%86%E4%BB%B6",
-    "sellUrl": "https://www.amazon.com/dp/B0FH6Z5TH8",
-    "growth": "爆发"
-  },
-  {
-    "id": 21,
-    "name": "Amagic 1000 Pieces Artificial Rose Petals with 12 Heart LED Tea Lights",
-    "nameZh": "Amagic 1000 Pieces Artificial Rose Petals 电子蜡烛",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 6.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.7,
-    "reviewCount": 1265,
-    "monthlySales": 8000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61fsvIoie0L._AC_UY512_.jpg",
-    "alibabaPrice": 22,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E5%AD%90%E8%9C%A1%E7%83%9B%20%E6%97%A0%E7%83%9F%20%E9%81%A5%E6%8E%A7",
-    "sellUrl": "https://www.amazon.com/dp/B0DNF8MNW9",
-    "growth": "爆发"
-  },
-  {
-    "id": 22,
-    "name": "100FT Solar String Lights Outdoor Waterproof with Remote & Timer, LED ",
-    "nameZh": "100FT Solar String Lights Outdoor Waterproof 太阳能庭院灯",
-    "platform": "amazon",
-    "category": "户外用品",
-    "price": 29.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.2,
-    "reviewCount": 1223,
-    "monthlySales": 7000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71CfqyqgpIL._AC_UY512_.jpg",
-    "alibabaPrice": 94,
-    "pros": [
-      "露营刚需",
-      "季节性强",
-      "客单价中"
-    ],
-    "cons": [
-      "续航顾虑",
-      "体积偏大"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%A4%AA%E9%98%B3%E8%83%BD%E7%81%AF%20%E6%88%B7%E5%A4%96%20%E5%BA%AD%E9%99%A2",
-    "sellUrl": "https://www.amazon.com/dp/B0FPWD3R4H",
-    "growth": "爆发"
-  },
-  {
-    "id": 23,
-    "name": "probebi Retractable Baby, Child & Dog Gates for Stairs, Extends to 54\"",
-    "nameZh": "probebi Retractable Baby",
-    "platform": "amazon",
-    "category": "宠物用品",
-    "price": 29.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.3,
-    "reviewCount": 2199,
-    "monthlySales": 7000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81VIx+ey+wL._AC_UY512_.jpg",
-    "alibabaPrice": 94,
-    "pros": [
-      "宠物经济热",
-      "粘性强"
-    ],
-    "cons": [
-      "需适配粮型",
-      "卡粮顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%AE%A0%E7%89%A9%E6%A5%BC%E6%A2%AF%20%E5%BA%8A%E8%BE%B9%20%E6%8A%A4%E5%85%B3%E8%8A%82",
-    "sellUrl": "https://www.amazon.com/dp/B0CJXC7YTC",
-    "growth": "爆发"
-  },
-  {
-    "id": 24,
-    "name": "Elite Gourmet ERC003BX Electric Rice Cooker with Automatic Keep Warm M",
-    "nameZh": "Elite Gourmet ERC003BX  Rice Cooker",
-    "platform": "amazon",
-    "category": "厨房电器",
-    "price": 17.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 3.8,
-    "reviewCount": 524,
-    "monthlySales": 6000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71qkl7admwL._AC_UY512_.jpg",
-    "alibabaPrice": 57,
-    "pros": [
-      "高频使用",
-      "家庭必需品",
-      "好评率高"
-    ],
-    "cons": [
-      "需认证",
-      "售后成本高"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E9%A5%AD%E7%85%B2%20%E6%99%BA%E8%83%BD%20%E9%A2%84%E7%BA%A6",
-    "sellUrl": "https://www.amazon.com/dp/B0FVZTF34R",
-    "growth": "爆发"
-  },
-  {
-    "id": 25,
-    "name": "Govee RGBIC Smart Table Lamp 2, Touch Bedside Small Table Lamp Compati",
-    "nameZh": "Govee RGBIC  Table Lamp 2",
-    "platform": "amazon",
-    "category": "家居照明",
-    "price": 63.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.7,
-    "reviewCount": 2319,
-    "monthlySales": 6000,
-    "imageUrl": "https://m.media-amazon.com/images/I/618yTEtHltL._AC_UY512_.jpg",
-    "alibabaPrice": 202,
-    "pros": [
-      "装饰属性强",
-      "安装简单"
-    ],
-    "cons": [
-      "胶力参差",
-      "需插电"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%B0%E7%81%AF%20%E6%8A%A4%E7%9C%BC%20%E5%85%85%E7%94%B5",
-    "sellUrl": "https://www.amazon.com/dp/B0D41XL87F",
-    "growth": "爆发"
-  },
-  {
-    "id": 26,
-    "name": "EZVALO 10inch Under Cabinet Lighting, LED Motion Sensor Light Indoor, ",
-    "nameZh": "EZVALO 10inch Under Cabinet Lighting",
-    "platform": "amazon",
-    "category": "家居照明",
-    "price": 12.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 1689,
-    "monthlySales": 6000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61KtDqBIfRL._AC_UY512_.jpg",
-    "alibabaPrice": 41,
-    "pros": [
-      "装饰属性强",
-      "安装简单"
-    ],
-    "cons": [
-      "胶力参差",
-      "需插电"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%A9%B1%E6%9F%9C%E7%81%AF%20%E6%84%9F%E5%BA%94%20%E5%85%85%E7%94%B5",
-    "sellUrl": "https://www.amazon.com/dp/B0F7VV8512",
-    "growth": "爆发"
-  },
-  {
-    "id": 27,
-    "name": "Sweetcrispy 44 Inch Cat Tree Tower, Cat Climbing Tower with Natural Si",
-    "nameZh": "Sweetcrispy 44 Inch Cat Tree Tower",
-    "platform": "amazon",
-    "category": "宠物用品",
-    "price": 49.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 1422,
-    "monthlySales": 6000,
-    "imageUrl": "https://m.media-amazon.com/images/I/714brWYJ2hL._AC_UY512_.jpg",
-    "alibabaPrice": 157,
-    "pros": [
-      "宠物经济热",
-      "粘性强"
-    ],
-    "cons": [
-      "需适配粮型",
-      "卡粮顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%8C%AB%E7%88%AC%E6%9E%B6%20%E5%A4%9A%E5%B1%82%20%E7%8C%AB%E7%AA%9D",
-    "sellUrl": "https://www.amazon.com/dp/B0G2XYGPWY",
-    "growth": "爆发"
-  },
-  {
-    "id": 28,
-    "name": "Automatic Cat Feeder and Water Dispenser in Set with Pet Food Bowl,Gra",
-    "nameZh": "Automatic Cat 宠物喂食器",
-    "platform": "amazon",
-    "category": "宠物用品",
-    "price": 19.98,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.3,
-    "reviewCount": 1119,
-    "monthlySales": 6000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61+oec5BRwL._AC_UY512_.jpg",
-    "alibabaPrice": 63,
-    "pros": [
-      "宠物经济热",
-      "粘性强"
-    ],
-    "cons": [
-      "需适配粮型",
-      "卡粮顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%AE%A0%E7%89%A9%E5%96%82%E9%A3%9F%E5%99%A8%20%E8%87%AA%E5%8A%A8%20%E5%AE%9A%E6%97%B6",
-    "sellUrl": "https://www.amazon.com/dp/B0F9F27VFY",
-    "growth": "爆发"
-  },
-  {
-    "id": 29,
-    "name": "ROPVACNIC Robot Vacuum and Mop Combo 5200Pa Suction Robotic Cleaner | ",
-    "nameZh": "ROPVACNIC 扫地机器人",
-    "platform": "amazon",
-    "category": "智能家居",
-    "price": 99.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.3,
-    "reviewCount": 1750,
-    "monthlySales": 5000,
-    "imageUrl": "https://m.media-amazon.com/images/I/518+BuiWh6L._AC_UY512_.jpg",
-    "alibabaPrice": 315,
-    "pros": [
-      "复购配件多",
-      "客单价高"
-    ],
-    "cons": [
-      "需联网设置",
-      "兼容性顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%89%AB%E5%9C%B0%E6%9C%BA%E5%99%A8%E4%BA%BA%20%E5%85%A8%E8%87%AA%E5%8A%A8",
-    "sellUrl": "https://www.amazon.com/dp/B0GDXV2KJ4",
-    "growth": "爆发"
-  },
-  {
-    "id": 30,
-    "name": "Dicoool Touch Bedside Table Lamp with USB - 3 Way Dimmable Wood Lamp f",
-    "nameZh": "Dicoool Touch Bedside Table Lamp",
-    "platform": "amazon",
-    "category": "家居照明",
-    "price": 19.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 2948,
-    "monthlySales": 5000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71RL9RdCSzL._AC_UY512_.jpg",
-    "alibabaPrice": 63,
-    "pros": [
-      "装饰属性强",
-      "安装简单"
-    ],
-    "cons": [
-      "胶力参差",
-      "需插电"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%B0%E7%81%AF%20%E6%8A%A4%E7%9C%BC%20%E5%85%85%E7%94%B5",
-    "sellUrl": "https://www.amazon.com/dp/B0DD7JFK68",
-    "growth": "爆发"
-  },
-  {
-    "id": 31,
-    "name": "Spotted Play Orthopedic Dog Bed with Sides - Dog Sofa Beds for Medium ",
-    "nameZh": "Spotted Play Orthopedic 宠物床",
-    "platform": "amazon",
-    "category": "宠物用品",
-    "price": 29.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.7,
-    "reviewCount": 1480,
-    "monthlySales": 5000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81TFCzUnhoL._AC_UY512_.jpg",
-    "alibabaPrice": 94,
-    "pros": [
-      "宠物经济热",
-      "粘性强"
-    ],
-    "cons": [
-      "需适配粮型",
-      "卡粮顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%AE%A0%E7%89%A9%E7%AA%9D%20%E7%8B%97%E7%AA%9D%20%E8%AE%B0%E5%BF%86%E6%A3%89",
-    "sellUrl": "https://www.amazon.com/dp/B0DHVFWSRW",
-    "growth": "爆发"
-  },
-  {
-    "id": 32,
-    "name": "Globlazer Heavy Duty Cat Tree, 70 inch Sturdy Cat Tree for Indoor Cats",
-    "nameZh": "Globlazer Heavy Duty Cat Tree",
-    "platform": "amazon",
-    "category": "宠物用品",
-    "price": 99.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.7,
-    "reviewCount": 1351,
-    "monthlySales": 5000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81EHEngdraL._AC_UY512_.jpg",
-    "alibabaPrice": 315,
-    "pros": [
-      "宠物经济热",
-      "粘性强"
-    ],
-    "cons": [
-      "需适配粮型",
-      "卡粮顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%8C%AB%E7%88%AC%E6%9E%B6%20%E5%A4%9A%E5%B1%82%20%E7%8C%AB%E7%AA%9D",
-    "sellUrl": "https://www.amazon.com/dp/B0DGKR5MMP",
-    "growth": "爆发"
-  },
-  {
-    "id": 33,
-    "name": "Elevated Cat Bowl, Raised Cat Food and Water Bowl Set for Indoor Cats,",
-    "nameZh": "Elevated Cat Bowl 宠物喂食器",
-    "platform": "amazon",
-    "category": "宠物用品",
-    "price": 9.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 954,
-    "monthlySales": 5000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71EXuICQwoL._AC_UY512_.jpg",
-    "alibabaPrice": 31,
-    "pros": [
-      "宠物经济热",
-      "粘性强"
-    ],
-    "cons": [
-      "需适配粮型",
-      "卡粮顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%AE%A0%E7%89%A9%E5%96%82%E9%A3%9F%E5%99%A8%20%E8%87%AA%E5%8A%A8%20%E5%AE%9A%E6%97%B6",
-    "sellUrl": "https://www.amazon.com/dp/B0FCYTK9DT",
-    "growth": "爆发"
-  },
-  {
-    "id": 34,
-    "name": "Space Heater, WINHL Small Portable Electric Heaters for Indoor Use wit",
-    "nameZh": "Space Heater 取暖器",
-    "platform": "amazon",
-    "category": "家居电器",
-    "price": 29.97,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 1785,
-    "monthlySales": 4000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71gKoVlZF+L._AC_UY512_.jpg",
-    "alibabaPrice": 94,
-    "pros": [
-      "冬季刚需",
-      "使用频次高",
-      "复购稳定"
-    ],
-    "cons": [
-      "体积偏大",
-      "季节性强"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%96%E6%9A%96%E5%99%A8%20%E5%B0%8F%E5%9E%8B%20%E4%BE%BF%E6%90%BA%E5%BC%8F",
-    "sellUrl": "https://www.amazon.com/dp/B0F192PKMF",
-    "growth": "爆发"
-  },
-  {
-    "id": 35,
-    "name": "Mini Projector, Portable Projector with Wifi and Bluetooth, Built in A",
-    "nameZh": "Projector",
-    "platform": "amazon",
-    "category": "智能家居",
-    "price": 59.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 287,
-    "monthlySales": 4000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71WEgL0DCYL._AC_UY512_.jpg",
-    "alibabaPrice": 189,
-    "pros": [
-      "复购配件多",
-      "客单价高"
-    ],
-    "cons": [
-      "需联网设置",
-      "兼容性顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%8A%95%E5%BD%B1%E4%BB%AA%20%E5%AE%B6%E7%94%A8%201080p",
-    "sellUrl": "https://www.amazon.com/dp/B0GGH9DJ9Q",
-    "growth": "爆发"
-  },
-  {
-    "id": 36,
-    "name": "Brightown 60 LED Flower Solar String Lights Outdoor Waterproof Fairy L",
-    "nameZh": "Brightown 60 LED Flower Solar String Lights Outdoor Waterproof Fairy Lights",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 9.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 2931,
-    "monthlySales": 4000,
-    "imageUrl": "https://m.media-amazon.com/images/I/810L1A99NBL._AC_UY512_.jpg",
-    "alibabaPrice": 31,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9C%A3%E8%AF%9E%E7%81%AF%E4%B8%B2%20%E6%88%B7%E5%A4%96%20%E9%98%B2%E6%B0%B4",
-    "sellUrl": "https://www.amazon.com/dp/B0DJVMRP8H",
-    "growth": "爆发"
-  },
-  {
-    "id": 37,
-    "name": "Bedsure 3D Fleece Bubble Blanket for Couch - GentleSoft Cute White Thr",
-    "nameZh": "Bedsure 3D Fleece Bubble Blanket 电热毯",
-    "platform": "amazon",
-    "category": "家居电器",
-    "price": 16.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 902,
-    "monthlySales": 3000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71fbx7K6CNL._AC_UY512_.jpg",
-    "alibabaPrice": 54,
-    "pros": [
-      "冬季刚需",
-      "使用频次高",
-      "复购稳定"
-    ],
-    "cons": [
-      "体积偏大",
-      "季节性强"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E7%83%AD%E6%AF%AF%20%E5%8A%A0%E5%8E%9A%20%E5%8F%8C%E4%BA%BA",
-    "sellUrl": "https://www.amazon.com/dp/B0F6V1VWMP",
-    "growth": "爆发"
-  },
-  {
-    "id": 38,
-    "name": "roborock Qrevo S5V Robot Vacuum and Mop, FlexiArm Edge Mopping | 12,00",
-    "nameZh": "roborock Qrevo S5V 扫地机器人",
-    "platform": "amazon",
-    "category": "智能家居",
-    "price": 599.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.2,
-    "reviewCount": 1647,
-    "monthlySales": 3000,
-    "imageUrl": "https://m.media-amazon.com/images/I/51Br5OrimUL._AC_UY512_.jpg",
-    "alibabaPrice": 1890,
-    "pros": [
-      "复购配件多",
-      "客单价高"
-    ],
-    "cons": [
-      "需联网设置",
-      "兼容性顾虑"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%89%AB%E5%9C%B0%E6%9C%BA%E5%99%A8%E4%BA%BA%20%E5%85%A8%E8%87%AA%E5%8A%A8",
-    "sellUrl": "https://www.amazon.com/dp/B0DSP8J476",
-    "growth": "爆发"
-  },
-  {
-    "id": 39,
-    "name": "Brightown Outdoor String Lights Patio Lights 100FT ST38 Waterproof Dim",
-    "nameZh": "Brightown Outdoor String Lights Patio Lights 100FT ST38 Waterproof Dimmable",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 25.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.7,
-    "reviewCount": 1447,
-    "monthlySales": 3000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71aSG75ae8L._AC_UY512_.jpg",
-    "alibabaPrice": 82,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9C%A3%E8%AF%9E%E7%81%AF%E4%B8%B2%20%E6%88%B7%E5%A4%96%20%E9%98%B2%E6%B0%B4",
-    "sellUrl": "https://www.amazon.com/dp/B0F6YKFFG9",
-    "growth": "爆发"
-  },
-  {
-    "id": 40,
-    "name": "Artoid Mode Beige Gold Gauze Table Runner 120 Inch 10FT, Glitter Metal",
-    "nameZh": "Artoid Mode Beige Gold Gauze Table Runner 120 Inch 10FT",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 6.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 1074,
-    "monthlySales": 3000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81ic2RNusUL._AC_UY512_.jpg",
-    "alibabaPrice": 22,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%84%9F%E6%81%A9%E8%8A%82%E8%A3%85%E9%A5%B0%20%E6%91%86%E4%BB%B6",
-    "sellUrl": "https://www.amazon.com/dp/B0DSZXRDL7",
-    "growth": "爆发"
-  },
-  {
-    "id": 41,
-    "name": "Ultra Soft Cozy Faux Fur Throw Blanket, Fuzzy Plush Thick Bubble Blank",
-    "nameZh": "Soft Cozy Faux Fur 电热毯",
-    "platform": "amazon",
-    "category": "家居电器",
-    "price": 35.98,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.7,
-    "reviewCount": 1188,
-    "monthlySales": 2000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81LF56IxupL._AC_UY512_.jpg",
-    "alibabaPrice": 113,
-    "pros": [
-      "冬季刚需",
-      "使用频次高",
-      "复购稳定"
-    ],
-    "cons": [
-      "体积偏大",
-      "季节性强"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E7%83%AD%E6%AF%AF%20%E5%8A%A0%E5%8E%9A%20%E5%8F%8C%E4%BA%BA",
-    "sellUrl": "https://www.amazon.com/dp/B0D9VDW7N8",
-    "growth": "爆发"
-  },
-  {
-    "id": 42,
-    "name": "OLIXIS 9FT Outdoor Patio Umbrella, Patio Table Umbrella 9 Feet Sun Sha",
-    "nameZh": "OLIXIS 9FT Outdoor Patio Umbrella",
-    "platform": "amazon",
-    "category": "户外用品",
-    "price": 29.96,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 521,
-    "monthlySales": 2000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61sJDc2xK7L._AC_UY512_.jpg",
-    "alibabaPrice": 94,
-    "pros": [
-      "露营刚需",
-      "季节性强",
-      "客单价中"
-    ],
-    "cons": [
-      "续航顾虑",
-      "体积偏大"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%BA%AD%E9%99%A2%E9%81%AE%E9%98%B3%E4%BC%9E%20%E6%88%B7%E5%A4%96",
-    "sellUrl": "https://www.amazon.com/dp/B0FFS5HNWZ",
-    "growth": "爆发"
-  },
-  {
-    "id": 43,
-    "name": "110 PCS of Boho Pampas Grass Decor, Naturally Dried Pompas, Bunny Tail",
-    "nameZh": "110 PCS of Boho Pampas Grass Decor",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 13.98,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 1445,
-    "monthlySales": 2000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81A4Psti89L._AC_UY512_.jpg",
-    "alibabaPrice": 44,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": true,
-    "lastUpdated": "2026-09-09",
-    "stage": "new",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%84%9F%E6%81%A9%E8%8A%82%E8%A3%85%E9%A5%B0%20%E6%91%86%E4%BB%B6",
-    "sellUrl": "https://www.amazon.com/dp/B0BS3YZXHG",
-    "growth": "爆发"
-  },
-  {
-    "id": 44,
-    "name": "Energizer Alkaline Power AAA Batteries (32 Pack), Long-Lasting | For w",
-    "nameZh": "Energizer Alkaline Power AAA Batteries 圣诞装饰",
-    "platform": "amazon",
-    "category": "节庆装饰",
-    "price": 15.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.8,
-    "reviewCount": 58244,
-    "monthlySales": 80000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81pOmUuueWL._AC_UY512_.jpg",
-    "alibabaPrice": 50,
-    "pros": [
-      "节日氛围强",
-      "季节爆款",
-      "出片率高"
-    ],
-    "cons": [
-      "季节性强",
-      "需提前备货"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9C%A3%E8%AF%9E%E8%A3%85%E9%A5%B0%20%E6%8C%82%E4%BB%B6%20%E6%91%86%E4%BB%B6",
-    "sellUrl": "https://www.amazon.com/dp/B09RTVN5GN",
-    "growth": "上升"
-  },
-  {
-    "id": 45,
-    "name": "Chapin 20004 Pump Sprayer, 1-Gallon SureSpray Translucent Tank with an",
-    "nameZh": "Chapin 20004 Pump 园艺工具",
-    "platform": "amazon",
-    "category": "户外用品",
-    "price": 15.49,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.4,
-    "reviewCount": 79745,
-    "monthlySales": 70000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71oqfMsZf6L._AC_UY512_.jpg",
-    "alibabaPrice": 49,
-    "pros": [
-      "露营刚需",
-      "季节性强",
-      "客单价中"
-    ],
-    "cons": [
-      "续航顾虑",
-      "体积偏大"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9B%AD%E8%89%BA%E5%B7%A5%E5%85%B7%20%E4%BF%AE%E6%9E%9D%E5%89%AA%20%E5%A5%97%E8%A3%85",
-    "sellUrl": "https://www.amazon.com/dp/B000E28UQU",
-    "growth": "上升"
-  },
-  {
-    "id": 46,
-    "name": "LEVOIT Air Purifiers for Bedroom Home Dorm, AHAM VERIFIDE, 3-in-1 Filt",
-    "nameZh": "LEVOIT 空气净化器",
-    "platform": "amazon",
-    "category": "环境电器",
-    "price": 39.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 44375,
-    "monthlySales": 60000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71wGv7Fh2AL._AC_UY512_.jpg",
-    "alibabaPrice": 126,
-    "pros": [
-      "健康刚需",
-      "溢价空间大"
-    ],
-    "cons": [
-      "滤芯耗材",
-      "说明成本高"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A9%BA%E6%B0%94%E5%87%80%E5%8C%96%E5%99%A8%20PM2.5",
-    "sellUrl": "https://www.amazon.com/dp/B09GTRVJQM",
-    "growth": "上升"
-  },
-  {
-    "id": 47,
-    "name": "Cosori Electric Kettle, No Plastic Contact With Water, Wide Mouth For ",
-    "nameZh": "Cosori 电热水壶",
-    "platform": "amazon",
-    "category": "厨房电器",
-    "price": 25.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 48480,
-    "monthlySales": 50000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71qsxSUrSpL._AC_UY512_.jpg",
-    "alibabaPrice": 82,
-    "pros": [
-      "高频使用",
-      "家庭必需品",
-      "好评率高"
-    ],
-    "cons": [
-      "需认证",
-      "售后成本高"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E7%83%AD%E6%B0%B4%E5%A3%B6%20%E4%BF%9D%E6%B8%A9%20%E7%8E%BB%E7%92%83",
-    "sellUrl": "https://www.amazon.com/dp/B08PP48979",
-    "growth": "上升"
-  },
-  {
-    "id": 48,
-    "name": "Oral-B iO Deep Clean Rechargeable Electric Powered Toothbrush, Black w",
-    "nameZh": "Oral-B iO Deep Clean   Powered Toothbrush 电热水壶",
-    "platform": "amazon",
-    "category": "厨房电器",
-    "price": 59.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.4,
-    "reviewCount": 15794,
-    "monthlySales": 50000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71jDBVInB0L._AC_UY512_.jpg",
-    "alibabaPrice": 189,
-    "pros": [
-      "高频使用",
-      "家庭必需品",
-      "好评率高"
-    ],
-    "cons": [
-      "需认证",
-      "售后成本高"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E7%83%AD%E6%B0%B4%E5%A3%B6%20%E4%BF%9D%E6%B8%A9%20%E7%8E%BB%E7%92%83",
-    "sellUrl": "https://www.amazon.com/dp/B0B5HRWH1S",
-    "growth": "上升"
-  },
-  {
-    "id": 49,
-    "name": "Levoit Air Purifier for Home Allergies Pet Hair in Bedroom, Covers Up ",
-    "nameZh": "Levoit 空气净化器",
-    "platform": "amazon",
-    "category": "环境电器",
-    "price": 84.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.7,
-    "reviewCount": 108010,
-    "monthlySales": 50000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71t-9BTIg9L._AC_UY512_.jpg",
-    "alibabaPrice": 268,
-    "pros": [
-      "健康刚需",
-      "溢价空间大"
-    ],
-    "cons": [
-      "滤芯耗材",
-      "说明成本高"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A9%BA%E6%B0%94%E5%87%80%E5%8C%96%E5%99%A8%20PM2.5",
-    "sellUrl": "https://www.amazon.com/dp/B07VVK39F7",
-    "growth": "上升"
-  },
-  {
-    "id": 50,
-    "name": "Garbage Disposal Cleaner Deodorizer Tablets - 24 Pack, New Powerful XL",
-    "nameZh": "Garbage Disposal Cleaner Deodorizer Tablets - 24 Pack 电热水壶",
-    "platform": "amazon",
-    "category": "厨房电器",
-    "price": 17.96,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.4,
-    "reviewCount": 20065,
-    "monthlySales": 40000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81T6ommj+FL._AC_UY512_.jpg",
-    "alibabaPrice": 57,
-    "pros": [
-      "高频使用",
-      "家庭必需品",
-      "好评率高"
-    ],
-    "cons": [
-      "需认证",
-      "售后成本高"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E7%83%AD%E6%B0%B4%E5%A3%B6%20%E4%BF%9D%E6%B8%A9%20%E7%8E%BB%E7%92%83",
-    "sellUrl": "https://www.amazon.com/dp/B0CJHCXS4V",
-    "growth": "上升"
-  },
-  {
-    "id": 51,
-    "name": "TOSY Flying Ring - 36 RGB Multicolor or 12 Monocolor LEDs, Super Brigh",
-    "nameZh": "TOSY Flying Ring - 36 RGB Multicolor or 12 Monocolor LEDs LED灯带",
-    "platform": "amazon",
-    "category": "家居照明",
-    "price": 24.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.3,
-    "reviewCount": 10798,
-    "monthlySales": 40000,
-    "imageUrl": "https://m.media-amazon.com/images/I/91ozB+WhRoL._AC_UY512_.jpg",
-    "alibabaPrice": 79,
-    "pros": [
-      "装饰属性强",
-      "安装简单"
-    ],
-    "cons": [
-      "胶力参差",
-      "需插电"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=led%E7%81%AF%E5%B8%A6%205050%20%E8%87%AA%E7%B2%98",
-    "sellUrl": "https://www.amazon.com/dp/B0DDL1FC2J",
-    "growth": "上升"
-  },
-  {
-    "id": 52,
     "name": "Candle Warmer Lamp with Timer Home Decor Birthday Gifts for Women | Di",
     "nameZh": "Candle Warmer Lamp 圣诞装饰",
     "platform": "amazon",
@@ -1531,103 +23,14 @@
       "需提前备货"
     ],
     "trending": false,
-    "lastUpdated": "2026-09-09",
+    "lastUpdated": "2026-09-10",
     "stage": "old",
     "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9C%A3%E8%AF%9E%E8%A3%85%E9%A5%B0%20%E6%8C%82%E4%BB%B6%20%E6%91%86%E4%BB%B6",
     "sellUrl": "https://www.amazon.com/dp/B0DZFGTCLR",
     "growth": "上升"
   },
   {
-    "id": 53,
-    "name": "Air Fryer Paper Liners, 125Pcs Air Fryer Disposable Liners | Non-Stick",
-    "nameZh": "Air Fryer Paper Liners 空气炸锅",
-    "platform": "amazon",
-    "category": "厨房电器",
-    "price": 16.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.6,
-    "reviewCount": 27204,
-    "monthlySales": 30000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81Fr+9o0iWL._AC_UY512_.jpg",
-    "alibabaPrice": 54,
-    "pros": [
-      "高频使用",
-      "家庭必需品",
-      "好评率高"
-    ],
-    "cons": [
-      "需认证",
-      "售后成本高"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85%20%E5%A4%A7%E5%AE%B9%E9%87%8F",
-    "sellUrl": "https://www.amazon.com/dp/B0C6Y8NYK1",
-    "growth": "上升"
-  },
-  {
-    "id": 54,
-    "name": "Ninja Kitchen System | All-in-One Food Processor & Blender for Smoothi",
-    "nameZh": "Ninja Kitchen System",
-    "platform": "amazon",
-    "category": "厨房电器",
-    "price": 139.99,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.7,
-    "reviewCount": 42621,
-    "monthlySales": 30000,
-    "imageUrl": "https://m.media-amazon.com/images/I/81ME5sqz5TL._AC_UY512_.jpg",
-    "alibabaPrice": 441,
-    "pros": [
-      "高频使用",
-      "家庭必需品",
-      "好评率高"
-    ],
-    "cons": [
-      "需认证",
-      "售后成本高"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A0%B4%E5%A3%81%E6%9C%BA%20%E6%90%85%E6%8B%8C%20%E5%A4%9A%E5%8A%9F%E8%83%BD",
-    "sellUrl": "https://www.amazon.com/dp/B00939I7EK",
-    "growth": "上升"
-  },
-  {
-    "id": 55,
-    "name": "BEDRED Dehumidifier, 95OZ Dehumidifier for Home 1000 sq ft - Quiet wit",
-    "nameZh": "BEDRED De 加湿器",
-    "platform": "amazon",
-    "category": "环境电器",
-    "price": 56.97,
-    "currency": "USD",
-    "salesGrowth": 0,
-    "rating": 4.2,
-    "reviewCount": 6496,
-    "monthlySales": 30000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61ISm4VDefL._AC_UY512_.jpg",
-    "alibabaPrice": 179,
-    "pros": [
-      "健康刚需",
-      "溢价空间大"
-    ],
-    "cons": [
-      "滤芯耗材",
-      "说明成本高"
-    ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8A%A0%E6%B9%BF%E5%99%A8%20%E9%9D%99%E9%9F%B3%20%E5%8D%A7%E5%AE%A4",
-    "sellUrl": "https://www.amazon.com/dp/B0DXKRFFGM",
-    "growth": "上升"
-  },
-  {
-    "id": 56,
+    "id": 2,
     "name": "Air Purifiers for Home with High Efficiency Filter Up to 1076 Ft² for ",
     "nameZh": "Air 空气净化器",
     "platform": "amazon",
@@ -1649,26 +52,115 @@
       "说明成本高"
     ],
     "trending": false,
-    "lastUpdated": "2026-09-09",
+    "lastUpdated": "2026-09-10",
     "stage": "old",
     "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A9%BA%E6%B0%94%E5%87%80%E5%8C%96%E5%99%A8%20PM2.5",
     "sellUrl": "https://www.amazon.com/dp/B0DY4S3HP2",
     "growth": "上升"
   },
   {
-    "id": 57,
-    "name": "Majestic Pure Lavender Essential Oil for Diffuser - 4 Fl Oz | 100% Nat",
-    "nameZh": "Majestic Pure Lavender Essential Oil 香薰机",
+    "id": 3,
+    "name": "MediAcous Night Light for Kids, Baby Egg Light for Nursery, 7 Colors C",
+    "nameZh": "MediAcous 小夜灯",
     "platform": "amazon",
-    "category": "家居电器",
-    "price": 8.99,
+    "category": "家居照明",
+    "price": 24.99,
     "currency": "USD",
     "salesGrowth": 0,
-    "rating": 4.5,
-    "reviewCount": 39413,
-    "monthlySales": 30000,
-    "imageUrl": "https://m.media-amazon.com/images/I/51IUL1Sw8JL._AC_UY512_.jpg",
-    "alibabaPrice": 28,
+    "rating": 4.6,
+    "reviewCount": 4088,
+    "monthlySales": 20000,
+    "imageUrl": "https://m.media-amazon.com/images/I/51O05w+K1OL._AC_UY512_.jpg",
+    "alibabaPrice": 79,
+    "pros": [
+      "装饰属性强",
+      "安装简单"
+    ],
+    "cons": [
+      "胶力参差",
+      "需插电"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%B0%8F%E5%A4%9C%E7%81%AF%20%E6%84%9F%E5%BA%94%20%E5%8D%A7%E5%AE%A4",
+    "sellUrl": "https://www.amazon.com/dp/B09JGJ5ND6",
+    "growth": "上升"
+  },
+  {
+    "id": 4,
+    "name": "AILBTON 10Ft String Light Poles 4 Pack,Light Poles for Outside Lights,",
+    "nameZh": "AILBTON 10英尺串灯立杆 4件套",
+    "platform": "amazon",
+    "category": "节庆装饰",
+    "price": 49.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.2,
+    "reviewCount": 3169,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/61xLMG-s4GL._AC_UY512_.jpg",
+    "alibabaPrice": 157,
+    "pros": [
+      "节日氛围强",
+      "季节爆款",
+      "出片率高"
+    ],
+    "cons": [
+      "季节性强",
+      "需提前备货"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B8%B2%E7%81%AF%20%E8%8A%82%E6%97%A5%20%E8%A3%85%E9%A5%B0%E7%81%AF",
+    "sellUrl": "https://www.amazon.com/dp/B0D5HNVBSJ",
+    "growth": "上升"
+  },
+  {
+    "id": 5,
+    "name": "daphino 2500LM Solar Lights, Motion Sensor Outdoor Lights, 3-Head, 2 P",
+    "nameZh": "daphino 2500流明太阳能庭院灯（感应）",
+    "platform": "amazon",
+    "category": "户外用品",
+    "price": 18.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.4,
+    "reviewCount": 4269,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81Mf5XyKsWL._AC_UY512_.jpg",
+    "alibabaPrice": 60,
+    "pros": [
+      "露营刚需",
+      "季节性强",
+      "客单价中"
+    ],
+    "cons": [
+      "续航顾虑",
+      "体积偏大"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%A4%AA%E9%98%B3%E8%83%BD%E7%81%AF%20%E6%88%B7%E5%A4%96%20%E5%BA%AD%E9%99%A2",
+    "sellUrl": "https://www.amazon.com/dp/B0D47FT8LN",
+    "growth": "上升"
+  },
+  {
+    "id": 6,
+    "name": "Cocorrína Reed Diffuser Set, Clean Linen 6.7 fl oz Scented Diffuser wi",
+    "nameZh": "Cocorrína 藤条香氛精油扩香器",
+    "platform": "amazon",
+    "category": "家居电器",
+    "price": 19.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.4,
+    "reviewCount": 4358,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71G8H9JSwXL._AC_UY512_.jpg",
+    "alibabaPrice": 63,
     "pros": [
       "冬季刚需",
       "使用频次高",
@@ -1679,26 +171,292 @@
       "季节性强"
     ],
     "trending": false,
-    "lastUpdated": "2026-09-09",
+    "lastUpdated": "2026-09-10",
     "stage": "old",
     "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E9%A6%99%E8%96%B0%E6%9C%BA%20%E5%8A%A0%E6%B9%BF%20%E9%9D%99%E9%9F%B3",
-    "sellUrl": "https://www.amazon.com/dp/B00TSTZQEY",
+    "sellUrl": "https://www.amazon.com/dp/B0B24QJ217",
     "growth": "上升"
   },
   {
-    "id": 58,
-    "name": "TOSY Flying Ring - 36 RGB Multicolor or 12 Monocolor LEDs, Super Brigh",
-    "nameZh": "TOSY Flying Ring - 36 RGB Multicolor or 12 Monocolor LEDs LED灯带",
+    "id": 7,
+    "name": "Outdoor Lights String Patio Outside - 100ft 30M LED Waterproof Light -",
+    "nameZh": "户外 LED 串灯 100英尺",
     "platform": "amazon",
-    "category": "家居照明",
-    "price": 19.95,
+    "category": "节庆装饰",
+    "price": 24.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.2,
+    "reviewCount": 4728,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81nhmYwQssL._AC_UY512_.jpg",
+    "alibabaPrice": 79,
+    "pros": [
+      "节日氛围强",
+      "季节爆款",
+      "出片率高"
+    ],
+    "cons": [
+      "季节性强",
+      "需提前备货"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B8%B2%E7%81%AF%20%E8%8A%82%E6%97%A5%20%E8%A3%85%E9%A5%B0%E7%81%AF",
+    "sellUrl": "https://www.amazon.com/dp/B0DCHHBJM6",
+    "growth": "上升"
+  },
+  {
+    "id": 8,
+    "name": "XIAZ Elevated Dog Bowls Large Breed Raised Dogs Bowl Stand Large/Mediu",
+    "nameZh": "XIAZ 抬高式狗狗碗架（大型犬）",
+    "platform": "amazon",
+    "category": "宠物用品",
+    "price": 19.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 4964,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71IpmCeCH0L._AC_UY512_.jpg",
+    "alibabaPrice": 63,
+    "pros": [
+      "宠物经济热",
+      "粘性强"
+    ],
+    "cons": [
+      "需适配粮型",
+      "卡粮顾虑"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%AE%A0%E7%89%A9%E5%96%82%E9%A3%9F%E5%99%A8%20%E8%87%AA%E5%8A%A8%20%E5%AE%9A%E6%97%B6",
+    "sellUrl": "https://www.amazon.com/dp/B0CRV41Q3Y",
+    "growth": "上升"
+  },
+  {
+    "id": 9,
+    "name": "Brightown Outdoor String Lights, 50+5FT 25 G40 Bulbs Shatterproof Pati",
+    "nameZh": "Brightown 户外串灯 50+5英尺 G40",
+    "platform": "amazon",
+    "category": "节庆装饰",
+    "price": 19.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.7,
+    "reviewCount": 4688,
+    "monthlySales": 9000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81udPQwBBjL._AC_UY512_.jpg",
+    "alibabaPrice": 63,
+    "pros": [
+      "节日氛围强",
+      "季节爆款",
+      "出片率高"
+    ],
+    "cons": [
+      "季节性强",
+      "需提前备货"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9C%A3%E8%AF%9E%E7%81%AF%E4%B8%B2%20%E6%88%B7%E5%A4%96%20%E9%98%B2%E6%B0%B4",
+    "sellUrl": "https://www.amazon.com/dp/B09TGSQKRF",
+    "growth": "上升"
+  },
+  {
+    "id": 10,
+    "name": "【Built-in APPS & Electric Focusing & 210° Rotation】Mini Projector With",
+    "nameZh": "内置系统智能投影仪（电动对焦 210°旋转）",
+    "platform": "amazon",
+    "category": "智能家居",
+    "price": 69.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.6,
+    "reviewCount": 3083,
+    "monthlySales": 8000,
+    "imageUrl": "https://m.media-amazon.com/images/I/619tBk9paQL._AC_UY512_.jpg",
+    "alibabaPrice": 220,
+    "pros": [
+      "复购配件多",
+      "客单价高"
+    ],
+    "cons": [
+      "需联网设置",
+      "兼容性顾虑"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%8A%95%E5%BD%B1%E4%BB%AA%20%E5%AE%B6%E7%94%A8%201080p",
+    "sellUrl": "https://www.amazon.com/dp/B0F7RR3YC6",
+    "growth": "上升"
+  },
+  {
+    "id": 11,
+    "name": "Ninja Belgian Waffle Maker Pro | Vertical Design | 5 Shade Settings wi",
+    "nameZh": "Ninja 比利时华夫饼机（立式）",
+    "platform": "amazon",
+    "category": "厨房电器",
+    "price": 79.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.6,
+    "reviewCount": 3407,
+    "monthlySales": 7000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71DfP9MxqNL._AC_UY512_.jpg",
+    "alibabaPrice": 252,
+    "pros": [
+      "高频使用",
+      "家庭必需品",
+      "好评率高"
+    ],
+    "cons": [
+      "需认证",
+      "售后成本高"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8D%8E%E5%A4%AB%E9%A5%BC%E6%9C%BA%20%E5%AE%B6%E7%94%A8",
+    "sellUrl": "https://www.amazon.com/dp/B0B358VDZJ",
+    "growth": "上升"
+  },
+  {
+    "id": 12,
+    "name": "GHome Smart Plug, WiFi Smart Plugs Work with Alexa and Google Home, Sm",
+    "nameZh": "GHome 智能插座（WiFi）",
+    "platform": "amazon",
+    "category": "智能家居",
+    "price": 26.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.4,
+    "reviewCount": 4370,
+    "monthlySales": 6000,
+    "imageUrl": "https://m.media-amazon.com/images/I/61mwZi5guiL._AC_UY512_.jpg",
+    "alibabaPrice": 85,
+    "pros": [
+      "复购配件多",
+      "客单价高"
+    ],
+    "cons": [
+      "需联网设置",
+      "兼容性顾虑"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%99%BA%E8%83%BD%E6%8F%92%E5%BA%A7%20wifi%20%E8%BF%9C%E7%A8%8B",
+    "sellUrl": "https://www.amazon.com/dp/B0D7ZWGXGP",
+    "growth": "上升"
+  },
+  {
+    "id": 13,
+    "name": "Tikom Robot Vacuum and Mop Combo, 5000Pa Robotic Vacuum Cleaner, 150 M",
+    "nameZh": "Tikom 扫地拖地机器人 5000Pa",
+    "platform": "amazon",
+    "category": "智能家居",
+    "price": 108.21,
     "currency": "USD",
     "salesGrowth": 0,
     "rating": 4.3,
-    "reviewCount": 10798,
-    "monthlySales": 30000,
-    "imageUrl": "https://m.media-amazon.com/images/I/91HHiCi7wwL._AC_UY512_.jpg",
-    "alibabaPrice": 63,
+    "reviewCount": 4736,
+    "monthlySales": 5000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71lOhFFaWuL._AC_UY512_.jpg",
+    "alibabaPrice": 341,
+    "pros": [
+      "复购配件多",
+      "客单价高"
+    ],
+    "cons": [
+      "需联网设置",
+      "兼容性顾虑"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%89%AB%E5%9C%B0%E6%9C%BA%E5%99%A8%E4%BA%BA%20%E5%85%A8%E8%87%AA%E5%8A%A8",
+    "sellUrl": "https://www.amazon.com/dp/B0DV53XDDJ",
+    "growth": "上升"
+  },
+  {
+    "id": 14,
+    "name": "MIULEE Pack of 4 18x18 Outdoor Pillow Inserts, Water-Resistant Throw P",
+    "nameZh": "MIULEE 户外抱枕芯 4只装 18x18",
+    "platform": "amazon",
+    "category": "户外用品",
+    "price": 25.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.3,
+    "reviewCount": 3150,
+    "monthlySales": 4000,
+    "imageUrl": "https://m.media-amazon.com/images/I/61GszdEv6mL._AC_UY512_.jpg",
+    "alibabaPrice": 82,
+    "pros": [
+      "露营刚需",
+      "季节性强",
+      "客单价中"
+    ],
+    "cons": [
+      "续航顾虑",
+      "体积偏大"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%88%B7%E5%A4%96%E5%9D%90%E5%9E%AB%20%E9%98%B2%E6%B0%B4%20%E9%98%B2%E6%99%92",
+    "sellUrl": "https://www.amazon.com/dp/B08MTX9YVF",
+    "growth": "上升"
+  },
+  {
+    "id": 15,
+    "name": "bella Flip-n-Store Waffle Maker with EverGood™ Ceramic Nonstick Coatin",
+    "nameZh": "bella 翻盖收纳华夫饼机",
+    "platform": "amazon",
+    "category": "厨房电器",
+    "price": 23.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.4,
+    "reviewCount": 3226,
+    "monthlySales": 4000,
+    "imageUrl": "https://m.media-amazon.com/images/I/717hhnOJ90L._AC_UY512_.jpg",
+    "alibabaPrice": 76,
+    "pros": [
+      "高频使用",
+      "家庭必需品",
+      "好评率高"
+    ],
+    "cons": [
+      "需认证",
+      "售后成本高"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8D%8E%E5%A4%AB%E9%A5%BC%E6%9C%BA%20%E5%AE%B6%E7%94%A8",
+    "sellUrl": "https://www.amazon.com/dp/B0CYHZFMFX",
+    "growth": "上升"
+  },
+  {
+    "id": 16,
+    "name": "Aokrean Plant Grow Light, 48 LEDs Full Spectrum Grow Lights for Indoor",
+    "nameZh": "Aokrean 植物生长灯 48LED 全光谱",
+    "platform": "amazon",
+    "category": "家居照明",
+    "price": 25.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 3382,
+    "monthlySales": 3000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71lA3YFIQUL._AC_UY512_.jpg",
+    "alibabaPrice": 82,
     "pros": [
       "装饰属性强",
       "安装简单"
@@ -1708,26 +466,26 @@
       "需插电"
     ],
     "trending": false,
-    "lastUpdated": "2026-09-09",
+    "lastUpdated": "2026-09-10",
     "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=led%E7%81%AF%E5%B8%A6%205050%20%E8%87%AA%E7%B2%98",
-    "sellUrl": "https://www.amazon.com/dp/B0CMP9M725",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%A4%8D%E7%89%A9%E7%94%9F%E9%95%BF%E7%81%AF%20%E5%85%A8%E5%85%89%E8%B0%B1",
+    "sellUrl": "https://www.amazon.com/dp/B0C36WZBWC",
     "growth": "上升"
   },
   {
-    "id": 59,
-    "name": "AUTOMAN-Garden-Hose-Nozzle, ABS Water Spray Nozzle with 7 Adjustable W",
-    "nameZh": "AUTOMAN-Garden-Hose-Nozzle 园艺工具",
+    "id": 17,
+    "name": "FSVGYY Wind-Chimes-Outdoor-Large-Decor, Deep Tone Soothing Melodic Ton",
+    "nameZh": "FSVGYY 户外风铃（大号 低音）",
     "platform": "amazon",
     "category": "户外用品",
-    "price": 8.32,
+    "price": 19.99,
     "currency": "USD",
     "salesGrowth": 0,
-    "rating": 4.2,
-    "reviewCount": 26616,
-    "monthlySales": 30000,
-    "imageUrl": "https://m.media-amazon.com/images/I/61Vj8z43A+L._AC_UY512_.jpg",
-    "alibabaPrice": 26,
+    "rating": 4.8,
+    "reviewCount": 4623,
+    "monthlySales": 3000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81ykr91IcHL._AC_UY512_.jpg",
+    "alibabaPrice": 63,
     "pros": [
       "露营刚需",
       "季节性强",
@@ -1738,26 +496,232 @@
       "体积偏大"
     ],
     "trending": false,
-    "lastUpdated": "2026-09-09",
+    "lastUpdated": "2026-09-10",
     "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9B%AD%E8%89%BA%E5%B7%A5%E5%85%B7%20%E4%BF%AE%E6%9E%9D%E5%89%AA%20%E5%A5%97%E8%A3%85",
-    "sellUrl": "https://www.amazon.com/dp/B07HF6YDYV",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E9%A3%8E%E9%93%83%20%E5%BA%AD%E9%99%A2%20%E8%A7%A3%E5%8E%8B",
+    "sellUrl": "https://www.amazon.com/dp/B0B3MKGJYD",
     "growth": "上升"
   },
   {
-    "id": 60,
-    "name": "Eden 96213EDAMZ Weighted Essential Oscillating Sprinkler | Covers Up t",
-    "nameZh": "Eden 96213EDAMZ Weighted Essential Oscillating Sprinkler 园艺工具",
+    "id": 18,
+    "name": "Aodisman Dog Stairs for Small Dogs and Cats,3-Step Pet Ramp for Bed & ",
+    "nameZh": "Aodisman 宠物楼梯（小体型猫狗 3阶）",
     "platform": "amazon",
-    "category": "户外用品",
-    "price": 38.71,
+    "category": "宠物用品",
+    "price": 29.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.6,
+    "reviewCount": 4791,
+    "monthlySales": 3000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71Sk-DM-PBL._AC_UY512_.jpg",
+    "alibabaPrice": 94,
+    "pros": [
+      "宠物经济热",
+      "粘性强"
+    ],
+    "cons": [
+      "需适配粮型",
+      "卡粮顾虑"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%AE%A0%E7%89%A9%E6%A5%BC%E6%A2%AF%20%E5%BA%8A%E8%BE%B9%20%E6%8A%A4%E5%85%B3%E8%8A%82",
+    "sellUrl": "https://www.amazon.com/dp/B0BLKN98V6",
+    "growth": "上升"
+  },
+  {
+    "id": 19,
+    "name": "Homemate Heated Blanket Electric Throw - 50\"x60\" Heating Blanket Throw",
+    "nameZh": "Homemate 电热毯",
+    "platform": "amazon",
+    "category": "家居电器",
+    "price": 36.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.3,
+    "reviewCount": 3856,
+    "monthlySales": 2000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81-xjjQvkEL._AC_UY512_.jpg",
+    "alibabaPrice": 117,
+    "pros": [
+      "冬季刚需",
+      "使用频次高",
+      "复购稳定"
+    ],
+    "cons": [
+      "体积偏大",
+      "季节性强"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E7%83%AD%E6%AF%AF%20%E5%8A%A0%E5%8E%9A%20%E5%8F%8C%E4%BA%BA",
+    "sellUrl": "https://www.amazon.com/dp/B0BV62SXMG",
+    "growth": "上升"
+  },
+  {
+    "id": 20,
+    "name": "SANSI Grow Lights for Indoor Plants, Pot Clip LED Plant Lights for Ind",
+    "nameZh": "SANSI Grow Lights",
+    "platform": "amazon",
+    "category": "家居照明",
+    "price": 14.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 4216,
+    "monthlySales": 2000,
+    "imageUrl": "https://m.media-amazon.com/images/I/61VqqRc8LGL._AC_UY512_.jpg",
+    "alibabaPrice": 47,
+    "pros": [
+      "装饰属性强",
+      "安装简单"
+    ],
+    "cons": [
+      "胶力参差",
+      "需插电"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%A4%8D%E7%89%A9%E7%94%9F%E9%95%BF%E7%81%AF%20%E5%85%A8%E5%85%89%E8%B0%B1",
+    "sellUrl": "https://www.amazon.com/dp/B0BGPLP8LX",
+    "growth": "上升"
+  },
+  {
+    "id": 21,
+    "name": "VISCOO Upgraded Encrypted 46-Inch Bird Cage, with Wooden Perches, Meta",
+    "nameZh": "VISCOO Upgraded Encrypted 46-Inch Bird Cage",
+    "platform": "amazon",
+    "category": "宠物用品",
+    "price": 56.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.0,
+    "reviewCount": 434,
+    "monthlySales": 1000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81TuUlMzuYL._AC_UY512_.jpg",
+    "alibabaPrice": 180,
+    "pros": [
+      "宠物经济热",
+      "粘性强"
+    ],
+    "cons": [
+      "需适配粮型",
+      "卡粮顾虑"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E9%B8%9F%E7%AC%BC%20%E5%A4%A7%E5%9E%8B%20%E7%AB%99%E6%9D%86",
+    "sellUrl": "https://www.amazon.com/dp/B0FCXZTD2V",
+    "growth": "上升"
+  },
+  {
+    "id": 22,
+    "name": "Feelfunn 3.2 Cu.Ft Mini Fridge with Glass Door - 126 Can Beverage Refr",
+    "nameZh": "Feelfunn 3.2 Cu.Ft  Fridge",
+    "platform": "amazon",
+    "category": "厨房电器",
+    "price": 194.99,
     "currency": "USD",
     "salesGrowth": 0,
     "rating": 4.4,
-    "reviewCount": 9045,
+    "reviewCount": 668,
+    "monthlySales": 1000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81VknAQRp9L._AC_UY512_.jpg",
+    "alibabaPrice": 614,
+    "pros": [
+      "高频使用",
+      "家庭必需品",
+      "好评率高"
+    ],
+    "cons": [
+      "需认证",
+      "售后成本高"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%BA%A2%E9%85%92%E6%9F%9C%20%E5%B0%8F%E5%9E%8B",
+    "sellUrl": "https://www.amazon.com/dp/B0CS324WY2",
+    "growth": "上升"
+  },
+  {
+    "id": 23,
+    "name": "EUHOMY Mini Fridge 130 Can Beverage Refrigerator Cooler Glass Door for",
+    "nameZh": "EUHOMY  Fridge 130 Can Beverage Refrigerator Cooler Glass Door",
+    "platform": "amazon",
+    "category": "厨房电器",
+    "price": 219.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.3,
+    "reviewCount": 4447,
+    "monthlySales": 1000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81fQ0rzCFNL._AC_UY512_.jpg",
+    "alibabaPrice": 693,
+    "pros": [
+      "高频使用",
+      "家庭必需品",
+      "好评率高"
+    ],
+    "cons": [
+      "需认证",
+      "售后成本高"
+    ],
+    "trending": false,
+    "lastUpdated": "2026-09-10",
+    "stage": "old",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%BA%A2%E9%85%92%E6%9F%9C%20%E5%B0%8F%E5%9E%8B",
+    "sellUrl": "https://www.amazon.com/dp/B0GCLN8PPW",
+    "growth": "上升"
+  },
+  {
+    "id": 24,
+    "name": "COSLUS Sonic Electric Toothbrush for Adults: 3 Intensities & 5 Modes G",
+    "nameZh": "COSLUS Sonic  Toothbrush",
+    "platform": "amazon",
+    "category": "智能家居",
+    "price": 7.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 1379,
+    "monthlySales": 40000,
+    "imageUrl": "https://m.media-amazon.com/images/I/61bhnwi7P6L._AC_UY512_.jpg",
+    "alibabaPrice": 25,
+    "pros": [
+      "复购配件多",
+      "客单价高"
+    ],
+    "cons": [
+      "需联网设置",
+      "兼容性顾虑"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%9B%91%E6%8E%A7%E6%91%84%E5%83%8F%E5%A4%B4%20%E6%97%A0%E7%BA%BF",
+    "sellUrl": "https://www.amazon.com/dp/B0FKB289VY",
+    "growth": "爆发"
+  },
+  {
+    "id": 25,
+    "name": "Pocket Hose Ballistic 50 FT Expandable Garden Hose, No-Kink, As Seen o",
+    "nameZh": "Pocket Hose Ballistic 50 FT Expandable 伸缩水管",
+    "platform": "amazon",
+    "category": "户外用品",
+    "price": 47.49,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 1135,
     "monthlySales": 30000,
-    "imageUrl": "https://m.media-amazon.com/images/I/71mV9JTH7eL._AC_UY512_.jpg",
-    "alibabaPrice": 122,
+    "imageUrl": "https://m.media-amazon.com/images/I/71xkge21xzL._AC_UY512_.jpg",
+    "alibabaPrice": 150,
     "pros": [
       "露营刚需",
       "季节性强",
@@ -1767,11 +731,751 @@
       "续航顾虑",
       "体积偏大"
     ],
-    "trending": false,
-    "lastUpdated": "2026-09-09",
-    "stage": "old",
-    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9B%AD%E8%89%BA%E5%B7%A5%E5%85%B7%20%E4%BF%AE%E6%9E%9D%E5%89%AA%20%E5%A5%97%E8%A3%85",
-    "sellUrl": "https://www.amazon.com/dp/B09N9ZQWQS",
-    "growth": "上升"
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%BC%B8%E7%BC%A9%E6%B0%B4%E7%AE%A1%20%E8%8A%B1%E5%9B%AD%20%E6%B5%87%E8%8A%B1",
+    "sellUrl": "https://www.amazon.com/dp/B0GWFN7Y8T",
+    "growth": "爆发"
+  },
+  {
+    "id": 26,
+    "name": "Philips Sonicare 5950 Series Electric Toothbrush, with Pressure Sensor",
+    "nameZh": "Philips Sonicare 5950 系列电动牙刷",
+    "platform": "amazon",
+    "category": "健康设备",
+    "price": 89.96,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.6,
+    "reviewCount": 552,
+    "monthlySales": 20000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71nXbS3smzL._AC_UY512_.jpg",
+    "alibabaPrice": 283,
+    "pros": [
+      "亚健康需求大",
+      "溢价高"
+    ],
+    "cons": [
+      "需资质",
+      "效果见仁见智"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E5%8A%A8%E7%89%99%E5%88%B7%20%E5%A3%B0%E6%B3%A2%20%E5%85%85%E7%94%B5",
+    "sellUrl": "https://www.amazon.com/dp/B0GQWSKBLD",
+    "growth": "爆发"
+  },
+  {
+    "id": 27,
+    "name": "Ninja Kitchen System | All-in-One for Smoothies, Frozen Drinks, Veggie",
+    "nameZh": "Ninja Kitchen System",
+    "platform": "amazon",
+    "category": "厨房电器",
+    "price": 219.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.8,
+    "reviewCount": 1016,
+    "monthlySales": 20000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71oVNalXFML._AC_UY512_.jpg",
+    "alibabaPrice": 693,
+    "pros": [
+      "高频使用",
+      "家庭必需品",
+      "好评率高"
+    ],
+    "cons": [
+      "需认证",
+      "售后成本高"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A0%B4%E5%A3%81%E6%9C%BA%20%E6%90%85%E6%8B%8C%20%E5%A4%9A%E5%8A%9F%E8%83%BD",
+    "sellUrl": "https://www.amazon.com/dp/B0CKTY2QT4",
+    "growth": "爆发"
+  },
+  {
+    "id": 28,
+    "name": "Aurzen Roku TV Smart Projector with Wifi and Bluetooth, Roku TV Built-",
+    "nameZh": "Aurzen Roku TV  Projector",
+    "platform": "amazon",
+    "category": "智能家居",
+    "price": 139.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.6,
+    "reviewCount": 831,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71M3XVYabdL._AC_UY512_.jpg",
+    "alibabaPrice": 441,
+    "pros": [
+      "复购配件多",
+      "客单价高"
+    ],
+    "cons": [
+      "需联网设置",
+      "兼容性顾虑"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%8A%95%E5%BD%B1%E4%BB%AA%20%E5%AE%B6%E7%94%A8%201080p",
+    "sellUrl": "https://www.amazon.com/dp/B0FKMHPCCB",
+    "growth": "爆发"
+  },
+  {
+    "id": 29,
+    "name": "Cuisinart Waffle Maker, 1250W Round Classic Waffle Iron, 5-Setting Adj",
+    "nameZh": "Cuisinart 华夫饼机",
+    "platform": "amazon",
+    "category": "厨房电器",
+    "price": 26.95,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.2,
+    "reviewCount": 1237,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/61y0J8h93kL._AC_UY512_.jpg",
+    "alibabaPrice": 85,
+    "pros": [
+      "高频使用",
+      "家庭必需品",
+      "好评率高"
+    ],
+    "cons": [
+      "需认证",
+      "售后成本高"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8D%8E%E5%A4%AB%E9%A5%BC%E6%9C%BA%20%E5%AE%B6%E7%94%A8",
+    "sellUrl": "https://www.amazon.com/dp/B0DZ32BFKK",
+    "growth": "爆发"
+  },
+  {
+    "id": 30,
+    "name": "Ring Wired Doorbell 4K Pro (Newest Model), Retinal 4K with wide-angle ",
+    "nameZh": "Ring Wired Doorbell 4K",
+    "platform": "amazon",
+    "category": "智能家居",
+    "price": 179.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.3,
+    "reviewCount": 1487,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/51cJpjaOeEL._AC_UY512_.jpg",
+    "alibabaPrice": 567,
+    "pros": [
+      "复购配件多",
+      "客单价高"
+    ],
+    "cons": [
+      "需联网设置",
+      "兼容性顾虑"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%AF%E8%A7%86%E9%97%A8%E9%93%83%20%E6%99%BA%E8%83%BD",
+    "sellUrl": "https://www.amazon.com/dp/B0F151GFYR",
+    "growth": "爆发"
+  },
+  {
+    "id": 31,
+    "name": "Camco EvoFlex2 50-ft Drinking Water Hose - RV Drinking Water Hose Rein",
+    "nameZh": "Camco EvoFlex2 50-ft Drinking Water 伸缩水管",
+    "platform": "amazon",
+    "category": "户外用品",
+    "price": 23.97,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.6,
+    "reviewCount": 1618,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/91O2uN9vbpL._AC_UY512_.jpg",
+    "alibabaPrice": 76,
+    "pros": [
+      "露营刚需",
+      "季节性强",
+      "客单价中"
+    ],
+    "cons": [
+      "续航顾虑",
+      "体积偏大"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%BC%B8%E7%BC%A9%E6%B0%B4%E7%AE%A1%20%E8%8A%B1%E5%9B%AD%20%E6%B5%87%E8%8A%B1",
+    "sellUrl": "https://www.amazon.com/dp/B09Z6VPFWD",
+    "growth": "爆发"
+  },
+  {
+    "id": 32,
+    "name": "Miniature Frog Garden Statue Gifts Valentines Day Decorations Fairy Ga",
+    "nameZh": "Miniature Frog Garden Statue Gifts Valentines Day Decorations Fairy Garden Accessories Outdoor Lights Solar Garden Frog Decor Art Housewarming Gift",
+    "platform": "amazon",
+    "category": "户外用品",
+    "price": 19.77,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 1714,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71ZLNdfUbwL._AC_UY512_.jpg",
+    "alibabaPrice": 62,
+    "pros": [
+      "露营刚需",
+      "季节性强",
+      "客单价中"
+    ],
+    "cons": [
+      "续航顾虑",
+      "体积偏大"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E8%8A%B1%E5%9B%AD%E6%91%86%E4%BB%B6%20%E9%9B%95%E5%A1%91%20%E8%A3%85%E9%A5%B0",
+    "sellUrl": "https://www.amazon.com/dp/B0B6B8TDRW",
+    "growth": "爆发"
+  },
+  {
+    "id": 33,
+    "name": "Ninja Flip Toaster Oven & Air Fryer, 8-in-1, Stainless Steel, SP151 | ",
+    "nameZh": "Ninja Flip Toaster Oven & 空气炸锅",
+    "platform": "amazon",
+    "category": "厨房电器",
+    "price": 248.29,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.3,
+    "reviewCount": 1890,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81wOCABev4L._AC_UY512_.jpg",
+    "alibabaPrice": 782,
+    "pros": [
+      "高频使用",
+      "家庭必需品",
+      "好评率高"
+    ],
+    "cons": [
+      "需认证",
+      "售后成本高"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85%20%E5%A4%A7%E5%AE%B9%E9%87%8F",
+    "sellUrl": "https://www.amazon.com/dp/B0D1CXL52G",
+    "growth": "爆发"
+  },
+  {
+    "id": 34,
+    "name": "Solar Lanterns Outdoor Waterproof Hummingbird Garden Decor Gifts for W",
+    "nameZh": "Solar Lanterns Outdoor Waterproof Hummingbird Garden Decor Gifts",
+    "platform": "amazon",
+    "category": "户外用品",
+    "price": 22.93,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.6,
+    "reviewCount": 2134,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81cB6Ux-HXL._AC_UY512_.jpg",
+    "alibabaPrice": 72,
+    "pros": [
+      "露营刚需",
+      "季节性强",
+      "客单价中"
+    ],
+    "cons": [
+      "续航顾虑",
+      "体积偏大"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E8%8A%B1%E5%9B%AD%E6%91%86%E4%BB%B6%20%E9%9B%95%E5%A1%91%20%E8%A3%85%E9%A5%B0",
+    "sellUrl": "https://www.amazon.com/dp/B0CQCCB95G",
+    "growth": "爆发"
+  },
+  {
+    "id": 35,
+    "name": "Fake Vines for Room Decor(12 Pack 84 Feet) Aesthetic Artificial Plant ",
+    "nameZh": "Fake Vines",
+    "platform": "amazon",
+    "category": "节庆装饰",
+    "price": 5.64,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.4,
+    "reviewCount": 2135,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/91wNpaCOdcL._AC_UY512_.jpg",
+    "alibabaPrice": 18,
+    "pros": [
+      "节日氛围强",
+      "季节爆款",
+      "出片率高"
+    ],
+    "cons": [
+      "季节性强",
+      "需提前备货"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%A9%9A%E7%A4%BC%E8%A3%85%E9%A5%B0%20%E8%83%8C%E6%99%AF%20%E6%8B%89%E6%97%97",
+    "sellUrl": "https://www.amazon.com/dp/B0D6KDW17P",
+    "growth": "爆发"
+  },
+  {
+    "id": 36,
+    "name": "Brightown 52FT Solar String Lights Outdoor Waterproof, Patio Lights wi",
+    "nameZh": "Brightown 52FT Solar LED串灯",
+    "platform": "amazon",
+    "category": "节庆装饰",
+    "price": 19.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.4,
+    "reviewCount": 2350,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71tWLhWFbwL._AC_UY512_.jpg",
+    "alibabaPrice": 63,
+    "pros": [
+      "节日氛围强",
+      "季节爆款",
+      "出片率高"
+    ],
+    "cons": [
+      "季节性强",
+      "需提前备货"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9C%A3%E8%AF%9E%E7%81%AF%E4%B8%B2%20%E6%88%B7%E5%A4%96%20%E9%98%B2%E6%B0%B4",
+    "sellUrl": "https://www.amazon.com/dp/B0FYPGR48K",
+    "growth": "爆发"
+  },
+  {
+    "id": 37,
+    "name": "ANDOLL HOME Automatic Cat Feeder, 4L Cat Food Dispenser with 10s Voice",
+    "nameZh": "ANDOLL  Automatic Cat 宠物喂食器",
+    "platform": "amazon",
+    "category": "宠物用品",
+    "price": 30.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 2754,
+    "monthlySales": 10000,
+    "imageUrl": "https://m.media-amazon.com/images/I/61jan--2yZL._AC_UY512_.jpg",
+    "alibabaPrice": 98,
+    "pros": [
+      "宠物经济热",
+      "粘性强"
+    ],
+    "cons": [
+      "需适配粮型",
+      "卡粮顾虑"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%AE%A0%E7%89%A9%E5%96%82%E9%A3%9F%E5%99%A8%20%E8%87%AA%E5%8A%A8%20%E5%AE%9A%E6%97%B6",
+    "sellUrl": "https://www.amazon.com/dp/B0DF7H6SGZ",
+    "growth": "爆发"
+  },
+  {
+    "id": 38,
+    "name": "Kakanuo Cordless Table Lamp Rechargeable Black - KK 2 Pack 5000mAH Bat",
+    "nameZh": "Kakanuo Cordless Table Lamp  Black - KK 2 Pack 5000mAH Battery Operated Lamp",
+    "platform": "amazon",
+    "category": "家居照明",
+    "price": 19.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 1524,
+    "monthlySales": 9000,
+    "imageUrl": "https://m.media-amazon.com/images/I/51hGSTESgyL._AC_UY512_.jpg",
+    "alibabaPrice": 63,
+    "pros": [
+      "装饰属性强",
+      "安装简单"
+    ],
+    "cons": [
+      "胶力参差",
+      "需插电"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%B0%E7%81%AF%20%E6%8A%A4%E7%9C%BC%20%E5%85%85%E7%94%B5",
+    "sellUrl": "https://www.amazon.com/dp/B0DJYBF17N",
+    "growth": "爆发"
+  },
+  {
+    "id": 39,
+    "name": "24 Pack Fairy Lights Battery Operated [3 Modes] 7ft 20 LED Mini Twinkl",
+    "nameZh": "24 Pack Fairy Lights Battery Operated [3 Modes] 7ft 20 LED  Twinkle String Lights Waterproof Silver Wire Firefly Starry Lights 圣诞装饰",
+    "platform": "amazon",
+    "category": "节庆装饰",
+    "price": 9.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.4,
+    "reviewCount": 2188,
+    "monthlySales": 9000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81YK+BKeKLL._AC_UY512_.jpg",
+    "alibabaPrice": 31,
+    "pros": [
+      "节日氛围强",
+      "季节爆款",
+      "出片率高"
+    ],
+    "cons": [
+      "季节性强",
+      "需提前备货"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%9C%A3%E8%AF%9E%E8%A3%85%E9%A5%B0%20%E6%8C%82%E4%BB%B6%20%E6%91%86%E4%BB%B6",
+    "sellUrl": "https://www.amazon.com/dp/B0FH6Z5TH8",
+    "growth": "爆发"
+  },
+  {
+    "id": 40,
+    "name": "Amagic 1000 Pieces Artificial Rose Petals with 12 Heart LED Tea Lights",
+    "nameZh": "Amagic 1000 Pieces Artificial Rose Petals 电子蜡烛",
+    "platform": "amazon",
+    "category": "节庆装饰",
+    "price": 6.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.7,
+    "reviewCount": 1265,
+    "monthlySales": 8000,
+    "imageUrl": "https://m.media-amazon.com/images/I/61fsvIoie0L._AC_UY512_.jpg",
+    "alibabaPrice": 22,
+    "pros": [
+      "节日氛围强",
+      "季节爆款",
+      "出片率高"
+    ],
+    "cons": [
+      "季节性强",
+      "需提前备货"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E5%AD%90%E8%9C%A1%E7%83%9B%20%E6%97%A0%E7%83%9F%20%E9%81%A5%E6%8E%A7",
+    "sellUrl": "https://www.amazon.com/dp/B0DNF8MNW9",
+    "growth": "爆发"
+  },
+  {
+    "id": 41,
+    "name": "Tinsel Foil Fringe Curtains Wavy Backdrop for Parties Sparkle Metallic",
+    "nameZh": "金属亮片流苏门帘（背景布置）",
+    "platform": "amazon",
+    "category": "节庆装饰",
+    "price": 5.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 2933,
+    "monthlySales": 8000,
+    "imageUrl": "https://m.media-amazon.com/images/I/91rXc76MkEL._AC_UY512_.jpg",
+    "alibabaPrice": 19,
+    "pros": [
+      "节日氛围强",
+      "季节爆款",
+      "出片率高"
+    ],
+    "cons": [
+      "季节性强",
+      "需提前备货"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%A9%B4%E5%84%BF%E6%B4%BE%E5%AF%B9%E8%A3%85%E9%A5%B0%20%E8%83%8C%E6%99%AF",
+    "sellUrl": "https://www.amazon.com/dp/B0CKX7H63H",
+    "growth": "爆发"
+  },
+  {
+    "id": 42,
+    "name": "probebi Retractable Baby, Child & Dog Gates for Stairs, Extends to 54\"",
+    "nameZh": "probebi Retractable Baby",
+    "platform": "amazon",
+    "category": "宠物用品",
+    "price": 29.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.3,
+    "reviewCount": 2199,
+    "monthlySales": 7000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81VIx+ey+wL._AC_UY512_.jpg",
+    "alibabaPrice": 94,
+    "pros": [
+      "宠物经济热",
+      "粘性强"
+    ],
+    "cons": [
+      "需适配粮型",
+      "卡粮顾虑"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%AE%A0%E7%89%A9%E6%A5%BC%E6%A2%AF%20%E5%BA%8A%E8%BE%B9%20%E6%8A%A4%E5%85%B3%E8%8A%82",
+    "sellUrl": "https://www.amazon.com/dp/B0CJXC7YTC",
+    "growth": "爆发"
+  },
+  {
+    "id": 43,
+    "name": "Elite Gourmet ERC003BX Electric Rice Cooker with Automatic Keep Warm M",
+    "nameZh": "Elite Gourmet ERC003BX  Rice Cooker",
+    "platform": "amazon",
+    "category": "厨房电器",
+    "price": 17.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 3.8,
+    "reviewCount": 524,
+    "monthlySales": 6000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71qkl7admwL._AC_UY512_.jpg",
+    "alibabaPrice": 57,
+    "pros": [
+      "高频使用",
+      "家庭必需品",
+      "好评率高"
+    ],
+    "cons": [
+      "需认证",
+      "售后成本高"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%94%B5%E9%A5%AD%E7%85%B2%20%E6%99%BA%E8%83%BD%20%E9%A2%84%E7%BA%A6",
+    "sellUrl": "https://www.amazon.com/dp/B0FVZTF34R",
+    "growth": "爆发"
+  },
+  {
+    "id": 44,
+    "name": "Sweetcrispy 44 Inch Cat Tree Tower, Cat Climbing Tower with Natural Si",
+    "nameZh": "Sweetcrispy 44 Inch Cat Tree Tower",
+    "platform": "amazon",
+    "category": "宠物用品",
+    "price": 49.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 1422,
+    "monthlySales": 6000,
+    "imageUrl": "https://m.media-amazon.com/images/I/714brWYJ2hL._AC_UY512_.jpg",
+    "alibabaPrice": 157,
+    "pros": [
+      "宠物经济热",
+      "粘性强"
+    ],
+    "cons": [
+      "需适配粮型",
+      "卡粮顾虑"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%8C%AB%E7%88%AC%E6%9E%B6%20%E5%A4%9A%E5%B1%82%20%E7%8C%AB%E7%AA%9D",
+    "sellUrl": "https://www.amazon.com/dp/B0G2XYGPWY",
+    "growth": "爆发"
+  },
+  {
+    "id": 45,
+    "name": "MalloMe LED Camping Lantern, Battery Powered Lanterns for Power Outage",
+    "nameZh": "MalloMe LED 露营灯",
+    "platform": "amazon",
+    "category": "户外用品",
+    "price": 9.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.7,
+    "reviewCount": 2380,
+    "monthlySales": 6000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81JSc+jt-rL._AC_UY512_.jpg",
+    "alibabaPrice": 31,
+    "pros": [
+      "露营刚需",
+      "季节性强",
+      "客单价中"
+    ],
+    "cons": [
+      "续航顾虑",
+      "体积偏大"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E9%9C%B2%E8%90%A5%E7%81%AF%20%E5%85%85%E7%94%B5%20%E9%98%B2%E6%B0%B4",
+    "sellUrl": "https://www.amazon.com/dp/B0GGWHJ8XJ",
+    "growth": "爆发"
+  },
+  {
+    "id": 46,
+    "name": "Globlazer Heavy Duty Cat Tree, 70 inch Sturdy Cat Tree for Indoor Cats",
+    "nameZh": "Globlazer Heavy Duty Cat Tree",
+    "platform": "amazon",
+    "category": "宠物用品",
+    "price": 99.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.7,
+    "reviewCount": 1351,
+    "monthlySales": 5000,
+    "imageUrl": "https://m.media-amazon.com/images/I/81EHEngdraL._AC_UY512_.jpg",
+    "alibabaPrice": 315,
+    "pros": [
+      "宠物经济热",
+      "粘性强"
+    ],
+    "cons": [
+      "需适配粮型",
+      "卡粮顾虑"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E7%8C%AB%E7%88%AC%E6%9E%B6%20%E5%A4%9A%E5%B1%82%20%E7%8C%AB%E7%AA%9D",
+    "sellUrl": "https://www.amazon.com/dp/B0DGKR5MMP",
+    "growth": "爆发"
+  },
+  {
+    "id": 47,
+    "name": "ROPVACNIC Robot Vacuum and Mop Combo 5200Pa Suction Robotic Cleaner | ",
+    "nameZh": "ROPVACNIC 扫地机器人",
+    "platform": "amazon",
+    "category": "智能家居",
+    "price": 99.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.3,
+    "reviewCount": 1750,
+    "monthlySales": 5000,
+    "imageUrl": "https://m.media-amazon.com/images/I/518+BuiWh6L._AC_UY512_.jpg",
+    "alibabaPrice": 315,
+    "pros": [
+      "复购配件多",
+      "客单价高"
+    ],
+    "cons": [
+      "需联网设置",
+      "兼容性顾虑"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%89%AB%E5%9C%B0%E6%9C%BA%E5%99%A8%E4%BA%BA%20%E5%85%A8%E8%87%AA%E5%8A%A8",
+    "sellUrl": "https://www.amazon.com/dp/B0GDXV2KJ4",
+    "growth": "爆发"
+  },
+  {
+    "id": 48,
+    "name": "Mini Projector, Portable Projector with Wifi and Bluetooth, Built in A",
+    "nameZh": "Projector",
+    "platform": "amazon",
+    "category": "智能家居",
+    "price": 59.99,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 287,
+    "monthlySales": 4000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71WEgL0DCYL._AC_UY512_.jpg",
+    "alibabaPrice": 189,
+    "pros": [
+      "复购配件多",
+      "客单价高"
+    ],
+    "cons": [
+      "需联网设置",
+      "兼容性顾虑"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%8A%95%E5%BD%B1%E4%BB%AA%20%E5%AE%B6%E7%94%A8%201080p",
+    "sellUrl": "https://www.amazon.com/dp/B0GGH9DJ9Q",
+    "growth": "爆发"
+  },
+  {
+    "id": 49,
+    "name": "Leaf Blower Cordless, 650CFM Electric Leaf Blowers with 2 x 5.2Ah Batt",
+    "nameZh": "无线吹叶机 650CFM",
+    "platform": "amazon",
+    "category": "户外用品",
+    "price": 89.98,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.3,
+    "reviewCount": 1499,
+    "monthlySales": 4000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71m1Do9cgcL._AC_UY512_.jpg",
+    "alibabaPrice": 283,
+    "pros": [
+      "露营刚需",
+      "季节性强",
+      "客单价中"
+    ],
+    "cons": [
+      "续航顾虑",
+      "体积偏大"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E6%89%AB%E9%9B%AA%E6%9C%BA%20%E7%94%B5%E5%8A%A8%20%E5%BA%AD%E9%99%A2",
+    "sellUrl": "https://www.amazon.com/dp/B0FLX45THX",
+    "growth": "爆发"
+  },
+  {
+    "id": 50,
+    "name": "Space Heater, WINHL Small Portable Electric Heaters for Indoor Use wit",
+    "nameZh": "Space Heater 取暖器",
+    "platform": "amazon",
+    "category": "家居电器",
+    "price": 29.97,
+    "currency": "USD",
+    "salesGrowth": 0,
+    "rating": 4.5,
+    "reviewCount": 1785,
+    "monthlySales": 4000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71gKoVlZF+L._AC_UY512_.jpg",
+    "alibabaPrice": 94,
+    "pros": [
+      "冬季刚需",
+      "使用频次高",
+      "复购稳定"
+    ],
+    "cons": [
+      "体积偏大",
+      "季节性强"
+    ],
+    "trending": true,
+    "lastUpdated": "2026-09-10",
+    "stage": "new",
+    "ali1688Url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%8F%96%E6%9A%96%E5%99%A8%20%E5%B0%8F%E5%9E%8B%20%E4%BE%BF%E6%90%BA%E5%BC%8F",
+    "sellUrl": "https://www.amazon.com/dp/B0F192PKMF",
+    "growth": "爆发"
   }
 ]
