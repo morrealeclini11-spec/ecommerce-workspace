@@ -1,6 +1,276 @@
 [
   {
-    "id": 1,
+    "title": "TikTok Shop US tests 'Price Cut' and 'Group Deal' live shopping on Sep 10",
+    "titleZh": "TikTok Shop美区9月10日内测\"砍价\"与\"拼团\"直播玩法",
+    "summary": "",
+    "summaryZh": "亿邦动力消息，TikTok Shop美区在8月竞拍直播灰度测试取得正向数据后，于9月10日开启\"砍价(Price Cut)\"与\"拼团(Group Deal)\"两种新直播玩法内测，仅向部分受邀大商家开放。砍价模式由观众互动逐步压低售价，拼团需邀好友成团解锁优惠价。新玩法可拉长直播停留、提升单小时GMV，但卖家需重新设计主播话术与分档库存。",
+    "source": "亿邦动力",
+    "country": "美国",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://kuajing.eeimi.com/1093.html",
+    "trendingTopics": [
+      "直播带货",
+      "拼团",
+      "互动定价",
+      "TikTok Shop",
+      "美区",
+      "砍价"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 1
+  },
+  {
+    "title": "Amazon Europe FBA 7-day delivery window takes effect Sep 1",
+    "titleZh": "亚马逊欧洲五国FBA 7天送达窗口生效，旺季备货精度大考",
+    "summary": "",
+    "summaryZh": "自9月1日起，发往英、德、法、意、西五国亚马逊运营中心的非合作承运商国际FBA货件，须在Send to Amazon流程中手动填写7天预计送达窗口（此前14天）。早到或迟到都将失去入仓优先级、需重新排队，直接影响黑五、网一旺季库存上架。德国站16个品类自愿退货期由30天缩至14天；欧盟FBA入仓9月起强制提交MRN与EORI，逾期60天未补齐将禁用新建入库计划。",
+    "source": "跨境日报/亿邦动力",
+    "country": "德国",
+    "category": "物流合规",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce",
+      "local"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://kuajing.eeimi.com/1093.html",
+    "trendingTopics": [
+      "FBA",
+      "泛欧",
+      "备货",
+      "入仓",
+      "清关MRN",
+      "旺季"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 2
+  },
+  {
+    "title": "Temu plans Middle East expansion, global sites to reach 27",
+    "titleZh": "Temu计划进军中东市场，加速本地化布局",
+    "summary": "",
+    "summaryZh": "Temu正计划开放中东站点（具体上线日期待公布），全球站点将扩至27个。2026年5月北美及澳大利亚月销售额达8.7亿美元，全球日均销售额突破5000万美元。中东招商优先招募家居、消费电子、户外汽配品类，提供本地仓对接与流量扶持；在加拿大采取\"与本地零售商竞争+招募本地制造商\"双轨策略，减少对跨境物流依赖。",
+    "source": "卖家之家",
+    "country": "中东",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://mjzj.com/article/fwzzr12i3t34",
+    "trendingTopics": [
+      "Temu",
+      "中东",
+      "本地仓",
+      "家居电子",
+      "户外汽配"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 3
+  },
+  {
+    "title": "TikTok Shop EU/UK product compliance deadline Sep 30",
+    "titleZh": "TikTok Shop欧盟英国站商品资质9月30日截止，未补齐将下架",
+    "summary": "",
+    "summaryZh": "TikTok Shop欧盟13国及英国站分阶段实施商品资质新规：7月30日起电子电器、纺织品新品须提交合规材料；8月17日起扩展至玩具、化妆品、母婴商品；9月30日起未完成资质补充的存量商品可能被下架。欧盟PPWR包装法已于8月12日全面生效，亚马逊、速卖通、TEMU、SHEIN、eBay等平台已陆续收紧监管。",
+    "source": "讯通标准",
+    "country": "欧洲",
+    "category": "合规",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce",
+      "local"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://www.nbxt-cert.com/9yueqianzuihouchongcisidakuajingdianshangpingtaiheguizhamenjielianluoxiazhefendaojishiqingdanqingli.html",
+    "trendingTopics": [
+      "CE",
+      "UKCA",
+      "EPR",
+      "PPWR",
+      "资质",
+      "合规"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 4
+  },
+  {
+    "title": "SHEIN lists on Hong Kong Stock Exchange on Sep 1",
+    "titleZh": "SHEIN正式在港交所挂牌上市",
+    "summary": "",
+    "summaryZh": "SHEIN于9月1日正式在港交所挂牌，成为快时尚跨境电商的重要里程碑。同期Temu拟进军中东、美客多推出直播购物，跨境平台竞争格局加速演变，卖家需关注头部平台流量与政策变动。",
+    "source": "腾讯新闻/卖家之家",
+    "country": "全球",
+    "category": "行业",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_6296a9d27bf64852",
+    "trendingTopics": [
+      "SHEIN",
+      "上市",
+      "快时尚",
+      "港交所"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 5
+  },
+  {
+    "title": "Amazon Pan-EU FBA mandates Netherlands station from Sep 3",
+    "titleZh": "亚马逊泛欧FBA强制纳入荷兰站，9月3日起生效",
+    "summary": "",
+    "summaryZh": "亚马逊宣布，自9月3日起，继续使用泛欧FBA的卖家必须将所有相关商品上线亚马逊荷兰站销售；约6个月后比利时站也将引入类似要求。卖家需检查ASIN状态，将商品同步至荷兰站并上传GPSR信息，同时在荷兰/比利时站注册包装号。",
+    "source": "腾讯新闻",
+    "country": "欧洲",
+    "category": "物流合规",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_6296a9d27bf64852",
+    "trendingTopics": [
+      "Pan-EU",
+      "荷兰站",
+      "GPSR",
+      "泛欧FBA"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 6
+  },
+  {
+    "title": "Shopee 9.9 Mega Shopping Festival kicks off with seller incentives",
+    "titleZh": "Shopee 9.9超级购物节开启，加大陆卖家激励",
+    "summary": "",
+    "summaryZh": "Shopee下半年首场超级大促9.9超级购物节开启，围绕不同市场需求推出大额优惠券、限时闪购、免运等福利，配合当日达、VIP会员优惠。平台加大卖家旺季激励：为官方仓、品牌、内贸出海等不同类型商家提供针对性扶持，并在产品、营销和物流履约环节升级服务。",
+    "source": "店雷达",
+    "country": "东南亚",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://www.dianleida.net/articles/article/9578",
+    "trendingTopics": [
+      "Shopee",
+      "9.9大促",
+      "免运",
+      "东南亚"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 7
+  },
+  {
+    "title": "TikTok Shop SEA opens individual biz registration without sales proof",
+    "titleZh": "TikTok Shop东南亚跨境开放个体工商户免流水入驻",
+    "summary": "",
+    "summaryZh": "自8月31日起，持有中国大陆个体工商户营业执照的商家，无需第三方平台经营流水证明、无需邀请码，即可直接申请入驻TikTok Shop东南亚跨境电商。继今年1月企业营业执照商家免流水入驻后，平台再次放宽门槛，为中小商家打开东南亚市场入口。",
+    "source": "店雷达",
+    "country": "东南亚",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://www.dianleida.net/articles/article/9578",
+    "trendingTopics": [
+      "TikTok Shop",
+      "东南亚",
+      "个体工商户",
+      "入驻",
+      "免流水"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 8
+  },
+  {
+    "title": "Mercado Livre launches live shopping in Latin America",
+    "titleZh": "美客多推出直播购物功能Mercado Livre Live",
+    "summary": "",
+    "summaryZh": "美客多正式推出直播购物功能Mercado Livre Live，消费者可在观看直播、了解商品的同时直接完成购买，无需跳出直播页面。拉美电商直播化加速，跨境卖家可借内容电商拓展巴西等市场，与TikTok Shop、Shopee形成直播带货竞争格局。",
+    "source": "卖家之家",
+    "country": "巴西",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://mjzj.com/article/fwzzr12i3t34",
+    "trendingTopics": [
+      "美客多",
+      "直播购物",
+      "拉美",
+      "Mercado Livre"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 9
+  },
+  {
+    "title": "TikTok EU/LatAm 2025 revenue $9.1B, first annual profit",
+    "titleZh": "TikTok欧洲及拉美业务2025年营收91亿美元，首次年度盈利",
+    "summary": "",
+    "summaryZh": "据福布斯援引TikTok英国实体财务文件，2025年TikTok在英国、欧洲及拉丁美洲业务营收达91亿美元，较2024年45亿美元同比增45.7%，并首次实现上述区域年度盈利。TikTok Shop日本站上线满一年GMV约500亿日元，内容电商模型初步跑通，达人分销成核心成交驱动。",
+    "source": "福布斯/腾讯新闻",
+    "country": "欧洲",
+    "category": "行业",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "publishedAt": "2026-09-10",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_6296a9d27bf64852",
+    "trendingTopics": [
+      "TikTok",
+      "盈利",
+      "内容电商",
+      "日本站"
+    ],
+    "relatedTrends": [],
+    "updated": "2026-09-10",
+    "id": 10
+  },
+  {
+    "id": 11,
     "title": "US consumers' tariff support rises to 46%, but 56% say they foot the bill",
     "titleZh": "美国消费者关税支持率升至46%，但56%承认涨价由自己买单",
     "summary": "",
@@ -26,7 +296,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 2,
+    "id": 12,
     "title": "US de minimis not repealed; Shein/Temu orders taxed seamlessly",
     "titleZh": "美国小额包裹关税并未取消，Shein/Temu订单征税'无缝衔接'",
     "summary": "",
@@ -52,7 +322,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 3,
+    "id": 13,
     "title": "TikTok Shop US H1 GMV nearly doubled; new sellers drive 40% of growth",
     "titleZh": "TikTok Shop美区上半年GMV近乎翻倍，新锐商家贡献40%增量",
     "summary": "",
@@ -78,7 +348,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 4,
+    "id": 14,
     "title": "Amazon US launches FBA 'refund-only' for items under $75",
     "titleZh": "亚马逊美国站上线FBA'仅退款'：75美元以下商品可免退货解决",
     "summary": "",
@@ -104,7 +374,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 5,
+    "id": 15,
     "title": "US Customs to enforce IOR importer registration from Sept 18",
     "titleZh": "美国海关9月18日起强制执行IOR进口商备案核查",
     "summary": "",
@@ -129,7 +399,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 6,
+    "id": 16,
     "title": "Temu accelerates globalization with semi-managed + local shipping",
     "titleZh": "Temu推半托管+本地发货绕开关税，加速全球化布局",
     "summary": "",
@@ -155,7 +425,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 7,
+    "id": 17,
     "title": "UK energy bills set to hit three-year high from October as inflation returns to 2.9%",
     "titleZh": "英国能源账单10月将涨至三年高位，通胀回升至2.9%",
     "summary": "",
@@ -181,7 +451,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 8,
+    "id": 18,
     "title": "Over a third of UK households cut heating, some skip hot meals to save on energy",
     "titleZh": "英国超三分之一家庭削减取暖，有人为省能源不吃热饭",
     "summary": "",
@@ -207,7 +477,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 9,
+    "id": 19,
     "title": "Amazon UK tightens FBM handling time from Sept 1; B2B on-time rate must hit 90%",
     "titleZh": "亚马逊英国站9月1日收紧FBM处理时效，企业订单准时率须达90%",
     "summary": "",
@@ -233,7 +503,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 10,
+    "id": 20,
     "title": "German gas storage at lowest since 2009; winter prices could spike to €80-100/MWh",
     "titleZh": "德国天然气储备降至2009年来最低，冬季气价或飙至€80-100/MWh",
     "summary": "",
@@ -259,7 +529,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 11,
+    "id": 21,
     "title": "Germany 2026 power prices stable to lower as government subsidizes grid fees",
     "titleZh": "德国2026电价稳中有降，政府补贴压低电网费",
     "summary": "",
@@ -285,7 +555,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 12,
+    "id": 22,
     "title": "Amazon Europe enforces MRN+EORI from Sept 1; Pan-EU inbound window cut to 7 days",
     "titleZh": "亚马逊欧洲9月新规：MRN+EORI成强制门槛，泛欧入仓时效压缩至7天",
     "summary": "",
@@ -311,7 +581,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 13,
+    "id": 23,
     "title": "EU PPWR packaging law fully in force Aug 12; platforms tighten EPR registration",
     "titleZh": "欧盟PPWR包装法8月12日全面生效，各大平台收紧EPR注册",
     "summary": "",
@@ -337,7 +607,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 14,
+    "id": 24,
     "title": "German retail sales plunged 3.4% in July, steepest drop in eurozone",
     "titleZh": "德国7月零售销售重挫3.4%，为欧元区最大拖累",
     "summary": "",
@@ -363,7 +633,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 15,
+    "id": 25,
     "title": "EU ends 150€ de minimis; AliExpress fined €550M, Temu €200M",
     "titleZh": "欧盟取消150欧元以下小包免税，AliExpress罚5.5亿欧、Temu罚2亿欧",
     "summary": "",
@@ -389,7 +659,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 16,
+    "id": 26,
     "title": "France 2026 e-commerce VAT: EU €3 duty + €2 France levy on parcels under 150€",
     "titleZh": "法国电商增值税新规：150欧元以下包裹加征欧盟€3关税+法国€2费",
     "summary": "",
@@ -415,7 +685,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 17,
+    "id": 27,
     "title": "Amazon France requires SIREN/SIRET for B2B sales from Sept 1",
     "titleZh": "亚马逊法国站9月1日起B2B销售须提交SIREN/SIRET企业资质",
     "summary": "",
@@ -441,7 +711,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 18,
+    "id": 28,
     "title": "Eurozone retail rose 1.6% in May; France +1.1% on public-sector wage hikes",
     "titleZh": "欧元区5月零售增1.6%超预期，法国受公职加薪提振+1.1%",
     "summary": "",
@@ -467,7 +737,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 19,
+    "id": 29,
     "title": "Spain leads European retail growth, forecast +3.4% in 2026",
     "titleZh": "西班牙零售销售领跑欧洲，2026年预计增长3.4%",
     "summary": "",
@@ -493,7 +763,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 20,
+    "id": 30,
     "title": "Eurozone retail fell 0.6% in July; Spain -0.9%, Italy -0.3%",
     "titleZh": "欧元区7月零售意外下滑0.6%，西班牙-0.9%、意大利-0.3%",
     "summary": "",
@@ -519,7 +789,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 21,
+    "id": 31,
     "title": "Amazon Spain FBA inbound window compressed under new Europe rules",
     "titleZh": "亚马逊西班牙站FBA入仓时效随欧洲新规同步压缩",
     "summary": "",
@@ -545,7 +815,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 22,
+    "id": 32,
     "title": "Italy's retail growth sluggish, forecast only +0.6% in 2026",
     "titleZh": "意大利零售增长乏力，2026年预计仅增0.6%",
     "summary": "",
@@ -571,7 +841,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 23,
+    "id": 33,
     "title": "Italy retail contracts two months running; July -0.3%",
     "titleZh": "意大利零售连续两月收缩，7月再降0.3%",
     "summary": "",
@@ -597,7 +867,7 @@
     "updated": "2026-09-09"
   },
   {
-    "id": 24,
+    "id": 34,
     "title": "Amazon Italy FBA inbound tightened under Sept Europe logistics rules",
     "titleZh": "亚马逊意大利站FBA入仓随欧洲物流新规收紧",
     "summary": "",
