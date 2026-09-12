@@ -1,42 +1,12 @@
 [
   {
-    "keyword": "Candle Warmer Lamp 圣诞装饰",
-    "type": "amazon_new",
-    "country": "美国",
-    "category": "节庆装饰",
-    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
-    "metric": "月销 40,000",
-    "updated": "2026-09-10",
-    "real": true
-  },
-  {
     "keyword": "COSLUS Sonic  Toothbrush",
     "type": "amazon_new",
     "country": "美国",
     "category": "智能家居",
     "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
     "metric": "月销 40,000",
-    "updated": "2026-09-10",
-    "real": true
-  },
-  {
-    "keyword": "Air 空气净化器",
-    "type": "amazon_new",
-    "country": "美国",
-    "category": "环境电器",
-    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
-    "metric": "月销 30,000",
-    "updated": "2026-09-10",
-    "real": true
-  },
-  {
-    "keyword": "Pocket Hose Ballistic 50 FT Expandable 伸缩水管",
-    "type": "amazon_new",
-    "country": "美国",
-    "category": "户外用品",
-    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
-    "metric": "月销 30,000",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -46,37 +16,17 @@
     "category": "家居照明",
     "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
     "metric": "月销 20,000",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "Philips Sonicare 5950 系列电动牙刷",
+    "keyword": "Flexi Hose Expandable 伸缩水管",
     "type": "amazon_new",
     "country": "美国",
-    "category": "健康设备",
-    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
-    "metric": "月销 20,000",
-    "updated": "2026-09-10",
-    "real": true
-  },
-  {
-    "keyword": "Ninja Kitchen System",
-    "type": "amazon_new",
-    "country": "美国",
-    "category": "厨房电器",
-    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
-    "metric": "月销 20,000",
-    "updated": "2026-09-10",
-    "real": true
-  },
-  {
-    "keyword": "AILBTON 10英尺串灯立杆 4件套",
-    "type": "amazon_new",
-    "country": "美国",
-    "category": "节庆装饰",
+    "category": "户外用品",
     "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
     "metric": "月销 10,000",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -86,7 +36,7 @@
     "category": "户外用品",
     "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
     "metric": "月销 10,000",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -96,7 +46,7 @@
     "category": "家居电器",
     "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
     "metric": "月销 10,000",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -106,27 +56,7 @@
     "category": "节庆装饰",
     "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
     "metric": "月销 10,000",
-    "updated": "2026-09-10",
-    "real": true
-  },
-  {
-    "keyword": "XIAZ 抬高式狗狗碗架（大型犬）",
-    "type": "amazon_new",
-    "country": "美国",
-    "category": "宠物用品",
-    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
-    "metric": "月销 10,000",
-    "updated": "2026-09-10",
-    "real": true
-  },
-  {
-    "keyword": "Aurzen Roku TV  Projector",
-    "type": "amazon_new",
-    "country": "美国",
-    "category": "智能家居",
-    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
-    "metric": "月销 10,000",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -136,7 +66,17 @@
     "category": "厨房电器",
     "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
     "metric": "月销 10,000",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
+    "real": true
+  },
+  {
+    "keyword": "DIY Bonsai Tree Kit",
+    "type": "amazon_new",
+    "country": "美国",
+    "category": "户外用品",
+    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
+    "metric": "月销 10,000",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -146,7 +86,67 @@
     "category": "智能家居",
     "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
     "metric": "月销 10,000",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
+    "real": true
+  },
+  {
+    "keyword": "Camco EvoFlex2 50-ft Drinking Water 伸缩水管",
+    "type": "amazon_new",
+    "country": "美国",
+    "category": "户外用品",
+    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
+    "metric": "月销 10,000",
+    "updated": "2026-09-12",
+    "real": true
+  },
+  {
+    "keyword": "Miniature Frog Garden Statue Gifts Valentines Day Decorations Fairy Garden Accessories Outdoor Lights Solar Garden Frog Decor Art Housewarming Gift",
+    "type": "amazon_new",
+    "country": "美国",
+    "category": "户外用品",
+    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
+    "metric": "月销 10,000",
+    "updated": "2026-09-12",
+    "real": true
+  },
+  {
+    "keyword": "Ring Wired Doorbell 2K",
+    "type": "amazon_new",
+    "country": "美国",
+    "category": "智能家居",
+    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
+    "metric": "月销 10,000",
+    "updated": "2026-09-12",
+    "real": true
+  },
+  {
+    "keyword": "Ninja Flip Toaster Oven & 空气炸锅",
+    "type": "amazon_new",
+    "country": "美国",
+    "category": "厨房电器",
+    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
+    "metric": "月销 10,000",
+    "updated": "2026-09-12",
+    "real": true
+  },
+  {
+    "keyword": "Relxitl 伸缩水管",
+    "type": "amazon_new",
+    "country": "美国",
+    "category": "户外用品",
+    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
+    "metric": "月销 10,000",
+    "updated": "2026-09-12",
+    "real": true
+  },
+  {
+    "keyword": "Ninja Professional Blender 2.0",
+    "type": "amazon_new",
+    "country": "美国",
+    "category": "厨房电器",
+    "source": "Amazon 美国站 best-seller（asinsight 真实抓取）",
+    "metric": "月销 10,000",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -156,7 +156,7 @@
     "category": "灯具",
     "source": "奥维云网2026 Q1护眼灯报告",
     "metric": "抖音渠道3月反弹+94.9%，大路灯占护眼灯TOP10中7席",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -166,7 +166,7 @@
     "category": "灯具",
     "source": "1688家居消费白皮书",
     "metric": "1688「智能调光灯带」搜索量同比+183%，「氛围灯」新品发布环比+210%",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -176,7 +176,7 @@
     "category": "花园",
     "source": "TikTok Shop跨境POP春季趋势",
     "metric": "感应壁灯/地埋灯已成爆品，花朵蘑菇造型受年轻用户青睐",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -186,7 +186,7 @@
     "category": "花园",
     "source": "2026园艺圈大爆发报告",
     "metric": "2026世界花园大会新优品种，耐40℃免打药成关键词",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -196,7 +196,7 @@
     "category": "节庆",
     "source": "1688家居派对装饰指南",
     "metric": "「生日仪式感」1688热度指数265，周环比+8.29%",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -206,7 +206,7 @@
     "category": "节庆",
     "source": "2026生日派对DIY攻略",
     "metric": "复古胶片派对搜索+210%，星空露营+180%，热带海岛+150%",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -216,7 +216,7 @@
     "category": "宠物",
     "source": "抖音电商宠物行业趋势报告",
     "metric": "磨牙洁齿零食搜索指数5000%+，功能零食3000%+",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -226,7 +226,7 @@
     "category": "宠物",
     "source": "2026抖音电商宠物报告",
     "metric": "智能设备成交额前三，动销商品数同比+129%新品+120%",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -236,7 +236,7 @@
     "category": "家电",
     "source": "抖音智能家居商业密码",
     "metric": "抖音同比+5263%，299-599元黑马品类",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -246,7 +246,17 @@
     "category": "家电",
     "source": "抖音智能家居报告",
     "metric": "高端智能摄像头销额同比+210%，50岁以上占比26.72%",
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
+    "real": true
+  },
+  {
+    "keyword": "TikTok Shop",
+    "type": "news_topic",
+    "country": "美国",
+    "category": "近期热点",
+    "source": "来自真实新闻聚合",
+    "metric": null,
+    "updated": "2026-09-12",
     "real": true
   },
   {
@@ -256,117 +266,107 @@
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "欧元",
+    "keyword": "Temu",
     "type": "news_topic",
-    "country": "德国",
+    "country": "全球",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "关税",
+    "keyword": "东南亚",
     "type": "news_topic",
-    "country": "美国",
+    "country": "东南亚",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "消费信心",
-    "type": "news_topic",
-    "country": "美国",
-    "category": "近期热点",
-    "source": "来自真实新闻聚合",
-    "metric": null,
-    "updated": "2026-09-10",
-    "real": true
-  },
-  {
-    "keyword": "de minimis",
+    "keyword": "佣金",
     "type": "news_topic",
     "country": "美国",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "亚马逊",
+    "keyword": "美区",
     "type": "news_topic",
     "country": "美国",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "生活成本",
+    "keyword": "欧盟",
     "type": "news_topic",
-    "country": "英国",
+    "country": "欧洲",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "B2B",
+    "keyword": "EPR",
     "type": "news_topic",
-    "country": "英国",
+    "country": "欧洲",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "零售销售",
+    "keyword": "半托管",
     "type": "news_topic",
-    "country": "德国",
+    "country": "全球",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "买美国制造",
+    "keyword": "海外仓",
     "type": "news_topic",
-    "country": "美国",
+    "country": "全球",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "跨境直邮",
+    "keyword": "合规",
     "type": "news_topic",
-    "country": "美国",
+    "country": "欧洲",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   },
   {
-    "keyword": "小额包裹",
+    "keyword": "GPSR",
     "type": "news_topic",
-    "country": "美国",
+    "country": "欧洲",
     "category": "近期热点",
     "source": "来自真实新闻聚合",
     "metric": null,
-    "updated": "2026-09-10",
+    "updated": "2026-09-12",
     "real": true
   }
 ]
