@@ -45,8 +45,8 @@
       }
       @keyframes bootspin { to { transform: rotate(360deg); } }
     </style>
-    <script type="module" crossorigin src="./assets/index-BAT0oHQt.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CwATJ668.css">
+    <script type="module" crossorigin src="./assets/app-1789197286845.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/style-1789197286845.css">
   </head>
   <body>
     <div id="root"></div>
@@ -61,57 +61,86 @@
 
     <script>
       // ============================================================
-      // 防白屏自愈：脚本加载失败 / 版本过期（旧缓存）时自动强制刷新一次
-      // 背景：浏览器缓存了旧版 index.html 却引用了已被替换的 JS 时会整页白屏
+      // 防白屏自愈 v2：主动联网校验版本 + 多重兜底强制刷新
+      //
+      // 背景：CloudStudio 网关对 index.html 只发 Last-Modified、无 Cache-Control，
+      //       Edge/Chrome 会「启发式缓存」旧 index.html → 引用旧 JS → 整页白屏。
+      // 对策：本段脚本内联在 HTML 中（不依赖外部文件即可执行），
+      //       ① 主动 fetch 服务器上的最新版本清单（no-store 绕缓存）
+      //       ② 版本不符 → 立即强刷（带随机参数，必拿新 HTML）
+      //       ③ 超时未挂载 / 脚本加载失败 → 显示可点击的刷新按钮
       // ============================================================
       (function () {
-        var VERSION = '1789195674616'
+        var VERSION = '1789197286845'
         var KEY = 'ec_boot_ver'
+        var LOCK = 'ec_boot_lock'
         var retry = document.getElementById('boot-retry')
+
+        function say(msg) {
+          var s = document.querySelector('#boot .s')
+          if (s && msg) s.textContent = msg
+        }
 
         function hardReload(reason) {
           try {
-            // 只自愈一次，避免与网络故障形成死循环
-            if (sessionStorage.getItem('ec_boot_reloaded')) return
-            sessionStorage.setItem('ec_boot_reloaded', '1')
+            // 10 秒内只自愈一次，避免与网络故障形成死循环
+            var last = parseInt(sessionStorage.getItem(LOCK) || '0', 10)
+            if (last && Date.now() - last < 10000) return
+            sessionStorage.setItem(LOCK, String(Date.now()))
           } catch (e) {}
           var url = location.href.split('#')[0].split('?')[0] + '?_v=' + Date.now()
-          try { console.warn('[boot] 强制刷新：' + reason) } catch (e) {}
+          try { console.warn('[ec-boot] 强制刷新：' + reason + ' -> ' + url) } catch (e) {}
+          say('发现新版本，正在刷新…')
           location.replace(url)
         }
 
-        // ① 版本不一致 → 说明 HTML 是新的但缓存里还留着别的版本，直接刷新
+        // ① 本地记录的版本与当前 HTML 版本不一致 → 缓存错乱，强刷
         try {
           var seen = sessionStorage.getItem(KEY)
-          if (seen && seen !== VERSION) hardReload('版本从 ' + seen + ' 变为 ' + VERSION)
+          if (seen && seen !== VERSION) hardReload('本地版本 ' + seen + ' != 页面版本 ' + VERSION)
           sessionStorage.setItem(KEY, VERSION)
         } catch (e) {}
 
-        // ② 兜底：8 秒后 React 仍未挂载 → 给出可点击的强制刷新按钮
+        // ② 主动拉取服务器最新版本（no-store 绕开缓存），不一致则强刷
+        //    这是治本手段：即使 Edge 缓存了旧 HTML，也能被这段脚本纠正。
+        try {
+          fetch('./version.json?ts=' + Date.now(), {
+            cache: 'no-store',
+            headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' },
+          })
+            .then(function (r) { return r.ok ? r.json() : null })
+            .then(function (j) {
+              if (j && j.v && String(j.v) !== String(VERSION)) {
+                hardReload('服务器版本 ' + j.v + ' != 页面版本 ' + VERSION)
+              }
+            })
+            .catch(function () { /* 网络异常则忽略，不影响正常使用 */ })
+        } catch (e) {}
+
+        // ③ 兜底：10 秒后 React 仍未挂载 → 给出可点击的强制刷新按钮
         var t = setTimeout(function () {
           if (!document.querySelector('#root > *')) {
             if (retry) retry.style.display = 'inline-block'
-            var s = document.querySelector('#boot .s')
-            if (s) s.textContent = '加载超时，可能是浏览器缓存了旧版本'
+            say('加载超时，可能是浏览器缓存了旧版本')
           }
-        }, 8000)
+        }, 10000)
 
-        // ③ 暴露给 main.tsx：挂载成功则清掉占位
+        // ④ 暴露给 main.tsx：挂载成功则清掉占位
         window.__ecBootDone = function () {
           clearTimeout(t)
           var b = document.getElementById('boot')
           if (b && b.parentNode) b.parentNode.removeChild(b)
-          try { sessionStorage.removeItem('ec_boot_reloaded') } catch (e) {}
+          try { sessionStorage.removeItem(LOCK) } catch (e) {}
         }
 
         if (retry) {
           retry.addEventListener('click', function () {
-            try { sessionStorage.removeItem('ec_boot_reloaded') } catch (e) {}
+            try { sessionStorage.removeItem(LOCK) } catch (e) {}
             hardReload('用户手动重试')
           })
         }
 
-        // ④ 全局错误兜底：脚本解析/加载错误也引导刷新
+        // ⑤ 全局错误兜底：脚本解析/加载错误也引导刷新
         window.addEventListener('error', function (ev) {
           if (ev && ev.target && ev.target.tagName === 'SCRIPT') hardReload('脚本加载失败')
         }, true)
