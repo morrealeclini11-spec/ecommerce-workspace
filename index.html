@@ -7,10 +7,116 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>跨境电商工作台</title>
-    <script type="module" crossorigin src="./assets/index-IjO68tuR.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DGr0g_Ll.css">
+    <style>
+      /* 首屏占位：脚本未就绪时也能看到内容，避免"纯白"误判为崩溃 */
+      #boot {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 14px;
+        background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+        color: #475569;
+        font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      #boot .ring {
+        width: 38px;
+        height: 38px;
+        border: 3px solid #c7d2fe;
+        border-top-color: #4f46e5;
+        border-radius: 50%;
+        animation: bootspin 0.9s linear infinite;
+      }
+      #boot .t { font-size: 14px; font-weight: 600; color: #334155; }
+      #boot .s { font-size: 12px; color: #94a3b8; }
+      #boot button {
+        margin-top: 4px;
+        padding: 9px 18px;
+        border: 0;
+        border-radius: 9px;
+        background: #4f46e5;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        display: none;
+      }
+      @keyframes bootspin { to { transform: rotate(360deg); } }
+    </style>
+    <script type="module" crossorigin src="./assets/index-BAT0oHQt.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CwATJ668.css">
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- 加载占位：React 挂载成功后由 main.tsx 移除 -->
+    <div id="boot">
+      <div class="ring"></div>
+      <div class="t">跨境电商工作台</div>
+      <div class="s">正在加载…</div>
+      <button id="boot-retry" type="button">加载不出来？点此强制刷新</button>
+    </div>
+
+    <script>
+      // ============================================================
+      // 防白屏自愈：脚本加载失败 / 版本过期（旧缓存）时自动强制刷新一次
+      // 背景：浏览器缓存了旧版 index.html 却引用了已被替换的 JS 时会整页白屏
+      // ============================================================
+      (function () {
+        var VERSION = '1789195674616'
+        var KEY = 'ec_boot_ver'
+        var retry = document.getElementById('boot-retry')
+
+        function hardReload(reason) {
+          try {
+            // 只自愈一次，避免与网络故障形成死循环
+            if (sessionStorage.getItem('ec_boot_reloaded')) return
+            sessionStorage.setItem('ec_boot_reloaded', '1')
+          } catch (e) {}
+          var url = location.href.split('#')[0].split('?')[0] + '?_v=' + Date.now()
+          try { console.warn('[boot] 强制刷新：' + reason) } catch (e) {}
+          location.replace(url)
+        }
+
+        // ① 版本不一致 → 说明 HTML 是新的但缓存里还留着别的版本，直接刷新
+        try {
+          var seen = sessionStorage.getItem(KEY)
+          if (seen && seen !== VERSION) hardReload('版本从 ' + seen + ' 变为 ' + VERSION)
+          sessionStorage.setItem(KEY, VERSION)
+        } catch (e) {}
+
+        // ② 兜底：8 秒后 React 仍未挂载 → 给出可点击的强制刷新按钮
+        var t = setTimeout(function () {
+          if (!document.querySelector('#root > *')) {
+            if (retry) retry.style.display = 'inline-block'
+            var s = document.querySelector('#boot .s')
+            if (s) s.textContent = '加载超时，可能是浏览器缓存了旧版本'
+          }
+        }, 8000)
+
+        // ③ 暴露给 main.tsx：挂载成功则清掉占位
+        window.__ecBootDone = function () {
+          clearTimeout(t)
+          var b = document.getElementById('boot')
+          if (b && b.parentNode) b.parentNode.removeChild(b)
+          try { sessionStorage.removeItem('ec_boot_reloaded') } catch (e) {}
+        }
+
+        if (retry) {
+          retry.addEventListener('click', function () {
+            try { sessionStorage.removeItem('ec_boot_reloaded') } catch (e) {}
+            hardReload('用户手动重试')
+          })
+        }
+
+        // ④ 全局错误兜底：脚本解析/加载错误也引导刷新
+        window.addEventListener('error', function (ev) {
+          if (ev && ev.target && ev.target.tagName === 'SCRIPT') hardReload('脚本加载失败')
+        }, true)
+      })()
+    </script>
+
   </body>
 </html>
