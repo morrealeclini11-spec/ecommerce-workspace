@@ -11,7 +11,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "取暖器要省电费（ECO 模式自动调功率）",
@@ -25,7 +26,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "取暖器要安全（防倾倒/过热/ETL/童锁）",
@@ -39,7 +41,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "取暖器要精准控温（41–95°F 1°F 步进）",
@@ -53,7 +56,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "取暖器要广角摆头+遥控/APP",
@@ -67,7 +71,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "小桌面/宿舍要迷你局部取暖（500W）",
@@ -81,7 +86,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "取暖后空气干燥→带动加湿器需求",
@@ -95,7 +101,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "太阳能灯要 IP65+ 防水耐候",
@@ -109,7 +116,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "太阳能灯要够亮（步道20–50lm / 安防200–800lm）",
@@ -123,7 +131,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "太阳能灯要阴天也能亮（电池续航）",
@@ -137,7 +146,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "太阳能灯要免布线易安装（租房友好）",
@@ -151,7 +161,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "太阳能灯要感应/APP 智能控制",
@@ -165,329 +176,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "太阳能灯要暖白氛围 + 零电费",
-    "type": "user_demand",
-    "intent": "场景诉求",
-    "category": "花园·灯具",
-    "country": "美国",
-    "relatedProduct": "太阳能庭院灯",
-    "evidence": "2026 调研(1000户)：87% 称氛围显著提升；72% 因零电费+免维护切换",
-    "source": "solarlightmeeting 2026 业主调研",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "太阳能灯要设计美学（编织/再生铝/可持续）",
-    "type": "user_demand",
-    "intent": "功能诉求",
-    "category": "花园·灯具",
-    "country": "美国",
-    "relatedProduct": "太阳能庭院灯",
-    "evidence": "65% 因环保选购、40% 明确要可持续设计",
-    "source": "solarlightmeeting 2026 业主调研",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "宠物摄像头要双向语音降焦虑",
-    "type": "user_demand",
-    "intent": "功能诉求",
-    "category": "宠物用品",
-    "country": "美国",
-    "relatedProduct": "宠物摄像头",
-    "evidence": "双向语音提升人宠互动 50%、降分离焦虑；Furbo 降噪可让犬识别主人声",
-    "source": "modernpettech / Wired 测评",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "宠物摄像头要零食投喂（减破坏）",
-    "type": "user_demand",
-    "intent": "功能诉求",
-    "category": "宠物用品",
-    "country": "美国",
-    "relatedProduct": "宠物摄像头",
-    "evidence": "定时投喂降破坏行为 35%；卡粮(≤0.5in)是主要痛点",
-    "source": "modernpettech",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "宠物摄像头要 1080p+/夜视/AI 宠物识别",
-    "type": "user_demand",
-    "intent": "功能诉求",
-    "category": "宠物用品",
-    "country": "美国",
-    "relatedProduct": "宠物摄像头",
-    "evidence": "1080p 是最低门槛；IR 夜视；Pet-vs-person AI 降低通知疲劳",
-    "source": "eviehometech 品类报告",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "宠物摄像头要免订阅（本地 SD 双备份）",
-    "type": "user_demand",
-    "intent": "价格诉求",
-    "category": "宠物用品",
-    "country": "美国",
-    "relatedProduct": "宠物摄像头",
-    "evidence": "SiiPet/Petlibro 不强制订阅；云存+本地 SD 双备份受捧",
-    "source": "Wired / CNET 测评",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "宠物摄像头+喂食器二合一（增长最快）",
-    "type": "user_demand",
-    "intent": "关联衍生",
-    "category": "宠物用品",
-    "country": "美国",
-    "relatedProduct": "宠物喂食器",
-    "evidence": "camera+feeder 是宠物摄像头增长最快子品类，零售 $149–249",
-    "source": "eviehometech 品类报告",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "宠物摄像头要户外太阳能防水（院子）",
-    "type": "user_demand",
-    "intent": "场景诉求",
-    "category": "宠物用品",
-    "country": "美国",
-    "relatedProduct": "宠物摄像头",
-    "evidence": "battery+solar 户外款 niche 但增长，用于院子是/犬舍监控",
-    "source": "eviehometech 品类报告",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "宠物摄像头要隐私安全（改默认密码/2FA）",
-    "type": "user_demand",
-    "intent": "痛点",
-    "category": "宠物用品",
-    "country": "美国",
-    "relatedProduct": "宠物摄像头",
-    "evidence": "上线改默认密码+开 2FA，避免被劫持偷拍室内",
-    "source": "小红书/抖音 KOL 横评(2026-08)",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "电热毯/保暖毯要可机洗+分区控温",
-    "type": "user_demand",
-    "country": "美国",
-    "season": "2026 秋冬季（9月–次年2月）",
     "horizon": "当季",
-    "category": "家居电器·保暖",
-    "intent": "功能诉求",
-    "relatedProduct": "电热毯",
-    "evidence": "refundy：electric blankets / weighted blankets 是秋冬季最耐用品类；tex-world：可机洗羊毛搜索+320%",
-    "source": "refundy / tex-world 2026秋冬",
-    "updated": "2026-09-14",
-    "real": true
-  },
-  {
-    "keyword": "便携电热暖脚器/加热垫（书桌/宿舍局部取暖）",
-    "type": "user_demand",
-    "country": "美国",
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季",
-    "category": "家居电器·取暖",
-    "intent": "场景诉求",
-    "relatedProduct": "取暖器",
-    "evidence": "Accio：Foldable Electric Foot Warmers 为 2026 高利润 dropshipping 单品，毛利可达 85%",
-    "source": "Accio 2026 winter products",
-    "updated": "2026-09-14",
-    "real": true
-  },
-  {
-    "keyword": "汽车除冰铲/防结冰罩（寒潮刚需）",
-    "type": "user_demand",
-    "country": "美国",
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季",
-    "category": "汽车用品",
-    "intent": "痛点",
-    "relatedProduct": "车载除冰铲",
-    "evidence": "refundy：windscreen covers / de-icer 为天气触发型急品；Allegro：汽车防结冰工具入冬热销",
-    "source": "refundy / cifnews Allegro",
-    "updated": "2026-09-14",
-    "real": true
-  },
-  {
-    "keyword": "美容仪要 FDA 认证/射频微电流（高客单蓝海）",
-    "type": "user_demand",
-    "country": "美国",
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季",
-    "category": "个护美容",
-    "intent": "痛点",
-    "relatedProduct": "美容仪",
-    "evidence": "TikTok Shop 美区：FDA 认证美容仪器、射频/微电流为蓝海，溢价高",
-    "source": "海贝/10100 TikTok Shop 3C家电",
-    "updated": "2026-09-14",
-    "real": true
-  },
-  {
-    "keyword": "除螨仪/擦窗机（清洁电器供给不足）",
-    "type": "user_demand",
-    "country": "美国",
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季",
-    "category": "清洁电器",
-    "intent": "功能诉求",
-    "relatedProduct": "除螨仪",
-    "evidence": "TikTok Shop 美区：除螨仪、擦窗机等细分品类供给不足，是秋冬机会",
-    "source": "海贝/10100 TikTok Shop",
-    "updated": "2026-09-14",
-    "real": true
-  },
-  {
-    "keyword": "办公文具/解压类（美区蓝海）",
-    "type": "user_demand",
-    "country": "美国",
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季",
-    "category": "文具",
-    "intent": "场景诉求",
-    "relatedProduct": "办公文具",
-    "evidence": "TikTok Shop 美区：办公文具属蓝海，创意/解压/节庆礼品类供给缺口明显",
-    "source": "海贝/10100 TikTok Shop",
-    "updated": "2026-09-14",
-    "real": true
-  },
-  {
-    "keyword": "圣诞要巨型充气（6–20ft 视觉冲击）",
-    "type": "user_demand",
-    "intent": "场景诉求",
-    "category": "节庆装饰",
-    "country": "美国",
-    "relatedProduct": "圣诞装饰",
-    "evidence": "巨型充气成 yard hero，社媒出片；8–15ft 最常见",
-    "source": "sylcrafts 2026 户外趋势",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "圣诞要协调场景组合（非零散堆砌）",
-    "type": "user_demand",
-    "intent": "场景诉求",
-    "category": "节庆装饰",
-    "country": "美国",
-    "relatedProduct": "圣诞装饰",
-    "evidence": "'complete yard scenes' 比单件卖得更快；主题化陈列成主流",
-    "source": "sylcrafts 2026 户外趋势",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "圣诞要个性化定制（名字/logo）",
-    "type": "user_demand",
-    "intent": "功能诉求",
-    "category": "节庆装饰",
-    "country": "美国",
-    "relatedProduct": "圣诞装饰",
-    "evidence": "定制 ornament 家庭+企业礼赠强趋势，B2B 灵活 MOQ 受青睐",
-    "source": "Greentime 2026 批发趋势",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "圣诞要智能 LED 串灯（APP 控制）",
-    "type": "user_demand",
-    "intent": "功能诉求",
-    "category": "节庆装饰",
-    "country": "美国",
-    "relatedProduct": "圣诞装饰",
-    "evidence": "app-controlled 智能串灯走热，需防水户外款",
-    "source": "Greentime 2026 批发趋势",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "圣诞要耐用抗天气（连接器/骨架）",
-    "type": "user_demand",
-    "intent": "痛点",
-    "category": "节庆装饰",
-    "country": "美国",
-    "relatedProduct": "圣诞装饰",
-    "evidence": "加厚线材+加固骨架显著降低退货",
-    "source": "sylcrafts 2026 户外趋势",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "圣诞要吹塑复古（vintage blow mold 回潮）",
-    "type": "user_demand",
-    "intent": "场景诉求",
-    "category": "节庆装饰",
-    "country": "美国",
-    "relatedProduct": "圣诞装饰",
-    "evidence": "vintage blow mold 收藏回潮，单件 $50–300、稀有套装 $1000–3000+",
-    "source": "christmasoem 2026",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "圣诞要迷你桌面树（都市小空间）",
-    "type": "user_demand",
-    "intent": "场景诉求",
-    "category": "节庆装饰",
-    "country": "美国",
-    "relatedProduct": "圣诞装饰",
-    "evidence": "urban living 推动迷你/办公桌树热销",
-    "source": "Greentime 2026 批发趋势",
-    "updated": "2026-09-14",
-    "real": true,
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
-  },
-  {
-    "keyword": "室内健身（阻力带/甩脂机/跑步机）居家锻炼",
-    "type": "user_demand",
-    "country": "美国",
-    "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季",
-    "category": "运动健身",
-    "intent": "场景诉求",
-    "relatedProduct": "健身器材",
-    "evidence": "Allegro：室内甩脂机/跑步机 12 月销量集中爆发；refundy：1 月室内爱好异常强",
-    "source": "cifnews Allegro / refundy",
-    "updated": "2026-09-14",
-    "real": true
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "太阳能灯要耐用抗风雪",
@@ -501,7 +191,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "节能保暖：遮光窗帘/门缝防风条（heat the person）",
@@ -515,7 +206,8 @@
     "evidence": "refundy：thermal curtains / draught excluders 因能源价格成真实购买动机；Allegro：遮光窗帘需求提升",
     "source": "refundy / cifnews",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "电热毯要 ECO 省电模式",
@@ -529,7 +221,8 @@
     "evidence": "refundy：electric blankets 为秋冬季核心；英国高电价下'省电'是首要动机",
     "source": "refundy autumn-winter 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "除湿机/防潮垫（老房潮湿发霉）",
@@ -543,7 +236,8 @@
     "evidence": "Allegro：除湿机/防潮垫等防潮保暖品类入冬需求大幅提升；英国约1/4成人报告发霉",
     "source": "cifnews Allegro / LifeAnalysis",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "空气炸锅/咖啡机（网红小家电持续爆单）",
@@ -557,7 +251,8 @@
     "evidence": "Allegro：空气炸锅、咖啡机凭高市场热度持续爆单，有稳定数据支撑",
     "source": "cifnews Allegro",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "汽车防滑链/车载除冰铲",
@@ -571,7 +266,8 @@
     "evidence": "Allegro：欧洲低温催生汽车防结冰工具、轮胎防滑链等汽摩配刚需",
     "source": "cifnews Allegro",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "智能恒温器/分区控温（74%家庭在找降能耗办法）",
@@ -585,7 +281,8 @@
     "evidence": "Ideal Home：74% 英国住户主动寻求降低能源账单；智能 thermostat 可省最多 20% 采暖费",
     "source": "castleheatingkent 2026 / Ofgem",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "即热式电暖器/电热毛巾架（替代燃气锅炉）",
@@ -599,7 +296,8 @@
     "evidence": "bestheating：电暖器被列为最实用的节能升级（零排放+智能联动）；Boiler Upgrade Scheme 补贴 £7,500",
     "source": "bestheating 2026 energy-saving heating",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "竖高/细长型散热器（小空间省地）",
@@ -613,7 +311,8 @@
     "evidence": "elegant-radiators：vertical/slim 款式因省地+美观在英国浴室厨房走俏",
     "source": "elegant-radiators 2026 trends",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "开窗检测自动停暖（减少约12%浪费）",
@@ -627,7 +326,8 @@
     "evidence": "Gaia：智能 thermostat 检测到开窗自动停暖，可减少约 12% 热量浪费",
     "source": "bpindex Gaia 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "空气炸锅快煮省电",
@@ -641,7 +341,23 @@
     "evidence": "Ofgem：2021 年以来英国能源价涨超 50%；空气炸锅因省电快煮成主流替代",
     "source": "castleheatingkent 2026 / Ofgem",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "加热晾衣架/室内晾衣系统（湿冷无烘干机）",
+    "type": "user_demand",
+    "country": "英国",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "家居·晾晒",
+    "intent": "痛点",
+    "relatedProduct": "加热晾衣架",
+    "evidence": "英国滚筒烘干机普及度低、晾衣靠室内 + 加热晾衣架；湿冷天气下室内晾衣与除湿是刚性组合需求",
+    "source": "LifeAnalysis GB（晾衣 + 加热晾衣架兴起）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "环保/可持续材质（GOTS/GRS 认证转化率高）",
@@ -655,7 +371,8 @@
     "evidence": "tex-world：带 GOTS/GRS 商品转化率高出普通 45%；德国愿为环保付溢价",
     "source": "tex-world 2026秋冬",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "功能性冬季服饰（防风羽绒/智能温控外套）",
@@ -669,7 +386,8 @@
     "evidence": "tex-world：内置加热模块智能外套预售抢眼；Allegro：防风羽绒夹克表现优异",
     "source": "tex-world / cifnews",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "有机棉+植物染针织（愿付30%溢价）",
@@ -683,7 +401,8 @@
     "evidence": "tex-world：德国/法国消费者愿为'有机棉+植物染'付 30% 溢价",
     "source": "tex-world 2026秋冬",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "节能小家电（A+++，能效至上）",
@@ -697,7 +416,8 @@
     "evidence": "LifeAnalysis：德国能效至上，A+++ 节能小家电需求强",
     "source": "LifeAnalysis DE",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "A/B 级节能家电（愿付 10–15% 溢价）",
@@ -711,7 +431,8 @@
     "evidence": "sourceready/imarcgroup：德国电价约 €0.32/kWh，消费者愿为 A/B 级能效多付 10–15%",
     "source": "sourceready 2026 / imarcgroup",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "支持 Matter 协议的智能家电（互通成基线）",
@@ -725,7 +446,8 @@
     "evidence": "sourceready/mordorintelligence：Matter 协议互通成为德国家电的基线要求（Alexa/Google Home 打通）",
     "source": "sourceready / mordorintelligence 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "紧凑多功能小家电（柏林/慕尼黑小户型）",
@@ -739,7 +461,8 @@
     "evidence": "imarcgroup：城市化推动紧凑多功能家电需求，小户型厨房空间有限",
     "source": "imarcgroup / accio German home appliances",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "无 PFAS 陶瓷涂层/回收不锈钢厨具（Blue Angel 认证）",
@@ -753,7 +476,8 @@
     "evidence": "sourceready：德国是欧洲环保意识最强市场，偏好回收不锈钢/铸铁/无 PFAS 涂层，Blue Angel 认证有竞争优势",
     "source": "sourceready Germany Kitchenware 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "干湿两用洗地机（高客单清洁电器）",
@@ -767,7 +491,53 @@
     "evidence": "Lengow/Kalodata：JONR ED12 干湿两用洗地机德国 2026年1月 GMV 约 €541,540，德国为欧洲第一",
     "source": "Lengow 2026 / 博克斯海外仓",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "通风除霉：湿度计/门窗密封条（Lüften 文化）",
+    "type": "user_demand",
+    "country": "德国",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "家居·防潮",
+    "intent": "功能诉求",
+    "relatedProduct": "温湿度计",
+    "evidence": "德国 Stoßlüften（间歇强通风）是官方推荐的防霉方式，湿度计与门窗密封条是配套刚需；能源贵使密封保温优先级高",
+    "source": "LifeAnalysis DE（通风文化 + 能效至上）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "Thermomix 配件/料理机替代方案",
+    "type": "user_demand",
+    "country": "德国",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "厨房器具",
+    "intent": "价格诉求",
+    "relatedProduct": "料理机配件",
+    "evidence": "Vorwerk Thermomix 在德国装机量极高（约 €1,300/台），周边配件与平价替代料理机需求稳定",
+    "source": "LifeAnalysis DE（Thermomix 普及）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "自行车冬季保养/室内骑行台",
+    "type": "user_demand",
+    "country": "德国",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "骑行配件",
+    "intent": "场景诉求",
+    "relatedProduct": "骑行台",
+    "evidence": "德国骑车通勤率全欧前列，冬季室外骑行减少，室内骑行台与保养用品需求上升",
+    "source": "LifeAnalysis DE（骑行文化）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "环保反快时尚/可修复小家电",
@@ -781,7 +551,8 @@
     "evidence": "LifeAnalysis：法国环保反快时尚（Vinted 国民级），可修复小家电受青睐",
     "source": "LifeAnalysis FR",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "极简风免钉收纳（小户型美学）",
@@ -795,7 +566,8 @@
     "evidence": "LifeAnalysis：巴黎小户型收纳爆满，极简风免钉收纳需求强",
     "source": "LifeAnalysis FR",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "节能厨电/空气炸锅（电费贵）",
@@ -809,7 +581,8 @@
     "evidence": "LifeAnalysis：法国电费贵，节能厨电/空气炸锅需求高",
     "source": "LifeAnalysis FR",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "空气炸锅/多功能料理（日常厨房刚需）",
@@ -823,7 +596,8 @@
     "evidence": "Lengow/Kalodata：Moulinex Easy Fry 空气炸锅法国 2026年1月 GMV €362.36k 居首；法国从促销型转向日常刚需",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "多功能电动食品加工机",
@@ -837,7 +611,8 @@
     "evidence": "Lengow/Kalodata：SPZTJK 多功能电动料理机法国 2026年1月 GMV €123.32k",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "牙齿美白/居家美容护理",
@@ -851,7 +626,8 @@
     "evidence": "Lengow/Kalodata：DRDENT 美白贴法国 2026年1月 GMV €127.31k，美容护理替代时尚进入中位",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "矮机身大容量洗衣机（法式厨房嵌入）",
@@ -865,7 +641,8 @@
     "evidence": "NIQ：短纵深高容量洗衣机在法国持续增长（厨房嵌入式安装）",
     "source": "NielsenIQ Home Appliances 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "智能烹饪电器（自动控温烤箱/自动烟机）",
@@ -879,7 +656,68 @@
     "evidence": "NIQ：能监控食物并自动调温的烤箱、自动调节排风的烟机增长可期",
     "source": "NielsenIQ 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "可修复/可换零件小家电（anti-gaspillage 法）",
+    "type": "user_demand",
+    "country": "法国",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "小家电",
+    "intent": "价格诉求",
+    "relatedProduct": "可修复小家电",
+    "evidence": "法国推行 anti-gaspillage（反浪费）法与可修复性指数 (indice de réparabilité)，消费者优先选可换零件的家电",
+    "source": "法国 indice de réparabilité / AGEC 法",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "二手/复古家居装饰（Vinted 文化）",
+    "type": "user_demand",
+    "country": "法国",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "家居装饰",
+    "intent": "场景诉求",
+    "relatedProduct": "复古家居",
+    "evidence": "Vinted 是法国国民级二手平台，反快时尚消费明显；复古家居与二手装饰在年轻租客中流行",
+    "source": "LifeAnalysis FR（Vinted 国民级）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "咖啡器具（Bialetti 风格/手冲）",
+    "type": "user_demand",
+    "country": "法国",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "厨房器具",
+    "intent": "场景诉求",
+    "relatedProduct": "咖啡器具",
+    "evidence": "法国咖啡馆文化深，家庭咖啡器具（手冲、摩卡壶、磨豆机）需求稳定；秋冬热饮消费上升",
+    "source": "LifeAnalysis FR（咖啡馆/美食文化）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "香薰/居家氛围蜡烛（savoir-vivre）",
+    "type": "user_demand",
+    "country": "法国",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "家居香氛",
+    "intent": "场景诉求",
+    "relatedProduct": "香薰蜡烛",
+    "evidence": "法国重 savoir-vivre（生活艺术）与审美，居家香氛与氛围蜡烛是礼赠 + 自用双场景品类，冬季需求上升",
+    "source": "LifeAnalysis FR（美学/品味）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "摩卡壶/意式咖啡文化小件",
@@ -893,7 +731,8 @@
     "evidence": "LifeAnalysis：意大利摩卡壶咖啡国民仪式，带动咖啡器具",
     "source": "LifeAnalysis IT",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "节能小家电（电费贵深入骨髓）",
@@ -907,7 +746,8 @@
     "evidence": "LifeAnalysis：意大利电费贵，节能深入；无空调靠百叶",
     "source": "LifeAnalysis IT",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "干湿两用洗地机",
@@ -921,7 +761,8 @@
     "evidence": "Lengow/Kalodata：JONR ED12 洗地机意大利 2026年1月 GMV €295.45k 居首，清洁电器取代美妆登顶",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "45000Pa 无线吸尘器（强吸力）",
@@ -935,7 +776,8 @@
     "evidence": "Lengow/Kalodata：45000Pa 无线吸尘器意大利 2026年1月 GMV €116.18k",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "人造毛短外套（冬季服饰仍相关）",
@@ -949,7 +791,8 @@
     "evidence": "Lengow/Kalodata：女士人造毛短外套意大利 2026年1月 GMV €71.63k，冬季服饰排第二梯队",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "匠人叙事高端厨具（看重 craftsmanship）",
@@ -963,7 +806,8 @@
     "evidence": "accio：意大利消费者看重手工艺叙事；本地化需强调工艺传承",
     "source": "accio Amazon Europe 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "黑籽油胶囊等天然保健品",
@@ -977,7 +821,8 @@
     "evidence": "Lengow/Kalodata：Black Seed Oil Capsules 意大利 2026年1月 GMV €65.41k",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "圣诞/家庭聚餐用品",
@@ -991,7 +836,68 @@
     "evidence": "LifeAnalysis：意大利家庭周日大餐核心传统，带动厨房/餐桌",
     "source": "LifeAnalysis IT",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "驱蚊+防蚊磁吸窗纱（窗纱基本缺失）",
+    "type": "user_demand",
+    "country": "意大利",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "家居防护",
+    "intent": "痛点",
+    "relatedProduct": "磁吸窗纱",
+    "evidence": "意大利住宅窗纱基本缺失，夏季蚊虫明显、老房无法打孔；磁吸免打孔纱窗是明确市场缺口",
+    "source": "LifeAnalysis IT（窗纱缺失）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "摩卡壶/Bialetti 配件 + 咖啡器具",
+    "type": "user_demand",
+    "country": "意大利",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "厨房器具",
+    "intent": "场景诉求",
+    "relatedProduct": "摩卡壶",
+    "evidence": "摩卡壶是意大利国民咖啡仪式（Bialetti 母国），配套滤纸、密封圈、替换手柄为高频复购件",
+    "source": "LifeAnalysis IT（摩卡壶咖啡）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "紧凑厨房台面收纳（老房厨房极小）",
+    "type": "user_demand",
+    "country": "意大利",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "厨房收纳",
+    "intent": "痛点",
+    "relatedProduct": "台面收纳架",
+    "evidence": "意大利老公寓厨房偏小且封闭，台面与吊柜收纳空间紧张；免钉（不能打孔）多层收纳是刚需",
+    "source": "LifeAnalysis IT（老公寓小浴室/小厨房）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "室内晾衣架/干燥（烘干机罕见）",
+    "type": "user_demand",
+    "country": "意大利",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "家居·晾晒",
+    "intent": "痛点",
+    "relatedProduct": "室内晾衣架",
+    "evidence": "意大利烘干机罕见，阳台晾衣为惯例；但秋冬阴雨与公寓禁外挂时，室内晾衣架与干燥方案需求上升",
+    "source": "LifeAnalysis IT（烘干机罕见 + 阳台晾衣）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "入冬室内保暖小家电（无集中供暖）",
@@ -1005,7 +911,8 @@
     "evidence": "LifeAnalysis：西班牙多无集中供暖，便携小风扇/取暖器是痛点",
     "source": "LifeAnalysis ES",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "百叶窗/遮光窗帘（午睡+西晒）",
@@ -1019,7 +926,8 @@
     "evidence": "LifeAnalysis：西班牙长午餐午睡+西晒，百叶窗/遮光窗帘刚需",
     "source": "LifeAnalysis ES",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "折叠晾衣架（居家晾晒省空间）",
@@ -1033,7 +941,8 @@
     "evidence": "Lengow/Kalodata：折叠晾衣架西班牙 2026年1月 GMV €138.99k，进入前三",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "车载紧急求救信标（带定位 V16）",
@@ -1047,7 +956,8 @@
     "evidence": "Lengow/Kalodata：V16 带定位应急信标西班牙 2026年1月 GMV €129.20k（安全类）",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "健康补充剂（NAD+ 等抗衰）",
@@ -1061,7 +971,8 @@
     "evidence": "Lengow/Kalodata：Vitalis Nova NAD+ 补充剂西班牙 2026年1月 GMV €147.09k 居首",
     "source": "Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "省空间收纳（西国家庭平均小40%）",
@@ -1075,7 +986,8 @@
     "evidence": "accio：欧洲住宅平均比美国小 40%，解决空间痛点的产品可溢价 40–60%",
     "source": "accio Amazon Europe 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "圣诞/节庆装饰（节庆文化强）",
@@ -1089,7 +1001,8 @@
     "evidence": "LifeAnalysis：西班牙节庆/家庭聚餐文化强，带动装饰需求",
     "source": "LifeAnalysis ES",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "嵌入式家电（新房率回升带动）",
@@ -1103,7 +1016,68 @@
     "evidence": "NIQ：西班牙、葡萄牙建房率小幅回升，利好嵌入式家电",
     "source": "NielsenIQ 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "纱窗套装（无纱窗 + 蚊虫 + 不能打孔）",
+    "type": "user_demand",
+    "country": "西班牙",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "家居防护",
+    "intent": "痛点",
+    "relatedProduct": "磁吸纱窗",
+    "evidence": "西班牙住宅普遍无纱窗，夏季蚊虫严重；但外立面改动受 LPH art.7.1 与社区表决约束，免打孔磁吸纱窗是制度性刚需",
+    "source": "LifeAnalysis ES + LPH art.7.1",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "免打孔遮光帘/百叶（午睡 siesta 刚需）",
+    "type": "user_demand",
+    "country": "西班牙",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "家居遮阳",
+    "intent": "功能诉求",
+    "relatedProduct": "遮光帘",
+    "evidence": "西班牙 14–16 点主餐+午睡是国民节奏，遮光需求强；但租房禁打孔，伸缩杆/免钉轨道遮光帘是真实缺口",
+    "source": "LifeAnalysis ES（siesta + 租房限制）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "阳台户外家具/折叠桌椅（露台生活核心）",
+    "type": "user_demand",
+    "country": "西班牙",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "户外家具",
+    "intent": "场景诉求",
+    "relatedProduct": "户外折叠桌椅",
+    "evidence": "户外是西班牙生活核心（早餐/午休/深夜晚餐皆在露台），但公寓露台面积小，紧凑可折叠户外家具需求强",
+    "source": "LifeAnalysis ES（户外生活核心）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "小厨房免钉多层置物（电费贵+收纳不足）",
+    "type": "user_demand",
+    "country": "西班牙",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "厨房收纳",
+    "intent": "难点",
+    "relatedProduct": "免钉置物架",
+    "evidence": "西班牙公寓厨房小、收纳不足；同时电费约 €0.15/kWh 偏贵，节能与小空间收纳双重诉求叠加",
+    "source": "LifeAnalysis ES（小厨房 + 电费贵）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "冬季保暖小件（12–2月降温）",
@@ -1117,7 +1091,8 @@
     "evidence": "LifeAnalysis：墨西哥冬季温和但 12–2 月降温，保暖小件需求上升",
     "source": "LifeAnalysis MX",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "净水器/桶装水机（自来水不可直饮）",
@@ -1131,7 +1106,8 @@
     "evidence": "LifeAnalysis：墨西哥自来水不可直饮，配桶装水/净水器是每日关切",
     "source": "LifeAnalysis MX",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "搅拌机/多功能锅（做 salsa/玉米饼）",
@@ -1145,7 +1121,8 @@
     "evidence": "LifeAnalysis：墨西哥做 salsa/玉米饼，搅拌机/多功能锅是厨房核心",
     "source": "LifeAnalysis MX",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "圣诞装饰（piñata/节日派对）",
@@ -1159,7 +1136,8 @@
     "evidence": "LifeAnalysis：墨西哥家庭/广场节庆文化强，piñata 等装饰需求",
     "source": "LifeAnalysis MX",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "圣诞装饰（灯饰/圣诞树/花环/人偶）",
@@ -1173,7 +1151,8 @@
     "evidence": "美客多 2026 拉美圣诞指南：装饰类占站内搜索词价值 60%，销量峰值达平时 6.85 倍；58% 消费者 11 月初开买",
     "source": "美客多 2026 拉美圣诞指南（AMZ123）",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "圣诞灯饰（销量最大增长最快子类目）",
@@ -1187,7 +1166,8 @@
     "evidence": "蓝鲸BI：圣诞灯饰 MLM116384 为圣诞类目中销量最大、增长最快子类目；头部单品 30 天销量破 2,200 单",
     "source": "蓝鲸BI 美客多墨西哥站",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "玩具（12月环比 +151%，礼品季最大弹性）",
@@ -1201,7 +1181,8 @@
     "evidence": "蓝鲸BI：玩具类目 12 月销量环比 +151%，为圣诞节礼品季最大赢家",
     "source": "蓝鲸BI 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "节日礼盒化家纺餐厨（提升溢价）",
@@ -1215,7 +1196,8 @@
     "evidence": "美客多：家纺、餐厨用品通过礼盒化包装提升溢价，属'节日家居礼赠'主线",
     "source": "美客多 2026 拉美圣诞指南",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "派对发光配件/倒数日历",
@@ -1229,7 +1211,53 @@
     "evidence": "美客多：派对发光配件、倒数日历列为 2026 圣诞增长潜力方向",
     "source": "美客多 2026 拉美圣诞指南",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "防盗门窗感应/可视门铃（治安刚需）",
+    "type": "user_demand",
+    "country": "墨西哥",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "安防",
+    "intent": "痛点",
+    "relatedProduct": "门窗感应器",
+    "evidence": "墨西哥治安关切度高，住宅普遍装铁窗(rejas)与围墙；免布线门窗感应与可视门铃是安全刚需，且适配租赁",
+    "source": "LifeAnalysis MX（治安需防盗）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "净水器/桶装水抽水器（自来水不可直饮）",
+    "type": "user_demand",
+    "country": "墨西哥",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "净水",
+    "intent": "痛点",
+    "relatedProduct": "桶装水抽水器",
+    "evidence": "墨西哥自来水不可直饮，家庭普遍用桶装水(garrafón)；电动抽水器、净水滤芯是高频刚需，覆盖率高",
+    "source": "LifeAnalysis MX（自来水不可直饮）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "电压保护器/稳压插排（电网波动）",
+    "type": "user_demand",
+    "country": "墨西哥",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "电工配件",
+    "intent": "痛点",
+    "relatedProduct": "稳压插排",
+    "evidence": "墨西哥部分地区电网电压波动大，家电（尤其冰箱/空调）易损；电压保护插排是本地特有的保护型需求",
+    "source": "LifeAnalysis MX（电压保护需求）",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "节能保暖（'暖人而非暖房'）",
@@ -1243,7 +1271,8 @@
     "evidence": "refundy：能源价格使'heat the person'成真实购买动机，可诚实宣称",
     "source": "refundy autumn-winter 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "除湿防潮（冬季湿冷）",
@@ -1257,7 +1286,8 @@
     "evidence": "cifnews：冬季除湿防潮、保暖制热类为欧洲核心潜力品类",
     "source": "cifnews Allegro",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "干湿两用吸尘器/洗地机（内容电商新增长品类）",
@@ -1271,7 +1301,8 @@
     "evidence": "博克斯海外仓：2026 年欧洲 TikTok Shop 从低价小件转向高客单功能家电，干湿两用吸尘器为新增量",
     "source": "博克斯海外仓 / Lengow 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "多篮空气炸锅/一体式美发造型器（多功能便利）",
@@ -1285,7 +1316,8 @@
     "evidence": "NIQ：SDA 增长 5–7%，多功能便利（多篮空气炸锅、all-in-one 造型器）为核心驱动",
     "source": "NielsenIQ 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "圣诞要环保材质（再生玻璃/木/可降解）",
@@ -1299,7 +1331,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "圣诞装饰要包装紧凑降运费",
@@ -1313,7 +1346,8 @@
     "updated": "2026-09-14",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
-    "horizon": "当季"
+    "horizon": "当季",
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "滑雪/室内健身装备（冬季运动）",
@@ -1327,7 +1361,8 @@
     "evidence": "Allegro：户外滑雪装备年度旺季，室内健身 12 月爆发",
     "source": "cifnews Allegro",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
   },
   {
     "keyword": "空气/水净化器与电风扇（环保意识提升）",
@@ -1341,6 +1376,67 @@
     "evidence": "NIQ：气候变化与污染意识推高空气/水净化器、电风扇需求",
     "source": "NielsenIQ 2026",
     "updated": "2026-09-14",
-    "real": true
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "节能家电 A 级以上（能源账单驱动）",
+    "type": "user_demand",
+    "country": "欧洲",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "家电",
+    "intent": "价格诉求",
+    "relatedProduct": "节能家电",
+    "evidence": "NIQ：欧洲能效等级（A 级及以上）成为购买首要筛选条件，能源账单压力推动高效机型替换",
+    "source": "NielsenIQ 2026 欧洲家电",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "多功能一体机（省空间 + 省电）",
+    "type": "user_demand",
+    "country": "欧洲",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "小家电",
+    "intent": "功能诉求",
+    "relatedProduct": "多功能一体机",
+    "evidence": "NIQ：多篮空气炸锅、all-in-one 造型器等多功能便利型小家电为核心增长驱动（SDA +5–7%）",
+    "source": "NielsenIQ 2026",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "空气/水净化与加湿（污染 + 干燥暖气）",
+    "type": "user_demand",
+    "country": "欧洲",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "环境电器",
+    "intent": "功能诉求",
+    "relatedProduct": "加湿器",
+    "evidence": "NIQ：气候变化与污染意识推高空气/水净化器需求；冬季暖气房干燥使加湿器需求同步上升",
+    "source": "NielsenIQ 2026",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
+  },
+  {
+    "keyword": "可持续/可回收包装与材质（EPR 合规）",
+    "type": "user_demand",
+    "country": "欧洲",
+    "season": "2026 秋冬季（9月–次年2月）",
+    "horizon": "当季",
+    "category": "合规",
+    "intent": "痛点",
+    "relatedProduct": "环保包装",
+    "evidence": "欧盟 PPWR 包装法规 2026/8 生效，需 EPR 注册号；卖家需提供可回收/减量包装，否则无法上架欧盟站",
+    "source": "EU PPWR 2026",
+    "updated": "2026-09-14",
+    "real": true,
+    "weekKey": "2026-W38"
   }
 ]
