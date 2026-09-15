@@ -69,7 +69,7 @@
   {
     "id": 3,
     "name": "CRMILL Candle Warmer Lamp Electric Timer - Candles Warming Light Heigh",
-    "nameZh": "CRMILL Candle Warmer Lamp  Timer - Candles Warming Light Height Adjustable Dimmable Warmers Flower Lamps No Flame Heat Warm Melt Wax Jar Modern  Decor Table Lights",
+    "nameZh": "CRMILL Candle Warmer Lamp Timer - Candles Warming Light Height Adjustable Dimmable Warmers Flower Lamps No Flame Heat Warm Melt Wax Jar Modern Decor Table Lights",
     "platform": "amazon",
     "category": "家居电器",
     "price": 16.99,
@@ -104,7 +104,7 @@
   {
     "id": 4,
     "name": "Shampoo and Conditioner Dispenser,Shower Soap Dispenser 3 Chamber No D",
-    "nameZh": "Shampoo  Conditioner Dispenser",
+    "nameZh": "Shampoo Conditioner Dispenser",
     "platform": "amazon",
     "category": "卫浴用品",
     "price": 19.99,
@@ -135,8 +135,8 @@
   },
   {
     "id": 5,
-    "name": "Bathroom Counter Organizer and Storage, 7 Slots Detachable Toothbrush ",
-    "nameZh": "Bathroom Counter Organizer  Storage",
+    "name": "Bathroom Counter Organizer and Storage, 7 Slots Detachable Toothbrush",
+    "nameZh": "Bathroom Counter Organizer Storage",
     "platform": "amazon",
     "category": "卫浴用品",
     "price": 9.99,
@@ -200,7 +200,7 @@
   {
     "id": 7,
     "name": "Optish Over The Door Hooks for Hanging, Over The Door Hanger, Over The",
-    "nameZh": "Optish Over  Door Hooks",
+    "nameZh": "Optish Over Door Hooks",
     "platform": "amazon",
     "category": "家具家装",
     "price": 8.54,
@@ -392,7 +392,7 @@
   {
     "id": 13,
     "name": "Fisher-Price Baby Playmat Glow and Grow Kick & Play Piano Gym, Blue Mu",
-    "nameZh": "Fisher-Price Baby Playmat Glow  Grow Kick & Play Piano Gym",
+    "nameZh": "Fisher-Price Baby Playmat Glow Grow Kick & Play Piano Gym",
     "platform": "amazon",
     "category": "母婴用品",
     "price": 41.97,
@@ -456,7 +456,7 @@
   {
     "id": 15,
     "name": "Elite Gourmet EG808 Electric Skillet 8\"x8\" Non-Stick Coating, Tempered",
-    "nameZh": "Elite Gourmet EG808  Skillet 8\"x8\" Non-Stick Coating",
+    "nameZh": "Elite Gourmet EG808 Skillet 8\"x8\" Non-Stick Coating",
     "platform": "amazon",
     "category": "厨房电器",
     "price": 26.99,
@@ -491,7 +491,7 @@
   {
     "id": 16,
     "name": "REDTIGER 4K STARVIS 2 Dash Cam Front and Rear, 5GHz WiFi 20MB/s Downlo",
-    "nameZh": "REDTIGER 4K STARVIS 2 Dash Cam Front  Rear",
+    "nameZh": "REDTIGER 4K STARVIS 2 Dash Cam Front Rear",
     "platform": "amazon",
     "category": "汽车用品",
     "price": 139.99,
@@ -756,7 +756,7 @@
   {
     "id": 24,
     "name": "20 Pcs Mini Bean Bags for Tossing Games – Colorful Small Cornhole Bags",
-    "nameZh": "20 Pcs  Bean Bags",
+    "nameZh": "20 Pcs Bean Bags",
     "platform": "amazon",
     "category": "家具家装",
     "price": 11.99,
@@ -819,7 +819,7 @@
   },
   {
     "id": 26,
-    "name": "POWSAF Towel Warmer, Luxury Towel Warmers for Bathroom, Large Blanket ",
+    "name": "POWSAF Towel Warmer, Luxury Towel Warmers for Bathroom, Large Blanket",
     "nameZh": "POWSAF Towel Warmer",
     "platform": "amazon",
     "category": "卫浴用品",
@@ -952,8 +952,8 @@
   },
   {
     "id": 30,
-    "name": "70mai A810 Lite 4K Dash Cam Front and Rear, 5GHz Wi-Fi 6 DashCam, Car ",
-    "nameZh": "70mai A810 Lite 4K Dash Cam Front  Rear",
+    "name": "70mai A810 Lite 4K Dash Cam Front and Rear, 5GHz Wi-Fi 6 DashCam, Car",
+    "nameZh": "70mai A810 Lite 4K Dash Cam Front Rear",
     "platform": "amazon",
     "category": "汽车用品",
     "price": 149.99,
@@ -1186,7 +1186,7 @@
   {
     "id": 37,
     "name": "DUMOS Home Office Chair, Computer Desk Chair, Lumbar Support | Ergonom",
-    "nameZh": "DUMOS  Office Chair",
+    "nameZh": "DUMOS Office Chair",
     "platform": "amazon",
     "category": "家具家装",
     "price": 46.6,
@@ -1249,7 +1249,7 @@
   },
   {
     "id": 39,
-    "name": "Knife Set, 8-Piece Kitchen Knife Set with Universal Block - Anti-Rust ",
+    "name": "Knife Set, 8-Piece Kitchen Knife Set with Universal Block - Anti-Rust",
     "nameZh": "Knife Set",
     "platform": "amazon",
     "category": "厨房电器",
@@ -1415,7 +1415,7 @@
   },
   {
     "id": 44,
-    "name": "VITESSE Fireplace with TV Stand 36\" inch Electric Fireplace Up to 80\" ",
+    "name": "VITESSE Fireplace with TV Stand 36\" inch Electric Fireplace Up to 80\"",
     "nameZh": "VITESSE Fireplace",
     "platform": "amazon",
     "category": "家居电器",
@@ -1451,7 +1451,7 @@
   {
     "id": 45,
     "name": "Elite Gourmet Noodle Express Electric Hot Pot, Stainless Steel, Grey |",
-    "nameZh": "Elite Gourmet Noodle Express  Hot Pot",
+    "nameZh": "Elite Gourmet Noodle Express Hot Pot",
     "platform": "amazon",
     "category": "厨房电器",
     "price": 19.59,
@@ -1584,7 +1584,7 @@
   },
   {
     "id": 49,
-    "name": "TASALON Hot Towel Steamer for Facials, Hot Towel Warmer Quickly Heats ",
+    "name": "TASALON Hot Towel Steamer for Facials, Hot Towel Warmer Quickly Heats",
     "nameZh": "TASALON Hot Towel Steamer",
     "platform": "amazon",
     "category": "卫浴用品",
