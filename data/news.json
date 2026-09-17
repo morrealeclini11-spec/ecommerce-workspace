@@ -1,667 +1,292 @@
 [
   {
-    "title": "",
-    "titleZh": "亚马逊Q4旺季履约附加费三档落地：10月25日开征，峰值档每件最高0.75美元",
-    "summary": "",
-    "summaryZh": "亚马逊物流公布2026年美国旺季需求附加费方案，征收期2026年10月25日至2027年1月16日，按三档分段计价：10月25日–11月21日及12月27日–1月16日每件包裹0.50美元、额外手续费8.75美元、大包裹附加费96.25美元、超重包裹附加费530美元；11月22日–12月26日峰值档分别上浮至0.75／11.90／117.50／590美元，整体费率较2025年明显提升。叠加10月15日起的旺季配送费，Q4履约成本需要在9月内重算进定价模型。",
-    "source": "亚马逊全球开店／亿邦动力（09-11）",
+    "titleZh": "美国 CBP 9 月 18 日起严查进口商身份：IOR 信息不实当场作废，借用他人报关号将彻底失效",
+    "summaryZh": "美国海关与边境保护局（CBP）依据第 14411 号行政令《加强海关执法》，自 2026 年 9 月 18 日起对 CBP Form 5106 展开强化核查。IOR 不再只是一串清关号码，必须具备进口商全称、EIN／SSN 或 CBP 分配号、邮寄地址、实际经营地址、电话、邮箱六项真实要素。其中实际经营地址是核查重点——严禁填货代地址、代理地址或 PO Box；邮箱与电话必须归属进口商本人，报关行不得替换为自身联系方式；POA 授权书须由进口商本人直接签署。一旦被认定信息不完整或不实，IOR 编号将被立即作废并启动执法，作废后该号无法用于任何清关。监管重心已从「查验货物」转向「核查进口主体」，借用他人 IOR 清关的路径被彻底堵死，主体资质存疑的卖家 9 月内就会遇到清关受阻。",
+    "source": "CBP 公告／Livingston International／雨果跨境（09-17）",
     "country": "美国",
-    "category": "物流履约",
+    "category": "合规政策",
     "dimension": "ecommerce",
     "aspects": [
       "ecommerce"
     ],
     "impact": "high",
     "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.10100.com/article/150765947",
-    "trendingTopics": [
-      "旺季附加费",
-      "Q4",
-      "履约成本",
-      "FBA"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 1
-  },
-  {
-    "title": "",
-    "titleZh": "亚马逊GWD宁波仓上线：仓储费7.91美元/CBM/月，为三仓最低",
-    "summary": "",
-    "summaryZh": "亚马逊全球智能枢纽仓（GWD）正式开放宁波分拨中心，与上海、深圳两仓形成长三角与珠三角就近入仓布局。宁波仓仓储费7.91美元/CBM/月，较上海、深圳的8.79美元再降约10%。卖家只需把货发到国内分拨中心，报关清关、跨境运输、FBA自动补货均由亚马逊托管，并可享截至12月31日的入仓30天免费仓储。适合在旺季前用低成本通道提前铺量。",
-    "source": "亿邦动力／大数跨境（09-11）",
-    "country": "中国",
-    "category": "物流履约",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "medium",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.10100.com/article/150765947",
-    "trendingTopics": [
-      "GWD",
-      "宁波仓",
-      "入仓",
-      "FBA补货"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 2
-  },
-  {
-    "title": "",
-    "titleZh": "美国CBP 9月18日全面核验IOR：信息不实直接作废编号、无整改窗口",
-    "summary": "",
-    "summaryZh": "自2026年9月18日起，美国海关（CBP）全面核验进口商运营方（IOR）5106表格信息的真实性与完整性，严禁使用代理地址或邮政信箱；信息有误或缺失将直接作废IOR号，导致货物无法清关。新规无整改窗口期，作废通知仅发送至备案邮箱。卖家应逐项核验合作货代的IOR资质，淘汰借用、共享、挂靠渠道，并确认备案邮箱归属自己。",
-    "source": "大数跨境／亿邦动力（09-11）",
-    "country": "美国",
-    "category": "合规税务",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.10100.com/article/150621902",
+    "url": "https://www.livingstonintl.com/cbp-to-begin-enhanced-enforcement-of-importer-of-record-information-on-september-18",
     "trendingTopics": [
       "IOR",
       "CBP",
-      "清关",
-      "合规"
+      "清关合规",
+      "进口主体"
     ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 3
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 1,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
   },
   {
-    "title": "",
-    "titleZh": "亚马逊INFORM年审进入窗口期：触发后仅10个自然日，逾期扣款停用账户",
-    "summary": "",
-    "summaryZh": "依据美国《消费者告知法案》，高销量第三方卖家每年至少完成一次信息认证。触发门槛为过去24个月内任意连续12个月全新或未使用品销量≥200件且总收入≥5000美元。亚马逊邮件标注的20天是整体考虑期，真正的倒计时只有触发后的10个自然日，逾期系统将自动扣留付款并停用账户。近期不少卖家遇到地址格式细微差异导致匹配失败，需逐字核对后台信息。",
-    "source": "叁发未来／亿邦动力（09-11）",
+    "titleZh": "美国 ET13 邮政小包电子报关 9 月 22 日上线：无 IOR 资质与 bond 的物流商不能再申报",
+    "summaryZh": "CBP 将于 9 月 22 日在 ACE 系统上线 Entry Type 13（ET13）邮政小包电子简易报关测试，适用申报价值 2500 美元及以下的国际邮政包裹，采取自愿参与模式。两条硬门槛：申报方必须是具备 IOR 资质的进口商或持牌报关行；必须持有连续进口保证金，税款按月通过 Pay.gov 缴纳，并于到港次月 7 日前完成申报缴税。申报数据须包含 filer 代码、IOR 编号、10 位 HTSUS 税号、原产国、境外邮政追踪号等 12 项核心信息。更关键的是 10 月 22 日起，98／99 章附加税商品、301／232／双反税商品、FDA／FCC／CPSC 等 PGA 监管品类（化妆品、儿童用品、食品接触材料）以及申请 FTA 免税的包裹将被移出简易通道，强制回流正式报关。沿用老通道的包裹将面临退运或查扣，美妆、儿童用品、硅胶厨具类卖家受影响最直接。",
+    "source": "CBP 公告／亿恩网／雨果跨境（09-17）",
     "country": "美国",
-    "category": "合规税务",
+    "category": "物流履约",
     "dimension": "ecommerce",
     "aspects": [
       "ecommerce"
     ],
     "impact": "high",
     "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://tkfff.cn/news/497.html",
+    "url": "https://www.sohu.com/a/1075836581_122941889",
     "trendingTopics": [
-      "INFORM",
-      "年审",
-      "账户安全",
-      "资金扣留"
+      "ET13",
+      "邮政小包",
+      "bond",
+      "正式报关"
     ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 4
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 2,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
   },
   {
-    "title": "",
-    "titleZh": "亚马逊协议三视频验证9月16日截止：审核期间资金无法提现，机会仅一次",
-    "summary": "",
-    "summaryZh": "大量亚马逊新老卖家收到官方邮件，平台将于2026年9月16日依据《服务商业解决方案协议》第3条停用涉事店铺销售权限，并要求完成官方虚拟身份视频面谈核验。此次风控不再区分新店与成熟老号。审核期间账户资金全部留存、无法提现；视频验证失败资金将进入更长冻结周期，且核验机会仅有一次。五大触发原因包括法人与实际运营人分离、账号环境异常、注册资料风险、多账号关联及系统误判。",
-    "source": "邦阅网／跨境每日简报（09-11）",
+    "titleZh": "亚马逊旺季附加费 10 月 25 日开征，峰值档每件最高 0.75 美元、大包裹 117.50 美元",
+    "summaryZh": "亚马逊公布 2026 年旺季物流附加费方案，Amazon Shipping 旺季附加费征收期为 10 月 25 日至 2027 年 1 月 16 日，分三档计费，其中 11 月 22 日至 12 月 26 日（黑五、网一、圣诞阶段）费用最高，单件最高加 0.75 美元、大包裹 117.50 美元，费率已逼近 UPS、FedEx 同期水平。此外 10 月 15 日至 2027 年 1 月 14 日的旺季高峰配送费同步执行，FBA 配送费每件平均上涨 0.3 美元，覆盖 FBA、远程配送与 MCF 多渠道配送。卖家需在 9 月内把附加费重算进 Q4 定价模型，避免大促期间利润被物流成本吃掉。",
+    "source": "PingPong／亿邦动力（09-15）",
     "country": "美国",
-    "category": "合规税务",
+    "category": "物流履约",
     "dimension": "ecommerce",
     "aspects": [
       "ecommerce"
     ],
     "impact": "high",
     "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.52by.com/article/236349",
+    "url": "https://www.pingpongx.com/zh/news/articles/26091516465587",
+    "trendingTopics": [
+      "旺季附加费",
+      "Q4",
+      "黑五",
+      "FBA"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 3,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "亚马逊欧洲站锂电池新规 9 月 30 日硬截止：取消卖家自传报告，未过 TIC 核验将批量下架",
+    "summaryZh": "亚马逊欧洲站锂电池专项合规政策已于 2026 年 7 月 2 日生效，并划定 9 月 30 日为最终整改截止日，届时未完成核验的商品将被批量强制下架。范围覆盖可充电锂蓄电池、锂离子、锂聚合物、磷酸铁锂、可充电锂离子纽扣电池及设备替换电池组。机制上最大的变化是取消卖家自行上传检测报告的通道：所有资料必须由亚马逊授权名录内的第三方检测认证（TIC）机构核验后系统直连同步，即使此前已上传 CE、UN38.3 报告，只要不是 TIC 直传一律不认。报告四条硬门槛：实验室须具备 ISO/IEC 17025 资质、报告须在 12 个月内出具、措辞必须为 Pass 或 NA、型号须与实物标签和详情页逐字符一致。另一条红线：32650／32700、26650、21700、18650、14500 等规格圆柱形锂离子电池，无论电芯、电池组还是含此类电芯的商品，一律禁止在欧洲站刊登销售。",
+    "source": "AI大模型中转导航／顺企网（09-16）",
+    "country": "欧洲",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.tkfff.cn/news/773.html",
+    "trendingTopics": [
+      "锂电池",
+      "TIC 认证",
+      "UN38.3",
+      "欧洲站"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 4,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "欧盟 PPWR 无过渡期落地：PFAS、重金属、DoC、各国 EPR 四项同日生效，不合规直接卡清关",
+    "summaryZh": "欧盟新版包装法规 PPWR 于 2026 年 8 月 12 日生效且无过渡期，PFAS 限制、重金属限量、符合性声明（DoC）、各国 EPR 注册四项要求同日落地。EPR 遵循「一国一注册」原则，德国注册号不能用于法国、西班牙站点；开通泛欧计划的卖家需把参与泛欧的国家全部补齐对应类目注册号，缺失将直接取消泛欧库存调拨权限。三大 EPR 中，包装法适用范围几乎覆盖全部销往欧盟的商品——只要商品带销售包装或运输包装，FBA／FBM 卖家均属生产者，必须注册，这是最容易被忽略的一点。WEEE 与电池法是两套体系不可互相替代：电子产品内置电池需两项同时注册。高频误区还包括把欧代等同于 EPR——欧代是产品安全负责人，EPR 是废弃物回收责任，两套体系需分开办理；EPR 也非注册一次永久有效，需按年度申报销量并缴纳生态费，过期失效后 Listing 会被下架。德国违规罚款最高可达 20 万欧元。",
+    "source": "搜狐／AMZ123（09-16）",
+    "country": "欧洲",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.sohu.com/a/1076417198_120311779",
+    "trendingTopics": [
+      "PPWR",
+      "EPR",
+      "泛欧计划",
+      "包装法"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 5,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "亚马逊「协议三」扫号视频验证 9 月 16 日截止：未完成核验店铺停用销售权限、资金冻结",
+    "summaryZh": "依据《服务商业解决方案协议》第 3 条，9 月 16 日未完成官方虚拟身份视频面谈核验的店铺将被停用销售权限，账户资金无法提现，审核覆盖新店与成熟老号。这是亚马逊本轮合规收紧中影响面最广的一项——不设品牌备案豁免，也未按销售额分档，属于主体资质层面的全量核查，与 CBP 的 IOR 严查形成美线「主体真实性」双重验证。",
+    "source": "跨境电商行业动态汇总（09-16）",
+    "country": "美国",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://weibo.com/7098373038/5343340323145578",
     "trendingTopics": [
       "协议三",
       "视频验证",
-      "封店",
-      "资金冻结"
+      "账号安全"
     ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 5
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 6,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
   },
   {
-    "title": "",
-    "titleZh": "亚马逊美国站FBM两新规：备货时间偏差≥1天自动启用AHT，企业购BHDR须≥90%",
-    "summary": "",
-    "summaryZh": "两项FBM新规密集落地：①自9月1日起，系统将SKU设置的备货时间与最近30天实际发货表现对比，若设置比实际多出≥1天且持续超过30天，将自动为该SKU启用「自动备货时间」(AHT)，由近期发货历史自动计算——习惯把备货时间设长留余量的卖家反而会被系统接管。②9月30日起，发往Amazon Business企业购客户的自配送订单须在营业时间内送达，滚动14天周期比例不低于90%；未达标10月30日后企业购频道暂停展示。",
-    "source": "邦阅网／跨商每日简报（09-11）",
+    "titleZh": "亚马逊秋季 Prime 大促定档 10 月 6-7 日：覆盖 22 国，美国站秒杀提报 9 月 22 日截止",
+    "summaryZh": "亚马逊秋季 Prime Big Deal Days 定档 10 月 6 日至 7 日，覆盖美国、英国、德国、日本、加拿大、巴西等 22 个国家。提报进入倒计时：美国站秒杀／Z 划算提报截止 9 月 22 日，欧洲站 9 月 23 日，加拿大站 9 月 29 日。FBA「优化货件拆分」入仓已于 9 月 16 日截止，逾期货件将失去 Prime 标识资格。此外黑五网一节点上，美国站促销提报期为 7 月 8 日至 10 月 20 日，FBA 库存最晚 10 月 28 日入仓，AWD、单点入仓、优化拆分货件分别有 9 月 16 日、10 月 14 日、10 月 21 日、10 月 28 日的入仓截止时间，Q4 备货窗口已非常紧张。",
+    "source": "PingPong／跨境电商行业动态汇总（09-16）",
     "country": "美国",
-    "category": "平台规则",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "medium",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.52by.com/article/236349",
-    "trendingTopics": [
-      "FBM",
-      "AHT",
-      "BHDR",
-      "企业购"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 6
-  },
-  {
-    "title": "",
-    "titleZh": "亚马逊美国站划线价大面积失效：Prime专享折扣同步报错，转化率下滑",
-    "summary": "",
-    "summaryZh": "近期亚马逊美国站大量Listing的划线价（List Price）无故消失，Prime专享折扣同步大面积报错，导致点击率与转化率双双下滑。异常集中在美国劳动节假期爆发。业内分析此举与平台收紧参考价真实性有关——划线价需满足历史成交价等条件方可展示，不符合要求的链接被系统自动清除。受影响卖家需重新核查定价逻辑与促销设置。",
-    "source": "锦品出海（09-13）",
-    "country": "美国",
-    "category": "平台规则",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce",
-      "local"
-    ],
-    "impact": "medium",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://glosellers.com/99666.html",
-    "trendingTopics": [
-      "划线价",
-      "参考价",
-      "促销",
-      "Prime折扣"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 7
-  },
-  {
-    "title": "",
-    "titleZh": "亚马逊保险新规：中国卖家商业责任险须经AIA投保，11月2日后不合规Listing移除",
-    "summary": "",
-    "summaryZh": "亚马逊收紧商业责任险要求：公司地址位于中国大陆的卖家，新提交的商业责任险必须通过亚马逊保险加速器（AIA）获取，非AIA渠道购买的新保单将被拒绝；11月2日前已提交的有效第三方保单可继续使用至到期，续保时须通过AIA。AIA由亚马逊与全球保险经纪公司Marsh合作建立，合作产品来自华泰财险、人保财险、史带财险、大地财险、太平洋保险和平安财险6家公司。11月2日之后不符合要求的商品Listing将被移除或停售。",
-    "source": "邦阅网／跨境每日简报（09-11）",
-    "country": "美国",
-    "category": "合规税务",
+    "category": "平台动态",
     "dimension": "ecommerce",
     "aspects": [
       "ecommerce"
     ],
     "impact": "high",
     "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.52by.com/article/236349",
+    "url": "https://www.pingpongx.com/zh/news/articles/26091516465587",
+    "trendingTopics": [
+      "Prime 大促",
+      "黑五",
+      "入仓截止",
+      "Q4"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 7,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "亚马逊商业责任险 11 月 2 日新规：高风险品类取消月销 1 万美元门槛，未投保 Listing 直接下架",
+    "summaryZh": "亚马逊商业责任险新规将于 11 月 2 日生效，下半年核心合规项之一。针对高风险品类取消月销 1 万美元的投保门槛——无论销售额多少均需投保，单次事故及累计保额最低 100 万美元，新旧 Listing 全部适用。中国大陆卖家必须通过亚马逊保险加速器（AIA）投保，未投保的 Listing 将被直接下架。与锂电池 TIC、PPWR、CPSC 电子申报叠加，欧美合规已进入多法规叠加时代，Q4 前需完成全面自查。",
+    "source": "PingPong（09-15）",
+    "country": "美国",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.pingpongx.com/zh/news/articles/26091516465587",
     "trendingTopics": [
       "商业责任险",
       "AIA",
-      "Listing移除",
-      "合规"
+      "高风险品类"
     ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 8
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 8,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
   },
   {
-    "title": "",
-    "titleZh": "亚马逊9月四线收网：评论去干预、价格去表演、流量去搜索、身份去模糊",
-    "summary": "",
-    "summaryZh": "2026年9月亚马逊卖家后台多项开关同时按下：「联系买家」功能自6月起对差评场景全面关闭，退货流程新增AI评分入口，变体评论共享、Vine计划及返现卡管控全线收紧；同时平台开始让AI替买家选品、下单甚至跨站购买，Listing成为AI回答用户提问的核心底稿。竞争维度正从「运营技巧」回归「产品本质」，靠刷评与价格表演拿流量的打法效力递减。",
-    "source": "海贸会俱乐部／大数跨境（09-14）",
+    "titleZh": "TikTok Shop 美区全品类开放图文挂车：5-7 月图文 GMV 增幅超 800%，达人佣金仅为短视频 60%",
+    "summaryZh": "黑五备战关键期，TikTok Shop 美区进一步放开图文挂车权限，覆盖全品类优质跨境 POP 商家及达人，同步发布《美区跨境 POP 商家图文分类目经营方法论》，配套 AutoPost、AI 图文生成、AI 优质模板广场等官方工具。数据显示 5 月至 7 月美区跨境自运营图文整体 GMV 增幅超 800%，已成为商家自制内容中增速最快的新增量渠道。自 9 月 4 日起图文挂车已面向部分高等级达人开放，默认佣金比例仅为短视频的 60%，且不计入样品履约，为商家提供了低成本拓展达人合作的路径。对做内容型带货的卖家而言，这是黑五前门槛最低的一条增量渠道。",
+    "source": "亿邦动力（09-15）",
     "country": "美国",
-    "category": "营销趋势",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce",
-      "local"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.10100.com/article/150972650",
-    "trendingTopics": [
-      "联系买家",
-      "评论合规",
-      "AI购物",
-      "Listing"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 9
-  },
-  {
-    "title": "",
-    "titleZh": "亚马逊欧洲五国FBA送达窗口从14天砍半至7天：9月1日起执行",
-    "summary": "",
-    "summaryZh": "自2026年9月1日起，英国、德国、法国、意大利、西班牙五国的非合作承运商国际FBA货件，送达窗口从14天缩短至7天。原本14天的缓冲空间消失，意味着从货物离港到送仓的每个环节都必须精确衔接——船期晚一天、清关多耽误两天都可能直接导致货件超期。卖家需重排物流节奏并与货代书面确认时效承诺。",
-    "source": "长河航通（09-10）",
-    "country": "欧盟",
-    "category": "物流履约",
+    "category": "平台动态",
     "dimension": "ecommerce",
     "aspects": [
       "ecommerce"
     ],
     "impact": "high",
     "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.chhto.com/article-item-99.html",
-    "trendingTopics": [
-      "送达窗口",
-      "FBA",
-      "欧洲物流",
-      "7天"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 10
-  },
-  {
-    "title": "",
-    "titleZh": "欧洲MRN/EORI强制提交：60天未补齐将无法创建新的欧盟入仓货件",
-    "summary": "",
-    "summaryZh": "自2026年9月1日起，针对PAN-EU泛欧入库货件与直入法国货件，若超过60天仍未补齐MRN、EORI有效进口信息，卖家将无法创建新的欧盟入仓货件，直接影响备货入仓。同时非欧盟卖家开通泛欧计划发欧盟FBA，每票货必须提交MRN和EORI。波兰FBA及中欧计划（CEE）卖家还须完成波兰、捷克VAT注册及VIES税号激活。",
-    "source": "浙江欧华供应链（09-10）",
-    "country": "欧盟",
-    "category": "合规税务",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "http://zjouhua.com/sys-nd/492.html",
-    "trendingTopics": [
-      "MRN",
-      "EORI",
-      "泛欧",
-      "VAT"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 11
-  },
-  {
-    "title": "",
-    "titleZh": "德国16个品类退货期由30天缩短至14天：母婴、美妆、家居、宠物等在列",
-    "summary": "",
-    "summaryZh": "自2026年9月1日起，德国站16个商品类别的退货期从30天缩短至14天，以送达日为准。涵盖母婴、美妆个护、园艺、家居、宠物用品、箱包、食品饮料、移动电子、乐器等。卖家需同步更新售后政策页面与客服话术，避免因信息滞后引发纠纷。同站9月7日起Prime配送时效升级：标准尺寸及低价商品15%订单须1天内送达（原10%），50%须2天内送达（原45%）。",
-    "source": "长河航通（09-10）",
-    "country": "德国",
-    "category": "平台规则",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce",
-      "local"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.chhto.com/article-item-99.html",
-    "trendingTopics": [
-      "德国",
-      "退货期",
-      "14天",
-      "Prime时效"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 12
-  },
-  {
-    "title": "",
-    "titleZh": "泛欧FBA上架要求扩围：9月3日起必须同步荷兰站，6个月后加比利时站",
-    "summary": "",
-    "summaryZh": "自2026年9月3日起，享受Pan-EU泛欧物流权益的产品，除德、法、意、西站点正常上架外，必须同步上架荷兰站并保持可售，否则将失去泛欧物流权益。2027年2月26日起新增比利时站上架可售要求，平台将提前30天发布正式通知。使用泛欧的卖家需尽快补齐荷兰站listing与库存。",
-    "source": "浙江欧华供应链（09-10）",
-    "country": "欧盟",
-    "category": "平台规则",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "medium",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "http://zjouhua.com/sys-nd/492.html",
-    "trendingTopics": [
-      "泛欧",
-      "荷兰站",
-      "比利时站",
-      "物流权益"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 13
-  },
-  {
-    "title": "",
-    "titleZh": "欧洲锂电池合规倒计时：9月30日起平台批量下架不合规电池类产品",
-    "summary": "",
-    "summaryZh": "2026年7月2日欧盟锂电池新规正式落地，9月30日起平台将批量下架不合规电池类产品，含替换电池与电池组。卖家需尽快对接平台授权的TIC机构完成产品检测认证，规避Listing下架风险。此外容量大于2kWh的工业/EV电池须附碳足迹声明，所有电池须贴CE标志及二维码，工业及EV电池须配备BMS并提供健康度数据。",
-    "source": "浙江欧华供应链／大数跨境（09-10）",
-    "country": "欧盟",
-    "category": "合规税务",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "http://zjouhua.com/sys-nd/492.html",
-    "trendingTopics": [
-      "锂电池",
-      "TIC认证",
-      "下架",
-      "CE"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 14
-  },
-  {
-    "title": "",
-    "titleZh": "欧盟小包处理费11月开征：预计2–3欧元/票，平台被认定为进口商最高罚6%货值",
-    "summary": "",
-    "summaryZh": "欧盟海关改革新政配套的小包处理费将于不晚于2026年11月1日开征，针对从非欧盟国家直邮欧盟消费者的电商包裹，行业普遍预期2欧元/件（官方尚未敲定最终金额）。配套规则：2026年7月1日起取消150欧元以下小包免税，每件征收3欧元临时定额关税；新规将跨境电商平台定性为「事实进口商」，需承担关税与产品安全等合规责任，多次违规最高可处过去12个月进口货值6%的罚款。低价直邮小包模式成本结构被直接改写。",
-    "source": "雨果跨境（09-12）",
-    "country": "欧盟",
-    "category": "合规税务",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce",
-      "local"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.cifnews.com/article/188826",
-    "trendingTopics": [
-      "小包处理费",
-      "免税取消",
-      "事实进口商",
-      "直邮"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 15
-  },
-  {
-    "title": "",
-    "titleZh": "欧盟《网络弹性法案》CRA报告义务生效：漏洞须24小时内预警，最高罚1500万欧元",
-    "summary": "",
-    "summaryZh": "欧盟《网络弹性法案》(CRA)核心报告义务已于2026年9月11日正式落地。所有在欧盟销售的带数字功能产品，一旦出现被利用的安全漏洞或重大安全事件，制造商须在24小时内通过ENISA平台提交早期预警，72小时内完成详细上报。违规企业最高可处1500万欧元或全球年营业额2.5%的罚款，相关产品还可能被强制下架或召回。智能家居、IoT类出海卖家需提前准备安全合规预案。",
-    "source": "雨果跨境（09-12）",
-    "country": "欧盟",
-    "category": "合规税务",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce",
-      "local"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.cifnews.com/article/188826",
-    "trendingTopics": [
-      "CRA",
-      "网络弹性法案",
-      "IoT",
-      "ENISA"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 16
-  },
-  {
-    "title": "",
-    "titleZh": "英德FBA旺季配送费10月15日起征收：旺季成本再抬一档",
-    "summary": "",
-    "summaryZh": "2026年10月15日起，英国站、德国站FBA订单将收取旺季配送费，用于保障旺季配送时效与服务质量、应对季节性物流成本上涨。结合欧洲五国送达窗口缩短与MRN/EORI强制提交，欧洲卖家在Q4前的备货与定价需整体重算。",
-    "source": "浙江欧华供应链（09-10）",
-    "country": "英国",
-    "category": "物流履约",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "medium",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "http://zjouhua.com/sys-nd/492.html",
-    "trendingTopics": [
-      "旺季配送费",
-      "英国",
-      "德国",
-      "FBA"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 17
-  },
-  {
-    "title": "",
-    "titleZh": "欧盟11月1日强制Product Identifier：海关数据须含有效商品标识",
-    "summary": "",
-    "summaryZh": "欧盟将于2026年11月1日起强制实施Product Identifier（PID）要求，海关数据流必须包含有效的商家或制造商PID。同时要求商品目录数据必须把真实原产国与发运地分开标注。卖家需尽快补齐目录数据，否则可能面临边境延误。美国同步在10月1日调整海关用户费、10月22日执行更严格的邮政非正式报关。",
-    "source": "OCS Worldwide（09-12）",
-    "country": "欧盟",
-    "category": "合规税务",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "medium",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.ocsworldwide.co.uk/ocs-export-academy-country-of-origin-import-rules",
-    "trendingTopics": [
-      "PID",
-      "原产国",
-      "海关数据",
-      "报关"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 18
-  },
-  {
-    "title": "",
-    "titleZh": "加拿大9月8日起对美原产商品加征15%/25%/50%附加税：约900个税则号受影响",
-    "summary": "",
-    "summaryZh": "自2026年9月8日起，加拿大对约900个美国原产商品税则号加征15%、25%、50%三档附加税，判定依据为制造原产国而非发运国。受影响品类包括服装、纺织、鞋类、配饰、运动器材、电子与家电，且不适用150加元免税额度。从英国或欧盟仓发出的美国制造商品同样被征收。已在9月8日前在途的货物，凭运单或承运商过境文件可能获得豁免。",
-    "source": "OCS Worldwide／Passport Global（09-12）",
-    "country": "加拿大",
-    "category": "合规税务",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.ocsworldwide.co.uk/ocs-export-academy-country-of-origin-import-rules",
-    "trendingTopics": [
-      "加拿大",
-      "附加税",
-      "原产国",
-      "在途货"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 19
-  },
-  {
-    "title": "",
-    "titleZh": "美国232条款对无人机及零部件加征10%–100%关税：9月3日生效",
-    "summary": "",
-    "summaryZh": "依据232条款，美国自2026年9月3日起对进口无人机及零部件征收10%至100%的从价关税。同期美国FCC已将境外生产的扫地机器人、割草机器人、人形及四足机器人等纳入「受管制设备和服务清单」，新型号出口准入门槛大幅提升。涉及智能硬件品类的卖家需重新评估美国市场的准入与定价。",
-    "source": "大数跨境（09-10）",
-    "country": "美国",
-    "category": "合规税务",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.10100.com/article/150621902",
-    "trendingTopics": [
-      "232条款",
-      "无人机",
-      "机器人",
-      "FCC"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 20
-  },
-  {
-    "title": "",
-    "titleZh": "IATA 2027货运标准收紧锂电申报：充电宝禁写「配件」「充电器」等模糊描述",
-    "summary": "",
-    "summaryZh": "国际航空运输协会（IATA）发布2027年货运标准，对电商空运出口引入更严格的验收与标识管控：独立电池、替换电芯、充电宝必须在单据上明确点名；地面代理与航空公司将拒收把充电宝或锂电池笼统描述为「配件」「充电器」「小玩意」的包裹；电池标记须与其它危险品警示标签出现在包裹同一面；新规还新增钠离子与混合电芯产品的包装要求。锂电品类卖家的空运合规文档需提前更新。",
-    "source": "OCS Worldwide（09-12）",
-    "country": "全球",
-    "category": "物流履约",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.ocsworldwide.co.uk/ocs-export-academy-country-of-origin-import-rules",
-    "trendingTopics": [
-      "IATA",
-      "锂电池",
-      "空运",
-      "危险品"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 21
-  },
-  {
-    "title": "",
-    "titleZh": "TikTok Shop东南亚规则大洗牌：个体户免流水免邀请码入驻，但佣金与处理费普涨",
-    "summary": "",
-    "summaryZh": "自2026年8月31日起，持有中国大陆个体工商户营业执照的商家申请东南亚跨境店铺不再要求第三方平台经营流水，并取消邀请码门槛。配套「飞轮计划」提供最高90天保证金豁免、最长120天佣金减免。但费用同步上调：新加坡站9月1日起全品类佣金调整，普通卖家默认9.81%、BXP卖家7.085%；菲律宾站结束9个月优惠，9月1日起每笔成功送达订单恢复收取5菲律宾比索，且退货一般不退还；运输相关服务费9月1日起适用6%服务税。",
-    "source": "跨境知道／新浪（09-12）",
-    "country": "东南亚",
-    "category": "平台规则",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.ikjzd.com/articles/1810625995698454487",
-    "trendingTopics": [
-      "TikTok Shop",
-      "东南亚",
-      "佣金",
-      "个体户入驻"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 22
-  },
-  {
-    "title": "",
-    "titleZh": "TikTok Shop美区禁包裹内放好评卡：9月3日起履约政策更新",
-    "summary": "",
-    "summaryZh": "TikTok Shop美区更新订单包装规则，明确禁止卖家在包裹内放置诱导买家好评的卡片，配送与履约政策于9月3日同步更新。平台将此类「好评卡」视为违规操纵评价行为——此前返现、赠品换五星的玩法在跨境直邮包裹中较普遍。新规落地后卖家需移除包裹内诱导性卡片，避免因违规触发扣分、限流或封店，评价真实性已被纳入店铺健康度考核。",
-    "source": "锦品出海（09-13）",
-    "country": "美国",
-    "category": "平台规则",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "high",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://glosellers.com/99666.html",
-    "trendingTopics": [
-      "好评卡",
-      "评价合规",
-      "TikTok美区",
-      "封店"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 23
-  },
-  {
-    "title": "",
-    "titleZh": "TikTok Shop美区拍卖设健康分门槛：AHR与CHR均须高于150分方可开播",
-    "summary": "",
-    "summaryZh": "TikTok Shop美区自2026年9月1日起对直播拍卖模式开展合规整顿，商家账号健康分（AHR）与达人健康分（CHR）均须高于150分方可开通拍卖权限，竞价直播须使用平台内置倒计时工具。售后规则同步明确：拍卖商品为最终销售，买家不得以「个人喜好」「误拍」为由申请无理由退款，质量问题保留14天售后通道。此举被视为黑五大促前的生态净化动作。",
-    "source": "锦品出海（09-13）",
-    "country": "美国",
-    "category": "平台规则",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "medium",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://glosellers.com/99666.html",
-    "trendingTopics": [
-      "拍卖",
-      "健康分",
-      "AHR",
-      "黑五"
-    ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 24
-  },
-  {
-    "title": "",
-    "titleZh": "TikTok Shop美区放开图文挂车：图文佣金为短视频60%，不计入样品履约",
-    "summary": "",
-    "summaryZh": "正值黑五备战关键期，TikTok Shop美区进一步放开图文挂车权限，覆盖全品类优质跨境POP商家及达人，并同步提供分类目经营方法指导与专属激励。5月至7月美区跨境自运营图文整体GMV增幅超800%，是商家自制内容中增速最快的体裁。9月4日起图文功能已对部分高等级达人开放，图文挂车默认佣金为短视频的60%，且不计入样品履约，为商家提供了低成本拓展达人合作的机会。",
-    "source": "腾讯新闻／跨境电商周报（09-13）",
-    "country": "美国",
-    "category": "营销趋势",
-    "dimension": "ecommerce",
-    "aspects": [
-      "ecommerce"
-    ],
-    "impact": "medium",
-    "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://news.qq.com/rain/a/20260913A077IV00",
+    "url": "https://www.ebrun.com/20260915/708256.shtml",
     "trendingTopics": [
       "图文挂车",
-      "TikTok美区",
-      "达人合作",
-      "黑五"
+      "达人佣金",
+      "黑五",
+      "AutoPost"
     ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 25
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 9,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
   },
   {
+    "titleZh": "亚马逊灰度测试关闭差评联系通道：1-3 星差评的「联系买家」按钮全站点下架，不设品牌备案豁免",
+    "summaryZh": "亚马逊悄然启动全站点灰度测试，在卖家后台评论板块下架了 1 至 3 星差评对应的 Contact Buyer（联系买家）功能按钮，切断沿用多年的低分评价主动沟通渠道。该限制不设品牌备案豁免，已在美国、欧洲、日本、澳大利亚等主流站点分批落地，部分账号入口已完全关闭，少量账号暂时保留但关闭时间未明。这意味着只要买家未主动发起站内消息咨询，卖家将无任何官方渠道主动联系低分买家协商售后或争取改评，过去依赖补发货物、退款安抚来维护评分的低成本打法彻底失效，评论运营正式进入「预防优先于补救」的新阶段。对依赖评分维持转化的卖家，需把重心前移到包装、说明书与首触体验。",
+    "source": "亿邦动力（09-15）",
+    "country": "美国",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.ebrun.com/20260915/708256.shtml",
+    "trendingTopics": [
+      "差评管理",
+      "Contact Buyer",
+      "评分运营"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 10,
     "title": "",
-    "titleZh": "TikTok Shop巴西推本土扶持：9–11月新卖家前90天佣金减半，家居园艺母婴豁免",
     "summary": "",
-    "summaryZh": "TikTok Shop巴西于2026年9月2日发布本土商家扶持方案，面向2026年9月至11月间新入驻的巴西本土主体卖家：前90天类目佣金减半，部分家居园艺及母婴类目佣金豁免；短视频与直播可享流量激励池免费加持；并上线免费线上训练营。巴西2026年上半年社交渠道订单同比增长32%，TikTok Shop巴西单月GMV从上线首月的500万雷亚尔增至2026年6月的15.8亿雷亚尔。",
-    "source": "大数跨境／腾讯新闻（09-11）",
-    "country": "巴西",
-    "category": "平台规则",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "TikTok Shop 美区 AHR 健康分上线：低于 150 分限制权限，物流全面转官方渠道",
+    "summaryZh": "本周五大平台政策连环落地，TikTok Shop 美区上线 AHR（账号健康分）机制，低于 150 分将限制店铺权限。配合 2026 年 2 月起全面终止自发货、所有订单须通过平台官方物流履约的要求，卖家的运营稳定性与平台评分深度绑定。同期 Shopee 多站点佣金上调并给出新卖家免佣政策，Temu 半托管费率重构并倾斜流量。整体主线是平台从「粗放铺货」转向「合规＋本土履约」，把运营责任更多交给卖家；新入场或体量小的卖家反而能吃到免佣与补贴红利，成熟卖家需按站点重算利润率。",
+    "source": "AMZ123（09-16）",
+    "country": "美国",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.amz123.com/t/ZzCgSCi7",
+    "trendingTopics": [
+      "AHR 健康分",
+      "官方物流",
+      "费率重构"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 11,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "TikTok Shop 东南亚 9 月规则洗牌：个体户零流水零邀请码入驻，新加坡佣金兜底档升至 9.81%",
+    "summaryZh": "TikTok Shop 东南亚 9 月呈现「宽进严出」。入驻侧大幅放宽：自 8 月 31 日起，持中国大陆个体工商户营业执照的商家申请东南亚跨境店铺不再需要第三方平台经营流水证明，也不再需要邀请码，可直接提交申请；营业执照注册时间需超过 14 天，审核约 3 至 5 个工作日。平台同步推出「飞轮计划」——最高 90 天保证金豁免、最长 120 天佣金减免及平台满减券流量资源。经营侧同步收紧：9 月 1 日起新加坡站调整全类目佣金，未单独列明的类目普通卖家默认平台佣金 9.81%，参加 BXP 的卖家为 7.085%，较 4 月费率表部分类目 8.175% 的档位有所上移，普惠低档正在收窄；交易手续费维持 3.27%。菲律宾站订单处理费优惠于 9 月 1 日结束。需注意目前仅东南亚市场支持个体工商户入驻，美国、英国、欧盟、日本等市场仍仅支持企业商家。",
+    "source": "叁发未来／tkfff（09-16）",
+    "country": "东南亚",
+    "category": "平台动态",
     "dimension": "ecommerce",
     "aspects": [
       "ecommerce",
@@ -669,25 +294,482 @@
     ],
     "impact": "medium",
     "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://www.10100.com/article/150765947",
+    "url": "https://tkfff.cn/industry/340.html",
     "trendingTopics": [
-      "巴西",
-      "佣金减半",
-      "拉美",
-      "家居园艺"
+      "个体户入驻",
+      "新加坡佣金",
+      "BXP",
+      "飞轮计划"
     ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 26
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 12,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
   },
   {
+    "titleZh": "TikTok Shop 英欧双向销售 9 月 21 日启动早期试点：英国卖家可向德意法西等 12 国销售",
+    "summaryZh": "TikTok Shop 英欧双向销售进入试点倒计时，9 月 21 日启动早期试点，英国卖家可向德国、意大利、法国、西班牙等 12 个欧洲国家销售商品。同时全托管黑五扩容，2026 黑五首次覆盖美国、英国、欧盟 12 国、墨西哥、日本共 16 个市场，大促周期拉长至 9 月至 12 月。对已在英国站跑通模式的卖家，这是把同一套供应链与内容复用到欧盟市场的低风险窗口，但需提前确认 CE／UKCA／CPSR 等合规文件覆盖目标国。",
+    "source": "跨境日报（09-13）",
+    "country": "欧洲",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.sina.cn/news/detail/5342617161434428.html",
+    "trendingTopics": [
+      "英欧双向",
+      "早期试点",
+      "黑五扩容"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 13,
     "title": "",
-    "titleZh": "TikTok斥资9.8亿美元在越南建物流：Swift Logistics 11月投入运营",
     "summary": "",
-    "summaryZh": "TikTok旗下新加坡注册关联公司Tokgistic Pte.Ltd.将投资9.8亿美元在胡志明市建设物流项目Swift Logistics，胡志明市财政厅已于9月7日颁发投资登记证书。项目计划运营50年，2026年11月开始运营；初期投入1.96亿美元，占注册资本的20%。这显示TikTok正加速在东南亚自建履约能力。",
-    "source": "腾讯新闻／跨境电商周报（09-13）",
-    "country": "越南",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "TikTok Shop 欧洲站 9 月 30 日红线：电子电器、纺织、玩具、化妆品、母婴五类存量商品须补齐 CE／UKCA／CPSR",
+    "summaryZh": "TikTok Shop 欧洲站设定 9 月 30 日合规红线，电子电器、纺织、玩具、化妆品、母婴五类存量商品须补齐 CE／UKCA／CPSR 认证，逾期下架。这与亚马逊欧洲站锂电池 TIC 核验（同为 9 月 30 日）、欧盟 PPWR（8 月 12 日生效无过渡期）形成三重叠加，欧洲站 Q4 备货窗口的合规清单已明显拉长。卖家应按「站点 × 类目」逐项核对认证状态，避免临近大促出现 Listing 批量下架。",
+    "source": "跨境日报（09-13）",
+    "country": "欧洲",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.sina.cn/news/detail/5342617161434428.html",
+    "trendingTopics": [
+      "CE 认证",
+      "UKCA",
+      "CPSR",
+      "欧洲站下架"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 14,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "TikTok Shop 美区直播拍卖整顿启动：「1 美元起拍」被正式纳入规则管控",
+    "summaryZh": "TikTok Shop 美区开始整顿直播拍卖，这是今年美区增长最快的玩法，「1 美元起拍」模式被正式纳入规则管控。同期东南亚站点 9 月 12 日《跨境商品发布规则》与《平台作弊管控政策》同日更新，商品发布与作弊管控全面收紧。平台正从「粗放增长」转向「精细运营」——增长最快的玩法，最先被收编。做直播拍卖或低价起拍引流的商家需重新审视活动设计是否触碰新规。",
+    "source": "跨境日报／新浪新闻（09-13）",
+    "country": "美国",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.sina.cn/news/detail/5342617161434428.html",
+    "trendingTopics": [
+      "直播拍卖",
+      "1 美元起拍",
+      "规则管控"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 15,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "巴西 50 美元以下免税正式生效：20% 联邦进口税归零，50-3000 美元档从 60% 降至 30%",
+    "summaryZh": "巴西时间 2026 年 9 月 10 日，总统卢拉正式签署取消「小衬衫税」法案。自此价值不超过 50 美元（约 250 雷亚尔）的跨境电商商品，20% 联邦进口税直接归零；50 至 3000 美元区间的联邦关税也从 60% 腰斩至 30%。此前 8 月 2024 年加征 20% 后，一件 45 美元衣服综合税负一度飙至 44.5%，导致大量小包到关被拒收、卖家弃货亏损。政策落地后效果立竿见影——6 月（首个完整免税月）巴西接收国际包裹 2836 万件，同比暴增 118%。但三个坑仍需注意：一是「免税」不等于零税，各州 ICMS 商品服务流通税仍需缴纳，税率 17% 至 20%；二是巴西清关依旧严苛，有货代称「文件错一个字都可能被退回」，有卖家货值 400 多美元因清关问题拖出近 1000 美元滞纳金最终销毁；三是政策反复风险仍在，巴西工业界与零售协会持续强烈反对。电子配件、家居百货、服饰配饰等主流出海品类大多天然落在 50 美元以下，与政策红利高度契合。",
+    "source": "邦阅网／HeyCross（09-16）",
+    "country": "巴西",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce",
+      "local"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.52by.com/article/237162",
+    "trendingTopics": [
+      "巴西免税",
+      "小衬衫税",
+      "ICMS",
+      "拉美市场"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 16,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "巴西 6 月国际包裹量同比暴增 118%，与美欧收紧方向完全相反",
+    "summaryZh": "巴西总统卢拉签署取消 50 美元以下联邦进口税后，消费者反应立竿见影：6 月（首个完整免税月）巴西接收国际包裹 2836 万件，同比暴增 118%。这与美国和欧盟的方向完全相反——美国已系统性拆解 800 美元 de minimis 豁免，欧盟也在推进取消 150 欧元门槛。Sensor Tower 数据显示西方限制措施让 Temu 美国月活用户数周内下降 30%、Shein 下降 12%。巴西财政部估算取消该税种今年将减少约 3.6 亿美元财政收入，2028 年缺口进一步扩大，属于以财政代价换取消费与政治支持的选择。对跨境平台而言，西方主要市场大门收紧的同时，南美意外出现了一条开放通道。",
+    "source": "Wartile（09-15）",
+    "country": "巴西",
+    "category": "市场格局",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://blog.wartile.com/brazil-exact-opposite-western-nations-cheap-imports",
+    "trendingTopics": [
+      "巴西市场",
+      "de minimis",
+      "包裹量增长"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 17,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "Temu 加速海外仓布局：欧洲订单从中国直邮转向本地履约，2026 年目标 80% 订单本地仓发货",
+    "summaryZh": "Temu 在德国、波兰等地建立了 10 多个自营仓库，全球已自建 13 个海外仓，欧洲订单正加快从中国直邮向本地履约切换，2026 年计划在欧美市场实现 80% 以上的订单由本地仓发货。这一转向直接回应了欧盟 2026 年 7 月 1 日取消 150 欧元以下直邮包裹关税豁免的新规——该新规过渡期内对 150 欧元以下包裹按海关税则类目每类征收 3 欧元临时统一关税，2028 年 7 月欧盟海关数据中心上线后改为按品类适用常规从价关税。低价小件直邮模式的成本红利正在消失，本地仓备货成为平台级应对方案。",
+    "source": "搜狐／跨境电商每日简报（09-16）",
+    "country": "欧洲",
+    "category": "市场格局",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.sohu.com/a/1076684701_120236376",
+    "trendingTopics": [
+      "Temu 海外仓",
+      "本地履约",
+      "欧盟关税"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 18,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "拼多多上半年交易服务收入增 16.5%：Temu 成增长引擎，但欧盟 2 亿欧元罚单与关税新规双压",
+    "summaryZh": "拼多多 2026 年上半年在线营销服务及其他收入（国内电商广告）达 1075.73 亿元，同比增长 3.0%；包含 Temu 跨境业务在内的交易服务收入 1110.14 亿元，同比增长 16.5%，增速显著高于国内业务，成为拉动集团营收的增长引擎。但 Temu 海外监管压力同步升级：2026 年 5 月欧盟委员会依据《数字服务法》对 Temu 作出处罚，折合人民币约 15 亿元（约 2 亿欧元），理由为未能尽职识别、分析、评估平台内非法商品带来的系统性风险。欧盟调查指出，Temu 2024 年提交的风险评估报告仅套用电商行业通用风险描述，未结合自身运营数据与抽检案例，严重低估消费者买到违规商品的概率；暗访抽检发现平台大量 USB 充电器无法通过基础安全测试，部分婴幼儿玩具存在化学品超标、零件易脱落引发窒息等隐患。合规已从可选动作变为生存底线。",
+    "source": "网易／大数跨境（09-16）",
+    "country": "欧洲",
+    "category": "市场格局",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.163.com/dy/article/L6S4VHSA05198DU3.html",
+    "trendingTopics": [
+      "Temu",
+      "DSA 罚款",
+      "合规成本"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 19,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "Temu 自营品牌 BEMUVO 登陆日本与加拿大：平台从中间商下场做自营，第三方卖家担忧加剧",
+    "summaryZh": "Temu 自营品牌 BEMUVO 悄然上线日本、加拿大站点，商标申请主体指向拼多多「新拼姆计划」主体上海新拼姆鸿乔电子商务有限公司。这意味着平台从「连接买卖双方的中间商」正式下场做自营，引发大量第三方卖家担忧——平台既是规则制定者又是竞争者，同类目卖家的流量与定价空间可能被挤压。对做 Temu 的卖家而言，需关注 BEMUVO 已覆盖的品类，避免与平台自营品直接正面竞争。",
+    "source": "跨境电商行业动态汇总／网易（09-16）",
+    "country": "日本",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.163.com/dy/article/L6O65H5S05118A6A.html",
+    "trendingTopics": [
+      "BEMUVO",
+      "平台自营",
+      "新拼姆计划"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 20,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "Temu 反诉 SHEIN 版权战一审完胜：SHEIN 须为错误下架链接承担赔偿",
+    "summaryZh": "英格兰及威尔士高等法院 Bacon 大法官签发的判决书显示，Temu 的反诉在责任层面全面胜诉——SHEIN 须为其错误下架的链接承担赔偿，具体金额留待后续审理确定。同期 SHEIN 股价承压：9 月 1 日登陆港交所，发行价 48.56 港元，首日破发，五个交易日累计下跌 19%；9 月 14 日盘中再度大跌超 10% 报 36.4 港元，创上市以来新低。此外 SHEIN 因发现细菌污染，其隐形眼镜产品在澳大利亚和新西兰被召回。平台间知识产权与合规摩擦正在加剧。",
+    "source": "搜狐／跨境电商每日简报（09-16）",
+    "country": "英国",
+    "category": "市场格局",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.sohu.com/a/1076684701_120236376",
+    "trendingTopics": [
+      "Temu 诉 SHEIN",
+      "版权纠纷",
+      "SHEIN 股价"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 21,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "SHEIN 股价创上市以来新低：较发行价累计跌约 19%，隐形眼镜因细菌污染在澳新被召回",
+    "summaryZh": "SHEIN 于 9 月 1 日登陆港交所，发行价 48.56 港元，首日即破发，五个交易日累计下跌 19%；9 月 14 日盘中再度大跌超 10%，报 36.4 港元，创上市以来新低。同期因发现细菌污染，SHEIN 隐形眼镜产品在澳大利亚和新西兰被召回。资本市场的冷淡反应与产品质量问题叠加，反映出快时尚跨境平台在合规与品控上的双重压力——对供应商型卖家而言，平台端的品控要求预计会进一步收紧。",
+    "source": "搜狐／跨境电商每日简报（09-16）",
+    "country": "澳大利亚",
+    "category": "市场格局",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.sohu.com/a/1076684701_120236376",
+    "trendingTopics": [
+      "SHEIN",
+      "上市破发",
+      "产品召回"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 22,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "欧盟 3 欧元小包关税效果显现：比利时列日机场中国小包同比骤降 53%，荷兰降 46%",
+    "summaryZh": "欧盟 3 欧元小包关税效果开始显现：比利时列日机场 7 月接收的中国小包裹同比骤降 53%，荷兰同期来自中国的单件包裹数量亦下降 46%。这是欧盟 2026 年 7 月 1 日取消 150 欧元以下直邮包裹关税豁免、过渡期内按类征收 3 欧元临时统一关税后的直接结果。低价直邮小包模式的成本优势被显著削弱，依赖该路径的卖家需评估转向海外仓或本地履约的可行性。",
+    "source": "亿邦动力（09-15）",
+    "country": "欧洲",
+    "category": "市场格局",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://www.ebrun.com/20260915/708256.shtml",
+    "trendingTopics": [
+      "3 欧元关税",
+      "小包骤降",
+      "直邮模式"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 23,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "Wildberries 上线「我想要折扣」：消费者可直接向卖家申请 1%-35% 个性化折扣",
+    "summaryZh": "Wildberries 推出「我想要折扣」新功能，允许消费者直接在商品详情页向卖家提交个性化折扣申请，可申请 1% 至 35% 的期望折扣。卖家可自行决定是否开启该功能及适用范围，既可手动审核申请，也可预先为每件商品设置最高可接受折扣比例由系统自动处理。若批准，消费者将获得有效期为 24 小时的专属优惠码，可用于购买一件或多件对应商品。目前该功能优先向俄罗斯卖家开放，每位卖家最多可为 5 万件商品启用。这是平台把定价谈判权部分下放给卖家的新尝试，对俄罗斯市场卖家意味着多了一个可控的转化工具。",
+    "source": "亿邦动力（09-15）",
+    "country": "俄罗斯",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.ebrun.com/20260915/708256.shtml",
+    "trendingTopics": [
+      "Wildberries",
+      "个性化折扣",
+      "议价功能"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 24,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "乌克兰拟对境外网购全面征收 20% 增值税：速卖通、Temu、亚马逊、eBay、SHEIN 全覆盖",
+    "summaryZh": "9 月 17 日，乌克兰最高拉达以 273 票赞成，原则通过第 16051-1 号及第 15460 号法案一读，拟取消境外网购商品 150 欧元以下的实际免税政策，对通过速卖通、Temu、亚马逊、eBay、SHEIN 等平台购入的商品全面征收 20% 增值税。150 欧元以内的订单将由电商平台或其注册代表代扣代缴，实现「一键购买、自动含税」；个人间 45 欧元以下的非商业包裹及国防相关物资仍可豁免。新规最早于 2027 年 7 月 1 日生效，尚需完成二读及技术系统搭建。此次调整与乌克兰对接欧盟税收规则、获取约 40 亿欧元国际援助的承诺直接相关，乌克兰财政部预计 2027 年可借此新增约 100 亿格里夫纳税收并纳入国防预算。",
+    "source": "AMZ123（09-17）",
+    "country": "乌克兰",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce",
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.amz123.com/kx/2AWcWkSW",
+    "trendingTopics": [
+      "乌克兰增值税",
+      "代扣代缴",
+      "150 欧元"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 25,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "阿根廷跨境电商新政：门到门免税额度从 50 美元提至 400 美元，出口无上限",
+    "summaryZh": "阿根廷税务与海关管理局（ARCA）通过第 5883/2026 与 5884/2026 号总决议，自 2026 年 7 月 30 日起简化海关程序。门到门进口方面：单次 FOB 价值上限提至 3000 美元，每包最大重量 50 公斤，同一商品最多 3 件，每人每年最多 5 次；免税额度从原先的 50 美元 FOB 大幅提升至 400 美元，装卸费与统计费一并豁免。同时新增数字化预审：邮政运营商提交预先申报，用户有 24 小时在线核对修正。出口侧则完全取消快递渠道的 FOB 价值上限——此前超过 3000 美元即须走正式出口流程，成本更高、周期更长。删除限制因素称，该上限此前「像一堵无形的墙」阻碍了增长。药品、实验室样品、科学用品、艺术品有特殊规则。与巴西免税形成呼应，南美市场正成为跨境小包的新开放窗口。",
+    "source": "ARCA 决议／Imago Argentina（09-16）",
+    "country": "阿根廷",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce",
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.imago.com.ar/en/general/34703/arca",
+    "trendingTopics": [
+      "阿根廷新政",
+      "门到门免税",
+      "400 美元"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 26,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "深圳市跨境电商批量预警：平台 GMV、报关数据、增值税申报收入「三方比对」",
+    "summaryZh": "深圳跨境电商卖家正批量收到税务预警，监管聚焦平台 GMV、报关数据与增值税申报收入的「三方比对」，数据对不上的系统自动预警并要求说明。预警重点指向三类差异：一是海外仓「离境即退税」凭证完整性；二是按净回款而非买家实付全额申报；三是免税收入误作零申报。这是跨境电商税务监管从「申报即完税」转向「数据交叉验证」的标志性动作，依赖低价铺货、账务粗放的卖家风险最直接。同期央行、外汇局联合发布的跨国公司本外币跨境资金集中运营政策于 9 月 14 日起从试点走向全国，允许跨国公司自主决定归集比例、使用同一账户管理本外币资金，为合规化运营提供了新工具。",
+    "source": "跨境电商行业动态汇总（09-17）",
+    "country": "中国",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce",
+      "local"
+    ],
+    "impact": "high",
+    "ecommerceImpact": true,
+    "url": "https://weibo.com/7098373038/5343340323145578",
+    "trendingTopics": [
+      "三方比对",
+      "税务预警",
+      "离境即退税"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 27,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "广州、杭州试点 9610 模式「无票免征」：速卖通携手两地税务部门破解缺票难题",
+    "summaryZh": "广州与杭州启动 9610 模式「无票免征」试点，速卖通携手两地税务部门联合推进，直击行业「缺票」痛点，旨在为卖家开辟一条全新的合规化路径。对长期依赖 1688 等渠道拿货、难以取得增值税专用发票的跨境卖家而言，这一试点可能显著降低合规成本，是继深圳三方比对预警之后税务侧的配套利好。建议关注试点地区的具体申报口径与适用范围，评估自身业务是否可迁移适用。",
+    "source": "搜狐／跨境电商每日简报（09-16）",
+    "country": "中国",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce",
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.sohu.com/a/1076684701_120236376",
+    "trendingTopics": [
+      "9610",
+      "无票免征",
+      "缺票合规"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 28,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "亚马逊广告正式接入 ChatGPT：美国部分品牌可投放，DSP 广告主首批测试",
+    "summaryZh": "亚马逊宣布与 OpenAI 启动广告合作。美国市场部分 Amazon DSP 广告主可以把广告活动延伸至 ChatGPT，Delta Vacations 成为首批参与测试的品牌之一。广告主可按点击或展示付费，也可提交商品目录由系统自动生成广告素材；广告以文字或图片形式出现在 ChatGPT 回答下方，并明确标注赞助属性。亚马逊团队负责搭建和优化广告活动，但具体展示哪些广告、在什么对话场景展示仍由 OpenAI 的广告系统决定。该项目目前采用托管服务，仅面向美国部分品牌，尚未公布自助投放入口；普通卖家的 Sponsored Products 也不会自动进入 ChatGPT。这标志着 AI 对话入口正式成为电商广告的新战场。",
+    "source": "亿邦动力（09-16）",
+    "country": "美国",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.163.com/dy/article/L6O65H5S05118A6A.html",
+    "trendingTopics": [
+      "ChatGPT 广告",
+      "Amazon DSP",
+      "AI 流量入口"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 29,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "亚马逊印度电商新规 2027 年 1 月生效：全面接入国家投诉体系，付费推广须醒目标注",
+    "summaryZh": "印度消费者事务部通过《2026 年消费者保护（电商）修订规则》，将于 2027 年 1 月 1 日正式施行，从投诉处理、搜索结果、赞助商品、价格折扣、暗黑模式、卖家及商品信息、消费者数据等多个维度全面强化监管。主要要求包括：所有电商企业须接入国家消费者投诉处理体系；禁止平台操纵搜索结果误导用户；付费推广商品须以清晰醒目的方式标注。对做印度市场的卖家，商品信息与推广标识的合规要求将明显提高。",
+    "source": "搜狐／跨境电商每日简报（09-16）",
+    "country": "印度",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.sohu.com/a/1076684701_120236376",
+    "trendingTopics": [
+      "印度新规",
+      "消费者保护",
+      "暗黑模式"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 30,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "TikTok 越南投资 9.8 亿美元建 Swift Logistics 物流项目，11 月起运营",
+    "summaryZh": "TikTok 加速渗透越南物流领域。据胡志明市财政厅声明，TikTok 旗下新加坡注册关联公司 Tokgistic Pte.Ltd. 将投资 9.8 亿美元，在胡志明市建设物流项目 Swift Logistics，胡志明市财政厅已于 9 月 7 日颁发投资登记证书。Swift Logistics 计划运营 50 年，今年 11 月开始运营；Tokgistic 初期投入 1.96 亿美元，占注册资本的 20%，其余资金后续追加。这是 TikTok Shop 在东南亚从流量平台向履约基础设施延伸的关键一步，对越南站卖家的物流时效与成本结构预计会产生实际影响。",
+    "source": "网易／跨境电商周报（09-16）",
+    "country": "东南亚",
     "category": "物流履约",
     "dimension": "ecommerce",
     "aspects": [
@@ -695,42 +777,294 @@
     ],
     "impact": "medium",
     "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://news.qq.com/rain/a/20260913A077IV00",
+    "url": "https://www.163.com/dy/article/L6O65H5S05118A6A.html",
     "trendingTopics": [
-      "TikTok",
-      "越南",
-      "物流",
-      "Swift Logistics"
+      "TikTok 越南",
+      "Swift Logistics",
+      "履约基建"
     ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 27
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 31,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
   },
   {
+    "titleZh": "TikTok Shop 巴西推本土商家扶持：9-11 月新入驻卖家前 90 天佣金减半",
+    "summaryZh": "TikTok Shop 巴西于 2026 年 9 月 2 日发布新一轮本土商家扶持方案，面向 2026 年 9 月至 11 月间新入驻的巴西本土主体卖家推出系列优惠：前 90 天类目佣金减半，部分家居园艺及母婴类目佣金予以豁免，短视频与直播内容可享流量激励池免费加持，同时上线涵盖内容剪辑、话术技巧及选品方法的免费线上训练营。市场背景方面，巴西 2026 年上半年社交渠道订单同比增长 32%，TikTok Shop 巴西单月 GMV 从上线首月的 500 万雷亚尔增至 2026 年 6 月的 15.8 亿雷亚尔，大量此前仅在美客多开店的本土品牌已开始实施双平台布局。叠加巴西 50 美元以下免税新政，拉美市场正成为跨境卖家的新增长点。",
+    "source": "网易／跨境电商周报（09-16）",
+    "country": "巴西",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce",
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.163.com/dy/article/L6O65H5S05118A6A.html",
+    "trendingTopics": [
+      "TikTok 巴西",
+      "佣金减半",
+      "拉美市场"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 32,
     "title": "",
-    "titleZh": "eBay上线Bundle Discounts捆绑折扣：卖家可自设多件同单百分比折扣",
     "summary": "",
-    "summaryZh": "eBay在2026年9月卖家更新中上线Bundle Discounts（捆绑折扣）功能，允许卖家设置买家在同一订单购买多件商品时的百分比折扣，折扣档位与适用商品由卖家自主配置。该功能为主动开启、无需手动计算，旨在鼓励凑单、提升客单价，eBay将其归入「业务增长」类更新。有卖家指出结算流程中平台仍会展示竞品链接，可能稀释捆绑折扣的转化效果。",
-    "source": "锦品出海（09-13）",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "亚马逊西班牙萨拉戈萨 ZAZ8 配送中心启用：投资超 1 亿欧元，可容纳 890 万件商品",
+    "summaryZh": "亚马逊西班牙萨拉戈萨 ZAZ8 配送中心正式启用，投资超 1 亿欧元，可容纳 890 万件高周转商品，欧洲履约能力再提速。同期亚马逊 AWD 智能卫星仓已于 8 月 20 日登陆德国、法国、意大利、西班牙、英国五国，采用统一费率长期仓储并可自动向 FBA 仓补货，适合欧洲站大批量备货卖家。在 9 月 1 日 MRN+EORI 入库新规叠加多重 EPR 合规要求的背景下，欧洲站卖家的入仓资料完整性与履约时效需要同步自查。",
+    "source": "跨境日报（09-13）",
+    "country": "欧洲",
+    "category": "物流履约",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "low",
+    "ecommerceImpact": true,
+    "url": "https://www.sina.cn/news/detail/5342617161434428.html",
+    "trendingTopics": [
+      "欧洲履约",
+      "AWD",
+      "萨拉戈萨"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 33,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "美线运价连续 7 周上涨：美东航线三周站稳 1 万美元以上，黄金周空班增多",
+    "summaryZh": "上海航运交易所 9 月 11 日发布的 SCFI 已连续第 7 周上涨，美东航线连续三周站在 1 万美元以上。同时黄金周临近，跨太平洋航次空班增多，舱位与运价进入旺季博弈期。一边是规则收紧、一边是成本上行，建议卖家从报关方式、库存位置、报价模型三个层面重新盘一遍链路，对 Q4 有稳定销量的 SKU 可考虑提前转海外仓大贸清关，一次性完税后从本土发货，规避旺季运价与清关双重波动。",
+    "source": "搜狐／SCFI（09-16）",
     "country": "美国",
-    "category": "平台规则",
+    "category": "物流履约",
     "dimension": "ecommerce",
     "aspects": [
       "ecommerce"
     ],
     "impact": "medium",
     "ecommerceImpact": true,
-    "publishedAt": "2026-09-15",
-    "url": "https://glosellers.com/99666.html",
+    "url": "https://www.sohu.com/a/1075836581_122941889",
     "trendingTopics": [
-      "eBay",
-      "捆绑折扣",
-      "客单价",
-      "促销"
+      "SCFI",
+      "美东航线",
+      "空班",
+      "运价"
     ],
-    "relatedTrends": [],
-    "updated": "2026-09-15",
-    "id": 28
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 34,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "亚马逊欧洲站主要营业地址验证持续推进：逾期触发付款扣留，严重时账户停用",
+    "summaryZh": "亚马逊欧洲站自 8 月起持续推进卖家主要营业地址核验，逾期未完成会触发付款扣留，严重时账户停用。此前 6 月 29 日（美国站）与 7 月 1 日（欧洲站）生效的自配送绩效政策同步收紧配送时效与备货门槛，欧洲站统一落地 4 项 FBM 绩效规则。与 CBP 的 IOR 严查一致，平台侧对「主体信息真实性」的核验正在成为美欧双市场的共同主题，建议把地址、税号、联系人信息的更新作为常规动作而非一次性任务。",
+    "source": "PingPong（09-15）",
+    "country": "欧洲",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.pingpongx.com/zh/news/articles/26091516465587",
+    "trendingTopics": [
+      "地址验证",
+      "FBM 绩效",
+      "主体合规"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 35,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "欧盟电池法全面落地无缓冲：2kWh 以上工业/EV 电池须碳足迹声明，CE 二维码与 BMS 健康度成标配",
+    "summaryZh": "欧盟电池法全面落地且无过渡期，2kWh 以上的工业与 EV 电池须提供碳足迹声明，CE 标识二维码与 BMS 电池健康度成为标配。按 8 至 15 年的存续期测算，一家年出货 10 万只电池包的企业，护照维护与数据托管的年均成本可能高于初次认证费用——这笔钱目前很少被计进报价模型。配合亚马逊欧洲站 9 月 30 日锂电池 TIC 核验截止与 18650／21700 等圆柱电芯禁售红线，电池相关品类的欧洲合规成本需重新核算。",
+    "source": "tkfff（09-16）",
+    "country": "欧洲",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.tkfff.cn/news/773.html",
+    "trendingTopics": [
+      "欧盟电池法",
+      "碳足迹",
+      "电池护照"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 36,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "美国对进口无人机加征 10%-100% 关税：9 月 3 日已生效，按敏感度分四档",
+    "summaryZh": "8 月 13 日白宫发布总统公告，依据《1962 年贸易扩展法》第 232 条款，以国家安全为由对进口无人机及零部件征收 10% 至 100% 的从价关税，9 月 3 日生效。税率分四档：最大起飞重量超过 25 公斤、集成热成像能力的高端机型及关键零部件适用 100%；尺寸较小、无特定敏感功能的普通消费级与商用机型及其他组件适用 25%；欧盟、日本、韩国、瑞士、列支敦士登、中国台湾地区适用 15% 上限；英国适用 10%。但优惠税率并非自动享有，进口商须证明关键部件与技术实质上全部来源于上述地区。非高度敏感的无人机组件关税延迟 180 天至 2027 年 2 月 9 日生效。",
+    "source": "tkfff（09-16）",
+    "country": "美国",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.tkfff.cn/news/773.html",
+    "trendingTopics": [
+      "无人机关税",
+      "232 条款",
+      "从价关税"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 37,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "抖音电商双 11 节奏公布：一件直降 15% 为核心玩法，9 月 14 日已开放报名",
+    "summaryZh": "抖音电商公布双 11 活动节奏，大促 10 月启动并持续至 11 月 11 日，分为开门红、正式期、狂欢日三阶段，核心玩法为「一件直降 15%」与官方立减，9 月 14 日已开放报名，平台将发放消费券至抖音系 APP。同期抖音商城中秋团圆季大促于 9 月 19-24 日上线，商家可二选一报名「立减 15%（商家出资）」或「一件直降」，成功报名商品有机会获得平台全资消费券补贴，搜索卡位与短视频直播双轮驱动流量。国内电商大促节奏提前，跨境卖家若同时运营国内店铺需提前安排人力与库存。",
+    "source": "跨境电商行业动态汇总（09-17）",
+    "country": "中国",
+    "category": "平台动态",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": false,
+    "url": "https://weibo.com/7098373038/5343340323145578",
+    "trendingTopics": [
+      "抖音双 11",
+      "一件直降",
+      "中秋大促"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 38,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "京东 APP 全面 AI 化改版：上线购物 AI Agent「东东」，六大电商平台均已完成 AI 购物嵌入",
+    "summaryZh": "京东发布全面 AI 化改版 APP，上线原生购物 AI Agent「东东」，支持文字、语音对话及视频找同款、3D 实景看货等多模态交互，可调动家政、安装维修、外卖等服务资源。至此国内六大电商平台今年均完成 AI 购物功能嵌入。同期「平台月付将退出支付选项」登上热搜，支付宝、美团、抖音、京东客服均表示未接到通知，月付／白条／花呗仍可正常使用；《金融产品网络营销管理办法》将于 9 月 30 日实施，要求支付工具与贷款、理财等金融产品强制分专区展示。",
+    "source": "跨境电商行业动态汇总（09-17）",
+    "country": "中国",
+    "category": "平台动态",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": false,
+    "url": "https://weibo.com/7098373038/5343340323145578",
+    "trendingTopics": [
+      "京东 AI",
+      "购物 Agent",
+      "金融产品新规"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 39,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "财政部税务总局发布代扣代缴自然人增值税新规：11 月 1 日起施行，覆盖研发设计咨询服务",
+    "summaryZh": "财政部、税务总局发布《境内单位代扣代缴自然人增值税管理办法》（公告 2026 年第 28 号），明确境内单位支付研发、软件、设计、咨询等服务的自然人价款时须代扣代缴增值税，自 2026 年 11 月 1 日起施行，配套申报表（国家税务总局公告 2026 年第 19 号）同步公布。同期 9 月申报纳税期限截至 9 月 15 日；财政部、税务总局公告 2026 年第 25 号明确非应税交易等增值税有关事项，同步废止财税〔2007〕127 号等旧文件；第 26 号公告联合证监会规范上市公司限售股转让个税政策。对跨境电商企业而言，外聘设计、软件、咨询服务时的发票与代扣流程需提前梳理。",
+    "source": "跨境电商行业动态汇总（09-17）",
+    "country": "中国",
+    "category": "合规政策",
+    "dimension": "local",
+    "aspects": [
+      "local"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": false,
+    "url": "https://weibo.com/7098373038/5343340323145578",
+    "trendingTopics": [
+      "代扣代缴",
+      "增值税",
+      "自然人服务"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 40,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "Shopee 9.9 大促收官：开场 99 分钟跨境销售额同比增长 8 倍",
+    "summaryZh": "Shopee 9.9 大促收官，开场 99 分钟跨境销售额同比增长 8 倍，东南亚旺季火力全开。同期 Shopee 多站点佣金上调并同步给出新卖家免佣政策，阿根廷站自 9 月 16 日起调整 SLS 标准渠道跨境物流藏价费用，平台设置 9 月 9 日至 23 日缓冲期——卖家调价幅度不超过本次费率调整幅度则不会被判定为夸大不实折扣。多站点费率与物流规则同步变动，建议按站点重算利润率并复核定价。",
+    "source": "跨境日报／跨境电商每日简报（09-16）",
+    "country": "东南亚",
+    "category": "平台动态",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.sina.cn/news/detail/5342617161434428.html",
+    "trendingTopics": [
+      "Shopee 9.9",
+      "跨境销售额",
+      "SLS 运价"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 41,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
+  },
+  {
+    "titleZh": "亚马逊欧洲站商品捆绑政策 9 月 30 日更新：规则扩展至大部分类目，须为原厂品牌包装配置",
+    "summaryZh": "亚马逊商品捆绑政策将于 9 月 30 日更新，捆绑规则扩展至大部分类目，要求捆绑包必须为原厂品牌包装配置。同期新品入仓优惠计划 NSP 已于 7 月 30 日升级，新 ASIN 可享受佣金、仓储、退货、清货减免与推广补贴，上新卖家可主动注册以降低上新成本。做套装、组合销售的卖家需在截止日前完成捆绑合规自查。",
+    "source": "PingPong（09-15）",
+    "country": "美国",
+    "category": "合规政策",
+    "dimension": "ecommerce",
+    "aspects": [
+      "ecommerce"
+    ],
+    "impact": "medium",
+    "ecommerceImpact": true,
+    "url": "https://www.pingpongx.com/zh/news/articles/26091516465587",
+    "trendingTopics": [
+      "商品捆绑",
+      "NSP",
+      "上新成本"
+    ],
+    "publishedAt": "2026-09-17",
+    "updated": "2026-09-17",
+    "id": 42,
+    "title": "",
+    "summary": "",
+    "relatedTrends": []
   }
 ]
