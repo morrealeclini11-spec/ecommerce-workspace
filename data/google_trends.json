@@ -10,7 +10,7 @@
     "relatedProduct": "工具收纳柜",
     "evidence": "数百万美国家庭有车库工坊，maker 文化强；秋冬进入室内 DIY 季，工具收纳与工作台照明需求上升",
     "source": "LifeAnalysis US / r/DIY 社区",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -25,7 +25,7 @@
     "relatedProduct": "空气炸锅内衬",
     "evidence": "空气炸锅美国家庭渗透率极高，'清洗麻烦'是最高频差评点；硅胶内衬/可复用烘焙纸是低客单高复购配件",
     "source": "Amazon 空气炸锅配件类目评论分析",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -40,7 +40,7 @@
     "relatedProduct": "下水滤网",
     "evidence": "美国老住宅铸铁管道普遍，节日聚餐前疏通与防堵是季节性需求；毛发拦截滤网为高频复购小件",
     "source": "Amazon Home Improvement 类目",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -55,7 +55,7 @@
     "relatedProduct": "宠物梳毛器",
     "evidence": "美国约 70% 家庭养宠（狗 53%/猫 39%），宠物产业 1580 亿美元；掉毛与沙发毛发清理是常年高频痛点",
     "source": "APPA 美国宠物产业统计",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -70,7 +70,7 @@
     "relatedProduct": "腰靠坐垫",
     "evidence": "美国远程/混合办公常态化，居家办公人体工学小件（腰靠、脚踏、腕托）需求稳定；秋冬室内时间增加",
     "source": "US remote work 趋势（混合办公常态化）",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -85,7 +85,7 @@
     "relatedProduct": "睡眠眼罩",
     "evidence": "秋冬日照变短影响作息，助眠品类（遮光眼罩、白噪音机、加重毯）在 10–1 月搜索上升",
     "source": "US sleep aid seasonality",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -100,7 +100,7 @@
     "relatedProduct": "除尘掸",
     "evidence": "11 月感恩节前 deep clean 是美国家庭固定仪式，除尘/玻璃清洁工具销量季节性上升",
     "source": "US cleaning seasonality（感恩节前大扫除）",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -115,7 +115,7 @@
     "relatedProduct": "车载收纳箱",
     "evidence": "美国汽车依赖度高，节日长途自驾（Thanksgiving/Christmas road trip）带动后备箱收纳、车载充电与支架需求",
     "source": "LifeAnalysis US（汽车依赖 + 节日自驾）",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -128,7 +128,7 @@
     "relatedProduct": "太阳能庭院灯",
     "evidence": "IP65/IP67 抗雨雪风，英国多雨市场尤其看重",
     "source": "plantingguys",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "season": "2026 秋冬季（9月–次年2月）",
     "horizon": "当季",
@@ -145,7 +145,7 @@
     "relatedProduct": "遮光窗帘",
     "evidence": "refundy：thermal curtains / draught excluders 因能源价格成真实购买动机；Allegro：遮光窗帘需求提升",
     "source": "refundy / cifnews",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -160,7 +160,7 @@
     "relatedProduct": "电热毯",
     "evidence": "refundy：electric blankets 为秋冬季核心；英国高电价下'省电'是首要动机",
     "source": "refundy autumn-winter 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -175,7 +175,7 @@
     "relatedProduct": "除湿机",
     "evidence": "Allegro：除湿机/防潮垫等防潮保暖品类入冬需求大幅提升；英国约1/4成人报告发霉",
     "source": "cifnews Allegro / LifeAnalysis",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -190,7 +190,7 @@
     "relatedProduct": "空气炸锅",
     "evidence": "Allegro：空气炸锅、咖啡机凭高市场热度持续爆单，有稳定数据支撑",
     "source": "cifnews Allegro",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -205,7 +205,7 @@
     "relatedProduct": "可持续服饰",
     "evidence": "tex-world：带 GOTS/GRS 商品转化率高出普通 45%；德国愿为环保付溢价",
     "source": "tex-world 2026秋冬",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -220,7 +220,7 @@
     "relatedProduct": "冬季外套",
     "evidence": "tex-world：内置加热模块智能外套预售抢眼；Allegro：防风羽绒夹克表现优异",
     "source": "tex-world / cifnews",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -235,7 +235,7 @@
     "relatedProduct": "针织衫",
     "evidence": "tex-world：德国/法国消费者愿为'有机棉+植物染'付 30% 溢价",
     "source": "tex-world 2026秋冬",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -250,7 +250,7 @@
     "relatedProduct": "节能小家电",
     "evidence": "LifeAnalysis：德国能效至上，A+++ 节能小家电需求强",
     "source": "LifeAnalysis DE",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -265,7 +265,7 @@
     "relatedProduct": "节能家电",
     "evidence": "sourceready/imarcgroup：德国电价约 €0.32/kWh，消费者愿为 A/B 级能效多付 10–15%",
     "source": "sourceready 2026 / imarcgroup",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -280,7 +280,7 @@
     "relatedProduct": "可修复小家电",
     "evidence": "LifeAnalysis：法国环保反快时尚（Vinted 国民级），可修复小家电受青睐",
     "source": "LifeAnalysis FR",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -295,7 +295,7 @@
     "relatedProduct": "免钉收纳",
     "evidence": "LifeAnalysis：巴黎小户型收纳爆满，极简风免钉收纳需求强",
     "source": "LifeAnalysis FR",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -310,7 +310,7 @@
     "relatedProduct": "空气炸锅",
     "evidence": "LifeAnalysis：法国电费贵，节能厨电/空气炸锅需求高",
     "source": "LifeAnalysis FR",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -325,7 +325,7 @@
     "relatedProduct": "空气炸锅",
     "evidence": "Lengow/Kalodata：Moulinex Easy Fry 空气炸锅法国 2026年1月 GMV €362.36k 居首；法国从促销型转向日常刚需",
     "source": "Lengow 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -340,7 +340,7 @@
     "relatedProduct": "料理机",
     "evidence": "Lengow/Kalodata：SPZTJK 多功能电动料理机法国 2026年1月 GMV €123.32k",
     "source": "Lengow 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -355,7 +355,7 @@
     "relatedProduct": "摩卡壶",
     "evidence": "LifeAnalysis：意大利摩卡壶咖啡国民仪式，带动咖啡器具",
     "source": "LifeAnalysis IT",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -370,7 +370,7 @@
     "relatedProduct": "节能小家电",
     "evidence": "LifeAnalysis：意大利电费贵，节能深入；无空调靠百叶",
     "source": "LifeAnalysis IT",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -385,7 +385,7 @@
     "relatedProduct": "洗地机",
     "evidence": "Lengow/Kalodata：JONR ED12 洗地机意大利 2026年1月 GMV €295.45k 居首，清洁电器取代美妆登顶",
     "source": "Lengow 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -400,7 +400,7 @@
     "relatedProduct": "无线吸尘器",
     "evidence": "Lengow/Kalodata：45000Pa 无线吸尘器意大利 2026年1月 GMV €116.18k",
     "source": "Lengow 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -415,7 +415,7 @@
     "relatedProduct": "冬季外套",
     "evidence": "Lengow/Kalodata：女士人造毛短外套意大利 2026年1月 GMV €71.63k，冬季服饰排第二梯队",
     "source": "Lengow 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -430,7 +430,7 @@
     "relatedProduct": "取暖器",
     "evidence": "LifeAnalysis：西班牙多无集中供暖，便携小风扇/取暖器是痛点",
     "source": "LifeAnalysis ES",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -445,7 +445,7 @@
     "relatedProduct": "遮光窗帘",
     "evidence": "LifeAnalysis：西班牙长午餐午睡+西晒，百叶窗/遮光窗帘刚需",
     "source": "LifeAnalysis ES",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -460,7 +460,7 @@
     "relatedProduct": "折叠晾衣架",
     "evidence": "Lengow/Kalodata：折叠晾衣架西班牙 2026年1月 GMV €138.99k，进入前三",
     "source": "Lengow 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -475,7 +475,7 @@
     "relatedProduct": "应急信标",
     "evidence": "Lengow/Kalodata：V16 带定位应急信标西班牙 2026年1月 GMV €129.20k（安全类）",
     "source": "Lengow 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -490,7 +490,7 @@
     "relatedProduct": "电热毯",
     "evidence": "LifeAnalysis：墨西哥冬季温和但 12–2 月降温，保暖小件需求上升",
     "source": "LifeAnalysis MX",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -505,7 +505,7 @@
     "relatedProduct": "净水器",
     "evidence": "LifeAnalysis：墨西哥自来水不可直饮，配桶装水/净水器是每日关切",
     "source": "LifeAnalysis MX",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -520,7 +520,7 @@
     "relatedProduct": "搅拌机",
     "evidence": "LifeAnalysis：墨西哥做 salsa/玉米饼，搅拌机/多功能锅是厨房核心",
     "source": "LifeAnalysis MX",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -535,7 +535,7 @@
     "relatedProduct": "派对装饰",
     "evidence": "LifeAnalysis：墨西哥家庭/广场节庆文化强，piñata 等装饰需求",
     "source": "LifeAnalysis MX",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -550,7 +550,7 @@
     "relatedProduct": "电热毯",
     "evidence": "refundy：能源价格使'heat the person'成真实购买动机，可诚实宣称",
     "source": "refundy autumn-winter 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -565,7 +565,7 @@
     "relatedProduct": "除湿机",
     "evidence": "cifnews：冬季除湿防潮、保暖制热类为欧洲核心潜力品类",
     "source": "cifnews Allegro",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -580,7 +580,7 @@
     "relatedProduct": "洗地机",
     "evidence": "博克斯海外仓：2026 年欧洲 TikTok Shop 从低价小件转向高客单功能家电，干湿两用吸尘器为新增量",
     "source": "博克斯海外仓 / Lengow 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   },
@@ -595,7 +595,7 @@
     "relatedProduct": "空气炸锅",
     "evidence": "NIQ：SDA 增长 5–7%，多功能便利（多篮空气炸锅、all-in-one 造型器）为核心驱动",
     "source": "NielsenIQ 2026",
-    "updated": "2026-10-16",
+    "updated": "2026-10-17",
     "real": true,
     "weekKey": "2026-W42"
   }
