@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Shop利润推演控制台 - 旗舰协同版</title>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.4.21/dist/vue.global.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+
+<!-- Firebase SDK 改为非阻塞异步加载（大陆访问 gstatic 经常不通，同步加载会把整页卡白） -->
+
+<style>
+[v-cloak] { display: none !important; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.drag-item { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.card-shadow { box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+.price-node { display: inline-flex; flex-direction: column; justify-content: center; padding: 8px 12px; border-radius: 8px; margin: 0 4px; min-width: 110px; text-align: center; border: 1px solid #e2e8f0; background: white; }
+.price-node.active-drop { background: #eff6ff; border-color: #93c5fd; }
+.price-node.final-price { background: #f0fdf4; border-color: #86efac; }
+.arrow { color: #94a3b8; font-weight: bold; margin: 0 4px; }
+input[type="range"].purple-slider { accent-color: #9333ea; }
+</style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 h-screen overflow-hidden">
+    
+<script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUq-yYyPdsBl5_pl1Bh_m4BVnH3uww9SU",
+      authDomain: "msxa-d593f.firebaseapp.com",
+      databaseURL: "https://msxa-d593f-default-rtdb.firebaseio.com",
+      projectId: "msxa-d593f",
+      storageBucket: "msxa-d593f.firebasestorage.app",
+      messagingSenderId: "941765845724",
+      appId: "1:941765845724:web:e20252678cf61add654a19",
+      measurementId: "G-BF8RY6E46G"
+    };
+
+    // 🔌 Firebase SDK 动态异步加载：加载失败（大陆被墙/库被停用）绝不能阻塞页面，留空 db 直接走离线
+    window.isCloudEnabled = false;
+    window.db = null;
+    (function loadFirebaseAsync(){
+        function tryInit(){
+            try {
+                if (typeof firebase === 'undefined' || !firebase.apps) return false;
+                if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+                window.db = firebase.database();
+                window.isCloudEnabled = true;
+                return true;
+            } catch (e) { console.warn('[Firebase] 初始化失败（走离线模式）', e); return false; }
+        }
+        var s1 = document.createElement('script');
+        s1.src = 'https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js';
+        s1.async = true;
+        s1.onload = function(){
+            var s2 = document.createElement('script');
+            s2.src = 'https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js';
+            s2.async = true;
+            s2.onload = function(){ tryInit(); };
+            s2.onerror = function(){ console.warn('[Firebase] database SDK 加载失败（国内正常，走离线）'); };
+            document.head.appendChild(s2);
+        };
+        s1.onerror = function(){ console.warn('[Firebase] app SDK 加载失败（国内正常，走离线）'); };
+        document.head.appendChild(s1);
+    })();
+</script>
+
+<div id="app" v-cloak class="flex h-full relative">
+
+    <div v-if="!hasLoadedData" class="absolute inset-0 bg-slate-900 z-[9999] flex flex-col items-center justify-center">
+        <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <div class="text-blue-400 font-bold tracking-widest animate-pulse">正在同步云端加密状态...</div>
+        <div class="text-slate-500 text-xs mt-4">10 秒未连上将自动进入离线模式（不丢数据）</div>
+    </div>
+    
+    <div v-else-if="isLocked" class="absolute inset-0 bg-slate-900 z-[9999] flex flex-col items-center justify-center">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl w-96 text-center">
+            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">🔒</div>
+            <h2 class="text-xl font-bold text-gray-800 mb-2">系统已锁定</h2>
+            <p class="text-xs text-gray-500 mb-6">利润数据属于机密，需输入最新授权码方可访问</p>
+            <input v-model="tempCode" @keyup.enter="verifyCode" type="password" placeholder="请输入团队访问码..." class="w-full border border-gray-300 rounded-lg p-3 text-center tracking-widest text-lg font-bold outline-none focus:border-blue-500 mb-4">
+            <button @click="verifyCode" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">解锁进入控制台</button>
+            <p v-if="loginError" class="text-rose-500 text-xs mt-3 animate-pulse">密码错误，请确认云端授权码或重新输入</p>
+        </div>
+    </div>
+
+    <div class="w-64 bg-slate-900 text-white flex flex-col shadow-2xl z-20 flex-shrink-0">
+        <div class="p-5 bg-slate-950 border-b border-slate-800">
+            <div class="flex justify-between items-center">
+                <h1 class="text-lg font-bold text-blue-400">利润测算中枢</h1>
+                <button @click="logout" class="text-[10px] bg-rose-900/50 hover:bg-rose-700 text-rose-300 px-2 py-1 rounded transition">退出</button>
+            </div>
+            <div class="mt-2 px-2 py-1 rounded text-[11px] font-mono border text-center" :class="isOfflineMode ? 'bg-amber-950 text-amber-300 border-amber-700' : 'bg-emerald-950 text-emerald-300 border-emerald-800'">{{ isOfflineMode ? '🔌 离线模式 · 数据存本机' : '🟢 云端实时协同中' }}</div>
+        </div>
+        <div class="flex-1 overflow-y-auto p-3 space-y-2" id="productSortWrap">
+            <div v-for="(prod, index) in products" :key="prod.id" class="drag-item cursor-pointer p-3 rounded-lg transition-all border relative group" :class="currentProductIndex === index ? 'bg-blue-600 border-blue-500 shadow-lg' : 'bg-slate-800 border-slate-700 hover:bg-slate-700'" @click="selectProduct(index)">
+                <div class="flex justify-between items-start">
+                    <input v-if="currentProductIndex === index" v-model="prod.name" @change="forceCalculate" @click.stop class="bg-transparent border-b border-blue-300 w-full text-white font-medium outline-none pr-1">
+                    <div v-else class="font-medium truncate pr-1 flex-1">{{ prod.name }}</div>
+                    <div class="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity"><button @click.stop="duplicateProduct(index)" title="复制产品" class="text-slate-400 hover:text-blue-300 text-xs">📋</button><button v-if="products.length > 1" @click.stop="delProductCheck(index)" title="删除产品" class="text-slate-400 hover:text-red-400 text-xs">🗑️</button></div>
+                </div>
+                <div class="text-xs text-slate-300 mt-1 flex justify-between"><span>预估净利:</span><span :class="getProductTotalProfit(prod) >= 0 ? 'text-green-300 font-bold' : 'text-red-300 font-bold'">¥{{ getProductTotalProfit(prod).toFixed(0) }}</span></div>
+                <div class="mt-1.5 flex gap-1"><button @click.stop="toggleOversea(prod)" class="text-[10px] px-1.5 py-0.5 rounded transition border" :class="prod.overseaWh===false ? 'bg-slate-600/60 text-slate-300 border-slate-500' : 'bg-emerald-900/70 text-emerald-300 border-emerald-700'">{{ prod.overseaWh===false ? '非海外仓' : '🏬 海外仓' }}</button><button @click.stop="togglePriceCurrency(prod)" class="text-[10px] px-1.5 py-0.5 rounded transition border" :class="prod.priceCurrency==='cny' ? 'bg-red-900/70 text-red-300 border-red-700' : 'bg-sky-900/70 text-sky-300 border-sky-700'">{{ prod.priceCurrency==='cny' ? '¥ 人民币' : '$ 美元' }}</button></div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-slate-800 space-y-2">
+            <button @click="addProduct" class="w-full py-2 bg-slate-700 hover:bg-slate-600 rounded text-sm font-semibold transition">+ 新增产品项目</button>
+            <button @click="showWarehouseModal = true" class="w-full py-2 border border-slate-600 hover:bg-slate-800 rounded text-sm text-blue-300 flex justify-center items-center gap-2 transition">🏢 全局仓储物流</button>
+            <button @click="showDataModal = true" class="w-full py-2 border border-emerald-700 hover:bg-emerald-900/50 rounded text-sm text-emerald-400 flex justify-center items-center gap-2 transition">💾 版本历史与备份</button>
+            <button @click="openSettings" class="w-full py-2 border border-rose-700 hover:bg-rose-900/50 rounded text-sm text-rose-400 flex justify-center items-center gap-2 transition shadow-sm">🛡️ 安全与密码设置</button>
+        </div>
+    </div>
+
+    <div class="flex-1 flex flex-col overflow-hidden min-w-0" v-if="currentProduct">
+        <div v-if="isOfflineMode" class="bg-amber-50 border-b border-amber-300 text-amber-800 text-xs px-6 py-2.5 flex-shrink-0 flex items-center gap-2">
+            <span class="font-bold">🔌 离线模式</span>
+            <span>云端数据库当前不可用（被停用或网络不通），数据自动保存在本机浏览器。可正常测算，刷新不丢；「版本历史与备份」暂不可用。</span>
+        </div>
+        <div class="bg-white shadow-sm border-b border-gray-200 z-10 flex-shrink-0">
+            <div class="p-4 px-6 flex justify-between items-center bg-gradient-to-r from-blue-50 to-white">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">{{ currentProduct.name }} - {{ currentPhase.name }}</h2>
+                    <div class="mt-2 flex items-center gap-3">
+                        <button @click.stop="toggleOversea(currentProduct)" title="点一下切换：海外仓产品才参与仓储费分摊" class="text-xs px-3 py-1 rounded-full border font-bold transition" :class="currentProduct.overseaWh===false ? 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200' : 'bg-amber-100 text-amber-700 border-amber-400 hover:bg-amber-200'">🏬 {{ currentProduct.overseaWh===false ? '非海外仓 · 不参与仓储费' : '海外仓 · 参与仓储费分摊' }}</button>
+                        <button @click.stop="togglePriceCurrency(currentProduct)" title="点一下切换：美元=发货海外定价；人民币=国内供货定价（全部售价按 ¥ 算，不再乘汇率）" class="text-xs px-3 py-1 rounded-full border font-bold transition" :class="currentProduct.priceCurrency==='cny' ? 'bg-red-100 text-red-700 border-red-300 hover:bg-red-200' : 'bg-emerald-100 text-emerald-700 border-emerald-400 hover:bg-emerald-200'">💱 {{ currentProduct.priceCurrency==='cny' ? '售价：人民币 ¥（国内供货）' : '售价：美元 $（发货海外）' }}</button>
+                        <span class="text-sm text-gray-600">模拟日期：</span>
+                        <span v-if="!editingDate" @dblclick="editingDate=true" class="border-b-2 border-blue-400 border-dashed text-blue-700 font-bold cursor-pointer pb-0.5" title="自动跟随今天（跨零点自动跳）；双击可手动改">📅 {{simDate}}</span>
+                        <input v-else v-model="simDate" type="date" @blur="editingDate=false; dateManuallySet=true; forceCalculate()" @change="forceCalculate; dateManuallySet=true" @keyup.enter="editingDate=false; dateManuallySet=true; forceCalculate()" class="border border-blue-300 px-2 py-1 rounded text-sm bg-blue-50 outline-none" autofocus>
+                        <button @click="setToday" class="text-[10px] bg-slate-200 hover:bg-slate-300 px-2 py-1 rounded transition text-slate-600">📍 回到今日</button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="text-right mr-2"><p class="text-xs text-gray-500 mb-0.5">本阶段预估净利</p><p :class="['text-3xl font-extrabold', currentPhase.stageNetProfit >= 0 ? 'text-green-600' : 'text-red-600']">{{ currentPhase.stageNetProfit >= 0 ? '¥' : '-¥' }}{{ Math.abs(currentPhase.stageNetProfit).toFixed(2) }}</p></div>
+                </div>
+            </div>
+            <div class="flex items-end px-6 pt-3 gap-2 overflow-x-auto scrollbar-hide border-b border-gray-100 bg-white">
+                <div v-for="(phase, pIndex) in currentProduct.phases" :key="phase.id" @click="selectPhase(pIndex)" class="group flex items-center gap-2 px-5 py-2 cursor-pointer font-medium text-sm rounded-t-lg transition-colors border-t border-l border-r" :class="currentPhaseIndex === pIndex ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'">
+                    <span v-if="editingPhaseIndex !== pIndex" @dblclick="editingPhaseIndex = pIndex" title="双击可重命名阶段">{{ phase.name }}</span>
+                    <input v-else v-model="phase.name" @blur="editingPhaseIndex=-1; forceCalculate()" @keyup.enter="editingPhaseIndex=-1; forceCalculate()" @click.stop class="bg-transparent border-b border-gray-400 outline-none w-20 text-center" autofocus>
+                    <div class="flex items-center ml-1 opacity-0 group-hover:opacity-100 transition-opacity gap-1"><button @click.stop="duplicatePhase(pIndex)" title="复制阶段" class="hover:text-blue-300">📋</button><button v-if="currentProduct.phases.length > 1" @click.stop="delPhaseCheck(pIndex)" title="删除阶段" class="hover:text-red-400">×</button></div>
+                </div>
+                <button @click="addPhase" class="px-4 py-2 text-sm text-blue-600 font-medium hover:bg-blue-50 rounded-t-lg transition">+ 新生命周期</button>
+            </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto bg-slate-50 p-6 flex flex-col xl:flex-row gap-6">
+            <div class="flex-1 space-y-6 max-w-5xl" v-if="currentPhase">
+                
+                <div class="bg-white p-6 rounded-xl card-shadow border border-gray-200">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><span>🎯</span> 1. 基础业务单量预估</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+                        <div><label class="block text-xs font-bold text-blue-600 mb-1">预计有效正价销量</label><input v-model.number="currentPhase.salesVol" @change="forceCalculate" type="number" class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-blue-500 bg-blue-50/30 text-lg font-bold text-slate-700"></div>
+                        <div><label class="block text-xs font-bold text-red-500 mb-1">达人免费样单量 (全包纯亏)</label><input v-model.number="currentPhase.freeSample" @change="forceCalculate" type="number" class="w-full border-2 border-red-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-red-500 bg-red-50/50 text-lg font-bold text-red-600"></div>
+                        <div><label class="block text-xs font-bold text-red-500 mb-1">预计滞销销毁量 (件)</label><input v-model.number="currentPhase.destroyNum" @change="forceCalculate" type="number" class="w-full border-2 border-red-200 rounded-lg px-3 py-2 text-lg font-bold text-red-600 bg-red-50/50 focus:ring-1 focus:ring-red-500"><div class="mt-1.5 flex items-center gap-1 text-xs text-gray-600"><span class="shrink-0">单件销毁处理费 ¥</span><input v-model.number="currentPhase.destroyUnitFeeCny" @change="forceCalculate" type="number" step="0.01" class="w-20 border border-gray-300 rounded px-1.5 py-0.5 text-right font-medium"></div><div class="mt-1 text-[11px] leading-snug" :class="currentPhase.destroyNum>0?'text-red-600 font-medium':'text-gray-400'">销毁成本 = 销毁量 × (货值 ¥{{ currentPhase.unitCostCny }} + 头程 ¥{{ currentPhase.airUnitCost }} + 履约 ${{ currentPhase.overseaUnitCostUsd }}×{{ currentPhase.rateUsdCny }} + 销毁费 ¥{{ currentPhase.destroyUnitFeeCny }})<span v-if="currentPhase.destroyNum>0"> = ¥{{ pState.destroyTotalCostCny.toLocaleString() }}</span></div></div>
+                        <div><label class="block text-xs font-bold text-orange-600 mb-1">退款率 (%)<span class="text-[10px] text-gray-400 ml-1">影响净利+保本价</span></label><input v-model.number="currentPhase.refundDestroyPct" @change="forceCalculate" type="number" step="0.1" class="w-full border-2 border-orange-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-orange-500 bg-orange-50/30 text-lg font-bold text-orange-600"></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl card-shadow border border-blue-100">
+                    <div class="flex justify-between items-center mb-4 border-b pb-3"><h3 class="text-xl font-bold text-blue-800 flex items-center gap-2"><span>🏷️</span> 2. 多渠道价格瀑布流推演</h3><div class="flex gap-2"><button @click="generatePricingReport" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-sm rounded shadow-sm transition">📋 导出报价单</button><button @click="showPromoModal=true" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm rounded shadow-sm transition">⚙️ 促销活动池</button></div></div>
+                    <div class="space-y-4 mb-4">
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><div class="text-sm font-bold text-slate-700 mb-3">🛒 货架场链路（商品卡/商城/搜索）</div><div class="flex flex-wrap items-center text-sm"><div class="price-node bg-gray-100"><span class="text-gray-500 text-xs">基准原价</span><span class="font-bold">{{priceCurSym}}{{currentPhase.basePriceUsd}}</span></div><span class="arrow">→</span><div class="price-node active-drop"><span class="text-blue-600 text-xs truncate max-w-[120px]">{{pState.shopStep1Name}}</span><span class="font-bold text-blue-700">{{priceCurSym}}{{pState.shopStep1Val}}</span></div><span class="arrow" v-if="pState.additiveTotal > 0">→</span><div v-if="pState.additiveTotal > 0" class="price-node"><span class="text-purple-600 text-xs">可叠加优惠</span><span class="font-bold text-purple-700">-{{priceCurSym}}{{pState.additiveTotal}}</span></div><span class="arrow">→</span><div class="price-node final-price"><span class="text-green-700 text-xs font-bold">商城展示价</span><span class="font-black text-green-800 text-lg">{{priceCurSym}}{{pState.finalShopPrice}}</span></div></div></div>
+                        <div class="bg-red-50 p-4 rounded-lg border border-red-100"><div class="text-sm font-bold text-red-700 mb-3">🎥 内容场链路（达人直播/短视频）</div><div class="flex flex-wrap items-center text-sm"><div class="price-node bg-gray-100"><span class="text-gray-500 text-xs">基准原价</span><span class="font-bold">{{priceCurSym}}{{currentPhase.basePriceUsd}}</span></div><span class="arrow">→</span><div class="price-node active-drop border-red-200 bg-red-50"><span class="text-red-600 text-xs truncate max-w-[120px]">{{pState.liveStep1Name}}</span><span class="font-bold text-red-700">{{priceCurSym}}{{pState.liveStep1Val}}</span></div><span class="arrow" v-if="pState.additiveTotal > 0">→</span><div v-if="pState.additiveTotal > 0" class="price-node"><span class="text-purple-600 text-xs">可叠加优惠</span><span class="font-bold text-purple-700">-{{priceCurSym}}{{pState.additiveTotal}}</span></div><span class="arrow">→</span><div class="price-node final-price border-green-300"><span class="text-green-700 text-xs font-bold">直播间到手价</span><span class="font-black text-green-800 text-lg">{{priceCurSym}}{{pState.finalLivePrice}}</span></div></div></div>
+                    </div>
+                    <div><h4 class="text-xs font-bold text-gray-500 mb-2">生效活动大纲</h4><div class="flex flex-wrap gap-2"><span v-for="(item,idx) in validCurrentPromo" :key="idx" class="px-2 py-1 rounded text-xs font-medium border bg-gray-50 text-gray-700">{{item.tag}}: {{item.name}} (折后 {{priceCurSym}}{{item.discountPriceUsd}})</span><span v-if="validCurrentPromo.length===0" class="text-sm text-gray-400 italic">无可叠加或互斥的降价活动。</span></div></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl card-shadow border border-indigo-100">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 border-b pb-2"><span>📊</span> 3. 订单来源矩阵与达人佣金结算</h3>
+                    <div class="bg-indigo-50/60 border border-indigo-100 rounded-xl p-4 mb-5">
+                        <h4 class="text-sm font-bold text-indigo-800 mb-3 flex items-center gap-2">🌐 订单销售渠道配比 (商品卡 + 视频短视频 + 直播间)</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-3">
+                            <div class="bg-white p-3 rounded-lg border border-indigo-100 shadow-sm relative"><div class="flex justify-between items-center mb-2"><label class="text-xs font-bold text-slate-600 flex items-center gap-1"><span>🛒</span> 商品卡/商城 (%)</label><span class="text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">0佣金单</span></div><input v-model.number="currentPhase.cardRate" @change="forceCalculate" type="number" class="w-full border-b-2 border-slate-300 focus:border-indigo-500 outline-none px-2 py-1 text-lg text-center"></div>
+                            <div class="bg-white p-3 rounded-lg border border-indigo-100 shadow-sm relative"><div class="flex justify-between items-center mb-2"><label class="text-xs font-bold text-slate-600 flex items-center gap-1"><span>📱</span> 短视频带货 (%)</label><span class="text-[10px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded">基础价扣佣</span></div><input v-model.number="currentPhase.videoRate" @change="forceCalculate" type="number" class="w-full border-b-2 border-slate-300 focus:border-indigo-500 outline-none px-2 py-1 text-lg text-center"></div>
+                            <div class="bg-white p-3 rounded-lg border border-red-100 shadow-sm relative"><div class="flex justify-between items-center mb-2"><label class="text-xs font-bold text-red-600 flex items-center gap-1"><span>📺</span> 直播间渠道 (%)</label><span class="text-[10px] bg-red-50 text-red-600 px-1.5 py-0.5 rounded">破价扣佣</span></div><input v-model.number="currentPhase.liveRate" @change="forceCalculate" type="number" class="w-full border-b-2 border-red-300 focus:border-red-500 outline-none px-2 py-1 text-lg text-red-600 text-center bg-red-50/30"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-xs text-indigo-500">
+                            <span>系统自动按比权重归一。 当前综合客单价(AOV): <strong class="text-indigo-700 text-sm">{{priceCurSym}}{{pState.aovUsd}}</strong></span>
+                            <div class="bg-white px-3 py-1.5 rounded border border-indigo-200 font-bold flex items-center gap-2 shadow-sm">达人订单总占比:<span class="text-indigo-700 text-base">{{ (currentPhase.videoRate||0) + (currentPhase.liveRate||0) }}</span>%</div>
+                        </div>
+                    </div>
+                    <div class="bg-purple-50/50 border border-purple-100 rounded-xl p-4">
+                        <div class="flex justify-between items-center mb-2"><h4 class="text-sm font-bold text-purple-800 flex items-center gap-2">⚔️ 达人佣金与平台扣点</h4></div>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-5 pt-1">
+                            <div><label class="block text-xs text-gray-600 mb-1 font-medium">短视频达人佣金 (%)<span class="text-[10px] text-blue-500 ml-1">仅短视频单</span></label><input v-model.number="currentPhase.svTalentComm" @change="forceCalculate" type="number" step="0.1" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-purple-500"></div>
+                            <div><label class="block text-xs text-gray-600 mb-1 font-medium">直播达人佣金 (%)<span class="text-[10px] text-red-500 ml-1">仅直播单</span></label><input v-model.number="currentPhase.liveTalentComm" @change="forceCalculate" type="number" step="0.1" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-purple-500"></div>
+                            <div><label class="block text-xs text-gray-600 mb-1 font-medium">平台全量基础扣点 (%)</label><input v-model.number="currentPhase.platformFeePct" @change="forceCalculate" type="number" step="0.1" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-purple-500"></div>
+                            <div><label class="block text-xs text-amber-700 mb-1 font-bold">其他暗扣/杂费 (%)<span class="text-[10px] text-gray-400 ml-1">保本价口径</span></label><input v-model.number="currentPhase.otherDeductPct" @change="forceCalculate" type="number" step="0.1" min="0" class="w-full border border-amber-200 bg-amber-50/60 rounded-lg px-3 py-2 focus:ring-1 focus:ring-amber-500"></div>
+                        </div>
+                        <p class="text-[11px] text-purple-700/80 mt-3 leading-relaxed">佣金规则：商品卡订单<b>只扣平台扣点</b>；短视频与直播的达人佣金比例<b>互不相通</b>、分别填写。<b class="text-amber-700">「其他暗扣/杂费」</b><span class="text-amber-700">只进<b>保本价</b>分子摊销（默认 2.4%，可自行改/归零），不扣单件净利。</span></p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl card-shadow border border-orange-100">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><span>🔥</span> 4. 核心投流与广告转化</h3>
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-blue-50/40 border border-blue-100 rounded-lg p-3">
+                                <h5 class="text-xs font-bold text-blue-700 mb-2">🛒 商品卡/短视频投流（按单计费）</h5>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div><label class="block text-xs text-gray-500 mb-1">单件转化投流费(USD)</label><input v-model.number="currentPhase.unitAdCostUsd" @change="forceCalculate" step="0.01" type="number" class="w-full border border-gray-300 rounded px-2 py-1.5 focus:ring-1 focus:ring-blue-500"></div>
+                                    <div><label class="block text-xs font-bold text-blue-600 mb-1">预估投流转化单数</label><input v-model.number="currentPhase.adOrderNum" @change="forceCalculate" type="number" class="w-full border border-blue-200 rounded px-2 py-1.5 bg-white focus:ring-1 focus:ring-blue-500"></div>
+                                </div>
+                                <p class="text-[10px] text-gray-400 mt-1.5">总投流 = 单件费 × 单数，只摊进商品卡+短视频订单</p>
+                            </div>
+                            <div class="bg-red-50/40 border border-red-100 rounded-lg p-3">
+                                <h5 class="text-xs font-bold text-red-700 mb-2">📺 直播投流（按场计费）</h5>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div><label class="block text-xs text-gray-500 mb-1">单场固定推流费(USD)</label><input v-model.number="currentPhase.liveFixedAdUsd" @change="forceCalculate" step="0.01" type="number" class="w-full border border-gray-300 rounded px-2 py-1.5 focus:ring-1 focus:ring-blue-500"></div>
+                                    <div><label class="block text-xs font-bold text-blue-600 mb-1">计划直播总场数</label><input v-model.number="currentPhase.liveTotalTimes" @change="forceCalculate" type="number" class="w-full border border-blue-200 rounded px-2 py-1.5 bg-white focus:ring-1 focus:ring-blue-500"></div>
+                                </div>
+                                <p class="text-[10px] text-gray-400 mt-1.5">总投流 = 单场费 × 场数，只摊进直播订单</p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-gray-500 mt-3 leading-relaxed">投流归属：广告费（单件×单数）只摊到<b>商品卡+短视频</b>订单；直播推流费（单场×场数）只摊到<b>直播</b>订单，两边不互摊。<b>某渠道占比 0% 时，它的投流不会发生，总结栏的总广告费自动不计入该渠道投流。</b>退款损耗口径：每退一单损失 = <b>产品成本 + 头程 + 尾程派送 + 该单投流</b>（佣金随退款由平台返还，不计入损失）。退款率已移到上方「基础业务单量」区。</p>
+                    </div>
+                    <div class="bg-slate-800 text-white rounded-xl p-3 flex flex-wrap items-center justify-between shadow-inner">
+                        <div class="flex items-center gap-2 text-sm font-medium text-blue-200"><span>📈</span> 广告终极效益池 (ROAS):</div>
+                        <div class="flex items-center gap-6 text-sm"><div>总广告费: <span class="text-amber-400 font-bold text-lg">¥{{pState.totalAdCny}}</span></div><div>ROAS: <span class="text-emerald-400 font-bold text-lg">{{pState.roas}}</span></div><div>ACOS: <span class="text-blue-300 font-bold text-lg">{{pState.acosPct}}%</span></div></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl card-shadow border border-gray-200">
+                    <div class="flex justify-between items-end border-b pb-3 mb-5">
+                        <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2"><span>📦</span> 5. 基础供应链成本与物流渠道</h3>
+                        <div class="text-xs text-gray-500 cursor-help">硬性保本售价: <span class="font-bold text-red-600">{{priceCurSym}}{{pState.breakEvenUsd}}</span> ⓘ</div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 pb-4 border-b border-slate-100">
+                        <div><label class="block text-xs text-gray-500 mb-1">基准零售价({{ currentProduct && currentProduct.priceCurrency==='cny' ? '人民币¥' : '美元$' }})</label><input v-model.number="currentPhase.basePriceUsd" @change="handleBasePriceChange" class="w-full border-blue-300 border rounded px-2 py-1 bg-blue-50 font-bold"></div>
+                        <div><label class="block text-xs text-gray-500 mb-1">单件工厂货值(CNY)</label><input v-model.number="currentPhase.unitCostCny" @change="forceCalculate" class="w-full border rounded px-2 py-1"></div>
+                        <div><label class="block text-xs font-bold text-blue-600 mb-1">单件含包材重量(kg)</label><input v-model.number="currentPhase.unitWeightKg" @change="autoCalcLogistics" class="w-full border-blue-300 border rounded px-2 py-1 bg-blue-50"></div>
+                        <div><label class="block text-xs text-gray-500 mb-1">汇率 USD→CNY</label><input v-model.number="currentPhase.rateUsdCny" @change="forceCalculate" class="w-full border rounded px-2 py-1"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-3 rounded border">
+                            <label class="text-xs font-bold text-slate-700 block mb-2">🛫 头程干线 (CNY/kg自动算)</label>
+                            <select v-model="currentPhase.firstMileId" @change="autoCalcLogistics" class="w-full border rounded p-1 text-sm mb-2"><option value="custom">-- 自定义金额 --</option><option v-for="i in globalLogistics.firstMile" :value="i.id">{{i.name}} (¥{{i.costPerKg}}/kg)</option></select>
+                            <div class="flex items-center text-sm text-gray-600">单件头程 ¥<input v-model.number="currentPhase.airUnitCost" @input="currentPhase.firstMileId='custom'; forceCalculate()" class="ml-2 flex-1 border rounded px-2 py-1 font-bold"></div>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded border">
+                            <label class="text-xs font-bold text-slate-700 block mb-2">🚚 尾程海外仓履约 (USD阶梯)</label>
+                            <select v-model="currentPhase.lastMileId" @change="autoCalcLogistics" class="w-full border rounded p-1 text-sm mb-2"><option value="custom">-- 自定义金额 --</option><option v-for="i in globalLogistics.lastMile" :value="i.id">{{i.name}} ({{i.type==='fbt'?'按重量':'固定'}})</option></select>
+                            <div class="flex items-center text-sm text-gray-600">单件履约 $<input v-model.number="currentPhase.overseaUnitCostUsd" @input="currentPhase.lastMileId='custom'; forceCalculate()" class="ml-2 flex-1 border rounded px-2 py-1 font-bold text-blue-700"></div>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-amber-50 p-3 rounded border border-amber-200">
+                        <label class="text-xs font-bold text-amber-800 block mb-2">🏬 海外仓仓储费 (全局口径 · 所有产品合计后按销量分摊)</label>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                            <div>
+                                <label class="block text-xs text-gray-600 mb-1">① 每天仓储费 (USD/天 · 所有产品合计)</label>
+                                <input v-model.number="globalLogistics.storage.dailyUsd" @change="forceCalculate" type="number" step="0.01" min="0" placeholder="如 30" class="w-full border rounded px-2 py-1">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-600 mb-1">② 预计在仓天数 (天)</label>
+                                <input v-model.number="globalLogistics.storage.days" @change="forceCalculate" type="number" step="1" min="0" placeholder="如 45" class="w-full border rounded px-2 py-1">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-600 mb-1">单件仓储费 (自动分摊)</label>
+                                <div class="w-full border rounded px-2 py-1 bg-white font-bold text-amber-700">${{ (currentPhase.storageUnitCostUsd||0).toFixed(2) }} / 件</div>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-600 mb-1">本计划分摊额</label>
+                                <div class="w-full border rounded px-2 py-1 bg-white font-bold text-amber-700">${{ (pState.storageBatchTotalUsd||0).toFixed(2) }}</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-[11px] text-amber-800">
+                            <span>仓储费总额: <b class="text-amber-900">${{ (pState.storageTotalUsd||0).toFixed(2) }}</b>（① × ② 天）</span>
+                            <span>摊销总件数: <b class="text-amber-900">{{ pState.storageTotalQty }} 件（海外仓产品计划销量合计）</b></span>
+                            <span v-if="currentProduct && currentProduct.overseaWh===false" class="text-red-600 font-bold">本产品已标记「非海外仓」，仓储费 $0，不参与分摊</span>
+                            <span v-else-if="pState.storageTotalQty<=0" class="text-red-600 font-bold">⚠️ 海外仓产品的计划销量合计为 0，摊不到单件</span>
+                        </div>
+                        <p class="text-[11px] text-amber-700/80 mt-2 leading-relaxed">只填一次：①是你全部产品在海外仓<b>每天合计</b>的仓储费，②是这批货平均要躺多少天。总额 ÷ <b>海外仓产品的计划销量之和</b> = 每件仓储费，自动分摊进每个海外仓计划的单件成本、保本价与滞销销毁成本。<b>产品标题旁有「🏬 海外仓」按钮，不是海外仓的产品点一下切掉，就完全不扣仓储费、也不占分摊。</b>若 3PL 报的是一笔总额，把总额填进「每天仓储费」、在仓天数填 1 即可。注意与「尾程履约」区分：履约是出库发货的操作费，仓储费是货在仓里"躺着"的存放费。</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="w-full xl:w-80 space-y-5 flex-shrink-0">
+                <div class="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-xl border border-green-200 card-shadow">
+                    <h4 class="font-bold text-green-800 border-b border-green-200 pb-2 mb-4">财务核算大盘</h4>
+                    <div class="space-y-3 text-sm">
+                        <div><div class="text-green-700">单件均利 (CNY)</div><div class="text-3xl font-extrabold text-green-600">¥{{pState.unitNetProfitCny}}</div></div>
+                        <div class="border-t border-green-200 pt-2"><div class="text-green-700">阶段总营收</div><div class="text-lg font-bold">¥{{pState.stageTotalRevenue}}</div></div>
+                        <div><div class="text-green-700">阶段广告消耗</div><div class="text-lg font-bold text-orange-600">¥{{pState.totalAdCny}}</div></div><div v-if="currentPhase.destroyNum>0"><div class="text-green-700">滞销销毁成本<span class="text-[10px] text-gray-500">（货值+头程+履约+销毁费）</span></div><div class="text-lg font-bold text-red-600">¥{{pState.destroyTotalCostCny.toLocaleString()}}<span class="text-xs font-normal text-gray-500"> / {{currentPhase.destroyNum}} 件 × ¥{{pState.unitDestroyCostCny}}</span></div></div>
+                        <div class="border-t border-green-200 pt-2"><div class="text-green-700">综合 ROAS / ACOS</div><div class="font-bold">{{pState.roas}} / {{pState.acosPct}}%</div></div>
+                        <div class="border-t border-green-200 pt-2"><div class="flex justify-between font-bold mb-1"><span class="text-green-800">净利润率水位</span><span :class="pState.netRatio < 15 ? 'text-red-600' : 'text-green-700'">{{pState.netRatio}}%</span></div><div class="w-full bg-green-200 h-2 rounded flex overflow-hidden"><div :class="pState.netRatio < 15 ? 'bg-red-500' : 'bg-green-500'" class="transition-all" :style="{width: Math.min(Math.max(pState.netRatio, 0), 100) + '%'}"></div></div><p class="text-[10px] text-green-700/70 mt-1" v-if="pState.netRatio < 15">⚠️ 利润较薄，请注意抗风险能力</p></div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl card-shadow border">
+                    <h4 class="font-bold mb-4 text-slate-700">单件营业额成本解构</h4>
+                    <div class="space-y-3 text-sm">
+                        <div v-for="i in [{t:'货品',r:pState.costRatio,c:'bg-gray-400'},{t:'物流',r:pState.logRatio,c:'bg-blue-400'},{t:'仓储',r:pState.storageRatio,c:'bg-amber-400'},{t:'营销',r:pState.adRatio,c:'bg-orange-400'},{t:'佣金',r:pState.commRatio,c:'bg-indigo-400'},{t:'损耗',r:pState.lossRatio,c:'bg-red-300'}]"><div class="flex justify-between text-gray-600"><span>{{i.t}}</span><b>{{i.r}}%</b></div><div class="w-full bg-gray-100 h-1.5 rounded overflow-hidden"><div :class="[i.c, 'h-full transition-all']" :style="{width: i.r+'%'}"></div></div></div>
+                        <div class="flex justify-between items-center pt-3 border-t mt-3 text-base"><span class="font-bold text-green-600">💰 最终利润率</span><span class="font-bold text-green-600">{{pState.netRatio}}%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="showSettings" class="fixed inset-0 bg-slate-900/50 z-[100] flex items-center justify-center backdrop-blur-sm">
+        <div class="bg-white rounded-2xl shadow-2xl w-[400px] overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-slate-800 text-white">
+                <h3 class="font-bold flex items-center gap-2">🛡️ 团队密码修改控制台</h3>
+                <button @click="showSettings = false" class="text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div class="p-6">
+                <p class="text-xs text-rose-500 mb-4 bg-rose-50 p-3 rounded border border-rose-100 leading-relaxed font-medium">修改下方团队访问码后，所有使用旧密码的成员界面将被瞬间锁定，剥夺读取权限。</p>
+                <label class="block text-xs font-bold text-gray-700 mb-2">设置全新团队访问密码</label>
+                <input v-model="newTeamCode" type="text" placeholder="设置一个新密码 (例: 8888)" class="w-full border border-gray-300 rounded-lg p-3 font-bold text-lg tracking-wider outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+            </div>
+            <div class="px-6 py-4 bg-gray-50 flex justify-end gap-3 border-t border-gray-100">
+                <button @click="showSettings = false" class="px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:bg-gray-100">取消</button>
+                <button @click="updateTeamCode" class="px-5 py-2 text-sm text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-bold shadow-sm">强制更新并锁屏</button>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="showDataModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-xl p-6 w-[450px] shadow-2xl flex flex-col max-h-[90vh]">
+            <div class="flex justify-between items-center border-b pb-3 mb-4 flex-shrink-0">
+                <h3 class="font-bold text-slate-800 text-lg">💾 数据备份与历史版本</h3>
+                <button @click="showDataModal=false" class="text-gray-400 hover:text-red-500 text-xl">&times;</button>
+            </div>
+            
+            <div class="flex-shrink-0 space-y-3 mb-6">
+                <button @click="exportData" class="w-full bg-blue-50 border border-blue-200 text-blue-700 py-3 rounded-lg font-bold hover:bg-blue-100 transition">⬇️ 下载当前 JSON 备份至本地</button>
+                <label class="w-full block text-center bg-emerald-50 border border-emerald-200 text-emerald-700 py-3 rounded-lg font-bold cursor-pointer hover:bg-emerald-100 transition">
+                    ⬆️ 从本地导入 JSON 还原
+                    <input type="file" @change="importData" class="hidden" accept=".json">
+                </label>
+            </div>
+
+            <div class="flex-1 overflow-hidden flex flex-col border-t pt-4">
+                <div class="flex justify-between items-center mb-3">
+                    <h4 class="font-bold text-slate-700 text-sm">☁️ 云端历史版本时光机</h4>
+                    <button @click="saveSnapshot" class="text-xs bg-indigo-100 text-indigo-700 px-3 py-1.5 rounded-lg hover:bg-indigo-200 shadow-sm font-bold transition flex items-center gap-1">
+                        ➕ 存一个新版本
+                    </button>
+                </div>
+                <p class="text-xs text-gray-400 mb-2">手动保存重要节点。系统最多保留最新 20 个版本。</p>
+                <div class="flex-1 overflow-y-auto space-y-2 p-2 bg-slate-50 border border-slate-200 rounded-lg">
+                    <div v-if="historyList.length === 0" class="text-center text-gray-400 text-xs py-10">暂无历史存档，请点击右上角手动保存。</div>
+                    <div v-for="h in historyList" :key="h.timestamp" class="flex justify-between items-center bg-white p-3 rounded-lg border border-slate-100 shadow-sm hover:shadow transition">
+                        <span class="text-sm font-medium text-slate-700">{{ h.dateString }}</span>
+                        <div class="flex gap-2">
+                            <button @click="restoreSnapshot(h)" class="text-xs text-emerald-600 hover:text-white hover:bg-emerald-500 border border-emerald-200 px-3 py-1 rounded-md transition font-bold">恢复</button>
+                            <button @click="deleteSnapshot(h.timestamp)" class="text-xs text-rose-500 hover:text-white hover:bg-rose-500 border border-rose-200 px-3 py-1 rounded-md transition font-bold">删除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="showWarehouseModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-xl w-full max-w-4xl flex flex-col max-h-[90vh] shadow-2xl">
+            <div class="p-6 border-b bg-slate-50 rounded-t-xl">
+                <div class="flex justify-between items-center"><h3 class="text-xl font-bold text-slate-800">🏢 全局物流渠道预设管理</h3><button @click="showWarehouseModal=false" class="text-2xl text-gray-400 hover:text-red-500">&times;</button></div>
+                <p class="text-sm text-gray-500 mt-1">设置后，可根据重量自动计算头程，或按FBT阶梯计费算尾程。</p>
+            </div>
+            <div class="p-6 overflow-y-auto flex-1 bg-gray-50 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-5 rounded-xl border shadow-sm">
+                    <div class="flex justify-between items-center mb-4 border-b pb-2"><h4 class="font-bold text-slate-700 flex items-center gap-2">🛫 头程干线 (按重量计费)</h4><button @click="addLogistics('first')" class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200">+ 新增路线</button></div>
+                    <div class="space-y-3">
+                        <div v-for="(item, idx) in globalLogistics.firstMile" :key="item.id" class="flex gap-2 items-center">
+                            <input v-model="item.name" @change="autoCalcLogistics(); forceCalculate()" class="flex-1 border rounded px-2 py-1.5 text-sm" placeholder="如:美西海派">
+                            <div class="relative w-28"><span class="absolute left-2 top-1.5 text-xs text-gray-500">¥</span><input v-model.number="item.costPerKg" @change="autoCalcLogistics(); forceCalculate()" type="number" step="0.01" class="w-full pl-5 pr-7 py-1.5 border rounded text-sm text-right font-medium"><span class="absolute right-2 top-1.5 text-xs text-gray-500">/kg</span></div>
+                            <button @click="delLogistics('first',idx)" class="text-gray-400 hover:text-red-500 p-1">🗑️</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border shadow-sm">
+                    <div class="flex justify-between items-center mb-4 border-b pb-2"><h4 class="font-bold text-slate-700 flex items-center gap-2">🚚 尾程海外仓 (USD)</h4><button @click="addLogistics('last')" class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200">+ 新增仓库</button></div>
+                    <div class="space-y-3">
+                        <div v-for="(item, idx) in globalLogistics.lastMile" :key="item.id" class="flex gap-2 items-center">
+                            <input v-model="item.name" @change="autoCalcLogistics(); forceCalculate()" class="flex-1 border rounded px-2 py-1.5 text-sm" placeholder="仓储名称">
+                            <select v-model="item.type" @change="autoCalcLogistics(); forceCalculate()" class="border rounded px-2 py-1.5 text-sm bg-gray-50"><option value="fbt">FBT阶梯</option><option value="fixed">固定单价</option></select>
+                            <div class="relative w-20" v-if="item.type==='fixed'"><span class="absolute left-2 top-1.5 text-xs text-gray-500">$</span><input v-model.number="item.costUsd" @change="autoCalcLogistics(); forceCalculate()" type="number" step="0.01" class="w-full pl-5 pr-2 py-1.5 border rounded text-sm text-right font-medium"></div>
+                            <button @click="delLogistics('last',idx)" class="text-gray-400 hover:text-red-500 p-1">🗑️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t bg-white rounded-b-xl flex justify-end gap-3"><button @click="showWarehouseModal=false" class="px-6 py-2 bg-slate-800 text-white rounded-lg font-medium shadow-sm hover:bg-slate-700 transition">完成配置</button></div>
+        </div>
+    </div>
+
+    <div v-if="showPromoModal && currentPhase" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-xl w-full max-w-5xl flex flex-col max-h-[90vh] shadow-2xl">
+            <div class="p-6 border-b flex justify-between items-center bg-slate-50 rounded-t-xl">
+                <div><h3 class="text-xl font-bold text-slate-800">营销工具池配置</h3><p class="text-sm text-gray-500 mt-1">只保留三种工具：店铺限时秒杀 / 直播间专享价 / 平台大促。秒杀与大促取折扣最深者生效于商品卡与短视频；专享价仅直播生效。</p></div>
+                <button @click="showPromoModal=false" class="text-2xl text-gray-400 hover:text-red-500 transition-colors">&times;</button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-1 bg-gray-50">
+                <button @click="addPromoItem" class="mb-6 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg shadow-sm transition">+ 新增全品类促销活动</button>
+                <div class="space-y-4">
+                    <div v-for="(promo,idx) in currentPhase.promoList" :key="idx" class="bg-white p-5 rounded-xl shadow-sm border relative group hover:border-blue-300 transition">
+                        <button @click="delPromo(idx)" class="absolute right-4 top-4 text-gray-300 hover:text-red-500 transition" title="删除">🗑️</button>
+                        <div class="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-2 pr-8">
+                            <div class="xl:col-span-1">
+                                <label class="text-xs font-semibold text-gray-600 mb-1.5 block">活动工具类型定性</label>
+                                <select v-model="promo.type" @change="updatePromoTag(promo)" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 bg-white">
+                                    <optgroup label="🔵 店铺侧 (商品卡/短视频生效)"><option value="shopFlash">店铺限时秒杀</option></optgroup>
+                                    <optgroup label="🔴 直播间专用 (仅直播生效)"><option value="liveExclusive">直播间专享价</option></optgroup>
+                                </select>
+                            </div>
+                            <div class="xl:col-span-1"><label class="text-xs font-semibold text-gray-600 mb-1.5 block">内部运营标记名</label><input v-model="promo.name" @change="forceCalculate" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500" placeholder="如: 秋季促销"></div>
+                            <div class="xl:col-span-1">
+                                <label class="text-xs font-semibold text-gray-600 mb-1.5 block">1.填比例 (自动算价)</label>
+                                <div class="flex items-center"><input v-model.number="promo.discountRate" @change="syncDiscountPrice(promo)" step="0.1" type="number" class="w-full border border-gray-300 rounded-l-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500"><span class="bg-gray-100 border border-l-0 border-gray-300 px-3 py-2 rounded-r-md text-sm text-gray-500">%</span></div>
+                            </div>
+                            <div class="xl:col-span-1">
+                                <label class="text-xs font-semibold text-gray-600 mb-1.5 block">2.直填目标价 (算比例)</label>
+                                <div class="flex items-center"><span class="bg-gray-100 border border-r-0 border-gray-300 px-3 py-2 rounded-l-md text-sm text-gray-500">{{priceCurSym}}</span><input v-model.number="promo.discountPriceUsd" @change="syncDiscountRate(promo)" step="0.01" type="number" class="w-full border border-gray-300 rounded-r-md px-3 py-2 text-sm font-bold text-blue-700 focus:ring-1 focus:ring-blue-500"></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-3 pt-3 border-t border-gray-100">
+                            <div><label class="text-xs font-semibold text-gray-500 mb-1 block">生效起始日期</label><input v-model="promo.startDate" @change="forceCalculate" type="date" class="border border-gray-300 rounded px-2 py-1 text-sm w-40 text-gray-600 focus:ring-1 focus:ring-blue-500"></div>
+                            <div><label class="text-xs font-semibold text-gray-500 mb-1 block">生效结束日期</label><input v-model="promo.endDate" @change="forceCalculate" type="date" class="border border-gray-300 rounded px-2 py-1 text-sm w-40 text-gray-600 focus:ring-1 focus:ring-blue-500"></div>
+                        </div>
+                    </div>
+                    <div v-if="currentPhase.promoList.length === 0" class="text-center py-10 text-gray-400">目前没有任何营销活动记录。</div>
+                </div>
+            </div>
+            <div class="p-4 border-t bg-white rounded-b-xl flex justify-end gap-3">
+                <button @click="showPromoModal=false" class="px-5 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition">完成关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const { createApp, ref, reactive, computed, watch, onMounted, nextTick } = Vue;
+const app = createApp({
+    setup(){
+        // 📅 本地日期（不用 toISOString——那是 UTC，早上8点前会显示成昨天）
+        function todayLocal(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+        const simDate = ref(todayLocal());
+        const dateManuallySet = ref(false);   // 用户手动改过日期 → 本次会话内自动跳转暂停（刷新后恢复跟随今天）
+        function autoSyncDate(){ const t=todayLocal(); if(simDate.value!==t && !dateManuallySet.value){ simDate.value=t; forceCalculate(); } }
+        const showPromoModal = ref(false), showWarehouseModal = ref(false), showDataModal = ref(false);
+        const editingDate = ref(false), editingPhaseIndex = ref(-1);
+
+        const hasLoadedData = ref(false);
+        const isOfflineMode = ref(false);   // 🔌 云端连不上（库被停用/网络断）时为 true，进离线模式
+        const showSettings = ref(false);
+        const globalSettings = ref({ teamCode: '' });
+        const enteredCode = ref(localStorage.getItem('profit_team_code') || ''); 
+        const tempCode = ref('');
+        const loginError = ref(false);
+        const newTeamCode = ref('');
+
+        const isLocked = computed(() => {
+            if (!hasLoadedData.value) return true;
+            const serverCode = String(globalSettings.value.teamCode || '').trim();
+            const localCode = String(enteredCode.value || '').trim();
+            if (serverCode === '') return false;
+            return serverCode !== localCode;
+        });
+
+        const verifyCode = () => {
+            const inputC = String(tempCode.value || '').trim();
+            const realC = String(globalSettings.value.teamCode || '').trim();
+            if (inputC === realC) {
+                enteredCode.value = inputC;
+                localStorage.setItem('profit_team_code', inputC);
+                tempCode.value = '';
+                loginError.value = false;
+            } else {
+                loginError.value = true;
+            }
+        };
+
+        const updateTeamCode = () => {
+            if(!newTeamCode.value) return alert("新密码不能为空！");
+            if(isOfflineMode.value) return alert("云端未连接（离线模式），改密码需要联网。");
+            if (window.db) {
+                window.db.ref('profit_workspace/main_db/globalSettings/teamCode').set(newTeamCode.value).then(() => {
+                    alert("🛡️ 团队密码已更新！\n为了验证锁屏生效，系统已清除您的免密缓存。\n\n请使用刚刚设置的新密码重新解锁界面。");
+                    localStorage.removeItem('profit_team_code');
+                    location.reload(); 
+                });
+            }
+        };
+
+        const openSettings = () => {
+            const pwd = prompt("请输入系统超级管理密码 (验证通过后方可修改团队锁屏密码)：");
+            if (pwd === "xx070611") {
+                showSettings.value = true;
+            } else if (pwd !== null) {
+                alert("密码错误，无权修改团队密码！");
+            }
+        };
+
+        const logout = () => {
+            localStorage.removeItem('profit_team_code');
+            enteredCode.value = '';
+            location.reload();
+        };
+
+        const historyList = ref([]);
+        const loadHistory = () => {
+            if(window.db) {
+                window.db.ref('profit_workspace/history').on('value', snap => {
+                    if (snap.val()) {
+                        let hList = Object.values(snap.val());
+                        hList.sort((a, b) => b.timestamp - a.timestamp);
+                        historyList.value = hList;
+                    } else {
+                        historyList.value = [];
+                    }
+                });
+            }
+        };
+
+        const saveSnapshot = () => {
+            if(!window.db || isOfflineMode.value) return alert("云端未连接（离线模式），无法保存云端快照。\n数据已自动存在本机浏览器，可点「导出数据」另存为文件备份。");
+            const timestamp = Date.now();
+            const dateStr = new Date().toLocaleString('zh-CN', { hour12: false });
+            const snapProducts = JSON.parse(JSON.stringify(products));
+            const snapLogistics = JSON.parse(JSON.stringify(globalLogistics));
+            const newSnap = { timestamp, dateString: dateStr, products: snapProducts, globalLogistics: snapLogistics };
+
+            window.db.ref('profit_workspace/history').once('value', snap => {
+                let histories = snap.val() ? Object.values(snap.val()) : [];
+                histories.sort((a, b) => a.timestamp - b.timestamp);
+                if (histories.length >= 20) {
+                    const deleteCount = histories.length - 19;
+                    for (let i = 0; i < deleteCount; i++) {
+                        window.db.ref('profit_workspace/history/' + histories[i].timestamp).remove();
+                    }
+                }
+                window.db.ref('profit_workspace/history/' + timestamp).set(newSnap).then(() => {
+                    alert("✅ 当前数据版本已成功手动保存至云端时光机！");
+                }).catch(e => alert("保存失败，请检查网络"));
+            });
+        };
+
+        const restoreSnapshot = (snap) => {
+            if(confirm(`⚠️ 警告：确定要覆盖当前页面数据，恢复到【${snap.dateString}】的存档版本吗？`)) {
+                products.length = 0;
+                products.push(...snap.products);
+                Object.assign(globalLogistics, snap.globalLogistics);
+                forceCalculate();
+                showDataModal.value = false;
+                alert("✅ 历史版本已成功恢复！");
+            }
+        };
+
+        const deleteSnapshot = (timestamp) => {
+            if(isOfflineMode.value || !window.db) return alert("云端未连接（离线模式），无法操作云端快照。");
+            if(confirm("确定永久删除这个历史版本吗？")) {
+                window.db.ref('profit_workspace/history/' + timestamp).remove().then(() => {
+                    alert("✅ 历史版本已删除！");
+                });
+            }
+        };
+
+        const globalLogistics = reactive({
+            firstMile: [{ id: 'f1', name: '默认美西空派(普货)', costPerKg: 18.5 }, { id: 'f2', name: '美东空派(带电)', costPerKg: 22.0 }, { id: 'f3', name: '美西海派(快船)', costPerKg: 8.0 }],
+            lastMile: [{ id: 'l1', name: '官方 FBT 仓', type: 'fbt', costUsd: 0 }, { id: 'l2', name: '三方海外仓(标准)', type: 'fixed', costUsd: 5.5 }, { id: 'l3', name: '本土一件代发', type: 'fixed', costUsd: 4.2 }],
+            storage: { dailyUsd: 0, days: 0 }   // 🏬 所有产品合计的每天仓储费(USD/天) + 预计在仓天数 → 总额按各计划销量分摊
+        });
+
+        const pState = reactive({ shopStep1Name: "", shopStep1Val: 0, liveStep1Name: "", liveStep1Val: 0, additiveTotal: 0, finalShopPrice: 0, finalLivePrice: 0, aovUsd: 0, breakEvenUsd: 0, unitNetProfitCny: 0, unitDestroyCostCny: 0, destroyTotalCostCny: 0, stageTotalRevenue: 0, stageNetProfit: 0, totalAdCny: 0, roas: 0, acosPct: 0, costRatio:0, logRatio:0, storageRatio:0, storageBatchTotalUsd:0, storageTotalQty:0, storageTotalUsd:0, adRatio:0, commRatio:0, lossRatio:0, netRatio:0 });
+        
+        const products = reactive([{
+            id: "prod_1", name: "H103D 高配版", overseaWh: true, priceCurrency: "usd",
+            phases: [{ id: "ph_1", name: "测算期", salesVol: 600, freeSample: 70, destroyNum: 0, destroyUnitFeeCny: 15, unitAdCostUsd: 2.00, adOrderNum: 100, liveFixedAdUsd: 200, liveTotalTimes: 0, cardRate: 20, videoRate: 40, liveRate: 40, talentTotalRate:80, orgTalentRate:90, talentBaseComm:15, orgFeePct:5, platformFeePct:9.5, basePriceUsd:129.99, unitCostCny:46.8, unitWeightKg:0.45, rateUsdCny:7.2, refundDestroyPct:3.0, firstMileId: 'f1', airUnitCost: 8.32, lastMileId: 'l1', overseaUnitCostUsd: 4.00, storageBatchMonthlyUsd: 0, storageMonths: 0, storageBatchQty: 0, storageDailyUsd: 0, storageDays: 0, storageUnitCostUsd: 0, svTalentComm: 15, liveTalentComm: 15, otherDeductPct: 2.4, promoList:[{type:"shopFlash",name:"店铺限时秒杀",discountRate:90,discountPriceUsd:116.99,startDate:"2026-01-01",endDate:"2026-12-31",tag:"商城互斥"}] }]
+        }]);
+        
+        const currentProductIndex = ref(0), currentPhaseIndex = ref(0);
+        const currentProduct = computed(()=>products[currentProductIndex.value]);
+        const currentPhase = computed(()=>currentProduct.value?.phases[currentPhaseIndex.value]);
+        // 🏬 仓储摊销基数：优先「本批件数」，留空则退回「预计有效正价销量」
+        const storageAllocQty = computed(()=>{ const p=currentPhase.value; if(!p) return 0; return (p.salesVol||0); });
+
+        function setToday() { dateManuallySet.value=false; simDate.value = todayLocal(); forceCalculate(); }
+        // 📅 日期自动跟随今天：每 30 秒 + 切回页面时检查一次（跨零点自动跳到新的一天）
+        setInterval(autoSyncDate, 30000);
+        document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) autoSyncDate(); });
+
+        let isRemoteUpdate = false;
+        // 🐌 输入防抖：以前每敲一键就 set 一次 Firebase，快照回传又会重建 products → 正在输入的框被吞值/卡顿。
+        // 现在：停止输入 800ms 后才写库，且写库后 2.5 秒内忽略云端快照回传。
+        let _saveTimer = null, _suppressUntil = 0;
+
+        // 💾 本地离线存档（localStorage）：云端被停用/断网时保命，刷新不丢改动
+        const LOCAL_BACKUP_KEY = 'jisuanjiage_offline_backup';
+        function saveLocalBackup() {
+            try {
+                localStorage.setItem(LOCAL_BACKUP_KEY, JSON.stringify({
+                    products: JSON.parse(JSON.stringify(products)),
+                    globalLogistics: JSON.parse(JSON.stringify(globalLogistics)),
+                    savedAt: Date.now()
+                }));
+            } catch (e) { /* 容量满等情况静默 */ }
+        }
+        function loadLocalBackup() {
+            try {
+                const raw = localStorage.getItem(LOCAL_BACKUP_KEY);
+                if (!raw) return false;
+                const d = JSON.parse(raw);
+                if (d.products && d.products.length) {
+                    products.length = 0;
+                    products.push(...d.products);
+                }
+                if (d.globalLogistics) {
+                    Object.assign(globalLogistics, d.globalLogistics);
+                    if (!globalLogistics.storage) globalLogistics.storage = { dailyUsd: 0, days: 0 };
+                }
+                return true;
+            } catch (e) { return false; }
+        }
+
+        onMounted(async ()=>{
+            // ⏱️ 云端看门狗：10 秒还没等到 Firebase 快照 = 库被停用/连不上，自动进离线模式，绝不让用户卡死在转圈页
+            const _cloudWatchdog = setTimeout(() => {
+                if (hasLoadedData.value) return;
+                isOfflineMode.value = true;
+                const restored = loadLocalBackup();   // 有本地存档就恢复，没有就用内置模板
+                hasLoadedData.value = true;
+                nextTick(() => {
+                    calcAllPrice();
+                    if (restored) {
+                        const when = new Date(JSON.parse(localStorage.getItem(LOCAL_BACKUP_KEY)).savedAt).toLocaleString('zh-CN', { hour12: false });
+                        console.log('[离线模式] 已从本地存档恢复数据（' + when + '）');
+                    }
+                });
+            }, 10000);
+
+            if (window.db) {
+                window.db.ref('profit_workspace/main_db').on('value', (snapshot) => {
+                    clearTimeout(_cloudWatchdog);
+                    isOfflineMode.value = false;
+                    if (Date.now() < _suppressUntil) return;   // 本地刚写完库，忽略回声快照（防输入被吞）
+                    const data = snapshot.val();
+                    isRemoteUpdate = true;
+                    if (data) {
+                        if (data.globalSettings) globalSettings.value = data.globalSettings;
+
+                        // 🚀 核心修复：数据清洗拦截器！只要 Firebase 传过来数据，强制给每个阶段补齐 promoList 数组，防止 Vue 崩溃假死
+                        if (data.products) {
+                            products.length = 0;
+                            const safeProducts = data.products.map(prod => {
+                                if (prod.overseaWh === undefined || prod.overseaWh === null) prod.overseaWh = true;   // 🏬 海外仓开关，老数据默认按海外仓处理
+                                if (prod.priceCurrency !== 'cny') prod.priceCurrency = 'usd';   // 💱 售价币种，老数据默认美元
+                                if (prod.phases) {
+                                    prod.phases.forEach(ph => {
+                                        if (!ph.promoList) ph.promoList = [];
+                                        if (ph.destroyUnitFeeCny === undefined || ph.destroyUnitFeeCny === null) ph.destroyUnitFeeCny = 15;
+                                        if (ph.svTalentComm === undefined || ph.svTalentComm === null) ph.svTalentComm = (ph.talentBaseComm === undefined || ph.talentBaseComm === null) ? 15 : ph.talentBaseComm;
+                                        if (ph.liveTalentComm === undefined || ph.liveTalentComm === null) ph.liveTalentComm = (ph.talentBaseComm === undefined || ph.talentBaseComm === null) ? 15 : ph.talentBaseComm;
+                                        if (ph.otherDeductPct === undefined || ph.otherDeductPct === null) ph.otherDeductPct = 2.4;
+                                        (ph.promoList||[]).forEach(pr => { if (pr.type === 'liveFlash') pr.type = 'liveExclusive'; else if (pr.type !== 'liveExclusive') pr.type = 'shopFlash'; });   // 只留两种：秒杀/直播专享，旧类型一律归入商城秒杀
+                                    });
+                                } else {
+                                    prod.phases = [];
+                                }
+                                return prod;
+                            });
+                            products.push(...safeProducts);
+                        }
+
+                        if (data.globalLogistics) { Object.assign(globalLogistics, data.globalLogistics); if (!globalLogistics.storage) globalLogistics.storage = { dailyUsd: 0, days: 0 }; }
+                        if (data.simDate) simDate.value = todayLocal();   // 云端存的是旧日期，打开一律跳到今天
+                    }
+                    hasLoadedData.value = true;
+                    nextTick(() => { calcAllPrice(); isRemoteUpdate = false; });
+                });
+                loadHistory();
+            } else {
+                // 🔌 云端不可用（SDK 没加载出来 / 被墙 / 库停用）→ 直接进离线模式并恢复本地存档，不再干等
+                clearTimeout(_cloudWatchdog);
+                isOfflineMode.value = true;
+                const restored = loadLocalBackup();
+                hasLoadedData.value = true;
+                nextTick(() => {
+                    calcAllPrice();
+                    if (restored) {
+                        const when = new Date(JSON.parse(localStorage.getItem(LOCAL_BACKUP_KEY)).savedAt).toLocaleString('zh-CN', { hour12: false });
+                        console.log('[离线模式] 已从本地存档恢复数据（' + when + '）');
+                    }
+                });
+            }
+
+            await nextTick(); 
+            new Sortable(document.getElementById("productSortWrap"), { animation:150, ghostClass:"sortable-ghost", dragClass:"sortable-drag", onEnd(){ forceCalculate(); }}); 
+            calcAllPrice(); 
+        });
+
+        watch([simDate, products, globalLogistics, globalSettings], ()=>{
+            if (isRemoteUpdate || !hasLoadedData.value) return;
+            if (_saveTimer) clearTimeout(_saveTimer);
+            _saveTimer = setTimeout(()=>{
+                if (isRemoteUpdate) return;
+                const payload = JSON.parse(JSON.stringify({ products, globalLogistics, simDate: simDate.value, globalSettings: globalSettings.value }));
+                if (isOfflineMode.value || !window.db) {
+                    saveLocalBackup();   // 🔌 离线：只存本地，不碰 Firebase（库被停用时 set 会挂起/报错）
+                    return;
+                }
+                _suppressUntil = Date.now() + 2500;
+                window.db.ref('profit_workspace/main_db').set(payload);
+            }, 800);
+            calcAllPrice();
+        }, {deep:true})
+
+        function forceCalculate() { calcAllPrice(); }
+
+        function exportData() { const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([JSON.stringify({products, globalLogistics, simDate: simDate.value}, null, 2)])); a.download=`TikTok利润测算备份_${simDate.value}.json`; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(a.href); showDataModal.value=false; }
+        function importData(e) { 
+            const r=new FileReader(); 
+            r.onload=(ev)=>{ 
+                try{ 
+                    const d=JSON.parse(ev.target.result); 
+                    if(d.products){
+                        products.length=0; 
+                        const safeProducts = d.products.map(prod => {
+                            if (prod.overseaWh === undefined || prod.overseaWh === null) prod.overseaWh = true;   // 🏬 海外仓开关，老备份默认按海外仓处理
+                            if (prod.priceCurrency !== 'cny') prod.priceCurrency = 'usd';   // 💱 售价币种，老备份默认美元
+                            if (prod.phases) prod.phases.forEach(ph => {
+                                if (!ph.promoList) ph.promoList = [];
+                                if (ph.storageBatchMonthlyUsd === undefined || ph.storageBatchMonthlyUsd === null) ph.storageBatchMonthlyUsd = (ph.storageMonthlyUsd || 0);
+                                if (ph.storageBatchQty === undefined || ph.storageBatchQty === null) ph.storageBatchQty = 0;
+                                if (ph.storageMonths === undefined || ph.storageMonths === null) ph.storageMonths = 0;
+                                if (ph.otherDeductPct === undefined || ph.otherDeductPct === null) ph.otherDeductPct = 2.4;
+                            });
+                            return prod;
+                        });
+                        products.push(...safeProducts);
+                    } 
+                    if(d.globalLogistics){ Object.assign(globalLogistics, d.globalLogistics); if (!globalLogistics.storage) globalLogistics.storage = { dailyUsd: 0, days: 0 }; }
+                    if(d.simDate)simDate.value=todayLocal();
+                    forceCalculate(); 
+                    alert("✅ 利润测算数据导入成功"); 
+                }catch(err){alert("❌ 导入失败，文件无效");} 
+                showDataModal.value=false; e.target.value=''; 
+            }; 
+            r.readAsText(e.target.files[0]); 
+        }
+        
+        function selectProduct(i){ currentProductIndex.value=i; currentPhaseIndex.value=0; calcAllPrice(); }
+        function getProductTotalProfit(pr){ return (pr.phases||[]).reduce((s, p)=> s+(p.stageNetProfit||0), 0); }
+
+        // 🏬 海外仓开关（10-13 老板定）：海外仓产品才参与仓储费分摊；切完立刻重算全部分摊
+        function toggleOversea(pr){ pr.overseaWh = (pr.overseaWh === false) ? true : false; forceCalculate(); }
+
+        // 💱 售价币种切换（10-14 老板定）：美元（发货海外）/ 人民币（国内供货）。切完全部重算。
+        function togglePriceCurrency(pr){ pr.priceCurrency = (pr.priceCurrency === 'cny') ? 'usd' : 'cny'; forceCalculate(); }
+        const priceCurSym = computed(()=> currentProduct.value?.priceCurrency === 'cny' ? '¥' : '$');
+        
+        // 🚀 修改点：复制产品时，强行清空所有副本里的促销活动，确保独立不共享！
+        function duplicateProduct(i) { 
+            const c=JSON.parse(JSON.stringify(products[i])); 
+            c.id="prod_"+Date.now()+Math.floor(Math.random()*1000); 
+            c.name+=" (副本)"; 
+            c.phases.forEach(ph=>{
+                ph.id="ph_"+Date.now()+Math.floor(Math.random()*1000);
+                ph.promoList = []; // 强行斩断复制过来的活动
+            }); 
+            products.push(c); 
+            selectProduct(products.length-1); 
+            forceCalculate(); 
+        }
+        
+        function delProductCheck(i) { if(products.length<=1)return; if(confirm("确认删除？")){ products.splice(i,1); selectProduct(Math.max(0,i-1)); forceCalculate(); } }
+        
+        function addProduct(){ 
+            const c=JSON.parse(JSON.stringify(products[0])); 
+            c.id="prod_"+Date.now(); 
+            c.name="新产品"; 
+            c.phases=[c.phases[0]]; 
+            c.phases[0].id="ph_"+Date.now(); 
+            c.phases[0].promoList=[]; 
+            products.push(c); 
+            selectProduct(products.length-1); 
+            forceCalculate(); 
+        }
+        
+        function selectPhase(i){ currentPhaseIndex.value=i; calcAllPrice(); }
+        
+        // 🚀 修改点：复制阶段时，也强行清空促销活动！
+        function duplicatePhase(i) { 
+            const c=JSON.parse(JSON.stringify(currentProduct.value.phases[i])); 
+            c.id="ph_"+Date.now()+Math.floor(Math.random()*1000); 
+            c.name+=" (副本)"; 
+            c.promoList = []; // 强行斩断复制过来的活动
+            currentProduct.value.phases.push(c); 
+            selectPhase(currentProduct.value.phases.length-1); 
+            forceCalculate(); 
+        }
+        function delPhaseCheck(i) { if(confirm("确认删除？")){ currentProduct.value.phases.splice(i,1); selectPhase(Math.max(0,i-1)); forceCalculate(); } }
+        
+        function addPhase(){ 
+            const c=JSON.parse(JSON.stringify(currentPhase.value)); 
+            c.id="ph_"+Date.now(); 
+            c.name="新阶段"; 
+            c.promoList=[]; 
+            currentProduct.value.phases.push(c); 
+            selectPhase(currentProduct.value.phases.length-1); 
+            forceCalculate(); 
+        }
+
+        function getFBTCost(kg) { const lbs=kg*2.20462; if(lbs<=1)return 4; if(lbs<=2)return 5; if(lbs<=3)return 5.8; return 5.8+Math.ceil(lbs-3)*0.5; }
+        function autoCalcLogistics() { const p=currentPhase.value; if(!p)return; const kg=p.unitWeightKg||0; if(p.firstMileId!=='custom'){ const f=globalLogistics.firstMile.find(i=>i.id===p.firstMileId); if(f) p.airUnitCost=Number((kg*f.costPerKg).toFixed(2)); } if(p.lastMileId!=='custom'){ const l=globalLogistics.lastMile.find(i=>i.id===p.lastMileId); if(l) p.overseaUnitCostUsd=l.type==='fbt'?Number(getFBTCost(kg).toFixed(2)):Number(l.costUsd.toFixed(2)); } }
+        function addLogistics(t) { if(t==='first') globalLogistics.firstMile.push({id:'f'+Date.now(), name:'新干线', costPerKg:10}); else globalLogistics.lastMile.push({id:'l'+Date.now(), name:'新仓', type:'fixed', costUsd:5}); forceCalculate(); }
+        function delLogistics(t,i) { if(t==='first') globalLogistics.firstMile.splice(i,1); else globalLogistics.lastMile.splice(i,1); forceCalculate(); }
+
+        function updatePromoTag(pr){ const m={liveExclusive:"直播互斥", shopFlash:"商城互斥"}; pr.tag=m[pr.type]||"商城互斥"; forceCalculate(); }
+        function syncDiscountPrice(pr){ if(pr.discountRate!==null && pr.discountRate!=='') pr.discountPriceUsd=Number((currentPhase.value.basePriceUsd*pr.discountRate/100).toFixed(2)); forceCalculate(); }
+        function syncDiscountRate(pr){ if(pr.discountPriceUsd!==null && pr.discountPriceUsd!=='') pr.discountRate=Number((pr.discountPriceUsd/currentPhase.value.basePriceUsd*100).toFixed(2)); forceCalculate(); }
+        
+        function handleBasePriceChange(){ 
+            if(currentPhase.value && currentPhase.value.promoList) {
+                currentPhase.value.promoList.forEach(pr=>pr.discountPriceUsd=Number((currentPhase.value.basePriceUsd*pr.discountRate/100).toFixed(2))); 
+            }
+            forceCalculate(); 
+        }
+        
+        function addPromoItem(){ 
+            if (!currentPhase.value.promoList) currentPhase.value.promoList = [];
+            currentPhase.value.promoList.push({type:"shopFlash", name:"新增促销", discountRate:100, discountPriceUsd:currentPhase.value.basePriceUsd, startDate:simDate.value, endDate:"2026-12-31", tag:"商城互斥"});
+            forceCalculate();
+        }
+        
+        function delPromo(i){ 
+            if (currentPhase.value && currentPhase.value.promoList) {
+                currentPhase.value.promoList.splice(i,1); 
+                forceCalculate(); 
+            }
+        }
+
+        const validCurrentPromo = computed(()=> {
+            if(!currentPhase.value || !currentPhase.value.promoList) return [];
+            return currentPhase.value.promoList.filter(i => i.startDate<=simDate.value && i.endDate>=simDate.value);
+        });
+
+        function generatePricingReport() { const sym=priceCurSym.value; let t=`【${currentProduct.value.name} - 价格策略】\n📅 日期: ${simDate.value}\n💰 基准原价: ${sym}${currentPhase.value.basePriceUsd}\n🛒 商城到手价: ${sym}${pState.finalShopPrice}\n🎥 直播到手价: ${sym}${pState.finalLivePrice}\n\n📉 生效活动:\n`; if(validCurrentPromo.value.length===0)t+=`(无)\n`; else validCurrentPromo.value.forEach(i=>{t+=`- [${i.tag}] ${i.name}: ${sym}${i.discountPriceUsd}\n`}); t+=`\n⚠️ 内部保本单价: ${sym}${pState.breakEvenUsd}`; navigator.clipboard.writeText(t); alert("📊 报价单已复制！"); }
+
+        function calcAllPrice(){
+            const p=currentPhase.value; if(!p)return; const bu=p.basePriceUsd, vp=validCurrentPromo.value;
+
+            // 🏬 全局仓储分摊（10-13 增加海外仓开关）：每次重算先把「所有产品」的单件仓储费刷一遍，
+            // 分母只算海外仓产品的计划销量之和；非海外仓产品单件仓储费 = 0。这样切开关后不会留旧值。
+            const gs0=(globalLogistics.storage||{dailyUsd:0,days:0});
+            const _stTotal0=(gs0.dailyUsd||0)*(gs0.days||0);
+            let _totQty0=0; products.forEach(pr=>{ if(pr.overseaWh===false) return; (pr.phases||[]).forEach(x=>{_totQty0+=(x.salesVol||0);}); });
+            const storageU0=_totQty0>0?(_stTotal0/_totQty0):0;
+            products.forEach(pr=>{ const isW=(pr.overseaWh!==false); (pr.phases||[]).forEach(x=>{ x.storageUnitCostUsd = isW?Number(storageU0.toFixed(4)):0; }); });
+            pState.storageTotalUsd=Number(_stTotal0.toFixed(2)); pState.storageTotalQty=_totQty0;
+
+            // 💱 售价币种（10-14 老板定）：'usd'=美元定价（收入×汇率折RMB）；'cny'=人民币定价（1:1 直接收人民币）。
+            // cur = 售价→人民币的换算系数。售价侧（收入/AOV/商城价/直播价/保本价）用 cur；
+            // 成本侧的美元项（尾程履约/投流/仓储费）是真实美元支出，仍用 rateUsdCny 换算。
+            const cur=(currentProduct.value && currentProduct.value.priceCurrency==='cny') ? 1 : (p.rateUsdCny||7.2);
+
+            p.talentTotalRate = (p.videoRate || 0) + (p.liveRate || 0);
+
+            const le=vp.filter(x=>x.tag==="直播互斥"), se=vp.filter(x=>x.tag==="商城互斥");
+            let mShop=se.length?Math.min(...se.map(i=>i.discountPriceUsd)):bu, mLive=le.length?Math.min(...le.map(i=>i.discountPriceUsd)):bu;
+            let nMin=Math.min(mShop, bu), lMin=Math.min(mLive, nMin, bu);
+            
+            pState.shopStep1Name = nMin===mShop&&se.length?"店铺秒杀":"原价";
+            pState.liveStep1Name = lMin===mLive&&le.length?"直播专享价":lMin===nMin&&se.length?"跟随商城":"原价";
+            pState.shopStep1Val=nMin; pState.liveStep1Val=lMin;
+
+            pState.additiveTotal=0;
+            pState.finalShopPrice=Number(Math.max(0.01, nMin).toFixed(2)); pState.finalLivePrice=Number(Math.max(0.01, lMin).toFixed(2));
+            
+            const totalInputRate = (p.cardRate||0) + (p.videoRate||0) + (p.liveRate||0);
+            const validTotalRate = totalInputRate > 0 ? totalInputRate : 100;
+            const cR = (p.cardRate||0)/validTotalRate, vR = (p.videoRate||0)/validTotalRate, lR = (p.liveRate||0)/validTotalRate;
+
+            pState.aovUsd=Number((cR*pState.finalShopPrice + vR*pState.finalShopPrice + lR*pState.finalLivePrice).toFixed(2));
+            
+            const uc=p.unitCostCny/p.rateUsdCny, logU=(p.airUnitCost/p.rateUsdCny)+p.overseaUnitCostUsd;
+            // 🏬 本计划取刚刷好的单件仓储费（海外仓产品 = 全局分摊价；非海外仓 = 0）
+            const isWh=(p.overseaWh!==false);
+            const storageU=isWh?storageU0:0;
+            pState.storageBatchTotalUsd=Number((storageU*(p.salesVol||0)).toFixed(2));   // 本计划分摊额
+
+            // 💰 渠道佣金（互不相通）：商品卡只有平台扣点；短视频/直播达人佣金独立（机构团长服务费已按老板要求删除）
+            const _g=(v,fb)=>(v===undefined||v===null)?fb:v;
+            const svComm=_g(p.svTalentComm,_g(p.talentBaseComm,15)), lvComm=_g(p.liveTalentComm,_g(p.talentBaseComm,15));
+            const commCard=(p.platformFeePct||0)/100;
+            const commVideo=commCard+svComm/100;
+            const commLive=commCard+lvComm/100;
+            const feeP=cR*commCard+vR*commVideo+lR*commLive;
+
+            // 🔥 投流分渠道归属：广告费只摊商品卡+短视频；直播推流费只摊直播
+            const nlAdUsd=(p.adOrderNum||0)*(p.unitAdCostUsd||0), lvAdUsd=(p.liveTotalTimes||0)*(p.liveFixedAdUsd||0);
+            const nlOrd=(p.salesVol||0)*(cR+vR), lvOrd=(p.salesVol||0)*lR;
+            const uadNlUsd=nlOrd>0?nlAdUsd/nlOrd:0, uadLvUsd=lvOrd>0?lvAdUsd/lvOrd:0;
+            const uadUsd=(cR+vR)*uadNlUsd+lR*uadLvUsd;
+            // 【2026-10-14 老板定】总结栏的总广告费只算「该渠道真的会有订单」的投流：
+            // 渠道占比为 0 的渠道（如直播 100% 时的商品卡/短视频投流）不会产生订单，投流金额不计入总结，避免虚高误导。
+            const nlAdEff=(nlOrd>0?nlAdUsd:0), lvAdEff=(lvOrd>0?lvAdUsd:0);
+            pState.totalAdCny=Number(((nlAdEff+lvAdEff)*p.rateUsdCny).toFixed(2));
+            
+            // ↩️ 退款损耗（成本口径）：每退一单亏 货值+头程+尾程+该单投流（佣金平台随退款返还，不计）
+            const r=Math.min((p.refundDestroyPct||0)/100, 0.99), rlF=r>0?(r/(1-r)):0;
+            const rlNlUsd=rlF*(uc+logU+uadNlUsd), rlLvUsd=rlF*(uc+logU+uadLvUsd);
+            const rlUsd=(cR+vR)*rlNlUsd+lR*rlLvUsd;
+
+            // 其他暗扣/杂费（可见输入，默认 2.4%）：只进保本价口径，不扣单件净利
+            const otherDeduct=_g(p.otherDeductPct, 2.4)/100;
+            // 💱 保本价跟随售价币种：公式分子是 USD 口径成本 → 美元定价时直接显示 $；
+            // 人民币定价时 ×汇率 折成「需要卖到的人民币价」
+            const beFx=(currentProduct.value && currentProduct.value.priceCurrency==='cny') ? (p.rateUsdCny||7.2) : 1;
+            pState.breakEvenUsd=Number(((uc+logU+storageU+uadUsd+rlUsd)/Math.max(0.05,1-feeP-otherDeduct)*beFx).toFixed(2));
+            
+            const to=p.salesVol*(1-p.refundDestroyPct/100), trU=to*pState.aovUsd, trC=trU*cur;
+            pState.stageTotalRevenue=Number(trC.toFixed(2)); pState.roas=Number((trC/(pState.totalAdCny||0.0001)).toFixed(2)); pState.acosPct=Number((pState.totalAdCny/trC*100).toFixed(2));
+            
+            const urC=pState.aovUsd*cur, ucc=p.unitCostCny, ulc=p.airUnitCost+(p.overseaUnitCostUsd*p.rateUsdCny), ust=storageU*p.rateUsdCny;
+            const shopC=pState.finalShopPrice*cur, liveC=pState.finalLivePrice*cur;
+            const uac=uadUsd*p.rateUsdCny;
+            const ucm=cR*shopC*commCard+vR*shopC*commVideo+lR*liveC*commLive;
+            const uls=rlUsd*p.rateUsdCny;
+            const unc=urC-ucc-ulc-ust-uac-ucm-uls; pState.unitNetProfitCny=Number(unc.toFixed(2));
+            
+            const udc=ucc+ulc+ust+(p.destroyUnitFeeCny||0); pState.unitDestroyCostCny=Number(udc.toFixed(2)); pState.destroyTotalCostCny=Number((p.destroyNum*udc).toFixed(2)); p.stageNetProfit=Number((to*unc-p.freeSample*(ucc+ulc+ust)-p.destroyNum*udc).toFixed(2));
+            pState.costRatio=Number((ucc/urC*100).toFixed(1)); pState.logRatio=Number((ulc/urC*100).toFixed(1)); pState.storageRatio=Number((ust/urC*100).toFixed(1)); pState.adRatio=Number((uac/urC*100).toFixed(1)); pState.commRatio=Number((ucm/urC*100).toFixed(1)); pState.lossRatio=Number((uls/urC*100).toFixed(1)); pState.netRatio=Number((unc/urC*100).toFixed(1));
+        }
+
+        return { 
+            products, currentProductIndex, currentPhaseIndex, currentProduct, currentPhase, simDate, dateManuallySet, autoSyncDate,
+            showPromoModal, showWarehouseModal, showDataModal, pState, storageAllocQty, validCurrentPromo, globalLogistics, 
+            editingDate, editingPhaseIndex, addProduct, duplicateProduct, delProductCheck, selectProduct, toggleOversea, togglePriceCurrency, priceCurSym,
+            getProductTotalProfit, addPhase, duplicatePhase, delPhaseCheck, selectPhase, 
+            openPromoModal:()=>showPromoModal.value=true, addPromoItem, delPromo, syncDiscountPrice, 
+            syncDiscountRate, forceCalculate, handleBasePriceChange, autoCalcLogistics, addLogistics, 
+            delLogistics, exportData, importData, setToday, generatePricingReport, updatePromoTag, 
+            isLocked, showSettings, tempCode, verifyCode, loginError, newTeamCode, updateTeamCode, 
+            openSettings, logout, isCloudEnabled: window.isCloudEnabled,
+            historyList, saveSnapshot, restoreSnapshot, deleteSnapshot, hasLoadedData, isOfflineMode
+        }
+    }
+})
+app.mount("#app")
+</script>
+</body>
+</html>
